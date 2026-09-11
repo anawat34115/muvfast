@@ -387,7 +387,7 @@
                                             class="material-symbols-outlined text-[16px] sm:text-[18px] text-gray-600">ev_station</span>
                                         EV charging</div>
                                 </div>
-                                <button onclick="document.getElementById('amenities-modal').classList.remove('hidden')"
+                                <button onclick="openAmenitiesModal('property')"
                                     class="text-primary text-[13px] font-semibold underline mt-0.5 hover:text-primary-container text-left w-fit cursor-pointer">
                                     Show all (12)
                                 </button>
@@ -438,7 +438,7 @@
                                             class="material-symbols-outlined text-[16px] sm:text-[18px] text-gray-600">shower</span>
                                         Private bathroom</div>
                                 </div>
-                                <button onclick="document.getElementById('amenities-modal').classList.remove('hidden')"
+                                <button onclick="openAmenitiesModal('room')"
                                     class="text-primary text-[13px] font-semibold underline mt-0.5 hover:text-primary-container text-left w-fit cursor-pointer">
                                     Show all (12)
                                 </button>
@@ -452,13 +452,13 @@
                             <p class="text-gray-600 text-[13px] sm:text-[14px] leading-relaxed">
                                 Our rooms come fully furnished with everything you need such as a custom-made wardrobe
                                 and bed frame including a comfy premium mattress. Depending on size you'll also have a
-                                nightstand and desk in there.
+                                nightstand and desk in there.<span id="room-desc-more" class="hidden"> If you want to work on that laptop you can get one of the rooms with a private or shared balcony or terrace to soak in the Bangkok skyline. Each premier suite features individually controlled air conditioning, high-speed wireless internet, a fully equipped kitchenette, washer/dryer, and dedicated housekeeping services to ensure an effortless living experience.</span>
                             </p>
-                            <a href="#"
-                                class="text-primary font-semibold text-[13px] flex items-center gap-1 hover:text-primary-container">
-                                <span>Read more</span>
-                                <span class="material-symbols-outlined text-[16px]">expand_more</span>
-                            </a>
+                            <button type="button" onclick="toggleRoomDescription()" id="room-desc-btn"
+                                class="text-primary font-semibold text-[13px] flex items-center gap-1 hover:text-primary-container w-fit cursor-pointer">
+                                <span id="room-desc-text">Read more</span>
+                                <span id="room-desc-icon" class="material-symbols-outlined text-[16px] transition-transform duration-200">expand_more</span>
+                            </button>
                         </div>
 
                         <!-- Section 4: And remember... -->
@@ -1486,6 +1486,37 @@
                 document.getElementById('duration-arrow')?.classList.remove('rotate-180');
             }
         });
+
+        // Toggle Room Description Read more / Read less
+        function toggleRoomDescription() {
+            const moreText = document.getElementById('room-desc-more');
+            const textSpan = document.getElementById('room-desc-text');
+            const iconSpan = document.getElementById('room-desc-icon');
+            if (moreText.classList.contains('hidden')) {
+                moreText.classList.remove('hidden');
+                textSpan.textContent = 'Read less';
+                iconSpan.classList.add('rotate-180');
+            } else {
+                moreText.classList.add('hidden');
+                textSpan.textContent = 'Read more';
+                iconSpan.classList.remove('rotate-180');
+            }
+        }
+
+        // Open Amenities Modal with Category Filtering
+        function openAmenitiesModal(filter) {
+            const modal = document.getElementById('amenities-modal');
+            const facilitiesCat = document.getElementById('modal-cat-facilities');
+            const title = document.getElementById('modal-title');
+            if (filter === 'room') {
+                if (facilitiesCat) facilitiesCat.classList.add('hidden');
+                if (title) title.innerText = 'What this room offers';
+            } else {
+                if (facilitiesCat) facilitiesCat.classList.remove('hidden');
+                if (title) title.innerText = 'What this place offers';
+            }
+            modal.classList.remove('hidden');
+        }
     </script>
 
     <!-- Amenities Modal -->
@@ -1505,10 +1536,10 @@
             </div>
             <!-- Scrollable Content -->
             <div class="p-5 sm:p-6 md:px-8 md:pb-8 overflow-y-auto flex-grow flex flex-col gap-8 sm:gap-10">
-                <h2 class="text-[24px] sm:text-[28px] font-extrabold text-gray-900 mb-2">What this place offers</h2>
+                <h2 id="modal-title" class="text-[24px] sm:text-[28px] font-extrabold text-gray-900 mb-2">What this place offers</h2>
 
                 <!-- Category: Facilities & Building -->
-                <div>
+                <div id="modal-cat-facilities">
                     <h3 class="text-[17px] sm:text-[18px] font-bold text-gray-900 mb-5 sm:mb-6">Facilities &amp; Building</h3>
                     <div class="flex flex-col gap-4 sm:gap-5">
                         <div class="flex items-center gap-3 sm:gap-4 py-1 border-b border-gray-100 pb-4 sm:pb-5"><span
