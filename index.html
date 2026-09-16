@@ -4,7 +4,9 @@
 <head>
     <meta charset="utf-8" />
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&amp;display=swap"
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&family=Noto+Sans+Thai:wght@300;400;500;600;700;800&display=swap"
         rel="stylesheet" />
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0"
         rel="stylesheet" />
@@ -12,12 +14,69 @@
         href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
         rel="stylesheet" />
     <style>
+        /* CoStar Brown (Apartments.com Official Typeface) */
+        @font-face {
+            font-family: 'Costar Brown';
+            src: local('Costar Brown Regular'), local('Costar Brown'), local('CoStar Brown Regular'), local('CoStar Brown'), local('costar brown'), local('lineto-costar-brown-regular'), local('lineto-costar-brown'), local('LL Brown Regular'), local('Brown-Regular'), local('Brown'),
+                 url('./fonts/CostarBrown-Regular.woff2') format('woff2'),
+                 url('./fonts/CostarBrown-Regular.woff') format('woff'),
+                 url('./fonts/CostarBrown-Regular.ttf') format('truetype');
+            font-weight: 400;
+            font-style: normal;
+            font-display: swap;
+        }
+
+        @font-face {
+            font-family: 'Costar Brown';
+            src: local('Costar Brown Medium'), local('CoStar Brown Medium'), local('costar brown medium'), local('lineto-costar-brown-medium'), local('LL Brown Medium'), local('Brown-Medium'),
+                 url('./fonts/CostarBrown-Medium.woff2') format('woff2'),
+                 url('./fonts/CostarBrown-Medium.woff') format('woff'),
+                 url('./fonts/CostarBrown-Medium.ttf') format('truetype');
+            font-weight: 500;
+            font-style: normal;
+            font-display: swap;
+        }
+
+        @font-face {
+            font-family: 'Costar Brown';
+            src: local('Costar Brown SemiBold'), local('CoStar Brown SemiBold'), local('Costar Brown Bold'), local('CoStar Brown Bold'), local('costar brown bold'), local('lineto-costar-brown-bold'), local('LL Brown Bold'), local('Brown-Bold'),
+                 url('./fonts/CostarBrown-Bold.woff2') format('woff2'),
+                 url('./fonts/CostarBrown-Bold.woff') format('woff'),
+                 url('./fonts/CostarBrown-Bold.ttf') format('truetype');
+            font-weight: 600 700;
+            font-style: normal;
+            font-display: swap;
+        }
+
+        @font-face {
+            font-family: 'Costar Brown';
+            src: local('Costar Brown ExtraBold'), local('CoStar Brown ExtraBold'), local('Costar Brown Heavy'), local('CoStar Brown Heavy'), local('costar brown heavy'), local('lineto-costar-brown-heavy'), local('LL Brown Heavy'),
+                 url('./fonts/CostarBrown-ExtraBold.woff2') format('woff2'),
+                 url('./fonts/CostarBrown-ExtraBold.woff') format('woff'),
+                 url('./fonts/CostarBrown-ExtraBold.ttf') format('truetype');
+            font-weight: 800 900;
+            font-style: normal;
+            font-display: swap;
+        }
+
+        @font-face {
+            font-family: 'Costar Brown';
+            src: local('Costar Brown Light'), local('CoStar Brown Light'), local('costar brown light'), local('lineto-costar-brown-light'), local('LL Brown Light'), local('Brown-Light'),
+                 url('./fonts/CostarBrown-Light.woff2') format('woff2'),
+                 url('./fonts/CostarBrown-Light.woff') format('woff'),
+                 url('./fonts/CostarBrown-Light.ttf') format('truetype');
+            font-weight: 300;
+            font-style: normal;
+            font-display: swap;
+        }
+
         @layer base {
 
             html,
             body {
                 margin: 0;
                 padding: 0;
+                font-family: 'Costar Brown', 'costar brown', 'CoStar Brown', 'lineto-costar-brown', 'Noto Sans Thai', 'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
             }
 
             main>:first-child {
@@ -99,7 +158,9 @@
                         "gutter-desktop": "2rem",
                     },
                     fontFamily: {
-                        "body-medium": ["Montserrat"],
+                        "body-medium": ["'Costar Brown'", "'costar brown'", "'CoStar Brown'", "'lineto-costar-brown'", "'Noto Sans Thai'", "'Montserrat'", "-apple-system", "BlinkMacSystemFont", "'Segoe UI'", "Roboto", "Helvetica", "Arial", "sans-serif"],
+                        "costar": ["'Costar Brown'", "'costar brown'", "'CoStar Brown'", "'lineto-costar-brown'", "'Noto Sans Thai'", "'Montserrat'", "-apple-system", "BlinkMacSystemFont", "'Segoe UI'", "Roboto", "Helvetica", "Arial", "sans-serif"],
+                        "sans": ["'Costar Brown'", "'costar brown'", "'CoStar Brown'", "'lineto-costar-brown'", "'Noto Sans Thai'", "'Montserrat'", "-apple-system", "BlinkMacSystemFont", "'Segoe UI'", "Roboto", "Helvetica", "Arial", "sans-serif"]
                     }
                 }
             }
@@ -107,15 +168,15 @@
     </script>
 </head>
 
-<body class="bg-background font-body-medium text-[15px] text-on-surface antialiased">
+<body class="bg-white font-body-medium text-[15px] text-on-surface antialiased">
     <!-- Wrapper to prevent horizontal overflow without breaking vertical scroll -->
-    <div class="relative w-full overflow-x-hidden min-h-screen flex flex-col">
+    <div class="relative w-full overflow-x-hidden min-h-screen flex flex-col bg-white">
 
-        <!-- Header -->
+        <!-- Header: Sleek & Compact (Apartments.com style ~68px) -->
         <header
-            class="fixed top-0 left-0 w-full z-50 bg-surface-container-lowest border-b border-surface-container-high">
+            class="fixed top-0 left-0 w-full z-50 bg-white/95 backdrop-blur-md border-b border-gray-100 shadow-sm transition-all">
             <div
-                class="h-28 md:h-[160px] max-w-[1280px] mx-auto px-4 md:px-gutter-desktop flex items-center justify-between">
+                class="h-16 md:h-[68px] max-w-[1280px] mx-auto px-4 md:px-gutter-desktop flex items-center justify-between">
                 
                 <!-- Left: Navigation -->
                 <div class="flex-1 flex justify-start items-center">
@@ -124,31 +185,31 @@
                         <span class="material-symbols-outlined text-[24px]">menu</span>
                     </button>
                     <!-- Desktop Nav -->
-                    <nav class="hidden xl:flex items-center gap-5 xl:gap-8">
-                        <a class="font-bold text-[14px] text-on-surface hover:text-on-surface-variant transition-colors whitespace-nowrap"
+                    <nav class="hidden xl:flex items-center gap-6 xl:gap-8">
+                        <a class="font-semibold text-[14px] text-gray-700 hover:text-primary transition-colors whitespace-nowrap"
                             href="#">Landlord</a>
-                        <a class="font-bold text-[14px] text-on-surface hover:text-on-surface-variant transition-colors whitespace-nowrap" href="#">Agent</a>
+                        <a class="font-semibold text-[14px] text-gray-700 hover:text-primary transition-colors whitespace-nowrap" href="#">Agent</a>
                     </nav>
                 </div>
 
-                <!-- Center: Logo -->
+                <!-- Center: Logo (Balanced Proportion) -->
                 <div class="flex-shrink-0 flex justify-center items-center px-2 sm:px-4">
                     <a class="flex items-center justify-center h-full py-2 select-none" href="#">
                         <img src="ec431aac-475a-45b9-a21b-7609f772440d-removebg-preview.png" alt="MUVFAST Logo"
-                            class="h-20 md:h-[100px] lg:h-[120px] w-auto object-contain max-w-[180px] sm:max-w-[280px] md:max-w-[360px]" />
+                            class="h-9 sm:h-10 md:h-[42px] w-auto object-contain" />
                     </a>
                 </div>
 
                 <!-- Right: Navigation & Actions -->
-                <div class="flex-1 flex justify-end items-center gap-4 xl:gap-6">
+                <div class="flex-1 flex justify-end items-center gap-3 sm:gap-4 xl:gap-6">
                     <nav class="hidden xl:flex items-center gap-5 xl:gap-8">
-                        <div class="flex items-center gap-1 font-bold text-[14px] text-on-surface hover:text-on-surface-variant cursor-pointer transition-colors">
+                        <div class="flex items-center gap-1 font-semibold text-[14px] text-gray-700 hover:text-primary cursor-pointer transition-colors">
                             <span>EN</span>
                             <span class="material-symbols-outlined text-[16px]">keyboard_arrow_down</span>
                         </div>
                     </nav>
-                    <div class="flex items-center gap-1.5 sm:gap-2">
-                        <a class="flex items-center justify-center gap-1 px-4 py-2 bg-gray-900 text-white hover:bg-black rounded-lg font-bold text-[14px] shadow-sm transition-all whitespace-nowrap"
+                    <div class="flex items-center gap-2">
+                        <a class="flex items-center justify-center gap-1 px-4 py-2 bg-gray-900 text-white hover:bg-black rounded-lg font-bold text-[13px] sm:text-[14px] shadow-sm transition-all whitespace-nowrap"
                             href="#signin">
                             <span>Sign in</span>
                         </a>
@@ -157,51 +218,61 @@
             </div>
         </header>
 
-        <main class="w-full pt-28 md:pt-[160px] bg-[#f8fafc] flex-grow">
-            <div class="max-w-[1280px] mx-auto px-4 md:px-gutter-desktop py-4 md:py-6">
+        <main class="w-full pt-16 md:pt-[68px] bg-white flex-grow">
+            <div class="max-w-[1280px] mx-auto px-4 md:px-gutter-desktop py-3 sm:py-4">
 
-                <!-- Breadcrumb & Property Title Header -->
-                <section class="flex flex-col gap-1 pb-4">
-                    <div class="flex items-center justify-between flex-wrap gap-2 mb-2">
-                        <nav class="flex text-gray-500 text-[13px] font-medium" aria-label="Breadcrumb">
-                            <ol class="inline-flex items-center space-x-1 md:space-x-2">
-                                <li class="inline-flex items-center">
-                                    <a href="#" class="hover:text-gray-900 hover:underline">Home</a>
-                                </li>
-                                <li>
-                                    <div class="flex items-center">
-                                        <span class="material-symbols-outlined text-[16px] mx-1">chevron_right</span>
-                                        <a href="#" class="hover:text-gray-900 hover:underline">Huai Khwang, Bangkok</a>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="flex items-center">
-                                        <span class="material-symbols-outlined text-[16px] mx-1">chevron_right</span>
-                                        <span class="text-gray-400">IDEO RAMA 9 - ASOKE</span>
-                                    </div>
-                                </li>
-                            </ol>
-                        </nav>
+                <!-- Action Bar above Photo Showcase: Breadcrumbs, Property Code, Share & Favorite -->
+                <section class="flex items-center justify-between flex-wrap gap-2.5 pb-3 border-b border-gray-100/80 mb-3">
+                    <!-- Left: Clean Breadcrumb -->
+                    <nav class="flex text-gray-500 text-[12px] sm:text-[13px] font-medium" aria-label="Breadcrumb">
+                        <ol class="inline-flex items-center space-x-1 md:space-x-1.5 flex-wrap">
+                            <li class="inline-flex items-center">
+                                <a href="#" class="hover:text-gray-900 transition-colors">Home</a>
+                            </li>
+                            <li>
+                                <div class="flex items-center">
+                                    <span class="material-symbols-outlined text-[14px] mx-1 text-gray-400">chevron_right</span>
+                                    <a href="#" class="hover:text-gray-900 transition-colors">Huai Khwang, Bangkok</a>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="flex items-center">
+                                    <span class="material-symbols-outlined text-[14px] mx-1 text-gray-400">chevron_right</span>
+                                    <span class="text-gray-400 font-normal">IDEO RAMA 9 - ASOKE</span>
+                                </div>
+                            </li>
+                        </ol>
+                    </nav>
+
+                    <!-- Right: Property Code, Share & Favorite Actions -->
+                    <div class="flex items-center gap-2 sm:gap-3 flex-wrap">
+                        <!-- Property Code (PDF Page 9) -->
+                        <div class="inline-flex items-center gap-1.5 px-2.5 py-1 bg-gray-100/80 rounded-md text-[12px] font-medium text-gray-600 border border-gray-200/60">
+                            <span class="text-gray-400">ID:</span>
+                            <span class="font-bold text-gray-900 tracking-wide">MUV11410</span>
+                        </div>
+
+                        <!-- Share Button (PDF Page 4) -->
+                        <button type="button" onclick="navigator.clipboard?.writeText(window.location.href); alert('คัดลอกลิงก์เรียบร้อยแล้วค่ะ');"
+                            class="inline-flex items-center gap-1 px-2.5 sm:px-3 py-1 rounded-md border border-gray-200 text-gray-700 hover:text-primary hover:border-orange-200 hover:bg-orange-50/40 text-[12px] sm:text-[13px] font-semibold transition-all shadow-xs cursor-pointer">
+                            <span class="material-symbols-outlined text-[16px] text-gray-600">share</span>
+                            <span>แชร์</span>
+                        </button>
+
+                        <!-- Favorite Button (PDF Page 4) -->
+                        <button type="button" onclick="this.classList.toggle('text-rose-600'); this.querySelector('.material-symbols-outlined').textContent = this.querySelector('.material-symbols-outlined').textContent === 'favorite' ? 'favorite_border' : 'favorite';"
+                            class="inline-flex items-center gap-1 px-2.5 sm:px-3 py-1 rounded-md border border-gray-200 text-gray-700 hover:text-rose-600 hover:border-rose-200 hover:bg-rose-50/40 text-[12px] sm:text-[13px] font-semibold transition-all shadow-xs cursor-pointer">
+                            <span class="material-symbols-outlined text-[16px]">favorite_border</span>
+                            <span>ถูกใจ</span>
+                        </button>
+
+                        <!-- See all properties link -->
                         <a href="#"
-                            class="text-[13px] font-medium text-gray-600 hover:text-gray-900 flex items-center gap-1 transition-colors">
-                            <span class="material-symbols-outlined text-[18px]">arrow_back</span>
-                            See all properties
+                            class="text-[12px] sm:text-[13px] font-medium text-gray-500 hover:text-gray-900 hidden sm:inline-flex items-center gap-1 transition-colors pl-1">
+                            <span class="material-symbols-outlined text-[16px]">arrow_back</span>
+                            See all
                         </a>
                     </div>
-                    <div class="flex items-center gap-2 mb-1">
-                        <span class="w-2 h-2 rounded-full bg-emerald-500"></span>
-                        <span class="text-[12px] font-medium text-gray-600">Latest update: Today</span>
-                    </div>
-                    <h1
-                        class="text-[24px] sm:text-[28px] md:text-[34px] lg:text-[38px] font-extrabold text-gray-900 tracking-tight leading-tight break-words">
-                        Ascott Embassy Sathorn Bangkok
-                    </h1>
-                    <p
-                        class="text-gray-500 text-[13px] md:text-[14px] flex items-start sm:items-center gap-1.5 flex-wrap mt-1">
-                        <span
-                            class="material-symbols-outlined text-[18px] text-gray-400 shrink-0 mt-0.5 sm:mt-0">location_on</span>
-                        <span>59 South Sathorn Road, Thung Maha Mek, Sathon, Bangkok 10120, Thailand</span>
-                    </p>
                 </section>
 
                 <!-- Photo Showcase -->
@@ -301,169 +372,123 @@
                     <!-- LEFT COLUMN -->
                     <div class="lg:col-span-8 flex flex-col gap-6 w-full min-w-0">
 
-                        <!-- Section 1 -->
+                        <!-- Section 1: Unified Property Title & Quick Specs (PDF Page 1, 2) -->
                         <div
-                            class="bg-white border border-gray-200/90 rounded-2xl p-4 sm:p-5 md:p-6 flex flex-col gap-4 shadow-sm w-full">
-                            <h2
-                                class="text-[20px] sm:text-[22px] md:text-[26px] font-extrabold text-gray-900 leading-snug">
-                                Service Apartment <span class="text-gray-900 font-bold">with 1 Bedroom Premier for rent
-                                    in Bangkok</span>
+                            class="bg-white border border-gray-200/90 rounded-2xl p-4 sm:p-5 md:p-6 flex flex-col gap-3 shadow-xs w-full">
+                            <!-- Status & Breadcrumb Micro-tag -->
+                            <div class="flex items-center gap-2">
+                                <span class="w-2 h-2 rounded-full bg-emerald-500"></span>
+                                <span class="text-[12px] font-medium text-gray-500">Latest update: Today</span>
+                            </div>
+
+                            <!-- Project Name (H1 - Balanced & Prominent per PDF Page 1, 2) -->
+                            <h1
+                                class="text-[24px] sm:text-[28px] font-extrabold text-gray-900 tracking-tight leading-snug break-words">
+                                Ascott Embassy Sathorn Bangkok
+                            </h1>
+
+                            <!-- Room Type Headline (PDF Page 2) -->
+                            <h2 class="text-[16px] sm:text-[18px] font-bold text-gray-700 leading-snug">
+                                Service Apartment with 1 Bedroom Premier for rent in Bangkok
                             </h2>
 
-                            <!-- Quick Stats with Icons -->
-                            <div
-                                class="flex flex-wrap items-center gap-x-4 sm:gap-x-6 gap-y-2 text-gray-700 text-[13px] sm:text-[14px] md:text-[15px] font-medium pt-1">
-                                <span class="flex items-center gap-1.5 sm:gap-2">
-                                    <span
-                                        class="material-symbols-outlined text-gray-500 text-[18px] sm:text-[20px]">bed</span>
-                                    1 bedroom
-                                </span>
-                                <span class="flex items-center gap-1.5 sm:gap-2">
-                                    <span
-                                        class="material-symbols-outlined text-gray-500 text-[18px] sm:text-[20px]">shower</span>
-                                    1 bathroom
-                                </span>
-                                <span class="flex items-center gap-1.5 sm:gap-2">
-                                    <span
-                                        class="material-symbols-outlined text-gray-500 text-[18px] sm:text-[20px]">aspect_ratio</span>
-                                    32 sq.m.
-                                </span>
-                                <span class="flex items-center gap-1.5 sm:gap-2 px-2.5 py-1 bg-primary/10 text-primary border border-primary/20 rounded-lg font-bold">
-                                    <span
-                                        class="material-symbols-outlined text-[18px] sm:text-[20px]">calendar_today</span>
-                                    Min. 1 month stay
-                                </span>
-                            </div>
+                            <!-- Address -->
+                            <p class="text-gray-500 text-[13px] sm:text-[14px] flex items-start sm:items-center gap-1.5 flex-wrap">
+                                <span class="material-symbols-outlined text-[17px] text-gray-400 shrink-0 mt-0.5 sm:mt-0">location_on</span>
+                                <span>59 South Sathorn Road, Thung Maha Mek, Sathon, Bangkok 10120, Thailand</span>
+                            </p>
 
-                            <div class="flex items-center gap-3 pt-3 border-t border-gray-100">
-                                <div
-                                    class="w-10 h-10 rounded-3xl bg-gray-100 flex items-center justify-center text-gray-700 shrink-0">
-                                    <span class="material-symbols-outlined text-[22px]">home</span>
-                                </div>
-                                <div class="flex flex-col">
-                                    <span
-                                        class="font-bold text-gray-900 text-[13px] sm:text-[14px] flex items-center gap-1.5">
-                                        Verified landlord
-                                        <span class="text-emerald-500 flex items-center text-[12px] sm:text-[13px]">★ 5
-                                            (11)</span>
-                                    </span>
-                                    <span class="text-gray-500 text-[12px] sm:text-[13px]">Private • 2 years with
-                                        us</span>
-                                </div>
-                            </div>
-
+                            <!-- Quick Specs Pills (Clean & Balanced) -->
                             <div
-                                class="p-4 bg-orange-50/40 rounded-3xl border border-orange-100 flex items-start gap-3 mt-1">
-                                <div
-                                    class="w-8 h-8 rounded-full bg-primary flex items-center justify-center text-white shrink-0 mt-0.5 shadow-sm">
-                                    <span class="material-symbols-outlined text-[18px]">verified</span>
-                                </div>
-                                <div class="flex flex-col">
-                                    <span class="font-bold text-gray-900 text-[13px] sm:text-[14px]">Property verified
-                                        by MUVFAST</span>
-                                    <span class="text-gray-500 text-[12px]">Checked on 07 Aug 2019</span>
-                                    <p class="text-gray-600 text-[12px] sm:text-[13px] mt-1 leading-relaxed">
-                                        Our homechecker has reviewed the house to make sure you get exactly what you see
-                                        in the listing.
-                                        <a href="#"
-                                            class="text-primary underline font-medium hover:text-primary-container sm:ml-1 whitespace-nowrap">More
-                                            about verification</a>
-                                    </p>
-                                </div>
+                                class="flex flex-wrap items-center gap-2 sm:gap-3 text-gray-700 text-[13px] sm:text-[14px] font-medium pt-2 border-t border-gray-100">
+                                <span class="inline-flex items-center gap-1.5 px-3 py-1.5 bg-gray-50 rounded-lg border border-gray-200/80">
+                                    <span class="material-symbols-outlined text-gray-500 text-[18px]">bed</span>
+                                    <span>1 bedroom</span>
+                                </span>
+                                <span class="inline-flex items-center gap-1.5 px-3 py-1.5 bg-gray-50 rounded-lg border border-gray-200/80">
+                                    <span class="material-symbols-outlined text-gray-500 text-[18px]">shower</span>
+                                    <span>1 bathroom</span>
+                                </span>
+                                <span class="inline-flex items-center gap-1.5 px-3 py-1.5 bg-gray-50 rounded-lg border border-gray-200/80">
+                                    <span class="material-symbols-outlined text-gray-500 text-[18px]">aspect_ratio</span>
+                                    <span>32 sq.m.</span>
+                                </span>
+                                <span class="inline-flex items-center gap-1.5 px-3 py-1.5 bg-orange-50/70 text-primary border border-orange-200/70 rounded-lg font-bold">
+                                    <span class="material-symbols-outlined text-[18px]">calendar_today</span>
+                                    <span>Min. 1 month stay</span>
+                                </span>
                             </div>
                         </div>
 
-                        <!-- Section 2: Features & Amenities -->
-                        <div class="bg-white border border-gray-200/90 rounded-2xl p-4 sm:p-5 md:p-6 flex flex-col gap-8 shadow-sm w-full">
-                            
-                            <!-- Unit features -->
-                            <div class="flex flex-col gap-4">
+                        <!-- 1. Unit features (PDF Page 5: Order 1) -->
+                        <div class="bg-white border border-gray-200/90 rounded-2xl p-4 sm:p-5 md:p-6 flex flex-col gap-5 shadow-xs w-full">
+                            <div class="flex items-center justify-between">
                                 <h3 class="text-[18px] sm:text-[20px] font-bold text-gray-900">Unit features</h3>
-                                
-                                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                                    <!-- Appliance -->
-                                    <div class="flex flex-col gap-2 text-[14px]">
-                                        <h4 class="font-bold text-gray-800">Appliance</h4>
-                                        <ul class="flex flex-col gap-1.5 text-gray-700 list-disc list-inside">
-                                            <li>Dishwasher</li>
-                                            <li>Refrigerator</li>
-                                            <li>Microwave Oven</li>
-                                            <li>Washer/Dryer</li>
-                                        </ul>
-                                    </div>
-                                    <!-- Living - Dining -->
-                                    <div class="flex flex-col gap-2 text-[14px]">
-                                        <h4 class="font-bold text-gray-800">Living - Dining</h4>
-                                        <ul class="flex flex-col gap-1.5 text-gray-700 list-disc list-inside">
-                                            <li>Sofa &amp; Coffee Table</li>
-                                            <li>Dining Table with Chairs</li>
-                                            <li>Flat-screen TV</li>
-                                        </ul>
-                                    </div>
-                                    <div class="hidden col-span-1 md:col-span-2 grid-cols-1 md:grid-cols-2 gap-6" id="unit-features-more">
-                                        <!-- Bedrooms -->
-                                        <div class="flex flex-col gap-2 text-[14px]">
-                                            <h4 class="font-bold text-gray-800">Bedrooms</h4>
-                                            <ul class="flex flex-col gap-1.5 text-gray-700 list-disc list-inside">
-                                                <li>Double bed</li>
-                                                <li>Standalone wardrobe</li>
-                                                <li>Nightstands</li>
-                                            </ul>
-                                        </div>
-                                        <!-- Internet & Other -->
-                                        <div class="flex flex-col gap-2 text-[14px]">
-                                            <h4 class="font-bold text-gray-800">Internet &amp; Other</h4>
-                                            <ul class="flex flex-col gap-1.5 text-gray-700 list-disc list-inside">
-                                                <li>High-Speed Internet Ready</li>
-                                                <li>Central Air Conditioning</li>
-                                                <li>Balcony</li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                                <button onclick="document.getElementById('unit-features-more').classList.toggle('hidden'); document.getElementById('unit-features-more').classList.toggle('grid'); this.innerText = this.innerText === 'Show all' ? 'Show less' : 'Show all'"
-                                    class="text-primary text-[13px] font-semibold underline mt-2 hover:text-primary-container text-left w-fit cursor-pointer">
-                                    Show all
-                                </button>
-                            </div>
-
-                            <hr class="border-gray-100">
-
-                            <!-- Project amenities -->
-                            <div class="flex flex-col gap-4">
-                                <h3 class="text-[18px] sm:text-[20px] font-bold text-gray-900">Project amenities</h3>
-                                
-                                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                                    <div class="flex flex-col gap-2 text-[14px]">
-                                        <h4 class="font-bold text-gray-800">Community &amp; Wellness</h4>
-                                        <ul class="flex flex-col gap-1.5 text-gray-700 list-disc list-inside">
-                                            <li>Fitness Center</li>
-                                            <li>Swimming pool</li>
-                                            <li>Spa &amp; Sauna</li>
-                                            <li>Children's playground</li>
-                                        </ul>
-                                    </div>
-                                    <div class="hidden flex-col gap-2 text-[14px]" id="project-amenities-more">
-                                        <h4 class="font-bold text-gray-800">Services &amp; Facilities</h4>
-                                        <ul class="flex flex-col gap-1.5 text-gray-700 list-disc list-inside">
-                                            <li>24/7 Concierge</li>
-                                            <li>EV charging</li>
-                                            <li>Sky lounge &amp; Garden</li>
-                                            <li>Secure parking</li>
-                                        </ul>
-                                    </div>
-                                </div>
-                                <button onclick="document.getElementById('project-amenities-more').classList.toggle('hidden'); document.getElementById('project-amenities-more').classList.toggle('flex'); this.innerText = this.innerText === 'Show all' ? 'Show less' : 'Show all'"
-                                    class="text-primary text-[13px] font-semibold underline mt-2 hover:text-primary-container text-left w-fit cursor-pointer">
-                                    Show all
-                                </button>
+                                <span class="text-[12px] font-medium text-gray-400">In-room amenities</span>
                             </div>
                             
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                <!-- Appliance -->
+                                <div class="flex flex-col gap-2 text-[14px]">
+                                    <h4 class="font-bold text-gray-800 flex items-center gap-1.5">
+                                        <span class="material-symbols-outlined text-[18px] text-gray-500">microwave</span>
+                                        <span>Appliance</span>
+                                    </h4>
+                                    <ul class="flex flex-col gap-1.5 text-gray-700 list-disc list-inside pl-1">
+                                        <li>Dishwasher</li>
+                                        <li>Refrigerator</li>
+                                        <li>Microwave Oven</li>
+                                        <li>Washer/Dryer</li>
+                                    </ul>
+                                </div>
+                                <!-- Living - Dining -->
+                                <div class="flex flex-col gap-2 text-[14px]">
+                                    <h4 class="font-bold text-gray-800 flex items-center gap-1.5">
+                                        <span class="material-symbols-outlined text-[18px] text-gray-500">weekend</span>
+                                        <span>Living - Dining</span>
+                                    </h4>
+                                    <ul class="flex flex-col gap-1.5 text-gray-700 list-disc list-inside pl-1">
+                                        <li>Sofa &amp; Coffee Table</li>
+                                        <li>Dining Table with Chairs</li>
+                                        <li>Flat-screen TV</li>
+                                    </ul>
+                                </div>
+                                <div class="hidden col-span-1 md:col-span-2 grid-cols-1 md:grid-cols-2 gap-6" id="unit-features-more">
+                                    <!-- Bedrooms -->
+                                    <div class="flex flex-col gap-2 text-[14px]">
+                                        <h4 class="font-bold text-gray-800 flex items-center gap-1.5">
+                                            <span class="material-symbols-outlined text-[18px] text-gray-500">bed</span>
+                                            <span>Bedrooms</span>
+                                        </h4>
+                                        <ul class="flex flex-col gap-1.5 text-gray-700 list-disc list-inside pl-1">
+                                            <li>Double bed</li>
+                                            <li>Standalone wardrobe</li>
+                                            <li>Nightstands</li>
+                                        </ul>
+                                    </div>
+                                    <!-- Internet & Other -->
+                                    <div class="flex flex-col gap-2 text-[14px]">
+                                        <h4 class="font-bold text-gray-800 flex items-center gap-1.5">
+                                            <span class="material-symbols-outlined text-[18px] text-gray-500">wifi</span>
+                                            <span>Internet &amp; Other</span>
+                                        </h4>
+                                        <ul class="flex flex-col gap-1.5 text-gray-700 list-disc list-inside pl-1">
+                                            <li>High-Speed Internet Ready</li>
+                                            <li>Central Air Conditioning</li>
+                                            <li>Balcony</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <button onclick="document.getElementById('unit-features-more').classList.toggle('hidden'); document.getElementById('unit-features-more').classList.toggle('grid'); this.innerText = this.innerText === 'Show all' ? 'Show less' : 'Show all'"
+                                class="text-primary text-[13px] font-semibold underline hover:text-primary-container text-left w-fit cursor-pointer">
+                                Show all
+                            </button>
                         </div>
 
-                        <!-- Section 3: Room Description -->
+                        <!-- 2. Room description (PDF Page 5: Order 2 - Moved Up) -->
                         <div
-                            class="bg-white border border-gray-200/90 rounded-2xl p-4 sm:p-5 md:p-6 flex flex-col gap-3 shadow-sm w-full">
+                            class="bg-white border border-gray-200/90 rounded-2xl p-4 sm:p-5 md:p-6 flex flex-col gap-3 shadow-xs w-full">
                             <h3 class="text-[18px] sm:text-[20px] font-bold text-gray-900">Room description</h3>
                             <p class="text-gray-600 text-[13px] sm:text-[14px] leading-relaxed">
                                 Our rooms come fully furnished with everything you need such as a custom-made wardrobe
@@ -480,6 +505,48 @@
                                 <span id="room-desc-text">Read more</span>
                                 <span id="room-desc-icon"
                                     class="material-symbols-outlined text-[16px] transition-transform duration-200">expand_more</span>
+                            </button>
+                        </div>
+
+                        <!-- 3. Project amenities (PDF Page 5: Order 3) -->
+                        <div class="bg-white border border-gray-200/90 rounded-2xl p-4 sm:p-5 md:p-6 flex flex-col gap-5 shadow-xs w-full">
+                            <div class="flex items-center justify-between">
+                                <h3 class="text-[18px] sm:text-[20px] font-bold text-gray-900">Project amenities</h3>
+                                <button onclick="openAmenitiesModal('property')"
+                                    class="text-primary text-[13px] font-semibold underline hover:text-primary-container cursor-pointer">
+                                    All facilities
+                                </button>
+                            </div>
+                            
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                <div class="flex flex-col gap-2 text-[14px]">
+                                    <h4 class="font-bold text-gray-800 flex items-center gap-1.5">
+                                        <span class="material-symbols-outlined text-[18px] text-gray-500">fitness_center</span>
+                                        <span>Community &amp; Wellness</span>
+                                    </h4>
+                                    <ul class="flex flex-col gap-1.5 text-gray-700 list-disc list-inside pl-1">
+                                        <li>Fitness Center</li>
+                                        <li>Swimming pool</li>
+                                        <li>Spa &amp; Sauna</li>
+                                        <li>Children's playground</li>
+                                    </ul>
+                                </div>
+                                <div class="hidden flex-col gap-2 text-[14px]" id="project-amenities-more">
+                                    <h4 class="font-bold text-gray-800 flex items-center gap-1.5">
+                                        <span class="material-symbols-outlined text-[18px] text-gray-500">concierge</span>
+                                        <span>Services &amp; Facilities</span>
+                                    </h4>
+                                    <ul class="flex flex-col gap-1.5 text-gray-700 list-disc list-inside pl-1">
+                                        <li>24/7 Concierge</li>
+                                        <li>EV charging</li>
+                                        <li>Sky lounge &amp; Garden</li>
+                                        <li>Secure parking</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <button onclick="document.getElementById('project-amenities-more').classList.toggle('hidden'); document.getElementById('project-amenities-more').classList.toggle('flex'); this.innerText = this.innerText === 'Show all' ? 'Show less' : 'Show all'"
+                                class="text-primary text-[13px] font-semibold underline hover:text-primary-container text-left w-fit cursor-pointer">
+                                Show all
                             </button>
                         </div>
 
@@ -911,14 +978,15 @@
                             </div>
                         </div>
 
-                        <!-- Section 9: Where you'll be -->
+                        <!-- Section 9: Where you'll be & Nearby Places (PDF Page 6, 8) -->
                         <div
-                            class="bg-white border border-gray-200/90 rounded-2xl p-4 sm:p-5 md:p-6 flex flex-col gap-4 shadow-sm w-full">
+                            class="bg-white border border-gray-200/90 rounded-2xl p-4 sm:p-5 md:p-6 flex flex-col gap-4 shadow-xs w-full">
                             <div>
                                 <h3 class="text-[18px] sm:text-[20px] font-bold text-gray-900">Where you'll be</h3>
-                                <p class="text-gray-500 text-[13px] sm:text-[14px] mt-0.5">Khet Sathon, Krung Thep Maha
-                                    Nakhon, Thailand</p>
+                                <p class="text-gray-500 text-[13px] sm:text-[14px] mt-0.5">Khet Sathon, Krung Thep Maha Nakhon, Thailand</p>
                             </div>
+                            
+                            <!-- Google Maps Iframe -->
                             <div
                                 class="w-full h-[250px] sm:h-80 rounded-2xl sm:rounded-3xl overflow-hidden relative shadow-inner bg-gray-100 border border-gray-200">
                                 <iframe class="w-full h-full border-0"
@@ -926,13 +994,242 @@
                                     allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
                                 </iframe>
                             </div>
+
+                            <!-- สถานที่ใกล้เคียง (Nearby Places Tabs - PDF Page 6, 8) -->
+                            <div class="mt-3 pt-4 border-t border-gray-100 flex flex-col gap-3.5">
+                                <div class="flex items-center justify-between flex-wrap gap-2">
+                                    <h4 class="text-[16px] sm:text-[17px] font-bold text-gray-900 flex items-center gap-1.5">
+                                        <span class="material-symbols-outlined text-primary text-[20px]">near_me</span>
+                                        <span>สถานที่ใกล้เคียง (Nearby Places)</span>
+                                    </h4>
+                                    <span class="text-[12px] text-gray-400">ระยะทางจากโครงการ</span>
+                                </div>
+
+                                <!-- Tabs (PDF Page 6: การเดินทาง, ห้างสรรพสินค้า, สถานศึกษา, โรงพยาบาล) -->
+                                <div class="flex items-center gap-1.5 sm:gap-2 overflow-x-auto pb-1 scrollbar-none" id="nearby-tabs">
+                                    <button type="button" onclick="switchNearbyTab('transit')" id="tab-transit"
+                                        class="nearby-tab-btn px-3.5 py-1.5 rounded-lg text-[13px] font-bold transition-all bg-gray-900 text-white shadow-xs whitespace-nowrap cursor-pointer">
+                                        การเดินทาง
+                                    </button>
+                                    <button type="button" onclick="switchNearbyTab('shopping')" id="tab-shopping"
+                                        class="nearby-tab-btn px-3.5 py-1.5 rounded-lg text-[13px] font-semibold transition-all bg-gray-100 text-gray-700 hover:bg-gray-200 whitespace-nowrap cursor-pointer">
+                                        ห้างสรรพสินค้า
+                                    </button>
+                                    <button type="button" onclick="switchNearbyTab('education')" id="tab-education"
+                                        class="nearby-tab-btn px-3.5 py-1.5 rounded-lg text-[13px] font-semibold transition-all bg-gray-100 text-gray-700 hover:bg-gray-200 whitespace-nowrap cursor-pointer">
+                                        สถานศึกษา
+                                    </button>
+                                    <button type="button" onclick="switchNearbyTab('hospital')" id="tab-hospital"
+                                        class="nearby-tab-btn px-3.5 py-1.5 rounded-lg text-[13px] font-semibold transition-all bg-gray-100 text-gray-700 hover:bg-gray-200 whitespace-nowrap cursor-pointer">
+                                        โรงพยาบาล
+                                    </button>
+                                </div>
+
+                                <!-- Tab Content 1: การเดินทาง (Transit - PDF Page 6) -->
+                                <div id="content-transit" class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-[13px] sm:text-[14px]">
+                                    <div class="flex items-center justify-between p-2.5 rounded-xl bg-gray-50/70 border border-gray-100 hover:bg-gray-50 transition-colors">
+                                        <span class="flex items-center gap-2 text-gray-800 font-medium">
+                                            <span class="px-1.5 py-0.5 rounded bg-[#008f51] text-white text-[10px] font-bold tracking-wider">BTS</span>
+                                            พร้อมพงษ์
+                                        </span>
+                                        <span class="text-gray-500 font-semibold text-[13px]">700 ม.</span>
+                                    </div>
+                                    <div class="flex items-center justify-between p-2.5 rounded-xl bg-gray-50/70 border border-gray-100 hover:bg-gray-50 transition-colors">
+                                        <span class="flex items-center gap-2 text-gray-800 font-medium">
+                                            <span class="px-1.5 py-0.5 rounded bg-[#003882] text-white text-[10px] font-bold tracking-wider">MRT</span>
+                                            ศูนย์การประชุมแห่งชาติสิริกิติ์
+                                        </span>
+                                        <span class="text-gray-500 font-semibold text-[13px]">700 ม.</span>
+                                    </div>
+                                    <div class="flex items-center justify-between p-2.5 rounded-xl bg-gray-50/70 border border-gray-100 hover:bg-gray-50 transition-colors">
+                                        <span class="flex items-center gap-2 text-gray-800 font-medium">
+                                            <span class="px-1.5 py-0.5 rounded bg-[#008f51] text-white text-[10px] font-bold tracking-wider">BTS</span>
+                                            ทองหล่อ
+                                        </span>
+                                        <span class="text-gray-500 font-semibold text-[13px]">1.3 กม.</span>
+                                    </div>
+                                    <div class="flex items-center justify-between p-2.5 rounded-xl bg-gray-50/70 border border-gray-100 hover:bg-gray-50 transition-colors">
+                                        <span class="flex items-center gap-2 text-gray-800 font-medium">
+                                            <span class="px-1.5 py-0.5 rounded bg-[#008f51] text-white text-[10px] font-bold tracking-wider">BTS</span>
+                                            อโศก
+                                        </span>
+                                        <span class="text-gray-500 font-semibold text-[13px]">1.4 กม.</span>
+                                    </div>
+                                    <div class="flex items-center justify-between p-2.5 rounded-xl bg-gray-50/70 border border-gray-100 hover:bg-gray-50 transition-colors">
+                                        <span class="flex items-center gap-2 text-gray-800 font-medium">
+                                            <span class="px-1.5 py-0.5 rounded bg-[#003882] text-white text-[10px] font-bold tracking-wider">MRT</span>
+                                            คลองเตย
+                                        </span>
+                                        <span class="text-gray-500 font-semibold text-[13px]">1.4 กม.</span>
+                                    </div>
+                                    <div class="flex items-center justify-between p-2.5 rounded-xl bg-gray-50/70 border border-gray-100 hover:bg-gray-50 transition-colors">
+                                        <span class="flex items-center gap-2 text-gray-800 font-medium">
+                                            <span class="px-1.5 py-0.5 rounded bg-[#003882] text-white text-[10px] font-bold tracking-wider">MRT</span>
+                                            สุขุมวิท
+                                        </span>
+                                        <span class="text-gray-500 font-semibold text-[13px]">1.5 กม.</span>
+                                    </div>
+                                    <div class="flex items-center justify-between p-2.5 rounded-xl bg-gray-50/70 border border-gray-100 hover:bg-gray-50 transition-colors">
+                                        <span class="flex items-center gap-2 text-gray-800 font-medium">
+                                            <span class="px-1.5 py-0.5 rounded bg-[#008f51] text-white text-[10px] font-bold tracking-wider">BTS</span>
+                                            นานา
+                                        </span>
+                                        <span class="text-gray-500 font-semibold text-[13px]">2.0 กม.</span>
+                                    </div>
+                                    <div class="flex items-center justify-between p-2.5 rounded-xl bg-gray-50/70 border border-gray-100 hover:bg-gray-50 transition-colors">
+                                        <span class="flex items-center gap-2 text-gray-800 font-medium">
+                                            <span class="px-1.5 py-0.5 rounded bg-[#008f51] text-white text-[10px] font-bold tracking-wider">BTS</span>
+                                            เอกมัย
+                                        </span>
+                                        <span class="text-gray-500 font-semibold text-[13px]">2.1 กม.</span>
+                                    </div>
+                                    <div class="flex items-center justify-between p-2.5 rounded-xl bg-gray-50/70 border border-gray-100 hover:bg-gray-50 transition-colors">
+                                        <span class="flex items-center gap-2 text-gray-800 font-medium">
+                                            <span class="px-1.5 py-0.5 rounded bg-[#003882] text-white text-[10px] font-bold tracking-wider">MRT</span>
+                                            ลุมพินี
+                                        </span>
+                                        <span class="text-gray-500 font-semibold text-[13px]">2.2 กม.</span>
+                                    </div>
+                                    <div class="flex items-center justify-between p-2.5 rounded-xl bg-gray-50/70 border border-gray-100 hover:bg-gray-50 transition-colors">
+                                        <span class="flex items-center gap-2 text-gray-800 font-medium">
+                                            <span class="px-1.5 py-0.5 rounded bg-[#003882] text-white text-[10px] font-bold tracking-wider">MRT</span>
+                                            เพชรบุรี
+                                        </span>
+                                        <span class="text-gray-500 font-semibold text-[13px]">2.6 กม.</span>
+                                    </div>
+                                    <div class="flex items-center justify-between p-2.5 rounded-xl bg-gray-50/70 border border-gray-100 hover:bg-gray-50 transition-colors">
+                                        <span class="flex items-center gap-2 text-gray-800 font-medium">
+                                            <span class="px-1.5 py-0.5 rounded bg-[#008f51] text-white text-[10px] font-bold tracking-wider">BTS</span>
+                                            เพลินจิต
+                                        </span>
+                                        <span class="text-gray-500 font-semibold text-[13px]">2.7 กม.</span>
+                                    </div>
+                                    <div class="flex items-center justify-between p-2.5 rounded-xl bg-gray-50/70 border border-gray-100 hover:bg-gray-50 transition-colors">
+                                        <span class="flex items-center gap-2 text-gray-800 font-medium">
+                                            <span class="px-1.5 py-0.5 rounded bg-[#b32025] text-white text-[10px] font-bold tracking-wider">ARL</span>
+                                            มักกะสัน
+                                        </span>
+                                        <span class="text-gray-500 font-semibold text-[13px]">2.9 กม.</span>
+                                    </div>
+                                </div>
+
+                                <!-- Tab Content 2: ห้างสรรพสินค้า (Shopping) -->
+                                <div id="content-shopping" class="hidden grid grid-cols-1 sm:grid-cols-2 gap-2 text-[13px] sm:text-[14px]">
+                                    <div class="flex items-center justify-between p-2.5 rounded-xl bg-gray-50/70 border border-gray-100 hover:bg-gray-50 transition-colors">
+                                        <span class="flex items-center gap-2 text-gray-800 font-medium">
+                                            <span class="material-symbols-outlined text-[18px] text-orange-500">storefront</span>
+                                            The EmQuartier
+                                        </span>
+                                        <span class="text-gray-500 font-semibold text-[13px]">850 ม.</span>
+                                    </div>
+                                    <div class="flex items-center justify-between p-2.5 rounded-xl bg-gray-50/70 border border-gray-100 hover:bg-gray-50 transition-colors">
+                                        <span class="flex items-center gap-2 text-gray-800 font-medium">
+                                            <span class="material-symbols-outlined text-[18px] text-orange-500">storefront</span>
+                                            The Emporium
+                                        </span>
+                                        <span class="text-gray-500 font-semibold text-[13px]">900 ม.</span>
+                                    </div>
+                                    <div class="flex items-center justify-between p-2.5 rounded-xl bg-gray-50/70 border border-gray-100 hover:bg-gray-50 transition-colors">
+                                        <span class="flex items-center gap-2 text-gray-800 font-medium">
+                                            <span class="material-symbols-outlined text-[18px] text-orange-500">storefront</span>
+                                            Terminal 21 Asok
+                                        </span>
+                                        <span class="text-gray-500 font-semibold text-[13px]">1.5 กม.</span>
+                                    </div>
+                                    <div class="flex items-center justify-between p-2.5 rounded-xl bg-gray-50/70 border border-gray-100 hover:bg-gray-50 transition-colors">
+                                        <span class="flex items-center gap-2 text-gray-800 font-medium">
+                                            <span class="material-symbols-outlined text-[18px] text-orange-500">storefront</span>
+                                            K-Village Rama 4
+                                        </span>
+                                        <span class="text-gray-500 font-semibold text-[13px]">1.2 กม.</span>
+                                    </div>
+                                    <div class="flex items-center justify-between p-2.5 rounded-xl bg-gray-50/70 border border-gray-100 hover:bg-gray-50 transition-colors">
+                                        <span class="flex items-center gap-2 text-gray-800 font-medium">
+                                            <span class="material-symbols-outlined text-[18px] text-orange-500">storefront</span>
+                                            Rain Hill Sukhumvit 47
+                                        </span>
+                                        <span class="text-gray-500 font-semibold text-[13px]">1.4 กม.</span>
+                                    </div>
+                                    <div class="flex items-center justify-between p-2.5 rounded-xl bg-gray-50/70 border border-gray-100 hover:bg-gray-50 transition-colors">
+                                        <span class="flex items-center gap-2 text-gray-800 font-medium">
+                                            <span class="material-symbols-outlined text-[18px] text-orange-500">storefront</span>
+                                            Donki Mall Thonglor
+                                        </span>
+                                        <span class="text-gray-500 font-semibold text-[13px]">2.0 กม.</span>
+                                    </div>
+                                </div>
+
+                                <!-- Tab Content 3: สถานศึกษา (Education) -->
+                                <div id="content-education" class="hidden grid grid-cols-1 sm:grid-cols-2 gap-2 text-[13px] sm:text-[14px]">
+                                    <div class="flex items-center justify-between p-2.5 rounded-xl bg-gray-50/70 border border-gray-100 hover:bg-gray-50 transition-colors">
+                                        <span class="flex items-center gap-2 text-gray-800 font-medium">
+                                            <span class="material-symbols-outlined text-[18px] text-blue-500">school</span>
+                                            มหาวิทยาลัยศรีนครินทรวิโรฒ (มศว)
+                                        </span>
+                                        <span class="text-gray-500 font-semibold text-[13px]">2.4 กม.</span>
+                                    </div>
+                                    <div class="flex items-center justify-between p-2.5 rounded-xl bg-gray-50/70 border border-gray-100 hover:bg-gray-50 transition-colors">
+                                        <span class="flex items-center gap-2 text-gray-800 font-medium">
+                                            <span class="material-symbols-outlined text-[18px] text-blue-500">school</span>
+                                            รร.สายน้ำผึ้ง
+                                        </span>
+                                        <span class="text-gray-500 font-semibold text-[13px]">950 ม.</span>
+                                    </div>
+                                    <div class="flex items-center justify-between p-2.5 rounded-xl bg-gray-50/70 border border-gray-100 hover:bg-gray-50 transition-colors">
+                                        <span class="flex items-center gap-2 text-gray-800 font-medium">
+                                            <span class="material-symbols-outlined text-[18px] text-blue-500">school</span>
+                                            รร.วัฒนาวิทยาลัย
+                                        </span>
+                                        <span class="text-gray-500 font-semibold text-[13px]">2.2 กม.</span>
+                                    </div>
+                                    <div class="flex items-center justify-between p-2.5 rounded-xl bg-gray-50/70 border border-gray-100 hover:bg-gray-50 transition-colors">
+                                        <span class="flex items-center gap-2 text-gray-800 font-medium">
+                                            <span class="material-symbols-outlined text-[18px] text-blue-500">school</span>
+                                            Bangkok Prep International
+                                        </span>
+                                        <span class="text-gray-500 font-semibold text-[13px]">1.8 กม.</span>
+                                    </div>
+                                </div>
+
+                                <!-- Tab Content 4: โรงพยาบาล (Hospitals) -->
+                                <div id="content-hospital" class="hidden grid grid-cols-1 sm:grid-cols-2 gap-2 text-[13px] sm:text-[14px]">
+                                    <div class="flex items-center justify-between p-2.5 rounded-xl bg-gray-50/70 border border-gray-100 hover:bg-gray-50 transition-colors">
+                                        <span class="flex items-center gap-2 text-gray-800 font-medium">
+                                            <span class="material-symbols-outlined text-[18px] text-rose-500">local_hospital</span>
+                                            รพ.สมิติเวช สุขุมวิท
+                                        </span>
+                                        <span class="text-gray-500 font-semibold text-[13px]">1.9 กม.</span>
+                                    </div>
+                                    <div class="flex items-center justify-between p-2.5 rounded-xl bg-gray-50/70 border border-gray-100 hover:bg-gray-50 transition-colors">
+                                        <span class="flex items-center gap-2 text-gray-800 font-medium">
+                                            <span class="material-symbols-outlined text-[18px] text-rose-500">local_hospital</span>
+                                            รพ.บำรุงราษฎร์
+                                        </span>
+                                        <span class="text-gray-500 font-semibold text-[13px]">2.8 กม.</span>
+                                    </div>
+                                    <div class="flex items-center justify-between p-2.5 rounded-xl bg-gray-50/70 border border-gray-100 hover:bg-gray-50 transition-colors">
+                                        <span class="flex items-center gap-2 text-gray-800 font-medium">
+                                            <span class="material-symbols-outlined text-[18px] text-rose-500">local_hospital</span>
+                                            รพ.สุขุมวิท
+                                        </span>
+                                        <span class="text-gray-500 font-semibold text-[13px]">2.3 กม.</span>
+                                    </div>
+                                    <div class="flex items-center justify-between p-2.5 rounded-xl bg-gray-50/70 border border-gray-100 hover:bg-gray-50 transition-colors">
+                                        <span class="flex items-center gap-2 text-gray-800 font-medium">
+                                            <span class="material-symbols-outlined text-[18px] text-rose-500">local_hospital</span>
+                                            รพ.จุฬาลงกรณ์
+                                        </span>
+                                        <span class="text-gray-500 font-semibold text-[13px]">3.2 กม.</span>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
 
                         <!-- Section 10: Project information -->
                         <div class="flex flex-col gap-4 pt-2 w-full">
                             <h3 class="text-[18px] sm:text-[20px] font-bold text-gray-900">Project information</h3>
                             <div
-                                class="bg-white border border-gray-200/90 rounded-2xl p-4 sm:p-5 flex flex-col md:flex-row gap-5 sm:gap-6 shadow-sm items-center">
+                                class="bg-white border border-gray-200/90 rounded-2xl p-4 sm:p-5 flex flex-col md:flex-row gap-5 sm:gap-6 shadow-xs items-center">
                                 <div
                                     class="w-full md:w-[280px] h-[180px] sm:h-[220px] rounded-2xl overflow-hidden shrink-0">
                                     <img src="https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?q=80&w=600&auto=format&fit=crop"
@@ -1007,131 +1304,161 @@
                             </div>
                         </div>
 
-                        <!-- Section 11: Nearby projects -->
+                        <!-- Section 11: Other units in the same project (PDF Page 6, 7, 8 - Renamed & Redesigned) -->
                         <div class="flex flex-col gap-4 pt-4 sm:pt-6 mt-2 border-t border-gray-100 w-full">
-                            <h3 class="text-[18px] sm:text-[20px] font-bold text-gray-900">Nearby projects</h3>
-                            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+                            <div class="flex items-center justify-between flex-wrap gap-2">
+                                <h3 class="text-[18px] sm:text-[20px] font-bold text-gray-900">Other units in the same project</h3>
+                                <span class="text-[12px] font-medium text-gray-500">3 ยูนิตว่างที่พร้อมเข้าอยู่</span>
+                            </div>
+
+                            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
                                 <!-- Property Card 1 -->
                                 <div
-                                    class="bg-white rounded-2xl border border-gray-200 overflow-hidden shadow-sm hover:shadow-md transition-shadow flex flex-col cursor-pointer">
+                                    class="bg-white rounded-2xl border border-gray-200/90 overflow-hidden shadow-xs hover:shadow-md transition-all flex flex-col cursor-pointer group">
                                     <!-- Image Area -->
-                                    <div class="relative h-48 sm:h-56 bg-gray-100">
+                                    <div class="relative h-48 sm:h-52 bg-gray-100 overflow-hidden">
                                         <img src="https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?q=80&w=600&auto=format&fit=crop"
-                                            alt="Room in shared flat" class="w-full h-full object-cover" />
+                                            alt="Chewathai Residence Thonglor" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
                                         <div class="absolute top-3 left-3">
                                             <span
-                                                class="px-2.5 py-1 bg-[#2B2B2B] text-white font-extrabold text-[10px] tracking-wider rounded uppercase shadow-md flex items-center">
+                                                class="px-2 py-0.5 bg-black/80 text-white font-extrabold text-[10px] tracking-wider rounded uppercase shadow-sm">
                                                 CHECKED
                                             </span>
                                         </div>
                                         <button
-                                            class="absolute top-3 right-3 w-8 h-8 rounded-full bg-white text-gray-800 flex items-center justify-center hover:bg-gray-50 transition-all shadow-md">
-                                            <span class="material-symbols-outlined text-[18px]">favorite</span>
+                                            class="absolute top-3 right-3 w-8 h-8 rounded-full bg-white/95 text-gray-700 flex items-center justify-center hover:bg-white hover:text-rose-600 transition-colors shadow-sm">
+                                            <span class="material-symbols-outlined text-[18px]">favorite_border</span>
                                         </button>
                                         <div
-                                            class="absolute bottom-3 right-3 px-2 py-1 bg-black/60 backdrop-blur-md text-white text-[11px] font-bold rounded">
+                                            class="absolute bottom-2.5 right-2.5 px-2 py-0.5 bg-black/60 backdrop-blur-md text-white text-[11px] font-semibold rounded">
                                             1/8
                                         </div>
                                     </div>
-                                    <!-- Content Area -->
-                                    <div class="p-3 sm:p-4 flex flex-col flex-grow">
-                                        <!-- Line 1: min stay + ราคา -->
-                                        <div class="font-extrabold text-gray-900 text-[15px] sm:text-[17px]">
-                                            Min stay 1 Mth • ฿ 32,000 <span class="text-[13px] text-gray-500 font-normal">/ month</span>
+                                    <!-- Content Area (Project Name Prominent per PDF Page 7) -->
+                                    <div class="p-3.5 sm:p-4 flex flex-col flex-grow justify-between gap-3">
+                                        <div class="flex flex-col gap-1">
+                                            <!-- Line 1: Project Name (Prominent bold) -->
+                                            <h4 class="font-extrabold text-gray-900 text-[16px] leading-snug group-hover:text-primary transition-colors line-clamp-1">
+                                                Chewathai Residence Thonglor
+                                            </h4>
+                                            <!-- Line 2: Room Specs -->
+                                            <div class="text-[13px] text-gray-600 font-medium">
+                                                1 br <span class="text-gray-300 px-1">•</span> 1 ba <span class="text-gray-300 px-1">•</span> 35 sqm <span class="text-gray-300 px-1">•</span> Fl. 12
+                                            </div>
+                                            <!-- Line 3: Location & Transit Distance -->
+                                            <div class="flex items-center gap-1.5 text-[12px] text-gray-500 mt-0.5 flex-wrap">
+                                                <span>Watthana, Bangkok</span>
+                                                <span class="text-gray-300">•</span>
+                                                <span class="text-emerald-700 font-medium">🚊 BTS พร้อมพงษ์ 700 ม.</span>
+                                            </div>
                                         </div>
-                                        <!-- Line 2: br / bh / sqm / floor -->
-                                        <div class="text-[13px] text-gray-700 font-semibold mt-1">
-                                            1 br <span class="text-gray-300 px-1">|</span> 1 ba <span class="text-gray-300 px-1">|</span> 35 sqm <span class="text-gray-300 px-1">|</span> Fl. 12
-                                        </div>
-                                        <!-- Line 3: project name -->
-                                        <div class="text-[14px] text-gray-800 font-medium mt-1.5 truncate">
-                                            Chewathai Residence Thonglor
-                                        </div>
-                                        <!-- Line 4: เขต จังหวัด -->
-                                        <div class="text-[13px] text-gray-500 mt-0.5">
-                                            Watthana, Bangkok
+
+                                        <!-- Card Footer: Distinct Min Stay & Price (PDF Page 7: balanced 5-6 digit formatting) -->
+                                        <div class="pt-2.5 border-t border-gray-100 flex items-center justify-between">
+                                            <span class="text-[11px] sm:text-[12px] font-medium text-gray-600 bg-gray-100 px-2 py-0.5 rounded">
+                                                สัญญาเริ่มต้น 1 ด.
+                                            </span>
+                                            <div class="text-right">
+                                                <span class="font-extrabold text-gray-900 text-[17px] sm:text-[18px]">฿32,000</span>
+                                                <span class="text-[11px] text-gray-400 font-normal">/เดือน</span>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
 
                                 <!-- Property Card 2 -->
                                 <div
-                                    class="bg-white rounded-2xl border border-gray-200 overflow-hidden shadow-sm hover:shadow-md transition-shadow flex flex-col cursor-pointer">
-                                    <div class="relative h-48 sm:h-56 bg-gray-100">
+                                    class="bg-white rounded-2xl border border-gray-200/90 overflow-hidden shadow-xs hover:shadow-md transition-all flex flex-col cursor-pointer group">
+                                    <div class="relative h-48 sm:h-52 bg-gray-100 overflow-hidden">
                                         <img src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?q=80&w=600&auto=format&fit=crop"
-                                            alt="Great room in shared apartment" class="w-full h-full object-cover" />
+                                            alt="The Esse at Singha Complex" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
                                         <div class="absolute top-3 left-3">
                                             <span
-                                                class="px-2.5 py-1 bg-[#2B2B2B] text-white font-extrabold text-[10px] tracking-wider rounded uppercase shadow-md flex items-center">
+                                                class="px-2 py-0.5 bg-black/80 text-white font-extrabold text-[10px] tracking-wider rounded uppercase shadow-sm">
                                                 CHECKED
                                             </span>
                                         </div>
                                         <button
-                                            class="absolute top-3 right-3 w-8 h-8 rounded-full bg-white text-gray-800 flex items-center justify-center hover:bg-gray-50 transition-all shadow-md">
-                                            <span class="material-symbols-outlined text-[18px]">favorite</span>
+                                            class="absolute top-3 right-3 w-8 h-8 rounded-full bg-white/95 text-gray-700 flex items-center justify-center hover:bg-white hover:text-rose-600 transition-colors shadow-sm">
+                                            <span class="material-symbols-outlined text-[18px]">favorite_border</span>
                                         </button>
                                         <div
-                                            class="absolute bottom-3 right-3 px-2 py-1 bg-black/60 backdrop-blur-md text-white text-[11px] font-bold rounded">
+                                            class="absolute bottom-2.5 right-2.5 px-2 py-0.5 bg-black/60 backdrop-blur-md text-white text-[11px] font-semibold rounded">
                                             1/8
                                         </div>
                                     </div>
-                                    <div class="p-3 sm:p-4 flex flex-col flex-grow">
-                                        <!-- Line 1: min stay + ราคา -->
-                                        <div class="font-extrabold text-gray-900 text-[15px] sm:text-[17px]">
-                                            Min stay 3 Mth • ฿ 36,000 <span class="text-[13px] text-gray-500 font-normal">/ month</span>
+                                    <div class="p-3.5 sm:p-4 flex flex-col flex-grow justify-between gap-3">
+                                        <div class="flex flex-col gap-1">
+                                            <h4 class="font-extrabold text-gray-900 text-[16px] leading-snug group-hover:text-primary transition-colors line-clamp-1">
+                                                The Esse at Singha Complex
+                                            </h4>
+                                            <div class="text-[13px] text-gray-600 font-medium">
+                                                2 br <span class="text-gray-300 px-1">•</span> 2 ba <span class="text-gray-300 px-1">•</span> 50 sqm <span class="text-gray-300 px-1">•</span> Fl. 8
+                                            </div>
+                                            <div class="flex items-center gap-1.5 text-[12px] text-gray-500 mt-0.5 flex-wrap">
+                                                <span>Huai Khwang, Bangkok</span>
+                                                <span class="text-gray-300">•</span>
+                                                <span class="text-emerald-700 font-medium">🚇 MRT เพชรบุรี 200 ม.</span>
+                                            </div>
                                         </div>
-                                        <!-- Line 2: br / bh / sqm / floor -->
-                                        <div class="text-[13px] text-gray-700 font-semibold mt-1">
-                                            2 br <span class="text-gray-300 px-1">|</span> 2 ba <span class="text-gray-300 px-1">|</span> 50 sqm <span class="text-gray-300 px-1">|</span> Fl. 8
-                                        </div>
-                                        <!-- Line 3: project name -->
-                                        <div class="text-[14px] text-gray-800 font-medium mt-1.5 truncate">
-                                            The Esse at Singha Complex
-                                        </div>
-                                        <!-- Line 4: เขต จังหวัด -->
-                                        <div class="text-[13px] text-gray-500 mt-0.5">
-                                            Huai Khwang, Bangkok
+
+                                        <div class="pt-2.5 border-t border-gray-100 flex items-center justify-between">
+                                            <span class="text-[11px] sm:text-[12px] font-medium text-gray-600 bg-gray-100 px-2 py-0.5 rounded">
+                                                สัญญาเริ่มต้น 3 ด.
+                                            </span>
+                                            <div class="text-right">
+                                                <span class="font-extrabold text-gray-900 text-[17px] sm:text-[18px]">฿36,000</span>
+                                                <span class="text-[11px] text-gray-400 font-normal">/เดือน</span>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
 
-                                <!-- Property Card 3 -->
+                                <!-- Property Card 3 (Supports 6-figure price ฿120,000 with balanced proportions per PDF Page 7) -->
                                 <div
-                                    class="bg-white rounded-2xl border border-gray-200 overflow-hidden shadow-sm hover:shadow-md transition-shadow flex flex-col sm:hidden lg:flex cursor-pointer">
-                                    <div class="relative h-48 sm:h-56 bg-gray-100">
+                                    class="bg-white rounded-2xl border border-gray-200/90 overflow-hidden shadow-xs hover:shadow-md transition-all flex flex-col sm:hidden lg:flex cursor-pointer group">
+                                    <div class="relative h-48 sm:h-52 bg-gray-100 overflow-hidden">
                                         <img src="https://images.unsplash.com/photo-1584622650111-993a426fbf0a?q=80&w=600&auto=format&fit=crop"
-                                            alt="Room in a shared 6-bedroom" class="w-full h-full object-cover" />
+                                            alt="Life Asoke Hype Penthouse Suite" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
                                         <div class="absolute top-3 left-3">
                                             <span
-                                                class="px-2.5 py-1 bg-[#2B2B2B] text-white font-extrabold text-[10px] tracking-wider rounded uppercase shadow-md flex items-center">
+                                                class="px-2 py-0.5 bg-black/80 text-white font-extrabold text-[10px] tracking-wider rounded uppercase shadow-sm">
                                                 CHECKED
                                             </span>
                                         </div>
                                         <button
-                                            class="absolute top-3 right-3 w-8 h-8 rounded-full bg-white text-gray-800 flex items-center justify-center hover:bg-gray-50 transition-all shadow-md">
-                                            <span class="material-symbols-outlined text-[18px]">favorite</span>
+                                            class="absolute top-3 right-3 w-8 h-8 rounded-full bg-white/95 text-gray-700 flex items-center justify-center hover:bg-white hover:text-rose-600 transition-colors shadow-sm">
+                                            <span class="material-symbols-outlined text-[18px]">favorite_border</span>
                                         </button>
                                         <div
-                                            class="absolute bottom-3 right-3 px-2 py-1 bg-black/60 backdrop-blur-md text-white text-[11px] font-bold rounded">
+                                            class="absolute bottom-2.5 right-2.5 px-2 py-0.5 bg-black/60 backdrop-blur-md text-white text-[11px] font-semibold rounded">
                                             1/3
                                         </div>
                                     </div>
-                                    <div class="p-3 sm:p-4 flex flex-col flex-grow">
-                                        <!-- Line 1: min stay + ราคา -->
-                                        <div class="font-extrabold text-gray-900 text-[15px] sm:text-[17px]">
-                                            Min stay 1 Mth • ฿ 28,000 <span class="text-[13px] text-gray-500 font-normal">/ month</span>
+                                    <div class="p-3.5 sm:p-4 flex flex-col flex-grow justify-between gap-3">
+                                        <div class="flex flex-col gap-1">
+                                            <h4 class="font-extrabold text-gray-900 text-[16px] leading-snug group-hover:text-primary transition-colors line-clamp-1">
+                                                Life Asoke Hype - Penthouse
+                                            </h4>
+                                            <div class="text-[13px] text-gray-600 font-medium">
+                                                3 br <span class="text-gray-300 px-1">•</span> 3 ba <span class="text-gray-300 px-1">•</span> 115 sqm <span class="text-gray-300 px-1">•</span> Fl. 38
+                                            </div>
+                                            <div class="flex items-center gap-1.5 text-[12px] text-gray-500 mt-0.5 flex-wrap">
+                                                <span>Ratchathewi, Bangkok</span>
+                                                <span class="text-gray-300">•</span>
+                                                <span class="text-emerald-700 font-medium">🚇 MRT พระราม 9 300 ม.</span>
+                                            </div>
                                         </div>
-                                        <!-- Line 2: br / bh / sqm / floor -->
-                                        <div class="text-[13px] text-gray-700 font-semibold mt-1">
-                                            Studio <span class="text-gray-300 px-1">|</span> 1 ba <span class="text-gray-300 px-1">|</span> 28 sqm <span class="text-gray-300 px-1">|</span> Fl. 22
-                                        </div>
-                                        <!-- Line 3: project name -->
-                                        <div class="text-[14px] text-gray-800 font-medium mt-1.5 truncate">
-                                            Life Asoke Hype
-                                        </div>
-                                        <!-- Line 4: เขต จังหวัด -->
-                                        <div class="text-[13px] text-gray-500 mt-0.5">
-                                            Ratchathewi, Bangkok
+
+                                        <!-- 6-digit price formatted gracefully without breaking or overwhelming -->
+                                        <div class="pt-2.5 border-t border-gray-100 flex items-center justify-between">
+                                            <span class="text-[11px] sm:text-[12px] font-medium text-gray-600 bg-gray-100 px-2 py-0.5 rounded">
+                                                สัญญาเริ่มต้น 1 ด.
+                                            </span>
+                                            <div class="text-right">
+                                                <span class="font-extrabold text-gray-900 text-[17px] sm:text-[18px] tracking-tight">฿120,000</span>
+                                                <span class="text-[11px] text-gray-400 font-normal">/เดือน</span>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -1186,15 +1513,15 @@
                         </div>
                     </div>
 
-                    <!-- RIGHT COLUMN: Sticky Booking Sidebar -->
-                    <!-- FIXED: Removed col-span-12 which forces 12 columns on mobile -->
-                    <aside class="lg:col-span-4 lg:sticky lg:top-[180px] flex flex-col gap-4 w-full">
+                    <!-- RIGHT COLUMN: Sticky Booking Sidebar (PDF Page 3, 4) -->
+                    <aside class="lg:col-span-4 lg:sticky lg:top-[84px] flex flex-col gap-4 w-full">
 
                         <!-- Main Booking Card -->
                         <div id="inquiry-section"
-                            class="scroll-mt-[180px] bg-white rounded-2xl border border-gray-200/90 p-4 sm:p-5 md:p-6 shadow-xl flex flex-col gap-4 sm:gap-5 w-full">
+                            class="scroll-mt-[100px] bg-white rounded-2xl border border-gray-200/90 p-4 sm:p-5 md:p-6 shadow-md flex flex-col gap-4 sm:gap-5 w-full">
 
-                            <div class="flex items-center justify-end">
+                            <div class="flex items-center justify-between">
+                                <span class="text-[12px] font-bold text-gray-500 uppercase tracking-wider">จองห้องพักออนไลน์</span>
                                 <span
                                     class="inline-flex items-center gap-1.5 px-3 py-1 bg-emerald-50 text-emerald-700 rounded-full font-bold text-[11px] sm:text-[12px] border border-emerald-200/80">
                                     <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
@@ -1202,223 +1529,186 @@
                                 </span>
                             </div>
 
-                            <!-- Duration Selector -->
-                            <div class="flex flex-col gap-1.5 relative w-full">
-                                <label class="text-[12px] sm:text-[13px] font-bold text-gray-700"
-                                    for="duration-select">Duration</label>
+                            <!-- Duration Selector (Redesigned: Clean Tiers & Spaced Price per PDF Page 3, 4) -->
+                            <div class="flex flex-col gap-2 relative w-full">
+                                <label class="text-[12px] sm:text-[13px] font-bold text-gray-800"
+                                    for="duration-select">ระยะเวลาสัญญา (Duration)</label>
+                                
+                                <!-- Contract Tier Buttons -->
+                                <div class="grid grid-cols-3 gap-1.5 p-1 bg-gray-100 rounded-xl">
+                                    <button type="button" onclick="selectDurationTier('short')" id="tier-btn-short"
+                                        class="py-1.5 px-2 rounded-lg text-[12px] font-bold transition-all bg-white text-gray-900 shadow-xs cursor-pointer">
+                                        1-2 เดือน
+                                    </button>
+                                    <button type="button" onclick="selectDurationTier('mid')" id="tier-btn-mid"
+                                        class="py-1.5 px-2 rounded-lg text-[12px] font-semibold transition-all text-gray-600 hover:text-gray-900 cursor-pointer">
+                                        3-5 เดือน
+                                    </button>
+                                    <button type="button" onclick="selectDurationTier('long')" id="tier-btn-long"
+                                        class="py-1.5 px-2 rounded-lg text-[12px] font-semibold transition-all text-gray-600 hover:text-gray-900 flex items-center justify-center gap-1 cursor-pointer">
+                                        <span>6-12 ด.</span>
+                                        <span class="w-1.5 h-1.5 rounded-full bg-orange-500"></span>
+                                    </button>
+                                </div>
+
+                                <!-- Current Rate Display with Spaced Price ("เลื่อนราคา ออกมาหน่อย") -->
                                 <div class="relative w-full">
                                     <button type="button" id="duration-btn" onclick="toggleDurationDropdown()"
-                                        class="w-full py-2.5 sm:py-3 px-3 sm:px-4 rounded-3xl border border-gray-200 bg-white flex items-center justify-between text-left hover:border-primary transition-colors focus:ring-2 focus:ring-primary/20">
-                                        <span id="selected-duration"
-                                            class="font-bold text-gray-900 text-[14px] sm:text-[15px]">
-                                            1 month <span class="font-extrabold text-primary ml-1">฿40,000</span> <span
-                                                class="text-gray-400 font-normal text-[12px] sm:text-[13px]">/month</span>
-                                        </span>
-                                        <span
-                                            class="material-symbols-outlined text-[20px] text-gray-400 transition-transform"
-                                            id="duration-arrow">expand_more</span>
+                                        class="w-full py-3 px-3.5 sm:px-4 rounded-xl border border-gray-200 bg-white flex items-center justify-between text-left hover:border-primary transition-colors focus:ring-2 focus:ring-primary/20 cursor-pointer">
+                                        <div class="flex flex-col">
+                                            <span class="text-[11px] text-gray-400 font-medium">สัญญาที่เลือก</span>
+                                            <span id="selected-duration-label" class="font-bold text-gray-900 text-[14px] sm:text-[15px]">
+                                                1 เดือน (Standard)
+                                            </span>
+                                        </div>
+                                        <div class="flex items-center gap-2">
+                                            <div class="text-right">
+                                                <span id="selected-duration-price" class="font-extrabold text-primary text-[17px] sm:text-[18px]">฿40,000</span>
+                                                <span class="text-gray-400 font-normal text-[11px] sm:text-[12px]">/เดือน</span>
+                                            </div>
+                                            <span class="material-symbols-outlined text-[18px] text-gray-400 transition-transform"
+                                                id="duration-arrow">expand_more</span>
+                                        </div>
                                     </button>
 
+                                    <!-- Duration Dropdown List for selected tier -->
                                     <div id="duration-dropdown"
-                                        class="hidden absolute left-0 right-0 top-full mt-2 bg-white rounded-2xl sm:rounded-3xl shadow-2xl border border-gray-200 p-3 z-30 flex flex-col gap-2 w-full">
-                                        <span
-                                            class="text-[10px] sm:text-[11px] font-bold text-gray-400 uppercase tracking-wider">Select
-                                            Duration &amp; Rates</span>
-                                        <div
-                                            class="grid grid-cols-2 sm:grid-cols-3 gap-1.5 text-center text-[11px] sm:text-[12px] w-full">
-                                            <button type="button" onclick="selectDuration('1 month', '฿40,000')"
-                                                class="p-1.5 sm:p-2 rounded-2xl border border-primary bg-orange-50/50 hover:bg-orange-50 flex flex-col w-full">
-                                                <span class="font-bold text-gray-900">1 month</span>
-                                                <span
-                                                    class="text-primary font-bold text-[10px] sm:text-[11px]">฿40,000</span>
-                                            </button>
-                                            <button type="button" onclick="selectDuration('2 months', '฿40,000')"
-                                                class="p-1.5 sm:p-2 rounded-2xl border border-gray-200 hover:border-primary flex flex-col w-full">
-                                                <span class="font-bold text-gray-900">2 months</span>
-                                                <span
-                                                    class="text-gray-600 font-semibold text-[10px] sm:text-[11px]">฿40,000</span>
-                                            </button>
-                                            <button type="button" onclick="selectDuration('3 months', '฿38,000')"
-                                                class="p-1.5 sm:p-2 rounded-2xl border border-gray-200 hover:border-primary flex flex-col w-full">
-                                                <span class="font-bold text-gray-900">3 months</span>
-                                                <span
-                                                    class="text-gray-600 font-semibold text-[10px] sm:text-[11px]">฿38,000</span>
-                                            </button>
-                                            <button type="button" onclick="selectDuration('4 months', '฿38,000')"
-                                                class="p-1.5 sm:p-2 rounded-2xl border border-gray-200 hover:border-primary flex flex-col w-full">
-                                                <span class="font-bold text-gray-900">4 months</span>
-                                                <span
-                                                    class="text-gray-600 font-semibold text-[10px] sm:text-[11px]">฿38,000</span>
-                                            </button>
-                                            <button type="button" onclick="selectDuration('5 months', '฿38,000')"
-                                                class="p-1.5 sm:p-2 rounded-2xl border border-gray-200 hover:border-primary flex flex-col w-full">
-                                                <span class="font-bold text-gray-900">5 months</span>
-                                                <span
-                                                    class="text-gray-600 font-semibold text-[10px] sm:text-[11px]">฿38,000</span>
-                                            </button>
-                                            <button type="button" onclick="selectDuration('6 months', '฿35,000')"
-                                                class="p-1.5 sm:p-2 rounded-2xl border border-gray-200 hover:border-primary flex flex-col w-full">
-                                                <span class="font-bold text-gray-900">6 months</span>
-                                                <span
-                                                    class="text-emerald-700 font-bold text-[10px] sm:text-[11px]">฿35,000</span>
-                                            </button>
-                                            <button type="button" onclick="selectDuration('7 months', '฿35,000')"
-                                                class="p-1.5 sm:p-2 rounded-2xl border border-gray-200 hover:border-primary flex flex-col w-full">
-                                                <span class="font-bold text-gray-900">7 months</span>
-                                                <span
-                                                    class="text-emerald-700 font-bold text-[10px] sm:text-[11px]">฿35,000</span>
-                                            </button>
-                                            <button type="button" onclick="selectDuration('8 months', '฿35,000')"
-                                                class="p-1.5 sm:p-2 rounded-2xl border border-gray-200 hover:border-primary flex flex-col w-full">
-                                                <span class="font-bold text-gray-900">8 months</span>
-                                                <span
-                                                    class="text-emerald-700 font-bold text-[10px] sm:text-[11px]">฿35,000</span>
-                                            </button>
-                                            <button type="button" onclick="selectDuration('9 months', '฿35,000')"
-                                                class="p-1.5 sm:p-2 rounded-2xl border border-gray-200 hover:border-primary flex flex-col w-full">
-                                                <span class="font-bold text-gray-900">9 months</span>
-                                                <span
-                                                    class="text-emerald-700 font-bold text-[10px] sm:text-[11px]">฿35,000</span>
-                                            </button>
-                                            <button type="button" onclick="selectDuration('10 months', '฿35,000')"
-                                                class="p-1.5 sm:p-2 rounded-2xl border border-gray-200 hover:border-primary flex flex-col w-full">
-                                                <span class="font-bold text-gray-900">10 months</span>
-                                                <span
-                                                    class="text-emerald-700 font-bold text-[10px] sm:text-[11px]">฿35,000</span>
-                                            </button>
-                                            <button type="button" onclick="selectDuration('11 months', '฿35,000')"
-                                                class="p-1.5 sm:p-2 rounded-2xl border border-gray-200 hover:border-primary flex flex-col w-full">
-                                                <span class="font-bold text-gray-900">11 months</span>
-                                                <span
-                                                    class="text-emerald-700 font-bold text-[10px] sm:text-[11px]">฿35,000</span>
-                                            </button>
-                                            <button type="button" onclick="selectDuration('12 months', '฿35,000')"
-                                                class="p-1.5 sm:p-2 rounded-2xl border border-gray-200 hover:border-primary flex flex-col w-full">
-                                                <span class="font-bold text-gray-900">12 months</span>
-                                                <span
-                                                    class="text-emerald-700 font-bold text-[10px] sm:text-[11px]">฿35,000</span>
-                                            </button>
+                                        class="hidden absolute left-0 right-0 top-full mt-2 bg-white rounded-2xl shadow-xl border border-gray-200 p-2.5 z-30 flex flex-col gap-1 w-full">
+                                        <div id="duration-options-list" class="flex flex-col gap-1">
+                                            <!-- Dynamic via JS based on selected tier -->
                                         </div>
+                                    </div>
+                                </div>
+
+                                <!-- Savings Badge if mid/long term -->
+                                <div id="duration-savings-badge" class="hidden text-[11px] font-semibold text-emerald-700 bg-emerald-50 px-2.5 py-1 rounded-md border border-emerald-200/60 items-center gap-1.5">
+                                    <span class="material-symbols-outlined text-[15px]">verified</span>
+                                    <span id="duration-savings-text">สัญญาระยะยาว: ประหยัด ฿5,000 / เดือน</span>
+                                </div>
+                            </div>
+
+                            <!-- Move-in date -->
+                            <div class="flex flex-col gap-1.5 w-full">
+                                <label class="text-[12px] sm:text-[13px] font-bold text-gray-800"
+                                    for="move-in-date">วันที่ต้องการเข้าพัก (Move-in date)</label>
+                                <input type="date" id="move-in-date" value="2026-10-01"
+                                    class="w-full py-2.5 sm:py-3 px-3 sm:px-4 rounded-xl border border-gray-200 bg-white font-medium text-gray-800 text-[13px] sm:text-[14px] focus:outline-none focus:ring-2 focus:ring-primary/20" />
+                            </div>
+
+                            <!-- Request Booking Button -->
+                            <button type="button" onclick="alert('ส่งคำขอจองห้องพักเรียบร้อยแล้วค่ะ เจ้าหน้าที่จะติดต่อกลับโดยเร็วที่สุด');"
+                                class="w-full py-3.5 px-6 rounded-xl bg-primary hover:bg-primary-container text-white font-extrabold text-[14px] sm:text-[15px] tracking-wide uppercase shadow-lg shadow-orange-500/20 transition-all cursor-pointer">
+                                Request Booking
+                            </button>
+
+                            <!-- Direct Fast Contact via LINE / WhatsApp (PDF Page 4) -->
+                            <div class="pt-3 border-t border-gray-100 flex flex-col gap-2.5">
+                                <span class="text-[11px] font-bold text-gray-500 uppercase tracking-wider text-center">
+                                    สนใจห้องนี้ ติดต่อและสอบถามข้อมูล
+                                </span>
+                                
+                                <div class="grid grid-cols-2 gap-2">
+                                    <!-- LINE Button -->
+                                    <a href="https://line.me" target="_blank"
+                                        class="flex items-center justify-center gap-1.5 py-2.5 px-3 rounded-xl bg-[#06C755] hover:bg-[#05b34c] text-white font-bold text-[13px] sm:text-[14px] shadow-xs transition-all">
+                                        <svg class="w-4 h-4 fill-current shrink-0" viewBox="0 0 24 24">
+                                            <path d="M24 10.304c0-5.369-5.383-9.738-12-9.738-6.616 0-12 4.369-12 9.738 0 4.814 4.269 8.846 10.019 9.608.391.084.922.258 1.057.592.121.303.079.778.039 1.085l-.171 1.027c-.053.303-.242 1.186 1.039.647 1.281-.54 6.911-4.069 9.428-6.967 1.739-1.907 2.589-3.839 2.589-5.992z"/>
+                                        </svg>
+                                        <span>LINE</span>
+                                    </a>
+
+                                    <!-- WhatsApp Button -->
+                                    <a href="https://wa.me" target="_blank"
+                                        class="flex items-center justify-center gap-1.5 py-2.5 px-3 rounded-xl bg-[#25D366] hover:bg-[#20ba5a] text-white font-bold text-[13px] sm:text-[14px] shadow-xs transition-all">
+                                        <svg class="w-4 h-4 fill-current shrink-0" viewBox="0 0 24 24">
+                                            <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981z"/>
+                                        </svg>
+                                        <span>WhatsApp</span>
+                                    </a>
+                                </div>
+                            </div>
+
+                            <div class="text-center text-[11px] sm:text-[12px] text-gray-500 w-full">
+                                Not sure yet? <a href="tel:+6621099888"
+                                    class="text-primary font-semibold underline hover:text-primary-container">Contact our agent</a> for advice
+                            </div>
+
+                            <!-- Moved into Sidebar: Verified Landlord & Property Verified by MUVFAST (PDF Page 3) -->
+                            <div class="pt-3 border-t border-gray-100 flex flex-col gap-2.5">
+                                <!-- Verified Landlord Mini Card -->
+                                <div class="p-3 bg-gray-50/80 rounded-xl border border-gray-100 flex items-center gap-3">
+                                    <div class="w-9 h-9 rounded-full bg-white flex items-center justify-center text-gray-700 shadow-xs shrink-0 border border-gray-200/60">
+                                        <span class="material-symbols-outlined text-[20px]">home</span>
+                                    </div>
+                                    <div class="flex flex-col">
+                                        <span class="font-bold text-gray-900 text-[13px] flex items-center gap-1.5">
+                                            Verified landlord
+                                            <span class="text-emerald-600 flex items-center text-[12px]">★ 5 (11)</span>
+                                        </span>
+                                        <span class="text-gray-500 text-[11px]">Private • 2 years with us</span>
+                                    </div>
+                                </div>
+
+                                <!-- Property Verified by MUVFAST Mini Card -->
+                                <div class="p-3 bg-orange-50/50 rounded-xl border border-orange-100/80 flex items-start gap-2.5">
+                                    <div class="w-7 h-7 rounded-full bg-primary flex items-center justify-center text-white shrink-0 mt-0.5 shadow-xs">
+                                        <span class="material-symbols-outlined text-[16px]">verified</span>
+                                    </div>
+                                    <div class="flex flex-col">
+                                        <span class="font-bold text-gray-900 text-[12px] sm:text-[13px]">Property verified by MUVFAST</span>
+                                        <span class="text-gray-500 text-[11px]">Checked on 07 Aug 2019</span>
+                                        <p class="text-gray-600 text-[11px] mt-0.5 leading-relaxed">
+                                            Our homechecker has reviewed the house on-site.
+                                            <a href="#" class="text-primary underline font-medium hover:text-primary-container">More info</a>
+                                        </p>
                                     </div>
                                 </div>
                             </div>
 
-                            <div class="flex flex-col gap-1.5 w-full">
-                                <label class="text-[12px] sm:text-[13px] font-bold text-gray-700"
-                                    for="move-in-date">Move-in date</label>
-                                <input type="date" id="move-in-date" value="2026-10-01"
-                                    class="w-full py-2.5 sm:py-3 px-3 sm:px-4 rounded-3xl border border-gray-200 bg-white font-medium text-gray-800 text-[13px] sm:text-[14px] focus:outline-none focus:ring-2 focus:ring-primary/20" />
-                            </div>
-
-                            <button type="button" onclick="alert('Booking request received!')"
-                                class="w-full py-3 sm:py-3.5 px-6 rounded-3xl bg-primary hover:bg-primary-container text-white font-extrabold text-[14px] sm:text-[15px] tracking-wide uppercase shadow-lg shadow-orange-500/20 transition-all">
-                                Request Booking
-                            </button>
-
-                            <div class="text-center text-[11px] sm:text-[12px] text-gray-500 w-full">
-                                Not sure yet? <a href="tel:+6621099888"
-                                    class="text-primary font-semibold underline">Contact our agent</a> for advice
-                            </div>
-
-                            <!-- Accordions -->
-                            <div class="pt-4 border-t border-gray-100 flex flex-col gap-1 w-full">
+                            <!-- Accordions: WITH THIS PROPERTY & ALWAYS WITH MUVFAST -->
+                            <div class="pt-3 border-t border-gray-100 flex flex-col gap-1 w-full">
                                 <span
-                                    class="text-[10px] sm:text-[11px] font-extrabold text-gray-400 uppercase tracking-wider mb-1">WITH
-                                    THIS PROPERTY</span>
-                                <details class="group py-2 border-b border-gray-100 w-full">
+                                    class="text-[10px] sm:text-[11px] font-extrabold text-gray-400 uppercase tracking-wider mb-1">WITH THIS PROPERTY</span>
+                                <details class="group py-1.5 border-b border-gray-100 w-full">
                                     <summary
                                         class="flex items-center justify-between cursor-pointer list-none text-[12px] sm:text-[13px] font-semibold text-gray-800 hover:text-primary w-full">
                                         <span class="flex items-center gap-2">
                                             <span
-                                                class="material-symbols-outlined text-[16px] sm:text-[18px] text-primary">search_check</span>
-                                            Property checked by MUVFAST
-                                        </span>
-                                        <span
-                                            class="material-symbols-outlined text-[16px] sm:text-[18px] text-gray-400 group-open:rotate-180 transition-transform">expand_more</span>
-                                    </summary>
-                                    <p class="text-[11px] sm:text-[12px] text-gray-500 mt-2 pl-6 sm:pl-7">Independently
-                                        reviewed and verified on-site by our property inspection team.</p>
-                                </details>
-
-                                <details class="group py-2 border-b border-gray-100 w-full">
-                                    <summary
-                                        class="flex items-center justify-between cursor-pointer list-none text-[12px] sm:text-[13px] font-semibold text-gray-800 hover:text-primary w-full">
-                                        <span class="flex items-center gap-2">
-                                            <span
-                                                class="material-symbols-outlined text-[16px] sm:text-[18px] text-emerald-500">bolt</span>
+                                                class="material-symbols-outlined text-[16px] text-emerald-500">bolt</span>
                                             Instant Booking
                                         </span>
                                         <span
-                                            class="material-symbols-outlined text-[16px] sm:text-[18px] text-gray-400 group-open:rotate-180 transition-transform">expand_more</span>
+                                            class="material-symbols-outlined text-[16px] text-gray-400 group-open:rotate-180 transition-transform">expand_more</span>
                                     </summary>
-                                    <p class="text-[11px] sm:text-[12px] text-gray-500 mt-2 pl-6 sm:pl-7">Reserve online
-                                        immediately with swift instant confirmation.</p>
+                                    <p class="text-[11px] text-gray-500 mt-1.5 pl-6">Reserve online immediately with swift instant confirmation.</p>
                                 </details>
 
-                                <details class="group py-2 border-b border-gray-100 w-full">
+                                <details class="group py-1.5 border-b border-gray-100 w-full">
                                     <summary
                                         class="flex items-center justify-between cursor-pointer list-none text-[12px] sm:text-[13px] font-semibold text-gray-800 hover:text-primary w-full">
                                         <span class="flex items-center gap-2">
                                             <span
-                                                class="material-symbols-outlined text-[16px] sm:text-[18px] text-emerald-600">payments</span>
+                                                class="material-symbols-outlined text-[16px] text-emerald-600">payments</span>
                                             Bills included
                                         </span>
                                         <span
-                                            class="material-symbols-outlined text-[16px] sm:text-[18px] text-gray-400 group-open:rotate-180 transition-transform">expand_more</span>
+                                            class="material-symbols-outlined text-[16px] text-gray-400 group-open:rotate-180 transition-transform">expand_more</span>
                                     </summary>
-                                    <p class="text-[11px] sm:text-[12px] text-gray-500 mt-2 pl-6 sm:pl-7">Water,
-                                        high-speed Wi-Fi, and electricity allowance bundled in rental price.</p>
+                                    <p class="text-[11px] text-gray-500 mt-1.5 pl-6">Water, Wi-Fi, and electricity allowance bundled in rental price.</p>
                                 </details>
 
-                                <details class="group py-2 w-full">
+                                <details class="group py-1.5 w-full">
                                     <summary
                                         class="flex items-center justify-between cursor-pointer list-none text-[12px] sm:text-[13px] font-semibold text-gray-800 hover:text-primary w-full">
                                         <span class="flex items-center gap-2">
                                             <span
-                                                class="material-symbols-outlined text-[16px] sm:text-[18px] text-gray-700">verified_user</span>
-                                            Verified landlord
-                                        </span>
-                                        <span
-                                            class="material-symbols-outlined text-[16px] sm:text-[18px] text-gray-400 group-open:rotate-180 transition-transform">expand_more</span>
-                                    </summary>
-                                    <p class="text-[11px] sm:text-[12px] text-gray-500 mt-2 pl-6 sm:pl-7">ID &amp;
-                                        ownership credentials checked and approved by MUVFAST legal team.</p>
-                                </details>
-                            </div>
-
-                            <div class="pt-2 border-t border-gray-100 flex flex-col gap-1 w-full">
-                                <span
-                                    class="text-[10px] sm:text-[11px] font-extrabold text-gray-400 uppercase tracking-wider mb-1">ALWAYS
-                                    WITH MUVFAST</span>
-                                <details class="group py-2 border-b border-gray-100 w-full">
-                                    <summary
-                                        class="flex items-center justify-between cursor-pointer list-none text-[12px] sm:text-[13px] font-semibold text-gray-800 hover:text-primary w-full">
-                                        <span class="flex items-center gap-2">
-                                            <span
-                                                class="material-symbols-outlined text-[16px] sm:text-[18px] text-primary">shield</span>
+                                                class="material-symbols-outlined text-[16px] text-primary">shield</span>
                                             MUVFAST guarantee
                                         </span>
                                         <span
-                                            class="material-symbols-outlined text-[16px] sm:text-[18px] text-gray-400 group-open:rotate-180 transition-transform">expand_more</span>
+                                            class="material-symbols-outlined text-[16px] text-gray-400 group-open:rotate-180 transition-transform">expand_more</span>
                                     </summary>
-                                    <p class="text-[11px] sm:text-[12px] text-gray-500 mt-2 pl-6 sm:pl-7">Your security
-                                        deposit and upfront payment are safely escrow-protected.</p>
-                                </details>
-
-                                <details class="group py-2 w-full">
-                                    <summary
-                                        class="flex items-center justify-between cursor-pointer list-none text-[12px] sm:text-[13px] font-semibold text-gray-800 hover:text-primary w-full">
-                                        <span class="flex items-center gap-2">
-                                            <span
-                                                class="material-symbols-outlined text-[16px] sm:text-[18px] text-gray-700">schedule</span>
-                                            24 hours to check your new home
-                                        </span>
-                                        <span
-                                            class="material-symbols-outlined text-[16px] sm:text-[18px] text-gray-400 group-open:rotate-180 transition-transform">expand_more</span>
-                                    </summary>
-                                    <p class="text-[11px] sm:text-[12px] text-gray-500 mt-2 pl-6 sm:pl-7">If the
-                                        property does not match what you booked, we help re-book or refund within 24h.
-                                    </p>
+                                    <p class="text-[11px] text-gray-500 mt-1.5 pl-6">Your security deposit and upfront payment are safely escrow-protected.</p>
                                 </details>
                             </div>
                         </div>
@@ -1432,7 +1722,7 @@
             class="fixed bottom-0 left-0 w-full z-[60] bg-white/95 backdrop-blur-md shadow-[0_-8px_24px_rgba(0,0,0,0.06)] py-3 px-4 border-t border-gray-200 lg:hidden flex items-center justify-between gap-3">
             <div class="flex flex-col">
                 <span class="text-[10px] sm:text-[11px] text-gray-500 uppercase tracking-wider">From</span>
-                <span class="text-[16px] sm:text-[18px] font-extrabold text-primary">฿40,000 <span
+                <span id="mobile-sticky-price" class="text-[16px] sm:text-[18px] font-extrabold text-primary">฿40,000 <span
                         class="text-[11px] sm:text-[12px] text-gray-500 font-normal">/mo</span></span>
             </div>
             <button onclick="window.scrollTo({top: 0, behavior: 'smooth'});"
@@ -1548,21 +1838,128 @@
 
     <!-- Interactive JS Helper -->
     <script>
-        function toggleDurationDropdown() {
-            const dropdown = document.getElementById('duration-dropdown');
-            const arrow = document.getElementById('duration-arrow');
-            if (dropdown.classList.contains('hidden')) {
-                dropdown.classList.remove('hidden');
-                arrow.classList.add('rotate-180');
+        // Duration Selector Logic (PDF Page 3, 4: Contract Tiers & Spaced Pricing)
+        const durationData = {
+            short: {
+                name: '1-2 เดือน',
+                options: [
+                    { months: '1 เดือน', label: '1 เดือน (Standard)', price: '฿40,000', note: 'Standard rate' },
+                    { months: '2 เดือน', label: '2 เดือน', price: '฿40,000', note: 'Standard rate' }
+                ],
+                savings: null
+            },
+            mid: {
+                name: '3-5 เดือน',
+                options: [
+                    { months: '3 เดือน', label: '3 เดือน', price: '฿38,000', note: 'ประหยัด ฿2,000/ด.' },
+                    { months: '4 เดือน', label: '4 เดือน', price: '฿38,000', note: 'ประหยัด ฿2,000/ด.' },
+                    { months: '5 เดือน', label: '5 เดือน', price: '฿38,000', note: 'ประหยัด ฿2,000/ด.' }
+                ],
+                savings: 'สัญญาระยะกลาง: ประหยัด ฿2,000 / เดือน'
+            },
+            long: {
+                name: '6-12 ด.',
+                options: [
+                    { months: '6 เดือน', label: '6 เดือน', price: '฿36,000', note: 'ประหยัด ฿4,000/ด.' },
+                    { months: '9 เดือน', label: '9 เดือน', price: '฿35,000', note: 'ประหยัด ฿5,000/ด.' },
+                    { months: '12 เดือน', label: '12 เดือน (1 ปี)', price: '฿35,000', note: 'Best Value!' }
+                ],
+                savings: 'สัญญาระยะยาว: ประหยัดสูงสุด ฿5,000 / เดือน'
+            }
+        };
+
+        let currentTier = 'short';
+
+        function selectDurationTier(tier) {
+            currentTier = tier;
+            const tiers = ['short', 'mid', 'long'];
+            
+            // Update tier buttons styling
+            tiers.forEach(t => {
+                const btn = document.getElementById(`tier-btn-${t}`);
+                if (!btn) return;
+                if (t === tier) {
+                    btn.className = 'py-1.5 px-2 rounded-lg text-[12px] font-bold transition-all bg-white text-gray-900 shadow-xs cursor-pointer flex items-center justify-center gap-1';
+                } else {
+                    btn.className = 'py-1.5 px-2 rounded-lg text-[12px] font-semibold transition-all text-gray-600 hover:text-gray-900 cursor-pointer flex items-center justify-center gap-1';
+                }
+            });
+
+            // Update duration options list
+            renderDurationOptions(tier);
+
+            // Select first option by default in this tier
+            const firstOption = durationData[tier].options[0];
+            updateSelectedDuration(firstOption.label, firstOption.price, durationData[tier].savings);
+        }
+
+        function renderDurationOptions(tier) {
+            const container = document.getElementById('duration-options-list');
+            if (!container) return;
+            container.innerHTML = '';
+
+            durationData[tier].options.forEach(opt => {
+                const item = document.createElement('button');
+                item.type = 'button';
+                item.className = 'w-full px-3 py-2 rounded-xl text-left hover:bg-gray-50 flex items-center justify-between transition-colors cursor-pointer';
+                item.onclick = function() {
+                    updateSelectedDuration(opt.label, opt.price, durationData[tier].savings);
+                    toggleDurationDropdown(false);
+                };
+                item.innerHTML = `
+                    <div class="flex flex-col">
+                        <span class="font-bold text-gray-900 text-[13px]">${opt.label}</span>
+                        <span class="text-[11px] text-gray-400">${opt.note}</span>
+                    </div>
+                    <div class="text-right">
+                        <span class="font-extrabold text-primary text-[14px]">${opt.price}</span>
+                        <span class="text-gray-400 font-normal text-[11px]">/ด.</span>
+                    </div>
+                `;
+                container.appendChild(item);
+            });
+        }
+
+        function updateSelectedDuration(label, price, savings) {
+            const labelEl = document.getElementById('selected-duration-label');
+            const priceEl = document.getElementById('selected-duration-price');
+            const savingsBadge = document.getElementById('duration-savings-badge');
+            const savingsText = document.getElementById('duration-savings-text');
+            const mobileStickyPrice = document.getElementById('mobile-sticky-price');
+
+            if (labelEl) labelEl.textContent = label;
+            if (priceEl) priceEl.textContent = price;
+            if (mobileStickyPrice) {
+                mobileStickyPrice.innerHTML = `${price} <span class="text-[11px] sm:text-[12px] text-gray-500 font-normal">/mo</span>`;
+            }
+
+            if (savings) {
+                if (savingsBadge) {
+                    savingsBadge.classList.remove('hidden');
+                    savingsBadge.classList.add('flex');
+                }
+                if (savingsText) savingsText.textContent = savings;
             } else {
-                dropdown.classList.add('hidden');
-                arrow.classList.remove('rotate-180');
+                if (savingsBadge) {
+                    savingsBadge.classList.add('hidden');
+                    savingsBadge.classList.remove('flex');
+                }
             }
         }
 
-        function selectDuration(months, price) {
-            document.getElementById('selected-duration').innerHTML = `${months} <span class="font-extrabold text-primary ml-1">${price}</span> <span class="text-gray-400 font-normal text-[12px] sm:text-[13px]">/month</span>`;
-            toggleDurationDropdown();
+        function toggleDurationDropdown(forceState) {
+            const dropdown = document.getElementById('duration-dropdown');
+            const arrow = document.getElementById('duration-arrow');
+            if (!dropdown) return;
+            
+            const shouldOpen = forceState !== undefined ? forceState : dropdown.classList.contains('hidden');
+            if (shouldOpen) {
+                dropdown.classList.remove('hidden');
+                if (arrow) arrow.classList.add('rotate-180');
+            } else {
+                dropdown.classList.add('hidden');
+                if (arrow) arrow.classList.remove('rotate-180');
+            }
         }
 
         // Close dropdown when clicking outside
@@ -1574,6 +1971,39 @@
                 document.getElementById('duration-arrow')?.classList.remove('rotate-180');
             }
         });
+
+        // Initialize duration options on page load
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', function() {
+                renderDurationOptions('short');
+            });
+        } else {
+            renderDurationOptions('short');
+        }
+
+        // Nearby Places Tabs Switcher (PDF Page 6: การเดินทาง, ห้างสรรพสินค้า, สถานศึกษา, โรงพยาบาล)
+        function switchNearbyTab(category) {
+            const categories = ['transit', 'shopping', 'education', 'hospital'];
+            categories.forEach(cat => {
+                const btn = document.getElementById(`tab-${cat}`);
+                const content = document.getElementById(`content-${cat}`);
+                if (cat === category) {
+                    if (btn) {
+                        btn.className = 'nearby-tab-btn px-3.5 py-1.5 rounded-lg text-[13px] font-bold transition-all bg-gray-900 text-white shadow-xs whitespace-nowrap cursor-pointer';
+                    }
+                    if (content) {
+                        content.classList.remove('hidden');
+                    }
+                } else {
+                    if (btn) {
+                        btn.className = 'nearby-tab-btn px-3.5 py-1.5 rounded-lg text-[13px] font-semibold transition-all bg-gray-100 text-gray-700 hover:bg-gray-200 whitespace-nowrap cursor-pointer';
+                    }
+                    if (content) {
+                        content.classList.add('hidden');
+                    }
+                }
+            });
+        }
 
         // Toggle Room Description Read more / Read less
         function toggleRoomDescription() {
@@ -1599,17 +2029,14 @@
             const title = document.getElementById('modal-title');
 
             if (filter === 'room') {
-                // Show ONLY Room/Bedroom categories, hide Facilities & Building
                 if (facilitiesCat) facilitiesCat.classList.add('hidden');
                 if (roomCat) roomCat.classList.remove('hidden');
                 if (title) title.innerText = 'What this room offers';
             } else if (filter === 'property') {
-                // Show ONLY Facilities & Building, hide Room/Bedroom categories
                 if (facilitiesCat) facilitiesCat.classList.remove('hidden');
                 if (roomCat) roomCat.classList.add('hidden');
                 if (title) title.innerText = 'Facilities & Building';
             } else {
-                // Show all
                 if (facilitiesCat) facilitiesCat.classList.remove('hidden');
                 if (roomCat) roomCat.classList.remove('hidden');
                 if (title) title.innerText = 'What this place offers';
