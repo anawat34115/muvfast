@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1080 1080">
+  <defs>
+    <style>
+      .cls-1 {
+        font-family: Montserrat-Bold, Montserrat;
+        font-size: 371px;
+        font-weight: 700;
+      }
+
+      .cls-1, .cls-2 {
+        fill: #fff;
+      }
+    </style>
+  </defs>
+  <g>
+    <polygon class="cls-2" points="695.05 302.22 488.56 768.48 406.69 768.48 406.72 768.41 565.32 410.28 613.17 302.22 695.05 302.22"/>
+    <polyline class="cls-2" points="685.77 436.42 744.8 302.21 943.53 302.21"/>
+    <polyline class="cls-2" points="622.17 580.02 681.72 445.57 879.55 445.57"/>
+    <polygon class="cls-2" points="613.33 302.22 565.57 410.07 406.84 768.48 406.72 768.41 565.32 410.28 613.17 302.22 613.33 302.22"/>
+  </g>
+  <polygon class="cls-2" points="342.96 302.21 136.47 768.48 218.34 768.48 424.83 302.21 342.96 302.21"/>
+  <polygon class="cls-2" points="477.41 302.22 354.41 580.02 436.28 580.02 559.28 302.22 477.41 302.22"/>
+  <text class="cls-1" transform="translate(424.83 -162.79)"><tspan x="0" y="0">2</tspan></text>
+</svg>
