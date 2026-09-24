@@ -248,13 +248,13 @@
                             </button>
                             <button
                                 class="shrink-0 flex items-center gap-1 px-2 sm:px-2.5 py-1.5 rounded-full whitespace-nowrap text-gray-700 hover:bg-gray-100 text-[12px] font-semibold transition-colors">
-                                <span class="material-symbols-outlined text-[16px]">map</span>
-                                <span>Map</span>
+                                <span class="material-symbols-outlined text-[16px]">pool</span>
+                                <span>Project amenities</span>
                             </button>
                             <button
                                 class="shrink-0 flex items-center gap-1 px-2 sm:px-2.5 py-1.5 rounded-full whitespace-nowrap text-gray-700 hover:bg-gray-100 text-[12px] font-semibold transition-colors">
-                                <span class="material-symbols-outlined text-[16px]">pool</span>
-                                <span>Project amenities</span>
+                                <span class="material-symbols-outlined text-[16px]">map</span>
+                                <span>Map</span>
                             </button>
                             <button
                                 class="shrink-0 flex items-center gap-1 px-2 sm:px-2.5 py-1.5 rounded-full whitespace-nowrap text-gray-700 hover:bg-gray-100 text-[12px] font-semibold transition-colors">
@@ -395,19 +395,20 @@
                             class="bg-white border border-gray-200/90 rounded-2xl p-3 sm:p-4 flex flex-col gap-2.5 shadow-xs w-full">
 
                             <!-- Project Name (H1) and Property Code -->
+                            <!-- Room Type Headline (Line 1) -->
+                            <h2 class="text-[14px] sm:text-[15px] font-bold text-gray-600 leading-snug">
+                                Service Apartment with 1 Bedroom Premier for rent in Bangkok
+                            </h2>
+
+                            <!-- Project Name (H1) and Property Code (Line 2) -->
                             <h1
                                 class="text-[22px] sm:text-[24px] font-extrabold text-gray-900 tracking-tight leading-snug break-words flex items-center gap-2 flex-wrap">
                                 Ascott Embassy Sathorn Bangkok
                                 <span class="inline-flex items-center px-2 py-0.5 bg-gray-100 rounded text-[12px] font-bold text-gray-600 border border-gray-200">MUV11410</span>
                             </h1>
 
-                            <!-- Room Type Headline (PDF Page 2) -->
-                            <h2 class="text-[14px] sm:text-[15px] font-bold text-gray-600 leading-snug">
-                                Service Apartment with 1 Bedroom Premier for rent in Bangkok
-                            </h2>
-
                             <!-- Address -->
-                            <p class="text-gray-500 text-[12px] sm:text-[13px] flex items-start sm:items-center gap-1.5 flex-wrap">
+                            <p class="text-gray-500 text-[11px] sm:text-[12px] flex items-start sm:items-center gap-1.5 flex-wrap">
                                 <span class="material-symbols-outlined text-[16px] text-gray-400 shrink-0 mt-0.5 sm:mt-0">location_on</span>
                                 <span>59 South Sathorn Road, Thung Maha Mek, Sathon, Bangkok 10120, Thailand</span>
                             </p>
@@ -415,17 +416,17 @@
                             <!-- Quick Specs Pills (Clean & Balanced) -->
                             <div
                                 class="flex flex-wrap items-center gap-2 sm:gap-3 text-gray-700 text-[12px] sm:text-[13px] font-medium pt-2 border-t border-gray-100">
-                                <span class="inline-flex items-center gap-1.5 px-3 py-1.5 bg-gray-50 rounded-lg border border-gray-200/80">
-                                    <span class="material-symbols-outlined text-gray-500 text-[16px]">bed</span>
-                                    <span>1 bedroom</span>
+                                <span class="inline-flex items-center gap-1.5 px-3 py-1.5 bg-orange-50/70 text-orange-600 border border-orange-200/70 rounded-lg">
+                                    <span class="material-symbols-outlined text-orange-500 text-[16px]">bed</span>
+                                    <span>1 bed</span>
                                 </span>
-                                <span class="inline-flex items-center gap-1.5 px-3 py-1.5 bg-gray-50 rounded-lg border border-gray-200/80">
-                                    <span class="material-symbols-outlined text-gray-500 text-[16px]">shower</span>
-                                    <span>1 bathroom</span>
+                                <span class="inline-flex items-center gap-1.5 px-3 py-1.5 bg-orange-50/70 text-orange-600 border border-orange-200/70 rounded-lg">
+                                    <span class="material-symbols-outlined text-orange-500 text-[16px]">shower</span>
+                                    <span>1 bath</span>
                                 </span>
-                                <span class="inline-flex items-center gap-1.5 px-3 py-1.5 bg-gray-50 rounded-lg border border-gray-200/80">
-                                    <span class="material-symbols-outlined text-gray-500 text-[16px]">aspect_ratio</span>
-                                    <span>32 sq.m.</span>
+                                <span class="inline-flex items-center gap-1.5 px-3 py-1.5 bg-orange-50/70 text-orange-600 border border-orange-200/70 rounded-lg">
+                                    <span class="material-symbols-outlined text-orange-500 text-[16px]">aspect_ratio</span>
+                                    <span>32 sqm.</span>
                                 </span>
                                 <span class="inline-flex items-center gap-1.5 px-3 py-1.5 bg-orange-50/70 text-primary border border-orange-200/70 rounded-lg font-bold">
                                     <span class="material-symbols-outlined text-[16px]">calendar_today</span>
@@ -447,22 +448,47 @@
                         <div class="bg-white border border-gray-200/90 rounded-2xl p-4 sm:p-5 md:p-6 flex flex-col gap-4 shadow-xs w-full">
                             <h3 class="text-[16px] sm:text-[18px] font-bold text-gray-900">Basic Information</h3>
                             <div class="grid grid-cols-2 gap-y-4 gap-x-4">
-                                <div class="flex flex-col gap-1">
-                                    <span class="text-[12px] text-gray-500 font-medium border-b border-gray-100 pb-1">Date Listed</span>
-                                    <span class="text-[14px] text-gray-900">Sep 15, 2026</span>
-                                </div>
+                                <!-- Row 1: Updated | Available From -->
                                 <div class="flex flex-col gap-1">
                                     <span class="text-[12px] text-gray-500 font-medium border-b border-gray-100 pb-1">Updated</span>
                                     <span class="text-[14px] text-gray-900">Today</span>
                                 </div>
                                 <div class="flex flex-col gap-1">
+                                    <span class="text-[12px] text-gray-500 font-medium border-b border-gray-100 pb-1">Available From</span>
+                                    <span class="text-[14px] text-gray-900">Now</span>
+                                </div>
+
+                                <!-- Row 2: Min. stay | Property Type -->
+                                <div class="flex flex-col gap-1">
+                                    <span class="text-[12px] text-gray-500 font-medium border-b border-gray-100 pb-1">Min. stay</span>
+                                    <span class="text-[14px] text-gray-900">1 month</span>
+                                </div>
+                                <div class="flex flex-col gap-1">
                                     <span class="text-[12px] text-gray-500 font-medium border-b border-gray-100 pb-1">Property Type</span>
                                     <span class="text-[14px] text-primary">Service Apartment</span>
                                 </div>
+
+                                <!-- Row 3: Date Listed | Pet Policy -->
+                                <div class="flex flex-col gap-1">
+                                    <span class="text-[12px] text-gray-500 font-medium border-b border-gray-100 pb-1">Date Listed</span>
+                                    <span class="text-[14px] text-gray-900">Sep 15, 2026</span>
+                                </div>
+                                <div class="flex flex-col gap-1">
+                                    <span class="text-[12px] text-gray-500 font-medium border-b border-gray-100 pb-1">Pet policy</span>
+                                    <span class="text-[14px] text-gray-900">Not Allowed</span>
+                                </div>
+
+                                <!-- Row 4: Floor | Size -->
                                 <div class="flex flex-col gap-1">
                                     <span class="text-[12px] text-gray-500 font-medium border-b border-gray-100 pb-1">Floor</span>
                                     <span class="text-[14px] text-gray-900">15</span>
                                 </div>
+                                <div class="flex flex-col gap-1">
+                                    <span class="text-[12px] text-gray-500 font-medium border-b border-gray-100 pb-1">Size</span>
+                                    <span class="text-[14px] text-gray-900">32 SqM</span>
+                                </div>
+
+                                <!-- Row 5: Bedroom | Bathroom -->
                                 <div class="flex flex-col gap-1">
                                     <span class="text-[12px] text-gray-500 font-medium border-b border-gray-100 pb-1">Bedroom</span>
                                     <span class="text-[14px] text-primary">1</span>
@@ -471,24 +497,8 @@
                                     <span class="text-[12px] text-gray-500 font-medium border-b border-gray-100 pb-1">Bathroom</span>
                                     <span class="text-[14px] text-gray-900">1</span>
                                 </div>
-                                <div class="flex flex-col gap-1">
-                                    <span class="text-[12px] text-gray-500 font-medium border-b border-gray-100 pb-1">Size</span>
-                                    <span class="text-[14px] text-gray-900">32 SqM</span>
-                                </div>
-                                <div class="flex flex-col gap-1">
-                                    <span class="text-[12px] text-gray-500 font-medium border-b border-gray-100 pb-1">Min. stay</span>
-                                    <span class="text-[14px] text-gray-900">1 month</span>
-                                </div>
-                                <div class="flex flex-col gap-1">
-                                    <span class="text-[12px] text-gray-500 font-medium border-b border-gray-100 pb-1">Available From</span>
-                                    <span class="text-[14px] text-gray-900">Now</span>
-                                </div>
-                                <div class="flex flex-col gap-1">
-                                    <span class="text-[12px] text-gray-500 font-medium border-b border-gray-100 pb-1">Pet policy</span>
-                                    <span class="text-[14px] text-gray-900">Not Allowed</span>
-                                </div>
-                            </div>
-                            <div class="grid grid-cols-2 gap-y-4 gap-x-4 border-t border-gray-100 pt-4 mt-1">
+
+                                <!-- Row 6: Electricity Price | Water Price -->
                                 <div class="flex flex-col gap-1">
                                     <span class="text-[12px] text-gray-500 font-medium border-b border-gray-100 pb-1">Electricity Price</span>
                                     <span class="text-[14px] text-gray-900">Government Rate</span>
@@ -497,7 +507,9 @@
                                     <span class="text-[12px] text-gray-500 font-medium border-b border-gray-100 pb-1">Water Price</span>
                                     <span class="text-[14px] text-gray-900">Government Rate</span>
                                 </div>
-                                <div class="flex flex-col gap-1 col-span-2">
+
+                                <!-- Row 7: Security Deposit -->
+                                <div class="flex flex-col gap-1 col-span-2 pt-1 border-t border-gray-100">
                                     <span class="text-[12px] text-gray-500 font-medium border-b border-gray-100 pb-1">Security deposit</span>
                                     <div class="text-[14px] text-gray-900 flex flex-col gap-1 mt-1">
                                         <span>- 1 mth for lease 3 month</span>
@@ -1189,30 +1201,30 @@
                                     </div>
                                     <!-- Content Area (Project Name Prominent per PDF Page 7) -->
                                     <div class="p-3.5 sm:p-4 flex flex-col flex-grow justify-between gap-3">
-                                        <div class="flex flex-col gap-1">
-                                            <!-- Line 2: Room Specs -->
-                                            <div class="text-[13px] text-gray-600 font-medium">
-                                                1 br <span class="text-gray-300 px-1">•</span> 1 ba <span class="text-gray-300 px-1">•</span> 35 sqm <span class="text-gray-300 px-1">•</span> Fl. 12
-                                            </div>
-                                              <!-- Line 1: Project Name (Prominent bold) -->
-                                            <h4 class="font-extrabold text-gray-900 text-[16px] leading-snug group-hover:text-primary transition-colors line-clamp-1">
-                                                Chewathai Residence Thonglor
-                                            </h4>
-                                            
-                                            <!-- Line 3: Location & Transit Distance -->
-                                            <div class="flex items-center gap-1.5 text-[12px] text-gray-500 mt-0.5 flex-wrap">
-                                                <span>Watthana, Bangkok</span>
-                                                <span class="text-gray-300">•</span>
-                                                <span class="text-emerald-700 font-medium">🚊 BTS Phrom Phong 700 m</span>
-                                            </div>
-                                        </div>
-
-                                        <!-- Card Footer: Distinct Min Stay & Price (PDF Page 7: balanced 5-6 digit formatting) -->
-                                        <div class="pt-2.5 border-t border-gray-100 flex items-center justify-between">
+                                        <!-- Price & Min Lease moved to Top -->
+                                        <div class="pb-2.5 border-b border-gray-100 flex items-center justify-between">
                                             <div class="flex flex-col text-[11px] text-gray-500"><span class="font-bold text-gray-800">Min. lease</span><span>1 month</span></div>
                                             <div class="text-right">
                                                 <span class="font-extrabold text-gray-900 text-[17px] sm:text-[18px]">฿32,000</span>
                                                 <span class="text-[11px] text-gray-400 font-normal">/month</span>
+                                            </div>
+                                        </div>
+
+                                        <div class="flex flex-col gap-1">
+                                            <!-- Room Specs -->
+                                            <div class="text-[13px] text-gray-600 font-medium">
+                                                1 br <span class="text-gray-300 px-1">•</span> 1 ba <span class="text-gray-300 px-1">•</span> 35 sqm <span class="text-gray-300 px-1">•</span> Fl. 12
+                                            </div>
+                                            <!-- Project Name -->
+                                            <h4 class="font-extrabold text-gray-900 text-[16px] leading-snug group-hover:text-primary transition-colors line-clamp-1">
+                                                Chewathai Residence Thonglor
+                                            </h4>
+                                            
+                                            <!-- Location & Transit Distance -->
+                                            <div class="flex items-center gap-1.5 text-[12px] text-gray-500 mt-0.5 flex-wrap">
+                                                <span>Watthana, Bangkok</span>
+                                                <span class="text-gray-300">•</span>
+                                                <span class="text-emerald-700 font-medium">🚊 BTS Phrom Phong 700 m</span>
                                             </div>
                                         </div>
                                     </div>
@@ -1241,25 +1253,26 @@
                                         </div>
                                     </div>
                                     <div class="p-3.5 sm:p-4 flex flex-col flex-grow justify-between gap-3">
+                                        <!-- Price & Min Lease moved to Top -->
+                                        <div class="pb-2.5 border-b border-gray-100 flex items-center justify-between">
+                                            <div class="flex flex-col text-[11px] text-gray-500"><span class="font-bold text-gray-800">Min. lease</span><span>3 months</span></div>
+                                            <div class="text-right">
+                                                <span class="font-extrabold text-gray-900 text-[17px] sm:text-[18px]">฿36,000</span>
+                                                <span class="text-[11px] text-gray-400 font-normal">/month</span>
+                                            </div>
+                                        </div>
+
                                         <div class="flex flex-col gap-1">
                                             <div class="text-[13px] text-gray-600 font-medium">
                                                 2 br <span class="text-gray-300 px-1">•</span> 2 ba <span class="text-gray-300 px-1">•</span> 50 sqm <span class="text-gray-300 px-1">•</span> Fl. 8
                                             </div>
-                                              <h4 class="font-extrabold text-gray-900 text-[16px] leading-snug group-hover:text-primary transition-colors line-clamp-1">
+                                            <h4 class="font-extrabold text-gray-900 text-[16px] leading-snug group-hover:text-primary transition-colors line-clamp-1">
                                                 The Esse at Singha Complex
                                             </h4>
                                             <div class="flex items-center gap-1.5 text-[12px] text-gray-500 mt-0.5 flex-wrap">
                                                 <span>Huai Khwang, Bangkok</span>
                                                 <span class="text-gray-300">•</span>
                                                 <span class="text-emerald-700 font-medium">🚇 MRT Phetchaburi 200 m</span>
-                                            </div>
-                                        </div>
-
-                                        <div class="pt-2.5 border-t border-gray-100 flex items-center justify-between">
-                                            <div class="flex flex-col text-[11px] text-gray-500"><span class="font-bold text-gray-800">Min. lease</span><span>3 months</span></div>
-                                            <div class="text-right">
-                                                <span class="font-extrabold text-gray-900 text-[17px] sm:text-[18px]">฿36,000</span>
-                                                <span class="text-[11px] text-gray-400 font-normal">/month</span>
                                             </div>
                                         </div>
                                     </div>
@@ -1288,26 +1301,26 @@
                                         </div>
                                     </div>
                                     <div class="p-3.5 sm:p-4 flex flex-col flex-grow justify-between gap-3">
+                                        <!-- Price & Min Lease moved to Top -->
+                                        <div class="pb-2.5 border-b border-gray-100 flex items-center justify-between">
+                                            <div class="flex flex-col text-[11px] text-gray-500"><span class="font-bold text-gray-800">Min. lease</span><span>1 month</span></div>
+                                            <div class="text-right">
+                                                <span class="font-extrabold text-gray-900 text-[17px] sm:text-[18px] tracking-tight">฿120,000</span>
+                                                <span class="text-[11px] text-gray-400 font-normal">/month</span>
+                                            </div>
+                                        </div>
+
                                         <div class="flex flex-col gap-1">
                                             <div class="text-[13px] text-gray-600 font-medium">
                                                 3 br <span class="text-gray-300 px-1">•</span> 3 ba <span class="text-gray-300 px-1">•</span> 115 sqm <span class="text-gray-300 px-1">•</span> Fl. 38
                                             </div>
-                                              <h4 class="font-extrabold text-gray-900 text-[16px] leading-snug group-hover:text-primary transition-colors line-clamp-1">
+                                            <h4 class="font-extrabold text-gray-900 text-[16px] leading-snug group-hover:text-primary transition-colors line-clamp-1">
                                                 Life Asoke Hype - Penthouse
                                             </h4>
                                             <div class="flex items-center gap-1.5 text-[12px] text-gray-500 mt-0.5 flex-wrap">
                                                 <span>Ratchathewi, Bangkok</span>
                                                 <span class="text-gray-300">•</span>
                                                 <span class="text-emerald-700 font-medium">🚇 MRT Rama 9 300 m</span>
-                                            </div>
-                                        </div>
-
-                                        <!-- 6-digit price formatted gracefully without breaking or overwhelming -->
-                                        <div class="pt-2.5 border-t border-gray-100 flex items-center justify-between">
-                                            <div class="flex flex-col text-[11px] text-gray-500"><span class="font-bold text-gray-800">Min. lease</span><span>1 month</span></div>
-                                            <div class="text-right">
-                                                <span class="font-extrabold text-gray-900 text-[17px] sm:text-[18px] tracking-tight">฿120,000</span>
-                                                <span class="text-[11px] text-gray-400 font-normal">/month</span>
                                             </div>
                                         </div>
                                     </div>
@@ -1370,8 +1383,7 @@
                           <div id="inquiry-section"
                               class="scroll-mt-[100px] bg-white rounded-2xl border border-gray-200/90 p-4 sm:p-5 md:p-6 shadow-md flex flex-col gap-4 sm:gap-5 w-full">
   
-                              <div class="flex items-center justify-between">
-                                  <span class="text-[12px] font-bold text-gray-500 uppercase tracking-wider">Talk to us for any details</span>
+                              <div class="flex items-center justify-end">
                                   <span
                                       class="inline-flex items-center gap-1.5 px-3 py-1 bg-emerald-50 text-emerald-700 rounded-full font-bold text-[11px] sm:text-[12px] border border-emerald-200/80">
                                       <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
@@ -1608,8 +1620,8 @@
             class="w-full bg-white border-t border-gray-200 pt-10 sm:pt-12 pb-24 lg:pb-10 text-gray-600 mt-auto relative z-10">
             <div class="max-w-[1280px] mx-auto px-4 md:px-gutter-desktop">
                 <div
-                    class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8 pb-8 sm:pb-10 border-b border-gray-200">
-                    <!-- Col 1-2: Brand & Address -->
+                    class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 pb-8 sm:pb-10 border-b border-gray-200">
+                    <!-- Col 1-2: Brand, Address, Social & Concierge -->
                     <div class="lg:col-span-2 flex flex-col gap-4">
                         <div class="flex items-center gap-2 select-none">
                             <img src="logo.svg" alt="MUVFAST Logo"
@@ -1619,33 +1631,44 @@
                             Thailand's premier marketplace for flexible monthly property rentals, luxury serviced
                             residences, and executive corporate leases across Bangkok.
                         </p>
-                        <!-- Social Media Links -->
-                        <div class="flex items-center gap-3 pt-1">
-                            <a href="#"
-                                class="w-8 h-8 rounded-full bg-gray-100 flex items-center justify-center text-gray-600 hover:text-primary hover:bg-orange-50 transition-colors"
-                                aria-label="Facebook">
-                                <span class="material-symbols-outlined text-[16px] sm:text-[18px]">public</span>
-                            </a>
-                            <a href="#"
-                                class="w-8 h-8 rounded-full bg-[#06c755]/10 flex items-center justify-center text-[#06c755] hover:bg-[#06c755]/20 transition-colors"
-                                aria-label="LINE Official">
-                                <span class="material-symbols-outlined text-[16px] sm:text-[18px]">chat</span>
-                            </a>
-                            <a href="#"
-                                class="w-8 h-8 rounded-full bg-gray-100 flex items-center justify-center text-gray-600 hover:text-primary hover:bg-orange-50 transition-colors"
-                                aria-label="Instagram">
-                                <span class="material-symbols-outlined text-[16px] sm:text-[18px]">photo_camera</span>
-                            </a>
-                            <a href="#"
-                                class="w-8 h-8 rounded-full bg-gray-100 flex items-center justify-center text-gray-600 hover:text-primary hover:bg-orange-50 transition-colors"
-                                aria-label="TikTok">
-                                <span class="material-symbols-outlined text-[16px] sm:text-[18px]">videocam</span>
-                            </a>
-                        </div>
-                        <div class="flex flex-col text-[12px] sm:text-[13px] text-gray-700 gap-1 pt-2">
+                        <div class="flex flex-col text-[12px] sm:text-[13px] text-gray-700 gap-1 pt-1">
                             <span class="font-bold text-gray-900">Head Office:</span>
                             <span>3388/93 Sirinrat Building, floor 25</span>
                             <span>Rama 4 Road, Klongton, Klongtoey, Bangkok 10110</span>
+                        </div>
+
+                        <!-- Social Media Links & Concierge Info (Clean & No-Wrap Side-by-Side) -->
+                        <div class="flex items-center gap-3 sm:gap-4 pt-2 flex-wrap sm:flex-nowrap">
+                            <!-- Social Media Icons -->
+                            <div class="flex items-center gap-2 shrink-0">
+                                <a href="#"
+                                    class="w-8 h-8 rounded-full bg-gray-100 flex items-center justify-center text-gray-600 hover:text-primary hover:bg-orange-50 transition-colors"
+                                    aria-label="Facebook">
+                                    <span class="material-symbols-outlined text-[16px] sm:text-[18px]">public</span>
+                                </a>
+                                <a href="https://line.me" target="_blank"
+                                    class="w-8 h-8 rounded-full bg-[#06c755]/10 flex items-center justify-center text-[#06c755] hover:bg-[#06c755]/20 transition-colors"
+                                    aria-label="LINE Official">
+                                    <span class="material-symbols-outlined text-[16px] sm:text-[18px]">chat</span>
+                                </a>
+                                <a href="#"
+                                    class="w-8 h-8 rounded-full bg-gray-100 flex items-center justify-center text-gray-600 hover:text-primary hover:bg-orange-50 transition-colors"
+                                    aria-label="Instagram">
+                                    <span class="material-symbols-outlined text-[16px] sm:text-[18px]">photo_camera</span>
+                                </a>
+                                <a href="#"
+                                    class="w-8 h-8 rounded-full bg-gray-100 flex items-center justify-center text-gray-600 hover:text-primary hover:bg-orange-50 transition-colors"
+                                    aria-label="TikTok">
+                                    <span class="material-symbols-outlined text-[16px] sm:text-[18px]">videocam</span>
+                                </a>
+                            </div>
+
+                            <!-- Concierge Details Neat & Stacked Beside Icons (No Text Wrap) -->
+                            <div class="flex flex-col gap-0.5 text-[12px] sm:text-[13px] text-gray-600 pl-3 sm:pl-4 border-l border-gray-200/90 whitespace-nowrap">
+                                <div>LINE Official: <span class="font-bold text-primary">@muvfast</span></div>
+                                <div>Concierge: <span class="font-bold text-secondary">+66 (0) 2 109 9888</span></div>
+                                <div>support@muvfast.com</div>
+                            </div>
                         </div>
                     </div>
 
@@ -1679,17 +1702,6 @@
                             href="#">Corporate Expat Leases</a>
                         <a class="text-[12px] sm:text-[13px] text-gray-600 hover:text-primary transition-colors"
                             href="#">Login / Landlord Portal</a>
-                    </div>
-
-                    <!-- Col 5: Contact -->
-                    <div class="flex flex-col gap-2.5">
-                        <span
-                            class="font-bold text-gray-900 text-[12px] sm:text-[13px] uppercase tracking-wider">Concierge</span>
-                        <p class="text-[12px] sm:text-[13px] text-gray-600">LINE Official: <span
-                                class="font-bold text-primary">@muvfast</span></p>
-                        <p class="text-[12px] sm:text-[13px] text-gray-600">Concierge: <span
-                                class="font-bold text-secondary">+66 (0) 2 109 9888</span></p>
-                        <p class="text-[12px] sm:text-[13px] text-gray-600">support@muvfast.com</p>
                     </div>
                 </div>
 
