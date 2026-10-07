@@ -162,8 +162,17 @@ p{margin:0;text-wrap:pretty}
 .line-tabs button .dot{width:22px;height:22px;border-radius:999px;display:grid;place-items:center;color:#fff;font-size:8px;font-weight:800;letter-spacing:.02em}
 .line-tabs button[aria-pressed=true]{border-color:var(--ink);box-shadow:inset 0 0 0 1px var(--ink)}
 .line-tabs button.all .dot{background:var(--ink)}
-.tmap-scroll{position:relative;overflow:auto;background:#FAFAF9;-webkit-overflow-scrolling:touch}
-.tmap{display:block;width:100%;min-width:820px;height:auto}
+.tmap-scroll{position:relative;overflow:hidden;background:#FAFAF9;height:clamp(380px,62vw,560px);touch-action:none;cursor:grab;user-select:none;-webkit-user-select:none}
+.tmap-scroll.drag{cursor:grabbing}
+.tmap{display:block;width:100%;height:100%}
+.zoom-ctl{position:absolute;z-index:4;top:12px;right:12px;display:flex;flex-direction:column;align-items:flex-end;gap:8px}
+.zoom-ctl .grp{display:flex;flex-direction:column;background:#fff;border:1px solid var(--line);border-radius:10px;box-shadow:0 2px 8px rgba(0,0,0,.08);overflow:hidden}
+.zoom-ctl .grp button{width:40px;height:40px;border:0;background:#fff;display:grid;place-items:center;font-size:18px}
+.zoom-ctl .grp button+button{border-top:1px solid var(--line)}
+.zoom-ctl button:hover{background:var(--surface-alt)}
+.zoom-ctl button:disabled{opacity:.35;cursor:default}
+.zoom-ctl .reset{height:36px;padding:0 14px;border:1px solid var(--line);border-radius:999px;background:#fff;font-size:13px;font-weight:600;box-shadow:0 2px 8px rgba(0,0,0,.08)}
+.zoom-hint{position:absolute;z-index:4;left:12px;bottom:12px;background:rgba(255,255,255,.92);border-radius:8px;padding:4px 10px;font-size:12px;color:var(--muted);pointer-events:none;transition:opacity .4s}
 .tmap .ln{fill:none;stroke-width:7;stroke-linecap:round;stroke-linejoin:round;transition:opacity .25s}
 .tmap .st{cursor:pointer}
 .tmap .st circle{fill:#fff;stroke-width:3;transition:r .15s}
@@ -463,6 +472,8 @@ p{margin:0;text-wrap:pretty}
       <div class="line-tabs" id="line-tabs" role="group" aria-label="Filter by line"></div>
       <div class="tmap-scroll" id="tmap-scroll">
         <svg class="tmap" id="tmap" viewBox="-60 -5 1110 735" role="img" aria-label="Simplified Bangkok BTS and MRT map"></svg>
+        <div class="zoom-ctl"><div class="grp"><button type="button" id="z-in" aria-label="Zoom in"><i class="ph ph-plus"></i></button><button type="button" id="z-out" aria-label="Zoom out"><i class="ph ph-minus"></i></button></div><button type="button" class="reset" id="z-reset">Reset map</button></div>
+        <p class="zoom-hint" id="zoom-hint">Scroll or pinch to zoom · drag to move</p>
         <div class="tmap-tip" id="tmap-tip" hidden></div>
       </div>
       <div class="tmap-foot"><span>Simplified map · not to scale</span><label class="m-only">Or choose a station: <select id="st-select"><option value="">Select station</option></select></label></div>
@@ -486,7 +497,7 @@ p{margin:0;text-wrap:pretty}
 <!-- ส่วนที่ 4 -->
 <section class="section" aria-labelledby="st-title">
   <div class="container">
-    <div class="sec-head reveal"><div><h2 id="st-title">Short-Term Monthly Rentals</h2><p class="demo-note">Sample listings for layout (demo content).</p></div><a class="link-arrow" href="#">See all listings <i class="ph ph-arrow-right"></i></a></div>
+    <div class="sec-head reveal"><div><h2 id="st-title">Short-Term Monthly Rentals</h2></div><a class="link-arrow" href="#">See all listings <i class="ph ph-arrow-right"></i></a></div>
     <div class="sec-head" style="margin-bottom:20px;align-items:center">
       <div class="tabs" role="tablist" aria-label="Minimum lease"><button type="button" role="tab" id="tab-1" aria-controls="tp-1" aria-selected="true">Monthly</button><button type="button" role="tab" id="tab-6" aria-controls="tp-6" aria-selected="false">6 months</button><button type="button" role="tab" id="tab-3" aria-controls="tp-3" aria-selected="false">3 months</button></div>
       <div class="rail-nav" id="rail-nav"><button type="button" data-dir="-1" aria-label="Previous"><i class="ph ph-caret-left"></i></button><button type="button" data-dir="1" aria-label="Next"><i class="ph ph-caret-right"></i></button></div>
@@ -694,7 +705,7 @@ p{margin:0;text-wrap:pretty}
 <!-- ส่วนที่ 10 -->
 <section class="section alt" aria-labelledby="blog-title">
   <div class="container">
-    <div class="sec-head reveal"><div><h2 id="blog-title">Blog</h2><p>Collection of Condos Articles Interesting Service Apartment for dorm residents</p><p class="demo-note">Sample article titles (demo content).</p></div><a class="link-arrow" href="#">All articles <i class="ph ph-arrow-right"></i></a></div>
+    <div class="sec-head reveal"><div><h2 id="blog-title">Blog</h2><p>Collection of Condos Articles Interesting Service Apartment for dorm residents</p></div><a class="link-arrow" href="#">All articles <i class="ph ph-arrow-right"></i></a></div>
     <div class="posts reveal"><a class="post big" href="#"><img src="https://images.unsplash.com/photo-1563492065599-3520f775eeed?q=75&w=1000&auto=format&fit=crop" alt="" loading="lazy"><span>How to rent a condo in Bangkok as a foreigner: a step-by-step guide</span></a><a class="post " href="#"><img src="https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?q=75&w=600&auto=format&fit=crop" alt="" loading="lazy"><span>Serviced apartment vs condo: which suits a 3-month stay?</span></a><a class="post " href="#"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/71/BTS_Skytrain_over_Sala_Daeng_Intersection.jpg/960px-BTS_Skytrain_over_Sala_Daeng_Intersection.jpg" alt="" loading="lazy"><span>Living near BTS: the best stations for daily commuters</span></a><a class="post " href="#"><img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?q=75&w=600&auto=format&fit=crop" alt="" loading="lazy"><span>What to check before you sign a monthly rental agreement</span></a><a class="post big" href="#"><img src="https://images.unsplash.com/photo-1562602833-0f4ab2fc46e3?q=75&w=1000&auto=format&fit=crop" alt="" loading="lazy"><span>Asoke vs Thonglor: where should expats live in 2026?</span></a><a class="post " href="#"><img src="https://images.unsplash.com/photo-1517849845537-4d257902454a?q=75&w=600&auto=format&fit=crop" alt="" loading="lazy"><span>Pet-friendly condos in Bangkok: rules and tips</span></a></div>
   </div>
 </section>
@@ -847,16 +858,16 @@ function showTip(s){
   const L=s.lines[0],label=`${L.pre} ${s.n.split(' / ')[0]}`;
   tip.innerHTML=`<button class="x" type="button" aria-label="Close"><i class="ph ph-x"></i></button><h4>${s.lines.map(l=>`<span class="dot" style="background:${l.c}"></span>`).join('')}${s.n}</h4><a href="#">Condo for Rent ${label}</a><a href="#">Apartment ${label}</a><a href="#">${label} rental</a><a href="#">Serviced Apartment near ${label}</a>`;
   tip.hidden=false;
-  const r=svg.getBoundingClientRect(),sr=scroller.getBoundingClientRect(),sc=r.width/1110,X=s.x+60,Y=s.y+5;
-  let left=X*sc+(r.left-sr.left)+scroller.scrollLeft+12,top=Y*sc+(r.top-sr.top)+scroller.scrollTop+12;
-  const tw=tip.offsetWidth,th=tip.offsetHeight;
-  if(left+tw>scroller.scrollLeft+scroller.clientWidth-8)left=X*sc+(r.left-sr.left)+scroller.scrollLeft-tw-12;
-  if(top+th>scroller.scrollHeight-8)top=Y*sc+(r.top-sr.top)+scroller.scrollTop-th-12;
-  top=Math.min(top,scroller.scrollTop+scroller.clientHeight-th-8);left=Math.min(left,scroller.scrollLeft+scroller.clientWidth-tw-8);
-  tip.style.left=Math.max(8,left)+'px';tip.style.top=Math.max(8,top)+'px';
   tip.querySelector('.x').addEventListener('click',hideTip);
+  tipFor=s;placeTip();
 }
-function hideTip(){tip.hidden=true;if(curOn)curOn.classList.remove('on');curOn=null}
+let tipFor=null;
+function placeTip(){if(!tipFor||tip.hidden)return;const s=tipFor,sr=scroller.getBoundingClientRect(),p=toScreen(s.x,s.y);
+  const px=p.x-sr.left,py=p.y-sr.top,tw=tip.offsetWidth,th=tip.offsetHeight,W=scroller.clientWidth,H=scroller.clientHeight;
+  let left=px+14,top=py+14;if(left+tw>W-8)left=px-tw-14;if(top+th>H-8)top=py-th-14;
+  left=Math.min(Math.max(8,left),W-tw-8);top=Math.min(Math.max(8,top),H-th-8);
+  tip.style.left=Math.max(8,left)+'px';tip.style.top=Math.max(8,top)+'px'}
+function hideTip(){tip.hidden=true;tipFor=null;if(curOn)curOn.classList.remove('on');curOn=null}
 document.addEventListener('click',e=>{if(!tip.hidden&&!e.target.closest('#tmap-tip'))hideTip()});
 // tabs
 const tabs=$('#line-tabs');
@@ -865,12 +876,49 @@ LINES.forEach(L=>tabs.insertAdjacentHTML('beforeend',`<button type="button" aria
 tabs.addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;const f=b.dataset.f;$$('button',tabs).forEach(x=>x.setAttribute('aria-pressed',String(x===b)));hideTip();
   $$('.ln',svg).forEach(p=>p.classList.toggle('dim',!!f&&p.dataset.l!==f));
   $$('.st',svg).forEach(g=>g.classList.toggle('dim',!!f&&!g.dataset.l.split(' ').includes(f)));
-  const sel=$('#st-select');fillSelect(f)});
+  fillSelect(f);fitTo(f?LINES.find(l=>l.id===f).st.concat(LINES.find(l=>l.id===f).tail||[]):null)});
 // select fallback (mobile)
 function fillSelect(f){const sel=$('#st-select');sel.innerHTML='<option value="">Select station</option>';
   Object.entries(seen).filter(([,s])=>!f||s.lines.some(l=>l.id===f)).sort((a,b)=>a[1].n.localeCompare(b[1].n)).forEach(([k,s])=>sel.insertAdjacentHTML('beforeend',`<option value="${k}">${s.n}</option>`))}
 fillSelect('');
-$('#st-select').addEventListener('change',e=>{const s=seen[e.target.value];if(!s)return;const sc=svg.getBoundingClientRect().width/1110;scroller.scrollTo({left:Math.max(0,(s.x+60)*sc-scroller.clientWidth/2),behavior:'smooth'});setTimeout(()=>showTip(s),250)});
+$('#st-select').addEventListener('change',e=>{const s=seen[e.target.value];if(!s)return;hideTip();const w=BASE.w/3.2,h=w/aspect();animateTo({x:s.x-w/2,y:s.y-h/2,w,h},()=>showTip(s))});
+
+/* zoom & pan (RentHub-like): viewBox camera */
+const BASE={x:-60,y:-5,w:1110,h:735},MAXZ=6;let V={...BASE};
+const aspect=()=>scroller.clientWidth/scroller.clientHeight;
+function fitBox(b){// expand box to container aspect
+  const a=aspect();let {x,y,w,h}=b;if(w/h<a){const nw=h*a;x-=(nw-w)/2;w=nw}else{const nh=w/a;y-=(nh-h)/2;h=nh}return {x,y,w,h}}
+function clampV(v){const minW=BASE.w/MAXZ,full=fitBox(BASE);let w=Math.min(Math.max(v.w,Math.min(minW,full.w)),full.w),h=w/aspect();
+  const cx=Math.min(Math.max(v.x+v.w/2,BASE.x),BASE.x+BASE.w),cy=Math.min(Math.max(v.y+v.h/2,BASE.y),BASE.y+BASE.h);return {x:cx-w/2,y:cy-h/2,w,h}}
+function apply(v){V=clampV(v);svg.setAttribute('viewBox',`${V.x} ${V.y} ${V.w} ${V.h}`);const full=fitBox(BASE);$('#z-out').disabled=V.w>=full.w-0.5;$('#z-in').disabled=V.w<=BASE.w/MAXZ+0.5;placeTip()}
+function toSvg(cx,cy){const pt=svg.createSVGPoint();pt.x=cx;pt.y=cy;return pt.matrixTransform(svg.getScreenCTM().inverse())}
+function toScreen(x,y){const pt=svg.createSVGPoint();pt.x=x;pt.y=y;return pt.matrixTransform(svg.getScreenCTM())}
+function zoomAt(f,cx,cy){const p=toSvg(cx,cy),w=V.w/f,h=V.h/f;apply({x:p.x-(p.x-V.x)/f,y:p.y-(p.y-V.y)/f,w,h})}
+let anim=null;const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+function animateTo(t,done){t=clampV(fitBox(t));cancelAnimationFrame(anim);if(reduce){apply(t);done&&done();return}const f={...V},t0=performance.now(),D=320;
+  const step=n=>{const k=Math.min(1,(n-t0)/D),e=1-Math.pow(1-k,3);apply({x:f.x+(t.x-f.x)*e,y:f.y+(t.y-f.y)*e,w:f.w+(t.w-f.w)*e,h:f.h+(t.h-f.h)*e});if(k<1)anim=requestAnimationFrame(step);else done&&done()};anim=requestAnimationFrame(step)}
+function fitTo(pts){if(!pts){animateTo(initialView());return}const xs=pts.map(p=>p[1]),ys=pts.map(p=>p[2]),pad=60;animateTo({x:Math.min(...xs)-pad,y:Math.min(...ys)-pad,w:Math.max(...xs)-Math.min(...xs)+pad*2,h:Math.max(...ys)-Math.min(...ys)+pad*2})}
+function initialView(){return scroller.clientWidth<640?{x:180,y:120,w:520,h:470}:BASE}
+const ctr=()=>{const r=scroller.getBoundingClientRect();return [r.left+r.width/2,r.top+r.height/2]};
+$('#z-in').addEventListener('click',()=>{const c=toSvg(...ctr()),w=V.w/1.6,h=V.h/1.6;animateTo({x:c.x-w/2,y:c.y-h/2,w,h})});
+$('#z-out').addEventListener('click',()=>{const c=toSvg(...ctr()),w=V.w*1.6,h=V.h*1.6;animateTo({x:c.x-w/2,y:c.y-h/2,w,h})});
+$('#z-reset').addEventListener('click',()=>{hideTip();$$('button',tabs)[0].click()});
+const hint=$('#zoom-hint');const hideHint=()=>hint.style.opacity=0;
+scroller.addEventListener('wheel',e=>{e.preventDefault();hideHint();zoomAt(Math.pow(1.0018,-e.deltaY*(e.deltaMode?33:1)),e.clientX,e.clientY)},{passive:false});
+// drag + pinch with pointer events
+const P=new Map();let moved=0,last=null,pinch0=null;
+scroller.addEventListener('pointerdown',e=>{if(e.target.closest('.zoom-ctl,#tmap-tip'))return;P.set(e.pointerId,[e.clientX,e.clientY]);moved=0;last=[e.clientX,e.clientY];
+  if(P.size===2){const [a,b]=[...P.values()];pinch0={d:Math.hypot(a[0]-b[0],a[1]-b[1]),w:V.w}}});
+scroller.addEventListener('pointermove',e=>{if(!P.has(e.pointerId))return;P.set(e.pointerId,[e.clientX,e.clientY]);
+  if(P.size===2&&pinch0){const [a,b]=[...P.values()],d=Math.hypot(a[0]-b[0],a[1]-b[1]),f=(pinch0.w/V.w)*(d/pinch0.d);zoomAt(f,(a[0]+b[0])/2,(a[1]+b[1])/2);moved=99;hideHint();return}
+  const dx=e.clientX-last[0],dy=e.clientY-last[1];moved+=Math.abs(dx)+Math.abs(dy);last=[e.clientX,e.clientY];
+  if(moved>6){if(!scroller.classList.contains('drag')){scroller.classList.add('drag');try{scroller.setPointerCapture(e.pointerId)}catch(_){}}const k=V.w/scroller.clientWidth;apply({...V,x:V.x-dx*k,y:V.y-dy*k});hideHint()}});
+const up=e=>{P.delete(e.pointerId);if(P.size<2)pinch0=null;if(P.size===1)last=[...P.values()][0];if(!P.size)scroller.classList.remove('drag')};
+scroller.addEventListener('pointerup',up);scroller.addEventListener('pointercancel',up);
+// a drag must not count as a station click
+scroller.addEventListener('click',e=>{if(moved>6){e.stopPropagation();e.preventDefault();moved=0}},true);
+addEventListener('resize',()=>apply(V));
+apply(fitBox(initialView()));
 
 /* section 4 tabs + rail */
 const tbtn=$$('[role=tab][aria-controls^=tp-]');
