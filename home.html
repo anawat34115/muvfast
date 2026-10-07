@@ -1,0 +1,889 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>MUVFAST — Thailand Monthly Property Rentals</title>
+<meta name="description" content="Find and book monthly condos and serviced apartments in Bangkok online. Search by move-in date, BTS/MRT station, area and budget.">
+<meta name="robots" content="noindex">
+<link rel="icon" href="logo.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700;800&family=Noto+Sans+Thai:wght@400;500;600;700&display=swap">
+<link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/regular/style.css">
+<link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/fill/style.css">
+<link rel="preload" as="image" href="https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?q=75&w=2000&auto=format&fit=crop" fetchpriority="high">
+<style>
+:root{--brand:#FC4A1A;--brand-dark:#C93A12;--brand-soft:#FFF1EC;--ink:#1B1D21;--muted:#5E636B;--line:#E6E4E1;--surface-alt:#F6F5F3;--page:#FFFFFF;--night:#141820;--footer:#212024;
+--font:'Figtree','Noto Sans Thai',system-ui,sans-serif;--r-btn:8px;--r-img:12px;--ease:cubic-bezier(.16,1,.3,1);--shadow:0 8px 24px rgba(20,23,28,.10)}
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
+body{margin:0;background:var(--page);color:var(--ink);font-family:var(--font);font-size:16px;line-height:1.55;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+img{display:block;max-width:100%;height:auto}
+a{color:inherit;text-decoration:none}
+button,input,select{font:inherit;color:inherit}
+button{cursor:pointer}
+h1,h2,h3{margin:0;text-wrap:balance;letter-spacing:-.02em}
+p{margin:0;text-wrap:pretty}
+.container{width:100%;max-width:1264px;margin-inline:auto;padding-inline:16px}
+@media(min-width:768px){.container{padding-inline:32px}}
+.skip{position:absolute;left:16px;top:-64px;background:var(--ink);color:#fff;padding:8px 16px;border-radius:8px;z-index:100}
+.skip:focus{top:16px}
+:focus-visible{outline:2px solid var(--brand);outline-offset:2px}
+.sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.section{padding-block:56px}
+@media(min-width:1024px){.section{padding-block:80px}}
+.alt{background:var(--surface-alt)}
+.muted{color:var(--muted)}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;height:48px;padding:0 24px;border-radius:var(--r-btn);font-weight:600;font-size:15px;border:1px solid transparent;transition:background .2s,color .2s,border-color .2s}
+.btn-primary{background:var(--brand);color:#fff}
+.btn-primary:hover{background:var(--brand-dark)}
+.btn-ink{background:var(--ink);color:#fff}
+.btn-ink:hover{background:#000}
+.btn-ghost{background:none;border-color:transparent;color:var(--ink);text-decoration:underline;text-underline-offset:3px;padding:0 12px}
+.sec-head{display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:12px 24px;margin-bottom:32px}
+.sec-head h2{font-size:clamp(26px,3.2vw,36px);line-height:1.15;font-weight:700}
+.sec-head p{margin-top:6px;color:var(--muted)}
+.sec-head.center{flex-direction:column;align-items:center;text-align:center}
+.link-arrow{display:inline-flex;align-items:center;gap:6px;font-weight:600;min-height:44px;font-size:15px}
+.link-arrow:hover{color:var(--brand-dark)}
+.demo-note{font-size:12px;color:var(--muted);margin-top:4px}
+.eyebrow-pill{display:inline-block;border:1px solid var(--brand);color:var(--brand-dark);border-radius:999px;padding:2px 12px;font-size:13px;font-weight:600;margin-bottom:8px}
+
+/* header */
+.site-header{position:sticky;top:0;z-index:60;background:#fff;border-bottom:1px solid var(--line)}
+.header-grid{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;height:64px}
+@media(min-width:1024px){.header-grid{height:72px}}
+.nav-left{display:none;gap:8px}
+.nav-left a{display:inline-flex;align-items:center;height:40px;padding:0 16px;border:1px solid var(--line);border-radius:999px;font-weight:500;font-size:14px;transition:border-color .2s}
+.nav-left a:hover{border-color:var(--ink)}
+.logo{grid-column:2;display:block}
+.logo img{height:24px;width:auto}
+@media(min-width:1024px){.logo img{height:28px}}
+.nav-right{grid-column:3;display:flex;justify-content:flex-end;align-items:center;gap:12px}
+.lang{display:none;border:1px solid var(--line);border-radius:999px;padding:3px}
+.lang button{border:0;background:none;padding:4px 12px;border-radius:999px;font-size:13px;font-weight:600;color:var(--muted);min-height:32px}
+.lang button[aria-pressed=true]{background:var(--ink);color:#fff}
+.icon-btn{width:44px;height:44px;margin-left:-10px;display:inline-grid;place-items:center;border:0;background:none;border-radius:8px;font-size:24px}
+.btn-signin{height:40px;padding:0 18px;font-size:14px;border-color:var(--ink);border-radius:999px}
+.btn-signin:hover{background:var(--ink);color:#fff}
+@media(min-width:1024px){.nav-left{display:flex}.menu-btn{display:none}.lang{display:inline-flex}}
+.drawer{border-top:1px solid var(--line);background:#fff}
+.drawer nav{display:grid;padding-block:8px 24px}
+.drawer a{display:flex;align-items:center;min-height:48px;font-weight:500;border-bottom:1px solid var(--line)}
+.drawer .lang{display:inline-flex;margin-top:16px;justify-self:start}
+@media(min-width:1024px){.drawer{display:none!important}}
+
+/* hero + search (section 1) */
+.hero{position:relative;z-index:5;isolation:isolate;padding-top:88px;color:#fff}
+.hero-bg{position:absolute;inset:0 0 64px;z-index:-1;overflow:hidden;background:#3a3633}
+.hero-bg img{width:100%;height:100%;object-fit:cover}
+.hero-bg::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(20,18,16,.35),rgba(20,18,16,.55))}
+.hero-inner{text-align:center;display:grid;justify-items:center;gap:14px;padding-bottom:36px}
+.hero h1{font-size:clamp(34px,5.6vw,60px);line-height:1.08;font-weight:700;max-width:18ch}
+.pillars{display:flex;gap:20px;justify-content:center;font-size:17px;font-weight:600}
+.pillars span{text-decoration:underline;text-decoration-color:var(--brand);text-decoration-thickness:2px;text-underline-offset:6px}
+@media(min-width:1024px){.hero{padding-top:150px}.hero-inner{padding-bottom:64px}}
+.search{position:relative;background:#fff;color:var(--ink);border-radius:16px;box-shadow:0 12px 32px rgba(20,23,28,.16);padding:8px;display:grid;max-width:1040px;margin-inline:auto}
+.sfield{position:relative;text-align:left;border:0;background:none;padding:12px 16px;border-bottom:1px solid var(--line);display:block;width:100%;border-radius:12px}
+.sfield:hover{background:var(--surface-alt)}
+.sfield .lbl{display:block;font-size:12px;font-weight:600;letter-spacing:.03em;color:var(--muted);margin-bottom:2px}
+.sfield .val{display:flex;align-items:center;gap:8px;font-size:15px;font-weight:600;min-height:24px}
+.sfield .val i{font-size:20px;color:var(--muted)}
+.sfield .val .ph-caret-down{margin-left:auto;font-size:16px}
+.sfield .ph-placeholder{color:var(--muted);font-weight:400}
+.sfield[aria-expanded=true]{background:var(--surface-alt)}
+.btn-search{margin:8px;height:52px;border-radius:12px}
+.btn-search i{font-size:22px}
+@media(min-width:1024px){
+  .search{grid-template-columns:1.25fr 1.25fr 1fr auto;align-items:center;border-radius:999px;padding:6px 6px 6px 8px}
+  .sfield{border-bottom:0;border-radius:999px;padding:8px 24px}
+  .sfield+.sfield::before{content:"";position:absolute;left:0;top:14px;bottom:14px;border-left:1px solid var(--line)}
+  .btn-search{margin:0;width:56px;height:56px;padding:0;border-radius:999px}
+  .btn-search span{display:none}
+}
+.search-msg{grid-column:1/-1;font-size:14px;padding:0 16px}
+.search-msg:not(:empty){padding-bottom:8px}
+
+/* popovers */
+.pop{position:absolute;z-index:40;top:calc(100% + 10px);left:0;right:0;background:#fff;color:var(--ink);border:1px solid var(--line);border-radius:16px;box-shadow:0 16px 40px rgba(20,23,28,.18);padding:20px;text-align:left}
+.pop[hidden]{display:none}
+@media(min-width:1024px){.pop{right:auto}.pop-date{width:720px}.pop-loc{left:28%;width:560px}.pop-budget{left:auto;right:64px;width:420px}}
+.pop h3{font-size:16px;font-weight:700;letter-spacing:0}
+.pop .sub{font-size:13px;color:var(--muted)}
+.pop-head{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:12px;margin-bottom:16px}
+.seg{display:inline-flex;background:var(--surface-alt);border-radius:999px;padding:4px}
+.seg button{border:0;background:none;border-radius:999px;padding:6px 14px;font-size:13px;font-weight:600;color:var(--muted)}
+.seg button[aria-selected=true]{background:#fff;color:var(--ink);box-shadow:0 1px 3px rgba(0,0,0,.12)}
+.cal-nav{display:flex;align-items:center;justify-content:space-between;margin-bottom:8px}
+.cal-nav button{width:36px;height:36px;border:1px solid var(--line);background:#fff;border-radius:999px;display:grid;place-items:center}
+.cal-nav button:disabled{opacity:.35;cursor:default}
+.months2{display:grid;gap:24px}
+@media(min-width:768px){.months2{grid-template-columns:1fr 1fr}}
+.month h4{margin:0 0 8px;text-align:center;font-size:14px;font-weight:700}
+.grid7{display:grid;grid-template-columns:repeat(7,1fr);gap:2px 0;text-align:center}
+.grid7 .dow{font-size:11px;font-weight:600;color:var(--muted);padding:4px 0}
+.day{height:36px;border:0;background:none;font-size:13px;font-weight:500;border-radius:999px;position:relative}
+.day:hover:not(:disabled){background:var(--surface-alt)}
+.day:disabled{color:#C4C6CA;cursor:default}
+.day.today{box-shadow:inset 0 0 0 1px var(--ink)}
+.day.in{background:var(--brand-soft);border-radius:0}
+.day.start,.day.end{background:var(--brand);color:#fff}
+.day.start{border-radius:999px 0 0 999px}.day.end{border-radius:0 999px 999px 0}
+.day.start.end{border-radius:999px}
+.flex-chips{display:flex;flex-wrap:wrap;gap:8px}
+.chipbtn{border:1px solid var(--line);background:#fff;border-radius:999px;padding:6px 12px;font-size:13px;font-weight:600;min-height:34px}
+.chipbtn:hover{border-color:var(--ink)}
+.chipbtn[aria-pressed=true]{border-color:var(--ink);background:var(--ink);color:#fff}
+.pop-foot{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:12px;margin-top:16px;padding-top:16px;border-top:1px solid var(--line)}
+.pop-foot .acts{display:flex;align-items:center;gap:8px;margin-left:auto}
+.mgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;max-height:236px;overflow:auto;padding:2px}
+@media(min-width:768px){.mgrid{grid-template-columns:repeat(6,1fr)}}
+.mcell{border:1px solid var(--line);background:#fff;border-radius:10px;padding:10px 4px;font-size:12px;font-weight:700;line-height:1.25;text-align:center}
+.mcell small{display:block;font-weight:500;color:var(--muted)}
+.mcell:hover{border-color:var(--ink)}
+.mcell.in{background:var(--brand-soft);border-color:var(--brand-soft)}
+.mcell.sel{background:var(--brand);border-color:var(--brand);color:#fff}
+.mcell.sel small{color:#fff}
+.loc-group+.loc-group{margin-top:14px}
+.loc-group h4{margin:0 0 8px;font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+.loc-input{display:flex;align-items:center;gap:8px;border:1px solid var(--line);border-radius:10px;padding:0 12px;height:44px;margin-bottom:16px}
+.loc-input input{border:0;outline:0;width:100%;font-size:15px}
+.mm{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:16px}
+.mm label{font-size:13px;font-weight:600}
+.mm input{display:block;width:100%;margin-top:4px;height:44px;border:1px solid var(--line);border-radius:10px;padding:0 12px;font-size:15px}
+.mm input:focus{outline:2px solid var(--brand);outline-offset:0;border-color:transparent}
+
+/* section 2: transit map */
+.tmap-wrap{border:1px solid var(--line);border-radius:16px;background:#fff;overflow:hidden}
+.line-tabs{display:flex;gap:8px;overflow-x:auto;padding:12px;border-bottom:1px solid var(--line);scrollbar-width:none}
+.line-tabs::-webkit-scrollbar{display:none}
+.line-tabs button{flex:none;display:inline-flex;align-items:center;gap:8px;border:1px solid var(--line);background:#fff;border-radius:999px;padding:6px 14px 6px 8px;font-size:13px;font-weight:600;min-height:38px;white-space:nowrap}
+.line-tabs button .dot{width:22px;height:22px;border-radius:999px;display:grid;place-items:center;color:#fff;font-size:8px;font-weight:800;letter-spacing:.02em}
+.line-tabs button[aria-pressed=true]{border-color:var(--ink);box-shadow:inset 0 0 0 1px var(--ink)}
+.line-tabs button.all .dot{background:var(--ink)}
+.tmap-scroll{position:relative;overflow:auto;background:#FAFAF9;-webkit-overflow-scrolling:touch}
+.tmap{display:block;width:100%;min-width:820px;height:auto}
+.tmap .ln{fill:none;stroke-width:7;stroke-linecap:round;stroke-linejoin:round;transition:opacity .25s}
+.tmap .st{cursor:pointer}
+.tmap .st circle{fill:#fff;stroke-width:3;transition:r .15s}
+.tmap .st circle.hit,.tmap .st:hover circle.hit,.tmap .st.on circle.hit{fill:transparent;r:12}
+.tmap .st:hover circle,.tmap .st:focus circle,.tmap .st.on circle{r:7.5}
+.tmap .st text{font-size:10.5px;font-weight:600;fill:#3b3f46;paint-order:stroke;stroke:#FAFAF9;stroke-width:3px;stroke-linejoin:round}
+.tmap .st.x circle:not(.hit){stroke:var(--ink)!important;stroke-width:3;r:7}
+.tmap .st:focus{outline:none}
+.tmap .st:focus-visible circle{stroke:var(--brand)!important}
+.tmap .dim{opacity:.12}
+.tmap .river{fill:none;stroke:#DCEAF5;stroke-width:22;stroke-linecap:round}
+.tmap-tip{position:absolute;z-index:5;min-width:230px;background:#fff;border:1px solid var(--line);border-radius:12px;box-shadow:var(--shadow);padding:12px 14px}
+.tmap-tip[hidden]{display:none}
+.tmap-tip h4{margin:0 0 6px;font-size:15px;display:flex;align-items:center;gap:8px}
+.tmap-tip h4 .dot{width:10px;height:10px;border-radius:999px}
+.tmap-tip a{display:block;padding:7px 0;border-top:1px solid var(--line);font-size:14px;color:#1d4fa3}
+.tmap-tip a:first-of-type{font-weight:700;color:var(--brand-dark)}
+.tmap-tip a:hover{text-decoration:underline}
+.tmap-tip .x{position:absolute;top:6px;right:6px;border:0;background:none;width:28px;height:28px;border-radius:999px;font-size:16px}
+.tmap-foot{display:flex;flex-wrap:wrap;gap:8px 16px;align-items:center;justify-content:space-between;padding:12px 16px;border-top:1px solid var(--line);font-size:13px;color:var(--muted)}
+.tmap-foot select{height:40px;border:1px solid var(--line);border-radius:10px;padding:0 10px;font-size:14px;max-width:100%}
+@media(min-width:1024px){.tmap-foot .m-only{display:none}}
+
+/* section 3: benefits */
+.benefits{display:grid;gap:12px;grid-template-columns:repeat(2,1fr)}
+@media(max-width:639px){.benefit{padding:16px 12px}.benefit h3{font-size:15px}.benefit p{font-size:12.5px}.benefit img{height:88px;margin-top:12px}}
+@media(min-width:640px){.benefits{gap:16px}}
+@media(min-width:1024px){.benefits{grid-template-columns:repeat(4,1fr)}}
+.benefit{display:flex;flex-direction:column;align-items:center;text-align:center;background:#fff;border:1px solid var(--line);border-radius:16px;padding:24px 20px}
+.benefit h3{font-size:17px;font-weight:700;letter-spacing:-.01em;margin-bottom:6px}
+.benefit p{color:var(--muted);font-size:14px;line-height:1.5}
+.benefit img{width:auto;height:132px;margin-top:20px;max-width:100%}
+
+/* section 4: listings (card = Unit details page) */
+.tabs{display:flex;gap:8px;flex-wrap:wrap}
+.tabs button{border:0;background:var(--surface-alt);border-radius:999px;padding:0 20px;height:42px;font-weight:600;font-size:14px;color:var(--muted)}
+.tabs button[aria-selected=true]{background:var(--brand);color:#fff}
+.rail{position:relative}
+.track{display:grid;grid-auto-flow:column;grid-auto-columns:minmax(272px,1fr);gap:20px;overflow-x:auto;scroll-snap-type:x mandatory;padding-bottom:8px;scrollbar-width:none}
+.track::-webkit-scrollbar{display:none}
+.track>*{scroll-snap-align:start}
+@media(min-width:1024px){.track{grid-auto-columns:calc((100% - 60px)/4)}}
+.rail-nav{display:flex;gap:8px}
+.rail-nav button{width:44px;height:44px;border-radius:999px;border:1px solid var(--line);background:#fff;display:grid;place-items:center;font-size:18px}
+.rail-nav button:hover{border-color:var(--ink)}
+.ucard{position:relative;display:flex;flex-direction:column;background:#fff;border:1px solid #E3E5E8;border-radius:16px;overflow:hidden;transition:box-shadow .25s}
+.ucard:hover{box-shadow:var(--shadow)}
+.ucard-media{display:block;aspect-ratio:4/3;overflow:hidden;background:var(--surface-alt)}
+.ucard-media img{width:100%;height:100%;object-fit:cover;transition:transform .6s var(--ease)}
+.ucard:hover .ucard-media img{transform:scale(1.04)}
+.avail{position:absolute;top:12px;left:12px;display:inline-flex;align-items:center;gap:6px;background:rgba(255,255,255,.94);border-radius:6px;padding:3px 8px;font-size:11px;font-weight:700;max-width:calc(100% - 64px);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.avail i{width:6px;height:6px;border-radius:50%;background:#12B76A;flex:none}
+.fav{position:absolute;top:10px;right:10px;z-index:2;width:34px;height:34px;border-radius:999px;border:0;background:rgba(255,255,255,.95);display:grid;place-items:center;font-size:18px;box-shadow:0 1px 3px rgba(0,0,0,.12)}
+.fav[aria-pressed=true]{color:var(--brand)}
+.count{position:absolute;right:10px;top:calc((100vw - 32px) * .75 - 34px);background:rgba(0,0,0,.6);color:#fff;font-size:11px;font-weight:600;padding:2px 8px;border-radius:4px}
+.open247{position:absolute;left:10px;display:inline-flex;align-items:center;gap:4px;background:#fff;color:var(--ink);border-radius:999px;padding:3px 10px 3px 4px;font-size:11px;font-weight:700;box-shadow:0 1px 4px rgba(0,0,0,.18)}
+.open247 svg{width:22px;height:22px;color:var(--brand)}
+.open247 b{color:var(--brand);font-weight:800;font-size:12px}
+.open247 span{font-weight:600;color:var(--ink)}
+.ucard-body{padding:14px 16px 16px;display:flex;flex-direction:column;gap:4px}
+.ucard-top{display:flex;align-items:center;justify-content:space-between;padding-bottom:10px;margin-bottom:6px;border-bottom:1px solid #F0F1F3}
+.lease{display:flex;flex-direction:column;font-size:11px;color:var(--muted);line-height:1.35}
+.lease b{color:var(--ink)}
+.price strong{font-size:18px;font-weight:800}
+.price span{font-size:11px;color:#9AA0A6;margin-left:2px}
+.specs{font-size:13px;color:#4B5058;font-weight:500}
+.specs span+span::before{content:"•";margin:0 6px;color:#C9CCD1}
+.uname{font-size:16px;font-weight:800;letter-spacing:-.01em;line-height:1.35;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.uname a::after{content:"";position:absolute;inset:0;z-index:1}
+.ucard .fav,.ucard .open247{z-index:2}
+.dist{font-size:12px;color:var(--muted)}
+.transit{display:flex;align-items:center;gap:5px;font-size:12px;font-weight:600;color:#0F7A4F}
+.transit.mrt{color:#1E4F9C}
+.transit i{font-size:15px}
+
+/* section 5 */
+.lines5{display:grid;grid-auto-flow:column;grid-auto-columns:minmax(220px,1fr);gap:16px;overflow-x:auto;scrollbar-width:none;padding-bottom:4px}
+.lines5::-webkit-scrollbar{display:none}
+@media(min-width:1024px){.lines5{grid-auto-flow:row;grid-template-columns:repeat(5,1fr)}}
+.line-card{display:block;border:1px solid var(--line);border-radius:14px;overflow:hidden;background:#fff;transition:box-shadow .25s,transform .25s var(--ease)}
+.line-card:hover{box-shadow:var(--shadow);transform:translateY(-2px)}
+.lc-img{position:relative;display:block;aspect-ratio:4/3;overflow:hidden}
+.lc-img img{width:100%;height:100%;object-fit:cover}
+.tag{position:absolute;left:10px;bottom:10px;background:var(--brand-dark);color:#fff;font-size:10px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;padding:3px 8px;border-radius:4px}
+.lc-body{display:grid;gap:2px;padding:12px 14px 14px}
+.lc-body b{font-size:14px;line-height:1.35}
+.lc-body span{font-size:12px;color:var(--muted)}
+
+/* section 6: lifestyle (dark masonry) */
+.life{background:var(--night);color:#fff}
+.life .sec-head h2 em{font-style:normal;color:var(--brand)}
+.life .sec-head p{color:#A7ADB8}
+.lgrid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
+.lcol{display:grid;gap:12px;align-content:start}
+@media(min-width:768px){.lgrid{grid-template-columns:repeat(3,1fr)}}
+@media(min-width:1024px){.lgrid{grid-template-columns:repeat(5,1fr);gap:16px}.lcol{gap:16px}.lcol:nth-child(odd){margin-top:40px}}
+.ltile{position:relative;display:block;border-radius:12px;overflow:hidden;background:#222}
+.ltile.t{aspect-ratio:4/3.6}.ltile.s{aspect-ratio:4/2.7}
+.ltile img{width:100%;height:100%;object-fit:cover;transition:transform .6s var(--ease)}
+.ltile:hover img{transform:scale(1.05)}
+.ltile span{position:absolute;inset:auto 0 0;padding:28px 12px 10px;background:linear-gradient(180deg,transparent,rgba(0,0,0,.75));display:grid}
+.ltile b{font-size:14px;line-height:1.3}
+.ltile small{font-size:11px;color:#D5D8DE}
+@media(max-width:767px){.lcol{display:contents}.ltile.t,.ltile.s{aspect-ratio:4/3}}
+
+/* section 7: locations */
+.locs{display:grid;grid-auto-flow:column;grid-auto-columns:78%;gap:12px;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none}
+.locs::-webkit-scrollbar{display:none}
+.loc{position:relative;display:block;border-radius:12px;overflow:hidden;aspect-ratio:4/3;scroll-snap-align:start;background:#333}
+.loc img{width:100%;height:100%;object-fit:cover;transition:transform .6s var(--ease)}
+.loc:hover img{transform:scale(1.05)}
+.loc span{position:absolute;inset:auto 0 0;display:grid;justify-items:center;text-align:center;padding:40px 12px 12px;color:#fff;background:linear-gradient(180deg,transparent,rgba(0,0,0,.72))}
+.loc b{font-size:20px;line-height:1.2}
+.loc small{font-size:12px;opacity:.9}
+@media(min-width:1024px){.locs{grid-auto-flow:row;grid-template-columns:repeat(4,1fr);grid-auto-rows:240px;overflow:visible}.loc{aspect-ratio:auto}.loc.wide{grid-column:span 2}}
+
+/* section 8: projects */
+.projs{display:grid;grid-auto-flow:column;grid-auto-columns:minmax(260px,1fr);gap:20px;overflow-x:auto;scrollbar-width:none;padding-bottom:8px}
+.projs::-webkit-scrollbar{display:none}
+@media(min-width:1024px){.projs{grid-auto-flow:row;grid-template-columns:repeat(4,1fr)}}
+.proj{display:flex;flex-direction:column;background:#fff;border-radius:16px;overflow:hidden;border:1px solid var(--line);transition:box-shadow .25s}
+.proj:hover{box-shadow:var(--shadow)}
+.proj-img{position:relative;display:block;aspect-ratio:4/3;overflow:hidden}
+.proj-img img{width:100%;height:100%;object-fit:cover}
+.pill{position:absolute;top:10px;left:10px;background:#fff;border-radius:999px;padding:2px 10px;font-size:11px;font-weight:600}
+.proj-body{display:flex;flex-direction:column;gap:2px;padding:14px 16px 16px;flex:1}
+.proj-body b{font-size:15px;line-height:1.35;margin-bottom:4px}
+.proj-body small{font-size:12px;color:var(--muted)}
+.proj-foot{display:flex;align-items:flex-end;justify-content:space-between;margin-top:auto;padding-top:12px}
+.proj-foot span{display:grid}
+.proj-foot em{font-style:normal;font-weight:700;color:var(--brand-dark);font-size:15px}
+.proj-foot i{font-size:20px}
+
+/* section 9: condos */
+.condos{display:grid;grid-auto-flow:column;grid-auto-columns:minmax(260px,1fr);gap:20px;overflow-x:auto;scrollbar-width:none;padding-bottom:8px}
+.condos::-webkit-scrollbar{display:none}
+@media(min-width:1024px){.condos{grid-auto-flow:row;grid-template-columns:repeat(4,1fr)}}
+.condo{background:#fff;border:1px solid var(--line);border-radius:16px;overflow:hidden}
+.condo-img{display:block;aspect-ratio:4/2.8;overflow:hidden}
+.condo-img img{width:100%;height:100%;object-fit:cover;transition:transform .6s var(--ease)}
+.condo:hover .condo-img img{transform:scale(1.04)}
+.condo-body{padding:14px 16px 8px}
+.condo-head{display:flex;gap:10px;align-items:center;padding-bottom:12px;border-bottom:1px solid var(--line)}
+.mono{flex:none;width:36px;height:36px;border-radius:8px;border:1px solid var(--line);display:grid;place-items:center;font-size:12px;font-weight:800;color:var(--muted)}
+.condo-head h3{font-size:15px;letter-spacing:-.01em}
+.condo-head p{font-size:12px;color:var(--muted)}
+.condo-row{display:flex;align-items:center;justify-content:space-between;padding:12px 0;min-height:56px}
+.condo-row span{display:grid}
+.condo-row b{font-size:14px;color:var(--ink)}
+.condo-row small{font-size:12px;color:var(--muted)}
+.condo-row:hover b{color:var(--brand-dark)}
+
+/* section 10: blog */
+.posts{display:grid;gap:12px}
+@media(min-width:768px){.posts{grid-template-columns:repeat(4,1fr);grid-auto-rows:220px}.post.big{grid-column:span 2}}
+.post{position:relative;display:block;border-radius:12px;overflow:hidden;aspect-ratio:16/10;background:#333}
+@media(min-width:768px){.post{aspect-ratio:auto}}
+.post img{width:100%;height:100%;object-fit:cover;transition:transform .6s var(--ease)}
+.post:hover img{transform:scale(1.04)}
+.post span{position:absolute;inset:auto 0 0;padding:40px 14px 12px;color:#fff;font-weight:700;font-size:15px;line-height:1.35;background:linear-gradient(180deg,transparent,rgba(0,0,0,.78))}
+.post.big span{font-size:18px}
+
+/* section 11: FAQ (tighter line spacing) */
+.faq-sec{background:#FBF7F3}
+.faq-grid{display:grid;gap:32px}
+@media(min-width:1024px){.faq-grid{grid-template-columns:5fr 7fr;gap:56px;align-items:start}}
+.dot-eyebrow{display:flex;align-items:center;gap:8px;font-size:13px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;margin-bottom:12px}
+.dot-eyebrow::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--ink)}
+.faq-intro h2{font-size:clamp(34px,5vw,56px);line-height:1.05;font-weight:700}
+.faq-intro p{margin-top:16px;color:var(--muted);font-size:15px;line-height:1.5;max-width:34ch}
+.faq{background:#fff;border-radius:20px;border:1px solid var(--line);box-shadow:0 8px 24px rgba(20,23,28,.06);padding:8px 24px}
+.faq details+details{border-top:1px solid var(--line)}
+.faq summary{list-style:none;display:flex;justify-content:space-between;align-items:center;gap:16px;min-height:52px;padding-block:12px;cursor:pointer;font-weight:700;font-size:15px;line-height:1.35}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary i{font-size:18px;flex:none;color:var(--muted);transition:transform .3s var(--ease)}
+.faq details[open] summary i{transform:rotate(45deg)}
+.faq .answer{padding-bottom:14px;margin-top:-2px;color:var(--muted);font-size:14px;line-height:1.5}
+.faq .answer strong{color:var(--ink)}
+.faq .answer.pending{font-style:italic}
+
+/* footer (content = muvfast.com, tighter rows) */
+.site-footer{background:var(--footer);color:#C9C9CE;font-size:13px;line-height:1.4}
+.site-footer a:hover{color:#fff}
+.f-top{display:grid;gap:28px 24px;padding-block:48px 36px;grid-template-columns:repeat(2,1fr)}
+@media(min-width:1024px){.f-top{grid-template-columns:repeat(4,1fr);padding-block:56px 40px}}
+.site-footer h2{font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--brand);margin:0 0 10px}
+.site-footer ul{list-style:none;margin:0;padding:0;display:grid;gap:6px}
+.more{display:inline-block;margin-top:6px;font-size:11px;font-weight:700;color:var(--brand)}
+.f-mid{display:grid;gap:28px 24px;padding-block:32px;border-top:1px solid #3A393E;grid-template-columns:repeat(2,1fr)}
+@media(min-width:1024px){.f-mid{grid-template-columns:1.5fr 1fr 1fr 1fr}}
+.f-brand{grid-column:1/-1}
+@media(min-width:1024px){.f-brand{grid-column:auto}}
+.f-brand img{height:22px;width:auto;margin-bottom:12px}
+.f-brand p{line-height:1.5}
+.socials{display:flex;gap:8px;margin-top:14px}
+.socials a{width:34px;height:34px;border-radius:999px;background:#323136;display:grid;place-items:center;font-size:16px;color:#fff}
+.socials a:hover{background:var(--brand)}
+.guide{display:inline-flex;align-items:center;gap:6px;border:1px solid #6B6A70;border-radius:999px;padding:4px 12px;margin-top:4px}
+.f-bot{display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px 16px;padding-block:16px 24px;border-top:1px solid #3A393E;font-size:12px;color:#9C9BA1}
+.f-bot nav{display:flex;gap:6px}
+
+/* motion */
+.reveal{opacity:0;transform:translateY(16px);transition:opacity .7s var(--ease),transform .7s var(--ease)}
+.reveal.in{opacity:1;transform:none}
+.hero-stagger>*{opacity:0;transform:translateY(16px);animation:rise .8s var(--ease) forwards}
+.hero-stagger>*:nth-child(2){animation-delay:.12s}
+@keyframes rise{to{opacity:1;transform:none}}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important;scroll-behavior:auto!important}.reveal,.hero-stagger>*{opacity:1;transform:none}}
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-header">
+  <div class="container header-grid">
+    <div>
+      <button class="icon-btn menu-btn" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="drawer"><i class="ph ph-list"></i></button>
+      <nav class="nav-left" aria-label="Primary"><a href="#">Landlord</a><a href="#">Agent</a></nav>
+    </div>
+    <a class="logo" href="#" aria-label="MUVFAST home"><img src="logo.svg" alt="MUVFAST" width="124" height="28"></a>
+    <div class="nav-right">
+      <div class="lang" role="group" aria-label="Language"><button type="button" aria-pressed="true">EN</button><button type="button" aria-pressed="false">TH</button></div>
+      <a class="btn btn-signin" href="#">Sign in</a>
+    </div>
+  </div>
+  <div class="drawer" id="drawer" hidden>
+    <nav class="container" aria-label="Mobile">
+      <a href="#">Landlord</a><a href="#">Agent</a>
+      <div class="lang" role="group" aria-label="Language"><button type="button" aria-pressed="true">EN</button><button type="button" aria-pressed="false">TH</button></div>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+<!-- ส่วนที่ 1 -->
+<section class="hero" aria-labelledby="hero-title">
+  <div class="hero-bg"><img src="https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?q=75&w=2000&auto=format&fit=crop" alt="" width="2000" height="1333" fetchpriority="high"></div>
+  <div class="container hero-inner hero-stagger">
+    <h1 id="hero-title">Thailand Monthly Property Rentals</h1>
+    <p class="pillars"><span>Easy</span><span>Secure</span><span>Expert</span></p>
+  </div>
+  <div class="container">
+    <form class="search" role="search" novalidate>
+      <button type="button" class="sfield" data-pop="date" aria-haspopup="dialog" aria-expanded="false"><span class="lbl">Move-in – Move-out</span><span class="val"><i class="ph ph-calendar-blank"></i><span id="v-date" class="ph-placeholder">Select dates</span></span></button>
+      <button type="button" class="sfield" data-pop="loc" aria-haspopup="dialog" aria-expanded="false"><span class="lbl">Location</span><span class="val"><i class="ph ph-map-pin"></i><span id="v-loc" class="ph-placeholder">Bangkok, BTS, area</span></span></button>
+      <button type="button" class="sfield" data-pop="budget" aria-haspopup="dialog" aria-expanded="false"><span class="lbl">Budget / month (THB)</span><span class="val"><i class="ph ph-wallet"></i><span id="v-budget" class="ph-placeholder">Any range</span><i class="ph ph-caret-down"></i></span></button>
+      <button class="btn btn-primary btn-search" type="submit" aria-label="Search"><i class="ph ph-magnifying-glass"></i><span>Search</span></button>
+      <p class="search-msg" role="status" aria-live="polite"></p>
+
+      <!-- calendar -->
+      <div class="pop pop-date" id="pop-date" role="dialog" aria-label="Select your dates" hidden>
+        <div class="pop-head">
+          <div><h3>Select your dates</h3><p class="sub">Minimum stay: 30 days</p></div>
+          <div class="seg" role="tablist"><button type="button" role="tab" aria-selected="true" data-mode="dates">Pick specific dates</button><button type="button" role="tab" aria-selected="false" data-mode="months">Search by months</button></div>
+        </div>
+        <div id="mode-dates">
+          <div class="cal-nav"><button type="button" id="cal-prev" aria-label="Previous month"><i class="ph ph-caret-left"></i></button><span class="sub" id="cal-hint">Choose your move-in date</span><button type="button" id="cal-next" aria-label="Next month"><i class="ph ph-caret-right"></i></button></div>
+          <div class="months2" id="cal"></div>
+          <div class="flex-chips" style="margin-top:14px" id="flex">
+            <button type="button" class="chipbtn" aria-pressed="true" data-flex="0">Exact dates</button><button type="button" class="chipbtn" aria-pressed="false" data-flex="1">± 1 week</button><button type="button" class="chipbtn" aria-pressed="false" data-flex="2">± 2 weeks</button><button type="button" class="chipbtn" aria-pressed="false" data-flex="3">± 3 weeks</button>
+          </div>
+        </div>
+        <div id="mode-months" hidden>
+          <p class="sub" style="margin-bottom:10px" id="m-hint">Choose your move-in month, then your move-out month</p>
+          <div class="mgrid" id="mgrid"></div>
+        </div>
+        <div class="pop-foot"><span class="sub" id="date-sum"></span><div class="acts"><button type="button" class="btn btn-ghost" id="date-clear">Clear dates</button><button type="button" class="btn btn-ink" id="date-view">View results</button></div></div>
+      </div>
+
+      <!-- location -->
+      <div class="pop pop-loc" id="pop-loc" role="dialog" aria-label="Location" hidden>
+        <label class="loc-input"><i class="ph ph-magnifying-glass"></i><input id="loc-q" placeholder="Search area, BTS/MRT or project" autocomplete="off"></label>
+        <h3 style="margin-bottom:10px">CBD areas</h3>
+        <div class="loc-group"><h4>Sukhumvit & Central</h4><div class="flex-chips"><button type="button" class="chipbtn">Asoke</button><button type="button" class="chipbtn">Ploenchit-Wireless</button><button type="button" class="chipbtn">Chidlom</button><button type="button" class="chipbtn">Siam</button><button type="button" class="chipbtn">Nana</button><button type="button" class="chipbtn">Phrom Phong</button><button type="button" class="chipbtn">Thong Lo</button><button type="button" class="chipbtn">Ekkamai</button></div></div>
+        <div class="loc-group"><h4>Rama 9 & Ratchada</h4><div class="flex-chips"><button type="button" class="chipbtn">Rama9</button><button type="button" class="chipbtn">Phetchaburi</button><button type="button" class="chipbtn">Ratchada</button></div></div>
+        <div class="loc-group"><h4>Sukhumvit East</h4><div class="flex-chips"><button type="button" class="chipbtn">Phra Khanong</button><button type="button" class="chipbtn">On Nut</button><button type="button" class="chipbtn">Punnawithi</button><button type="button" class="chipbtn">Udom Suk</button><button type="button" class="chipbtn">Bang Na</button></div></div>
+        <div class="pop-foot"><span class="sub" id="loc-sum"></span><div class="acts"><button type="button" class="btn btn-ghost" id="loc-clear">Clear</button><button type="button" class="btn btn-ink" id="loc-done">Done</button></div></div>
+      </div>
+
+      <!-- budget -->
+      <div class="pop pop-budget" id="pop-budget" role="dialog" aria-label="Budget per month" hidden>
+        <div class="mm"><label>Min price<input id="b-min" inputmode="numeric" placeholder="Any"></label><label>Max price<input id="b-max" inputmode="numeric" placeholder="Any"></label></div>
+        <h3 style="margin-bottom:10px">Recommended ranges</h3>
+        <div class="flex-chips" id="b-ranges">
+          <button type="button" class="chipbtn" aria-pressed="false" data-min="15000" data-max="20000">฿15K – 20K</button><button type="button" class="chipbtn" aria-pressed="false" data-min="20000" data-max="50000">฿20K – 50K</button><button type="button" class="chipbtn" aria-pressed="false" data-min="50000" data-max="100000">฿50K – 100K</button><button type="button" class="chipbtn" aria-pressed="false" data-min="150000" data-max="200000">฿150K – 200K</button><button type="button" class="chipbtn" aria-pressed="false" data-min="200000" data-max="">Over ฿200K</button>
+        </div>
+        <div class="pop-foot"><span></span><div class="acts"><button type="button" class="btn btn-ghost" id="b-clear">Clear</button><button type="button" class="btn btn-ink" id="b-save">Save</button></div></div>
+      </div>
+    </form>
+  </div>
+</section>
+
+<!-- ส่วนที่ 2 -->
+<section class="section" aria-labelledby="map-title" style="padding-top:64px">
+  <div class="container">
+    <div class="sec-head reveal"><div><h2 id="map-title">Find a home by BTS / MRT station</h2><p>Pick a line, then tap a station to see rentals nearby.</p></div></div>
+    <div class="tmap-wrap reveal">
+      <div class="line-tabs" id="line-tabs" role="group" aria-label="Filter by line"></div>
+      <div class="tmap-scroll" id="tmap-scroll">
+        <svg class="tmap" id="tmap" viewBox="-60 -5 1110 735" role="img" aria-label="Simplified Bangkok BTS and MRT map"></svg>
+        <div class="tmap-tip" id="tmap-tip" hidden></div>
+      </div>
+      <div class="tmap-foot"><span>Simplified map · not to scale</span><label class="m-only">Or choose a station: <select id="st-select"><option value="">Select station</option></select></label></div>
+    </div>
+  </div>
+</section>
+
+<!-- ส่วนที่ 3 -->
+<section class="section alt" aria-labelledby="why-title">
+  <div class="container">
+    <h2 id="why-title" class="sr-only">Why MUVFAST</h2>
+    <div class="benefits">
+      <div class="benefit reveal"><h3>Book from Anywhere</h3><p>Search, choose, and book online — wherever you are, with no unnecessary visits.</p><img src="assets/illustrations/book-anywhere.svg" alt="" width="200" height="172" loading="lazy"></div>
+      <div class="benefit reveal"><h3>Secure Booking</h3><p>Verified listings. Trusted contacts. Secure payment.</p><img src="assets/illustrations/secure-booking.svg" alt="" width="200" height="175" loading="lazy"></div>
+      <div class="benefit reveal"><h3>Move-in Protection</h3><p>Support if the room is not as promised or cannot be moved into.</p><img src="assets/illustrations/move-in-protection.svg" alt="" width="200" height="160" loading="lazy"></div>
+      <div class="benefit reveal"><h3>Local Expert Support</h3><p>Local experts who understand international tenants and help with questions, paperwork.</p><img src="assets/illustrations/local-expert.svg" alt="" width="200" height="160" loading="lazy"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ส่วนที่ 4 -->
+<section class="section" aria-labelledby="st-title">
+  <div class="container">
+    <div class="sec-head reveal"><div><h2 id="st-title">Short-Term Monthly Rentals</h2><p class="demo-note">Sample listings for layout (demo content).</p></div><a class="link-arrow" href="#">See all listings <i class="ph ph-arrow-right"></i></a></div>
+    <div class="sec-head" style="margin-bottom:20px;align-items:center">
+      <div class="tabs" role="tablist" aria-label="Minimum lease"><button type="button" role="tab" id="tab-1" aria-controls="tp-1" aria-selected="true">Monthly</button><button type="button" role="tab" id="tab-6" aria-controls="tp-6" aria-selected="false">6 months</button><button type="button" role="tab" id="tab-3" aria-controls="tp-3" aria-selected="false">3 months</button></div>
+      <div class="rail-nav" id="rail-nav"><button type="button" data-dir="-1" aria-label="Previous"><i class="ph ph-caret-left"></i></button><button type="button" data-dir="1" aria-label="Next"><i class="ph ph-caret-right"></i></button></div>
+    </div>
+    <div class="rail" role="tabpanel" id="tp-1" aria-labelledby="tab-1"><div class="track"><article class="ucard" data-lease="1">
+  <a class="ucard-media" href="#" tabindex="-1" aria-hidden="true"><img src="https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?q=75&w=640&h=480&auto=format&fit=crop" alt="" width="640" height="480" loading="lazy" decoding="async"></a>
+  <span class="avail"><i></i>Available: Now | Updated 5 days ago</span>
+  <button class="fav" type="button" aria-label="Save Chewathai Residence Thonglor" aria-pressed="false"><i class="ph ph-heart"></i></button>
+  <span class="open247" title="Open house 24/7"><svg viewBox="0 0 40 40" aria-hidden="true"><circle cx="20" cy="20" r="16" fill="none" stroke="currentColor" stroke-width="3" stroke-dasharray="76 25" stroke-linecap="round" transform="rotate(-60 20 20)"/><path d="M20 10v10l6 4" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"/></svg><b>24/7</b><span>Open house</span></span>
+  <span class="count">1/8</span>
+  <div class="ucard-body">
+    <div class="ucard-top"><p class="lease"><b>Min. lease</b><span>1 month</span></p><p class="price"><strong>฿32,000</strong><span>/month</span></p></div>
+    <p class="specs"><span>1 br</span><span>1 ba</span><span>35 sqm</span><span>Fl. 12</span></p>
+    <h3 class="uname"><a href="#">Chewathai Residence Thonglor</a></h3>
+    <p class="dist">Watthana, Bangkok</p>
+    <p class="transit bts"><i class="ph ph-train-simple" aria-hidden="true"></i>BTS Phrom Phong 700 m</p>
+  </div>
+</article><article class="ucard" data-lease="1">
+  <a class="ucard-media" href="#" tabindex="-1" aria-hidden="true"><img src="https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?q=75&w=640&h=480&auto=format&fit=crop" alt="" width="640" height="480" loading="lazy" decoding="async"></a>
+  <span class="avail"><i></i>Available: Now | Updated 2 days ago</span>
+  <button class="fav" type="button" aria-label="Save Ideo Rama 9 – Asoke" aria-pressed="false"><i class="ph ph-heart"></i></button>
+  <span class="open247" title="Open house 24/7"><svg viewBox="0 0 40 40" aria-hidden="true"><circle cx="20" cy="20" r="16" fill="none" stroke="currentColor" stroke-width="3" stroke-dasharray="76 25" stroke-linecap="round" transform="rotate(-60 20 20)"/><path d="M20 10v10l6 4" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"/></svg><b>24/7</b><span>Open house</span></span>
+  <span class="count">1/10</span>
+  <div class="ucard-body">
+    <div class="ucard-top"><p class="lease"><b>Min. lease</b><span>1 month</span></p><p class="price"><strong>฿28,000</strong><span>/month</span></p></div>
+    <p class="specs"><span>1 br</span><span>1 ba</span><span>30 sqm</span><span>Fl. 9</span></p>
+    <h3 class="uname"><a href="#">Ideo Rama 9 – Asoke</a></h3>
+    <p class="dist">Huai Khwang, Bangkok</p>
+    <p class="transit mrt"><i class="ph ph-train-simple" aria-hidden="true"></i>MRT Phra Ram 9 300 m</p>
+  </div>
+</article><article class="ucard" data-lease="1">
+  <a class="ucard-media" href="#" tabindex="-1" aria-hidden="true"><img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?q=75&w=640&h=480&auto=format&fit=crop" alt="" width="640" height="480" loading="lazy" decoding="async"></a>
+  <span class="avail"><i></i>Available: Now | Updated 1 day ago</span>
+  <button class="fav" type="button" aria-label="Save Noble Ploenchit" aria-pressed="false"><i class="ph ph-heart"></i></button>
+  <span class="open247" title="Open house 24/7"><svg viewBox="0 0 40 40" aria-hidden="true"><circle cx="20" cy="20" r="16" fill="none" stroke="currentColor" stroke-width="3" stroke-dasharray="76 25" stroke-linecap="round" transform="rotate(-60 20 20)"/><path d="M20 10v10l6 4" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"/></svg><b>24/7</b><span>Open house</span></span>
+  <span class="count">1/15</span>
+  <div class="ucard-body">
+    <div class="ucard-top"><p class="lease"><b>Min. lease</b><span>1 month</span></p><p class="price"><strong>฿55,000</strong><span>/month</span></p></div>
+    <p class="specs"><span>2 br</span><span>2 ba</span><span>72 sqm</span><span>Fl. 21</span></p>
+    <h3 class="uname"><a href="#">Noble Ploenchit</a></h3>
+    <p class="dist">Pathum Wan, Bangkok</p>
+    <p class="transit bts"><i class="ph ph-train-simple" aria-hidden="true"></i>BTS Phloen Chit 100 m</p>
+  </div>
+</article><article class="ucard" data-lease="1">
+  <a class="ucard-media" href="#" tabindex="-1" aria-hidden="true"><img src="https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?q=75&w=640&h=480&auto=format&fit=crop" alt="" width="640" height="480" loading="lazy" decoding="async"></a>
+  <span class="avail"><i></i>Available: Now | Updated 3 days ago</span>
+  <button class="fav" type="button" aria-label="Save Life Sukhumvit 48" aria-pressed="false"><i class="ph ph-heart"></i></button>
+  <span class="open247" title="Open house 24/7"><svg viewBox="0 0 40 40" aria-hidden="true"><circle cx="20" cy="20" r="16" fill="none" stroke="currentColor" stroke-width="3" stroke-dasharray="76 25" stroke-linecap="round" transform="rotate(-60 20 20)"/><path d="M20 10v10l6 4" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"/></svg><b>24/7</b><span>Open house</span></span>
+  <span class="count">1/9</span>
+  <div class="ucard-body">
+    <div class="ucard-top"><p class="lease"><b>Min. lease</b><span>1 month</span></p><p class="price"><strong>฿24,000</strong><span>/month</span></p></div>
+    <p class="specs"><span>1 br</span><span>1 ba</span><span>28 sqm</span><span>Fl. 7</span></p>
+    <h3 class="uname"><a href="#">Life Sukhumvit 48</a></h3>
+    <p class="dist">Phra Khanong, Bangkok</p>
+    <p class="transit bts"><i class="ph ph-train-simple" aria-hidden="true"></i>BTS Phra Khanong 250 m</p>
+  </div>
+</article></div></div><div class="rail" role="tabpanel" id="tp-6" aria-labelledby="tab-6" hidden><div class="track"><article class="ucard" data-lease="6">
+  <a class="ucard-media" href="#" tabindex="-1" aria-hidden="true"><img src="https://images.unsplash.com/photo-1576013551627-0cc20b96c2a7?q=75&w=640&h=480&auto=format&fit=crop" alt="" width="640" height="480" loading="lazy" decoding="async"></a>
+  <span class="avail"><i></i>Available: Now | Updated 5 days ago</span>
+  <button class="fav" type="button" aria-label="Save Life Asoke Hype – Penthouse" aria-pressed="false"><i class="ph ph-heart"></i></button>
+  <span class="open247" title="Open house 24/7"><svg viewBox="0 0 40 40" aria-hidden="true"><circle cx="20" cy="20" r="16" fill="none" stroke="currentColor" stroke-width="3" stroke-dasharray="76 25" stroke-linecap="round" transform="rotate(-60 20 20)"/><path d="M20 10v10l6 4" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"/></svg><b>24/7</b><span>Open house</span></span>
+  <span class="count">1/12</span>
+  <div class="ucard-body">
+    <div class="ucard-top"><p class="lease"><b>Min. lease</b><span>6 months</span></p><p class="price"><strong>฿120,000</strong><span>/month</span></p></div>
+    <p class="specs"><span>3 br</span><span>3 ba</span><span>115 sqm</span><span>Fl. 38</span></p>
+    <h3 class="uname"><a href="#">Life Asoke Hype – Penthouse</a></h3>
+    <p class="dist">Ratchathewi, Bangkok</p>
+    <p class="transit mrt"><i class="ph ph-train-simple" aria-hidden="true"></i>MRT Rama 9 300 m</p>
+  </div>
+</article><article class="ucard" data-lease="6">
+  <a class="ucard-media" href="#" tabindex="-1" aria-hidden="true"><img src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?q=75&w=640&h=480&auto=format&fit=crop" alt="" width="640" height="480" loading="lazy" decoding="async"></a>
+  <span class="avail"><i></i>Available: Now | Updated 3 days ago</span>
+  <button class="fav" type="button" aria-label="Save Aspire Sathorn – Thapra" aria-pressed="false"><i class="ph ph-heart"></i></button>
+  <span class="open247" title="Open house 24/7"><svg viewBox="0 0 40 40" aria-hidden="true"><circle cx="20" cy="20" r="16" fill="none" stroke="currentColor" stroke-width="3" stroke-dasharray="76 25" stroke-linecap="round" transform="rotate(-60 20 20)"/><path d="M20 10v10l6 4" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"/></svg><b>24/7</b><span>Open house</span></span>
+  <span class="count">1/7</span>
+  <div class="ucard-body">
+    <div class="ucard-top"><p class="lease"><b>Min. lease</b><span>6 months</span></p><p class="price"><strong>฿30,000</strong><span>/month</span></p></div>
+    <p class="specs"><span>1 br</span><span>1 ba</span><span>34 sqm</span><span>Fl. 11</span></p>
+    <h3 class="uname"><a href="#">Aspire Sathorn – Thapra</a></h3>
+    <p class="dist">Thon Buri, Bangkok</p>
+    <p class="transit bts"><i class="ph ph-train-simple" aria-hidden="true"></i>BTS Talat Phlu 350 m</p>
+  </div>
+</article><article class="ucard" data-lease="6">
+  <a class="ucard-media" href="#" tabindex="-1" aria-hidden="true"><img src="https://images.unsplash.com/photo-1598928506311-c55ded91a20c?q=75&w=640&h=480&auto=format&fit=crop" alt="" width="640" height="480" loading="lazy" decoding="async"></a>
+  <span class="avail"><i></i>Available: Now | Updated 1 day ago</span>
+  <button class="fav" type="button" aria-label="Save Life One Wireless" aria-pressed="false"><i class="ph ph-heart"></i></button>
+  <span class="open247" title="Open house 24/7"><svg viewBox="0 0 40 40" aria-hidden="true"><circle cx="20" cy="20" r="16" fill="none" stroke="currentColor" stroke-width="3" stroke-dasharray="76 25" stroke-linecap="round" transform="rotate(-60 20 20)"/><path d="M20 10v10l6 4" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"/></svg><b>24/7</b><span>Open house</span></span>
+  <span class="count">1/11</span>
+  <div class="ucard-body">
+    <div class="ucard-top"><p class="lease"><b>Min. lease</b><span>6 months</span></p><p class="price"><strong>฿48,000</strong><span>/month</span></p></div>
+    <p class="specs"><span>2 br</span><span>1 ba</span><span>60 sqm</span><span>Fl. 14</span></p>
+    <h3 class="uname"><a href="#">Life One Wireless</a></h3>
+    <p class="dist">Pathum Wan, Bangkok</p>
+    <p class="transit bts"><i class="ph ph-train-simple" aria-hidden="true"></i>BTS Phloen Chit 600 m</p>
+  </div>
+</article><article class="ucard" data-lease="6">
+  <a class="ucard-media" href="#" tabindex="-1" aria-hidden="true"><img src="https://images.unsplash.com/photo-1484154218962-a197022b5858?q=75&w=640&h=480&auto=format&fit=crop" alt="" width="640" height="480" loading="lazy" decoding="async"></a>
+  <span class="avail"><i></i>Available: Now | Updated 7 days ago</span>
+  <button class="fav" type="button" aria-label="Save Rhythm Ekkamai" aria-pressed="false"><i class="ph ph-heart"></i></button>
+  <span class="open247" title="Open house 24/7"><svg viewBox="0 0 40 40" aria-hidden="true"><circle cx="20" cy="20" r="16" fill="none" stroke="currentColor" stroke-width="3" stroke-dasharray="76 25" stroke-linecap="round" transform="rotate(-60 20 20)"/><path d="M20 10v10l6 4" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"/></svg><b>24/7</b><span>Open house</span></span>
+  <span class="count">1/9</span>
+  <div class="ucard-body">
+    <div class="ucard-top"><p class="lease"><b>Min. lease</b><span>6 months</span></p><p class="price"><strong>฿26,000</strong><span>/month</span></p></div>
+    <p class="specs"><span>1 br</span><span>1 ba</span><span>32 sqm</span><span>Fl. 6</span></p>
+    <h3 class="uname"><a href="#">Rhythm Ekkamai</a></h3>
+    <p class="dist">Watthana, Bangkok</p>
+    <p class="transit bts"><i class="ph ph-train-simple" aria-hidden="true"></i>BTS Ekkamai 200 m</p>
+  </div>
+</article></div></div><div class="rail" role="tabpanel" id="tp-3" aria-labelledby="tab-3" hidden><div class="track"><article class="ucard" data-lease="3">
+  <a class="ucard-media" href="#" tabindex="-1" aria-hidden="true"><img src="https://images.unsplash.com/photo-1505691938895-1758d7feb511?q=75&w=640&h=480&auto=format&fit=crop" alt="" width="640" height="480" loading="lazy" decoding="async"></a>
+  <span class="avail"><i></i>Available: Now | Updated 5 days ago</span>
+  <button class="fav" type="button" aria-label="Save The Esse at Singha Complex" aria-pressed="false"><i class="ph ph-heart"></i></button>
+  <span class="open247" title="Open house 24/7"><svg viewBox="0 0 40 40" aria-hidden="true"><circle cx="20" cy="20" r="16" fill="none" stroke="currentColor" stroke-width="3" stroke-dasharray="76 25" stroke-linecap="round" transform="rotate(-60 20 20)"/><path d="M20 10v10l6 4" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"/></svg><b>24/7</b><span>Open house</span></span>
+  <span class="count">1/8</span>
+  <div class="ucard-body">
+    <div class="ucard-top"><p class="lease"><b>Min. lease</b><span>3 months</span></p><p class="price"><strong>฿36,000</strong><span>/month</span></p></div>
+    <p class="specs"><span>2 br</span><span>2 ba</span><span>50 sqm</span><span>Fl. 8</span></p>
+    <h3 class="uname"><a href="#">The Esse at Singha Complex</a></h3>
+    <p class="dist">Huai Khwang, Bangkok</p>
+    <p class="transit mrt"><i class="ph ph-train-simple" aria-hidden="true"></i>MRT Phetchaburi 200 m</p>
+  </div>
+</article><article class="ucard" data-lease="3">
+  <a class="ucard-media" href="#" tabindex="-1" aria-hidden="true"><img src="https://images.unsplash.com/photo-1567767292278-a4f21aa2d36e?q=75&w=640&h=480&auto=format&fit=crop" alt="" width="640" height="480" loading="lazy" decoding="async"></a>
+  <span class="avail"><i></i>Available: Now | Updated 4 days ago</span>
+  <button class="fav" type="button" aria-label="Save Ashton Asoke" aria-pressed="false"><i class="ph ph-heart"></i></button>
+  <span class="open247" title="Open house 24/7"><svg viewBox="0 0 40 40" aria-hidden="true"><circle cx="20" cy="20" r="16" fill="none" stroke="currentColor" stroke-width="3" stroke-dasharray="76 25" stroke-linecap="round" transform="rotate(-60 20 20)"/><path d="M20 10v10l6 4" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"/></svg><b>24/7</b><span>Open house</span></span>
+  <span class="count">1/12</span>
+  <div class="ucard-body">
+    <div class="ucard-top"><p class="lease"><b>Min. lease</b><span>3 months</span></p><p class="price"><strong>฿42,000</strong><span>/month</span></p></div>
+    <p class="specs"><span>1 br</span><span>1 ba</span><span>45 sqm</span><span>Fl. 16</span></p>
+    <h3 class="uname"><a href="#">Ashton Asoke</a></h3>
+    <p class="dist">Watthana, Bangkok</p>
+    <p class="transit bts"><i class="ph ph-train-simple" aria-hidden="true"></i>BTS Asok 50 m</p>
+  </div>
+</article><article class="ucard" data-lease="3">
+  <a class="ucard-media" href="#" tabindex="-1" aria-hidden="true"><img src="https://images.unsplash.com/photo-1493809842364-78817add7ffb?q=75&w=640&h=480&auto=format&fit=crop" alt="" width="640" height="480" loading="lazy" decoding="async"></a>
+  <span class="avail"><i></i>Available: Now | Updated 6 days ago</span>
+  <button class="fav" type="button" aria-label="Save Ideo O2" aria-pressed="false"><i class="ph ph-heart"></i></button>
+  <span class="open247" title="Open house 24/7"><svg viewBox="0 0 40 40" aria-hidden="true"><circle cx="20" cy="20" r="16" fill="none" stroke="currentColor" stroke-width="3" stroke-dasharray="76 25" stroke-linecap="round" transform="rotate(-60 20 20)"/><path d="M20 10v10l6 4" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"/></svg><b>24/7</b><span>Open house</span></span>
+  <span class="count">1/6</span>
+  <div class="ucard-body">
+    <div class="ucard-top"><p class="lease"><b>Min. lease</b><span>3 months</span></p><p class="price"><strong>฿19,000</strong><span>/month</span></p></div>
+    <p class="specs"><span>1 br</span><span>1 ba</span><span>26 sqm</span><span>Fl. 5</span></p>
+    <h3 class="uname"><a href="#">Ideo O2</a></h3>
+    <p class="dist">Bang Na, Bangkok</p>
+    <p class="transit bts"><i class="ph ph-train-simple" aria-hidden="true"></i>BTS Bang Na 450 m</p>
+  </div>
+</article><article class="ucard" data-lease="3">
+  <a class="ucard-media" href="#" tabindex="-1" aria-hidden="true"><img src="https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?q=75&w=640&h=480&auto=format&fit=crop" alt="" width="640" height="480" loading="lazy" decoding="async"></a>
+  <span class="avail"><i></i>Available: Now | Updated 2 days ago</span>
+  <button class="fav" type="button" aria-label="Save The Lumpini 24" aria-pressed="false"><i class="ph ph-heart"></i></button>
+  <span class="open247" title="Open house 24/7"><svg viewBox="0 0 40 40" aria-hidden="true"><circle cx="20" cy="20" r="16" fill="none" stroke="currentColor" stroke-width="3" stroke-dasharray="76 25" stroke-linecap="round" transform="rotate(-60 20 20)"/><path d="M20 10v10l6 4" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"/></svg><b>24/7</b><span>Open house</span></span>
+  <span class="count">1/14</span>
+  <div class="ucard-body">
+    <div class="ucard-top"><p class="lease"><b>Min. lease</b><span>3 months</span></p><p class="price"><strong>฿65,000</strong><span>/month</span></p></div>
+    <p class="specs"><span>2 br</span><span>2 ba</span><span>80 sqm</span><span>Fl. 25</span></p>
+    <h3 class="uname"><a href="#">The Lumpini 24</a></h3>
+    <p class="dist">Khlong Toei, Bangkok</p>
+    <p class="transit bts"><i class="ph ph-train-simple" aria-hidden="true"></i>BTS Phrom Phong 400 m</p>
+  </div>
+</article></div></div>
+  </div>
+</section>
+
+<!-- ส่วนที่ 5 -->
+<section class="section alt" aria-labelledby="near-title">
+  <div class="container">
+    <div class="sec-head reveal"><div><h2 id="near-title">Rent Condos Near BTS/MRT</h2></div><a class="link-arrow" href="#">All lines <i class="ph ph-arrow-right"></i></a></div>
+    <div class="lines5 reveal"><a class="line-card" href="#"><span class="lc-img"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/48/BTS_Sukhumvit_Line_EMU-B3_train_at_Mo_Chit_metro_station.jpg/960px-BTS_Sukhumvit_Line_EMU-B3_train_at_Mo_Chit_metro_station.jpg" alt="" loading="lazy" width="800" height="533"><span class="tag">Condo</span></span><span class="lc-body"><b>Condo Near BTS Sukhumvit Line</b><span>64,502 listings</span></span></a><a class="line-card" href="#"><span class="lc-img"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/71/BTS_Skytrain_over_Sala_Daeng_Intersection.jpg/960px-BTS_Skytrain_over_Sala_Daeng_Intersection.jpg" alt="" loading="lazy" width="800" height="533"><span class="tag">Condo</span></span><span class="lc-body"><b>Condo Near BTS Silom Line</b><span>18,340 listings</span></span></a><a class="line-card" href="#"><span class="lc-img"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/44/MRT-BLUELINE-BLE.jpg/960px-MRT-BLUELINE-BLE.jpg" alt="" loading="lazy" width="800" height="533"><span class="tag">Condo</span></span><span class="lc-body"><b>Condo Near MRT Blue Line</b><span>41,275 listings</span></span></a><a class="line-card" href="#"><span class="lc-img"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/7c/Airport_Rail_Link_train_at_Phaya_Thai_Station.jpg/960px-Airport_Rail_Link_train_at_Phaya_Thai_Station.jpg" alt="" loading="lazy" width="800" height="533"><span class="tag">Condo</span></span><span class="lc-body"><b>Condo Near Airport Rail Link</b><span>9,812 listings</span></span></a><a class="line-card" href="#"><span class="lc-img"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d2/MRT_Purple_Line_Train_T013_20160806.jpg/960px-MRT_Purple_Line_Train_T013_20160806.jpg" alt="" loading="lazy" width="800" height="533"><span class="tag">Condo</span></span><span class="lc-body"><b>Condo Near MRT Purple Line</b><span>7,436 listings</span></span></a></div>
+  </div>
+</section>
+
+<!-- ส่วนที่ 6 -->
+<section class="section life" aria-labelledby="life-title">
+  <div class="container">
+    <div class="sec-head reveal"><div><h2 id="life-title">Discover Your <em>LIFESTYLE</em> Home</h2><p>in Bangkok</p></div></div>
+    <div class="lgrid reveal"><div class="lcol"><a class="ltile t" href="#"><img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?q=75&w=700&auto=format&fit=crop" alt="" loading="lazy"><span><b>Penthouse Suites</b><small>Skyline views, premium finishes</small></span></a><a class="ltile s" href="#"><img src="https://images.unsplash.com/photo-1590490360182-c33d57733427?q=75&w=700&auto=format&fit=crop" alt="" loading="lazy"><span><b>Full Service</b><small>Housekeeping & front desk</small></span></a></div><div class="lcol"><a class="ltile s" href="#"><img src="https://images.unsplash.com/photo-1514888286974-6c03e2ca1dba?q=75&w=700&auto=format&fit=crop" alt="" loading="lazy"><span><b>Pet Friendly</b><small>Friendly rules, green space</small></span></a><a class="ltile t" href="#"><img src="https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?q=75&w=700&auto=format&fit=crop" alt="" loading="lazy"><span><b>Comfort Balcony</b><small>Private balcony, fresh air</small></span></a></div><div class="lcol"><a class="ltile s" href="#"><img src="https://images.unsplash.com/photo-1441974231531-c6227db76b6e?q=75&w=700&auto=format&fit=crop" alt="" loading="lazy"><span><b>Quiet Area</b><small>Peaceful, away from busy roads</small></span></a><a class="ltile t" href="#"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/98/New_Bangkok_BTS_trains_%286094806596%29.jpg/960px-New_Bangkok_BTS_trains_%286094806596%29.jpg" alt="" loading="lazy"><span><b>Near BTS</b><small>Short walk to the Skytrain</small></span></a></div><div class="lcol"><a class="ltile s" href="#"><img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?q=75&w=700&auto=format&fit=crop" alt="" loading="lazy"><span><b>Beach Front</b><small>Coastal resort views</small></span></a><a class="ltile t" href="#"><img src="https://images.unsplash.com/photo-1571896349842-33c89424de2d?q=75&w=700&auto=format&fit=crop" alt="" loading="lazy"><span><b>Rooftop Pool</b><small>Skyline pool access</small></span></a></div><div class="lcol"><a class="ltile s" href="#"><img src="https://images.unsplash.com/photo-1593642632559-0c6d3fc62b89?q=75&w=700&auto=format&fit=crop" alt="" loading="lazy"><span><b>Work from Home</b><small>Quiet desk, fast internet</small></span></a><a class="ltile t" href="#"><img src="https://images.unsplash.com/photo-1511895426328-dc8714191300?q=75&w=700&auto=format&fit=crop" alt="" loading="lazy"><span><b>Family Friendly</b><small>Bigger units, safe facilities</small></span></a></div></div>
+  </div>
+</section>
+
+<!-- ส่วนที่ 7 -->
+<section class="section" aria-labelledby="loc-title">
+  <div class="container">
+    <div class="sec-head reveal"><div><h2 id="loc-title">Popular Location</h2></div><a class="link-arrow" href="#">Other Location <i class="ph ph-caret-right"></i></a></div>
+    <div class="locs reveal"><a class="loc wide" href="#"><img src="https://images.unsplash.com/photo-1583417319070-4a69db38a482?q=75&w=900&auto=format&fit=crop" alt="" loading="lazy"><span><b>Asoke-Thonglor</b><small>Property for rent in Asoke-Thonglor</small></span></a><a class="loc " href="#"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/70/BTS_at_On_Nut_%285745369719%29.jpg/960px-BTS_at_On_Nut_%285745369719%29.jpg" alt="" loading="lazy"><span><b>ON Nut - Udomsuk</b><small>Property for rent in ON Nut - Udomsuk</small></span></a><a class="loc " href="#"><img src="https://images.unsplash.com/photo-1508009603885-50cf7c579365?q=75&w=700&auto=format&fit=crop" alt="" loading="lazy"><span><b>Rama9 - Ratcha Huaikwang</b><small>Property for rent in Rama9 - Ratcha Huaikwang</small></span></a><a class="loc " href="#"><img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=75&w=700&auto=format&fit=crop" alt="" loading="lazy"><span><b>Sathorn</b><small>Property for rent in Sathorn</small></span></a><a class="loc wide" href="#"><img src="https://images.unsplash.com/photo-1449824913935-59a10b8d2000?q=75&w=900&auto=format&fit=crop" alt="" loading="lazy"><span><b>Bangna - Bearing</b><small>Property for rent in Bangna - Bearing</small></span></a><a class="loc " href="#"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/78/Chatuchak_park.jpg/960px-Chatuchak_park.jpg" alt="" loading="lazy"><span><b>Mochit - Jatujak</b><small>Property for rent in Mochit - Jatujak</small></span></a></div>
+  </div>
+</section>
+
+<!-- ส่วนที่ 8 -->
+<section class="section alt" aria-labelledby="proj-title">
+  <div class="container">
+    <div class="sec-head center reveal"><span class="eyebrow-pill">Projects</span><h2 id="proj-title">Featured Rental Projects in Bangkok</h2><p>Browse selected rental projects across Bangkok and find the right home</p></div>
+    <div class="projs reveal"><a class="proj" href="#"><span class="proj-img"><img src="https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?q=75&w=700&auto=format&fit=crop" alt="" loading="lazy"><span class="pill">Serviced apartment</span></span><span class="proj-body"><b>Marriott Executive Apartments Bangkok, Sukhumvit 50</b><small>Sukhumvit Rd., Khlong Toei</small><small>Bangkok</small><span class="proj-foot"><span><em>70,000 – 130,000 ฿</em><small>Studio – 2 bedrooms</small></span><i class="ph ph-arrow-right" aria-hidden="true"></i></span></span></a><a class="proj" href="#"><span class="proj-img"><img src="https://images.unsplash.com/photo-1631049307264-da0ec9d70304?q=75&w=700&auto=format&fit=crop" alt="" loading="lazy"><span class="pill">Serviced apartment</span></span><span class="proj-body"><b>Dusit Suites Hotel Ratchadamri, Bangkok</b><small>Ratchadamri Rd., Pathum Wan</small><small>Bangkok</small><span class="proj-foot"><span><em>120,000 – 140,000 ฿</em><small>1 bedroom</small></span><i class="ph ph-arrow-right" aria-hidden="true"></i></span></span></a><a class="proj" href="#"><span class="proj-img"><img src="https://images.unsplash.com/photo-1611892440504-42a792e24d32?q=75&w=700&auto=format&fit=crop" alt="" loading="lazy"><span class="pill">Serviced apartment</span></span><span class="proj-body"><b>Somerset Ekamai Bangkok</b><small>Sukhumvit 63, Watthana</small><small>Bangkok</small><span class="proj-foot"><span><em>45,000 – 95,000 ฿</em><small>Studio – 3 bedrooms</small></span><i class="ph ph-arrow-right" aria-hidden="true"></i></span></span></a><a class="proj" href="#"><span class="proj-img"><img src="https://images.unsplash.com/photo-1560185007-cde436f6a4d0?q=75&w=700&auto=format&fit=crop" alt="" loading="lazy"><span class="pill">Serviced apartment</span></span><span class="proj-body"><b>Ascott Embassy Sathorn</b><small>South Sathorn Rd., Sathon</small><small>Bangkok</small><span class="proj-foot"><span><em>85,000 – 160,000 ฿</em><small>1 – 3 bedrooms</small></span><i class="ph ph-arrow-right" aria-hidden="true"></i></span></span></a></div>
+  </div>
+</section>
+
+<!-- ส่วนที่ 9 -->
+<section class="section" aria-labelledby="condo-title">
+  <div class="container">
+    <div class="sec-head reveal"><div><h2 id="condo-title">Condos for Rent in Bangkok</h2></div><a class="link-arrow" href="#">See all condos <i class="ph ph-arrow-right"></i></a></div>
+    <div class="condos reveal"><article class="condo"><a class="condo-img" href="#" tabindex="-1" aria-hidden="true"><img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=75&w=700&auto=format&fit=crop" alt="" loading="lazy"></a><div class="condo-body"><div class="condo-head"><span class="mono" aria-hidden="true">AA</span><div><h3>Ashton Asoke</h3><p>Watthana, Bangkok</p></div></div><a class="condo-row" href="#"><span><b>Ashton Asoke for rent</b><small>20 listings</small></span><i class="ph ph-caret-right" aria-hidden="true"></i></a></div></article><article class="condo"><a class="condo-img" href="#" tabindex="-1" aria-hidden="true"><img src="https://images.unsplash.com/photo-1480714378408-67cf0d13bc1b?q=75&w=700&auto=format&fit=crop" alt="" loading="lazy"></a><div class="condo-body"><div class="condo-head"><span class="mono" aria-hidden="true">LO</span><div><h3>Life One Wireless</h3><p>Pathum Wan, Bangkok</p></div></div><a class="condo-row" href="#"><span><b>Life One Wireless for rent</b><small>20 listings</small></span><i class="ph ph-caret-right" aria-hidden="true"></i></a></div></article><article class="condo"><a class="condo-img" href="#" tabindex="-1" aria-hidden="true"><img src="https://images.unsplash.com/photo-1477959858617-67f85cf4f1df?q=75&w=700&auto=format&fit=crop" alt="" loading="lazy"></a><div class="condo-body"><div class="condo-head"><span class="mono" aria-hidden="true">AS</span><div><h3>Aspire Sathorn - Thapra</h3><p>Thon Buri, Bangkok</p></div></div><a class="condo-row" href="#"><span><b>Aspire Sathorn - Thapra for rent</b><small>20 listings</small></span><i class="ph ph-caret-right" aria-hidden="true"></i></a></div></article><article class="condo"><a class="condo-img" href="#" tabindex="-1" aria-hidden="true"><img src="https://images.unsplash.com/photo-1534430480872-3498386e7856?q=75&w=700&auto=format&fit=crop" alt="" loading="lazy"></a><div class="condo-body"><div class="condo-head"><span class="mono" aria-hidden="true">IO</span><div><h3>IDEO O2</h3><p>Bang Na, Bangkok</p></div></div><a class="condo-row" href="#"><span><b>IDEO O2 for rent</b><small>20 listings</small></span><i class="ph ph-caret-right" aria-hidden="true"></i></a></div></article></div>
+  </div>
+</section>
+
+<!-- ส่วนที่ 10 -->
+<section class="section alt" aria-labelledby="blog-title">
+  <div class="container">
+    <div class="sec-head reveal"><div><h2 id="blog-title">Blog</h2><p>Collection of Condos Articles Interesting Service Apartment for dorm residents</p><p class="demo-note">Sample article titles (demo content).</p></div><a class="link-arrow" href="#">All articles <i class="ph ph-arrow-right"></i></a></div>
+    <div class="posts reveal"><a class="post big" href="#"><img src="https://images.unsplash.com/photo-1563492065599-3520f775eeed?q=75&w=1000&auto=format&fit=crop" alt="" loading="lazy"><span>How to rent a condo in Bangkok as a foreigner: a step-by-step guide</span></a><a class="post " href="#"><img src="https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?q=75&w=600&auto=format&fit=crop" alt="" loading="lazy"><span>Serviced apartment vs condo: which suits a 3-month stay?</span></a><a class="post " href="#"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/71/BTS_Skytrain_over_Sala_Daeng_Intersection.jpg/960px-BTS_Skytrain_over_Sala_Daeng_Intersection.jpg" alt="" loading="lazy"><span>Living near BTS: the best stations for daily commuters</span></a><a class="post " href="#"><img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?q=75&w=600&auto=format&fit=crop" alt="" loading="lazy"><span>What to check before you sign a monthly rental agreement</span></a><a class="post big" href="#"><img src="https://images.unsplash.com/photo-1562602833-0f4ab2fc46e3?q=75&w=1000&auto=format&fit=crop" alt="" loading="lazy"><span>Asoke vs Thonglor: where should expats live in 2026?</span></a><a class="post " href="#"><img src="https://images.unsplash.com/photo-1517849845537-4d257902454a?q=75&w=600&auto=format&fit=crop" alt="" loading="lazy"><span>Pet-friendly condos in Bangkok: rules and tips</span></a></div>
+  </div>
+</section>
+
+<!-- ส่วนที่ 11 -->
+<section class="section faq-sec" aria-labelledby="faq-title">
+  <div class="container faq-grid">
+    <div class="faq-intro reveal"><p class="dot-eyebrow">Explore our advantages</p><h2 id="faq-title">Frequently Asked Questions</h2><p>A focused guide for renters and owners who want a clearer path to premium monthly rental decisions.</p></div>
+    <div class="faq reveal"><details open><summary>How much is MuvFast fee?<i class="ph ph-plus" aria-hidden="true"></i></summary><p class="answer">For tenants, our service is free of charge. For landlords, you save around 28% compared to a typical agent fee. <strong>You pay only 6% of total rent + 7% VAT</strong>, and only when the deal is successful.</p></details><details><summary>Can I visit a property before booking?<i class="ph ph-plus" aria-hidden="true"></i></summary><p class="answer pending">Answer to be supplied by MUVFAST (same as muvfast.com).</p></details><details><summary>My booking has been accepted. What’s next?<i class="ph ph-plus" aria-hidden="true"></i></summary><p class="answer pending">Answer to be supplied by MUVFAST (same as muvfast.com).</p></details><details><summary>What if the property is not as shown?<i class="ph ph-plus" aria-hidden="true"></i></summary><p class="answer pending">Answer to be supplied by MUVFAST (same as muvfast.com).</p></details><details><summary>Are water, electricity, and internet included in the rent?<i class="ph ph-plus" aria-hidden="true"></i></summary><p class="answer pending">Answer to be supplied by MUVFAST (same as muvfast.com).</p></details><details><summary>How much is the security deposit?<i class="ph ph-plus" aria-hidden="true"></i></summary><p class="answer pending">Answer to be supplied by MUVFAST (same as muvfast.com).</p></details><details><summary>Do I need to sign a rental agreement?<i class="ph ph-plus" aria-hidden="true"></i></summary><p class="answer pending">Answer to be supplied by MUVFAST (same as muvfast.com).</p></details><details><summary>Is there a payment gateway fee?<i class="ph ph-plus" aria-hidden="true"></i></summary><p class="answer pending">Answer to be supplied by MUVFAST (same as muvfast.com).</p></details></div>
+  </div>
+</section>
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="f-top">
+      <div><h2>Explore Monthly Rentals</h2><ul><li><a href="#">Bangkok Monthly Rentals</a></li><li><a href="#">Hua Hin Monthly Rentals</a></li></ul></div>
+      <div><h2>Serviced Apartments</h2><ul><li><a href="#">Serviced Apartments in Bangkok</a></li><li><a href="#">Serviced Apartments in Sukhumvit</a></li><li><a href="#">Serviced Apartments in Asoke</a></li><li><a href="#">Serviced Apartments in Ploenchit</a></li><li><a href="#">Serviced Apartments in Sathorn</a></li></ul><a class="more" href="#">More (1)</a></div>
+      <div><h2>Condos for Rent</h2><ul><li><a href="#">Condos in Bangkok</a></li><li><a href="#">Condos in Hua Hin</a></li><li><a href="#">Condos in Sukhumvit</a></li></ul></div>
+      <div><h2>Near Landmarks &amp; BTS</h2><ul><li><a href="#">Near BTS Asok</a></li><li><a href="#">Near Benjakitti Park</a></li><li><a href="#">Near Lumpini Park</a></li><li><a href="#">Near EM District</a></li></ul></div>
+      <div><h2>Find Your Lifestyle</h2><ul><li><a href="#">With Parking</a></li><li><a href="#">With a Gym</a></li><li><a href="#">With a Swimming Pool</a></li><li><a href="#">Pet-Friendly</a></li><li><a href="#">Walk to BTS</a></li></ul><a class="more" href="#">More (4)</a></div>
+      <div><h2>Rental Budget</h2><ul><li><a href="#">฿30,000–฿50,000/month</a></li><li><a href="#">฿50,000–฿80,000/month</a></li><li><a href="#">Over ฿80,000/month</a></li></ul></div>
+      <div><h2>For International Tenants</h2><ul><li><a href="#">Apartments for Expats</a></li></ul></div>
+    </div>
+    <div class="f-mid">
+      <div class="f-brand"><img src="logo.svg" alt="MUVFAST" width="98" height="22" loading="lazy"><p>3388/93 Sirinrat Building, floor 25<br>Rama 4 Road, Klongton,<br>Klongtoey, Bangkok 10110</p>
+        <div class="socials"><a href="#" aria-label="YouTube"><i class="ph-fill ph-youtube-logo"></i></a><a href="#" aria-label="LINE"><i class="ph-fill ph-chat-circle-dots"></i></a><a href="#" aria-label="Facebook"><i class="ph-fill ph-facebook-logo"></i></a><a href="#" aria-label="TikTok"><i class="ph-fill ph-tiktok-logo"></i></a><a href="#" aria-label="Instagram"><i class="ph ph-instagram-logo"></i></a></div></div>
+      <div><h2>Menu</h2><ul><li><a href="#">Home</a></li><li><a href="#">Projects</a></li></ul></div>
+      <div><h2>For Customers</h2><ul><li><a href="#">Search Home</a></li><li><a href="#">Login</a></li></ul></div>
+      <div><h2>Company</h2><ul><li><a href="#">About MuvFast</a></li><li><a href="#">Privacy Policy</a></li><li><a href="#">Terms of Service</a></li><li><a class="guide" href="#"><i class="ph ph-info"></i>Rental Property Guide</a></li></ul></div>
+    </div>
+    <div class="f-bot"><p>© 2026 MuvFast Co., Ltd. All rights reserved.</p><nav aria-label="Legal"><a href="#">Privacy Policy</a><span>·</span><a href="#">Terms of Service</a></nav></div>
+  </div>
+</footer>
+<!-- Draft credits: rail/area photos from Wikimedia Commons (CC BY / CC BY-SA, see file pages); interiors from Unsplash; illustrations from unDraw (recoloured). Replace with MUVFAST assets before launch. -->
+
+<script>
+(()=>{
+const $=(s,r=document)=>r.querySelector(s),$$=(s,r=document)=>[...r.querySelectorAll(s)];
+/* header */
+const menu=$('.menu-btn'),drawer=$('#drawer');
+menu.addEventListener('click',()=>{const o=menu.getAttribute('aria-expanded')==='true';menu.setAttribute('aria-expanded',String(!o));drawer.hidden=o;menu.querySelector('i').className='ph '+(o?'ph-list':'ph-x')});
+$$('.lang').forEach(g=>g.addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;$$('.lang button').forEach(x=>x.setAttribute('aria-pressed',String(x.textContent===b.textContent)))}));
+$$('.fav').forEach(b=>b.addEventListener('click',()=>{const on=b.getAttribute('aria-pressed')!=='true';b.setAttribute('aria-pressed',String(on));b.querySelector('i').className=(on?'ph-fill':'ph')+' ph-heart'}));
+
+/* popovers */
+const form=$('.search');let openPop=null;
+function closePop(){if(!openPop)return;$('#pop-'+openPop).hidden=true;$(`[data-pop=${openPop}]`).setAttribute('aria-expanded','false');openPop=null}
+function showPop(k){if(openPop===k){closePop();return}closePop();openPop=k;$('#pop-'+k).hidden=false;$(`[data-pop=${k}]`).setAttribute('aria-expanded','true');if(k==='loc')$('#loc-q').focus()}
+$$('[data-pop]').forEach(b=>b.addEventListener('click',()=>showPop(b.dataset.pop)));
+document.addEventListener('click',e=>{if(openPop&&!e.composedPath().includes(form))closePop()});
+document.addEventListener('keydown',e=>{if(e.key==='Escape'){const k=openPop;closePop();if(k)$(`[data-pop=${k}]`).focus()}});
+const setVal=(id,t)=>{const el=$(id);el.textContent=t||el.dataset.ph;el.classList.toggle('ph-placeholder',!t)};
+['#v-date','#v-loc','#v-budget'].forEach(id=>$(id).dataset.ph=$(id).textContent);
+
+/* calendar */
+const MS=['January','February','March','April','May','June','July','August','September','October','November','December'],MSS=MS.map(m=>m.slice(0,3).toUpperCase());
+const today=new Date();today.setHours(0,0,0,0);
+let view=new Date(today.getFullYear(),today.getMonth(),1),dS=null,dE=null,flex=0,mS=null,mE=null,mode='dates';
+const addD=(d,n)=>{const x=new Date(d);x.setDate(x.getDate()+n);return x};
+const fmt=d=>d.toLocaleDateString('en-GB',{day:'numeric',month:'short',year:'numeric'});
+const fakeCount=()=>{let s=0;if(mode==='dates'&&dS)s=dS.getDate()*37+(dE?dE.getDate()*11:0);if(mode==='months'&&mS!=null)s=(mS*53)+(mE??mS)*7;return 4800+(s%900)};
+function renderCal(){
+  const c=$('#cal');c.innerHTML='';
+  for(let k=0;k<2;k++){
+    const m=new Date(view.getFullYear(),view.getMonth()+k,1),wrap=document.createElement('div');wrap.className='month';
+    wrap.innerHTML=`<h4>${MS[m.getMonth()]} ${m.getFullYear()}</h4>`;const g=document.createElement('div');g.className='grid7';
+    ['MON','TUE','WED','THU','FRI','SAT','SUN'].forEach(d=>g.insertAdjacentHTML('beforeend',`<span class="dow">${d}</span>`));
+    const off=(m.getDay()+6)%7;for(let i=0;i<off;i++)g.insertAdjacentHTML('beforeend','<span></span>');
+    const n=new Date(m.getFullYear(),m.getMonth()+1,0).getDate();
+    for(let d=1;d<=n;d++){const dt=new Date(m.getFullYear(),m.getMonth(),d),b=document.createElement('button');b.type='button';b.className='day';b.textContent=d;
+      let dis=dt<today;if(dS&&!dE&&dt>dS&&dt<addD(dS,30))dis=true;b.disabled=dis;
+      if(+dt===+today)b.classList.add('today');
+      if(dS&&+dt===+dS)b.classList.add('start');if(dE&&+dt===+dE)b.classList.add('end');if(dS&&dE&&dt>dS&&dt<dE)b.classList.add('in');
+      b.setAttribute('aria-label',fmt(dt));b.addEventListener('click',()=>pickDay(dt));g.append(b)}
+    wrap.append(g);c.append(wrap)}
+  $('#cal-prev').disabled=view<=new Date(today.getFullYear(),today.getMonth(),1);
+  $('#cal-hint').textContent=!dS?'Choose your move-in date':!dE?'Now choose your move-out date (30 days or more)':'Dates selected';
+  updDateFoot()}
+function pickDay(dt){if(!dS||dE||dt<dS){dS=dt;dE=null}else if(dt>=addD(dS,30))dE=dt;renderCal()}
+$('#cal-prev').addEventListener('click',()=>{view=new Date(view.getFullYear(),view.getMonth()-1,1);renderCal()});
+$('#cal-next').addEventListener('click',()=>{view=new Date(view.getFullYear(),view.getMonth()+1,1);renderCal()});
+$$('#flex button').forEach(b=>b.addEventListener('click',()=>{flex=+b.dataset.flex;$$('#flex button').forEach(x=>x.setAttribute('aria-pressed',String(x===b)))}));
+function renderMonths(){const g=$('#mgrid');g.innerHTML='';
+  for(let i=0;i<24;i++){const m=new Date(today.getFullYear(),today.getMonth()+i,1),b=document.createElement('button');b.type='button';b.className='mcell';b.innerHTML=`${MSS[m.getMonth()]}<small>${m.getFullYear()}</small>`;
+    if(i===mS||i===mE)b.classList.add('sel');if(mS!=null&&mE!=null&&i>mS&&i<mE)b.classList.add('in');
+    b.addEventListener('click',()=>{if(mS==null||mE!=null||i<=mS){mS=i;mE=null}else mE=i;renderMonths()});g.append(b)}
+  $('#m-hint').textContent=mS==null?'Choose your move-in month, then your move-out month':mE==null?'Now choose your move-out month':'Months selected';updDateFoot()}
+const mLabel=i=>{const m=new Date(today.getFullYear(),today.getMonth()+i,1);return MS[m.getMonth()].slice(0,3)+' '+m.getFullYear()};
+function dateText(){if(mode==='dates'&&dS)return fmt(dS)+(dE?' – '+fmt(dE):'')+(flex?` (±${flex}w)`:'');if(mode==='months'&&mS!=null)return mLabel(mS)+(mE!=null?' – '+mLabel(mE):'');return ''}
+function updDateFoot(){const t=dateText();$('#date-sum').textContent=t;$('#date-view').textContent=`View ${fakeCount().toLocaleString()} results`}
+$$('.seg button').forEach(b=>b.addEventListener('click',()=>{mode=b.dataset.mode;$$('.seg button').forEach(x=>x.setAttribute('aria-selected',String(x===b)));$('#mode-dates').hidden=mode!=='dates';$('#mode-months').hidden=mode!=='months';updDateFoot()}));
+$('#date-clear').addEventListener('click',()=>{dS=dE=null;mS=mE=null;renderCal();renderMonths();setVal('#v-date','')});
+$('#date-view').addEventListener('click',()=>{setVal('#v-date',dateText());closePop()});
+renderCal();renderMonths();
+
+/* location */
+let loc='';const locChips=$$('#pop-loc .chipbtn');
+const setLoc=t=>{loc=t;locChips.forEach(c=>c.setAttribute('aria-pressed',String(c.textContent===t)));$('#loc-sum').textContent=t?'Selected: '+t:''};
+locChips.forEach(c=>{c.setAttribute('aria-pressed','false');c.addEventListener('click',()=>{setLoc(c.textContent);$('#loc-q').value=c.textContent})});
+$('#loc-q').addEventListener('input',e=>{const q=e.target.value.trim().toLowerCase();setLoc(e.target.value.trim());locChips.forEach(c=>c.hidden=q&&!c.textContent.toLowerCase().includes(q))});
+$('#loc-q').addEventListener('keydown',e=>{if(e.key==='Enter'){e.preventDefault();$('#loc-done').click()}});
+$('#loc-clear').addEventListener('click',()=>{$('#loc-q').value='';setLoc('');locChips.forEach(c=>c.hidden=false);setVal('#v-loc','')});
+$('#loc-done').addEventListener('click',()=>{setVal('#v-loc',loc);closePop()});
+
+/* budget */
+const bmin=$('#b-min'),bmax=$('#b-max'),k=n=>n>=1000?(n/1000)+'K':n;
+const num=v=>+String(v).replace(/[^\d]/g,'')||0;
+$$('#b-ranges button').forEach(b=>b.addEventListener('click',()=>{$$('#b-ranges button').forEach(x=>x.setAttribute('aria-pressed',String(x===b)));bmin.value=(+b.dataset.min).toLocaleString();bmax.value=b.dataset.max?(+b.dataset.max).toLocaleString():''}));
+[bmin,bmax].forEach(i=>i.addEventListener('input',()=>{$$('#b-ranges button').forEach(x=>x.setAttribute('aria-pressed','false'))}));
+$('#b-clear').addEventListener('click',()=>{bmin.value=bmax.value='';$$('#b-ranges button').forEach(x=>x.setAttribute('aria-pressed','false'));setVal('#v-budget','')});
+$('#b-save').addEventListener('click',()=>{let a=num(bmin.value),b=num(bmax.value);if(a&&b&&a>b)[a,b]=[b,a];const t=a&&b?`฿${k(a)} – ${k(b)}`:a?`From ฿${k(a)}`:b?`Up to ฿${k(b)}`:'';setVal('#v-budget',t);closePop()});
+form.addEventListener('submit',e=>{e.preventDefault();closePop();const m=$('.search-msg');m.textContent='Draft only: search will connect to MUVFAST listings'+(loc?` for “${loc}”`:'')+'.'});
+
+/* section 2: transit map (simplified, not to scale) */
+const LINES=[
+ {id:'sk',name:'BTS Sukhumvit Line',short:'BTS',pre:'BTS',c:'#7CB342',st:[['Khu Khot',330,22],['Wat Phra Sri Mahathat',330,60],['Kasetsart University',330,98],['Ha Yaek Lat Phrao',330,134],['Mo Chit',330,170],['Saphan Khwai',330,210],['Ari',330,250],['Victory Monument',330,295],['Phaya Thai',330,340],['Ratchathewi',330,385],['Siam',330,430],['Chit Lom',390,430],['Phloen Chit',440,430],['Nana',490,430],['Asok',540,430],['Phrom Phong',590,430],['Thong Lo',640,430],['Ekkamai',690,430],['Phra Khanong',740,430],['On Nut',775,465],['Bang Chak',805,495],['Punnawithi',835,525],['Udom Suk',865,555],['Bang Na',895,585],['Bearing',925,615],['Samrong',960,650]]},
+ {id:'sl',name:'BTS Silom Line',short:'BTS',pre:'BTS',c:'#00835F',st:[['National Stadium',260,430],['Siam',330,430],['Ratchadamri',360,472],['Sala Daeng',390,520],['Chong Nonsi',380,568],['Surasak',350,602],['Saphan Taksin',310,632],['Krung Thon Buri',265,660],['Wongwian Yai',215,685],['Bang Wa',150,700]]},
+ {id:'bl',name:'MRT Blue Line',short:'MRT',pre:'MRT',c:'#1E4F9C',loop:true,st:[['Tao Poon',210,170],['Bang Sue',250,170],['Kamphaeng Phet',290,170],['Chatuchak Park',330,170],['Phahon Yothin',410,170],['Lat Phrao',480,170],['Ratchadaphisek',540,200],['Sutthisan',570,240],['Huai Khwang',590,280],['Thailand Cultural Centre',600,320],['Phra Ram 9',600,360],['Phetchaburi',570,395],['Sukhumvit',540,430],['Queen Sirikit Centre',520,470],['Khlong Toei',480,500],['Lumphini',440,515],['Si Lom',390,520],['Sam Yan',330,520],['Hua Lamphong',260,520],['Wat Mangkon',200,520],['Sanam Chai',150,500],['Itsaraphap',120,460],['Tha Phra',110,410],['Fai Chai',110,340],['Bang Khun Non',110,290],['Bang O',130,240],['Bang Pho',170,200]],tail:[['Tha Phra',110,410],['Phetkasem 48',70,410],['Lak Song',30,410]]},
+ {id:'pp',name:'MRT Purple Line',short:'MRT',pre:'MRT',c:'#7B3F98',st:[['Tao Poon',210,170],['Bang Son',180,140],['Wong Sawang',150,110],['Yaek Tiwanon',120,82],['Nonthaburi Civic Center',90,60],['Khlong Bang Phai',30,60]]},
+ {id:'pk',name:'MRT Pink Line',short:'MRT',pre:'MRT',c:'#E46C9A',st:[['Nonthaburi Civic Center',90,60],['Khae Rai',160,60],['Lak Si',240,60],['Wat Phra Sri Mahathat',330,60],['Ram Inthra 3',440,60],['Fashion Island',580,60],['Min Buri',700,60]]},
+ {id:'yl',name:'MRT Yellow Line',short:'MRT',pre:'MRT',c:'#E8B400',st:[['Lat Phrao',480,170],['Chok Chai 4',560,170],['Lat Phrao 71',640,170],['Bang Kapi',760,200],['Hua Mak',800,340],['Phatthanakan',810,380],['Si Nut',830,420],['Si Iam',900,520],['Samrong',960,650]]},
+ {id:'al',name:'Airport Rail Link',short:'ARL',pre:'Airport Link',c:'#B3261E',st:[['Phaya Thai',330,340],['Ratchaprarop',400,340],['Makkasan',570,340],['Ramkhamhaeng',680,340],['Hua Mak',800,340],['Ban Thap Chang',870,340],['Lat Krabang',930,340],['Suvarnabhumi',980,340]]},
+];
+const LBL={ // label side overrides: r,l,t,b
+ 'Siam':'tl','Asok':'br','Sukhumvit':'bl','Phaya Thai':'l','Mo Chit':'tr','Chatuchak Park':'tr','Tao Poon':'tr','Sala Daeng':'bl','Si Lom':'b','Lat Phrao':'t','Hua Mak':'tr','Wat Phra Sri Mahathat':'br','Nonthaburi Civic Center':'tl','Samrong':'l','Makkasan':'bl','Phetchaburi':'l','Phra Ram 9':'r','Thailand Cultural Centre':'l','Huai Khwang':'r','Sutthisan':'r','Ratchadaphisek':'r','Queen Sirikit Centre':'r','Khlong Toei':'r','Lumphini':'b','Sam Yan':'t','Hua Lamphong':'t','Wat Mangkon':'b','Sanam Chai':'l','Itsaraphap':'l','Tha Phra':'b','Fai Chai':'r','Bang Khun Non':'r','Bang O':'r','Bang Pho':'l','Bang Sue':'bl','Kamphaeng Phet':'b','Phahon Yothin':'b','National Stadium':'b','Ratchadamri':'r','Chong Nonsi':'r','Surasak':'r','Saphan Taksin':'r','Krung Thon Buri':'r','Wongwian Yai':'b','Bang Wa':'l','Bang Son':'l','Wong Sawang':'r','Yaek Tiwanon':'r','Khlong Bang Phai':'b','Phetkasem 48':'t','Lak Song':'b','Si Nut':'r','Si Iam':'r','Phatthanakan':'r','Bang Kapi':'r','Chok Chai 4':'b','Lat Phrao 71':'b','Ramkhamhaeng':'t','Ratchaprarop':'b','Ban Thap Chang':'b','Lat Krabang':'t','Suvarnabhumi':'b','Khae Rai':'t','Lak Si':'t','Ram Inthra 3':'t','Fashion Island':'t','Min Buri':'t','Khu Khot':'r','Kasetsart University':'r','Ha Yaek Lat Phrao':'r','Saphan Khwai':'r','Ari':'r','Victory Monument':'r','Ratchathewi':'r','Chit Lom':'t','Phloen Chit':'b','Nana':'t','Phrom Phong':'t','Thong Lo':'b','Ekkamai':'t','Phra Khanong':'b','On Nut':'l','Bang Chak':'l','Punnawithi':'l','Udom Suk':'l','Bang Na':'l','Bearing':'l'};
+const svg=$('#tmap'),NS='http://www.w3.org/2000/svg',mk=(t,a)=>{const e=document.createElementNS(NS,t);for(const k in a)e.setAttribute(k,a[k]);return e};
+svg.append(mk('path',{class:'river',d:'M240 0 C 250 120 200 220 230 330 S 200 520 300 560 S 420 690 360 720'}));
+const gL=mk('g',{}),gS=mk('g',{});svg.append(gL,gS);
+const seen={};
+LINES.forEach(L=>{
+  const pts=L.st.map(s=>s[1]+','+s[2]).join(' L ');
+  gL.append(mk('path',{class:'ln','data-l':L.id,stroke:L.c,d:'M '+pts+(L.loop?' Z':'')}));
+  if(L.tail)gL.append(mk('path',{class:'ln','data-l':L.id,stroke:L.c,d:'M '+L.tail.map(s=>s[1]+','+s[2]).join(' L ')}));
+  [...L.st,...(L.tail?L.tail.slice(1):[])].forEach(([n,x,y])=>{
+    const key=x+','+y;
+    if(seen[key]){const s=seen[key];if(s.lines.includes(L))return;s.lines.push(L);s.g.classList.add('x');s.g.dataset.l+=' '+L.id;
+      if(!s.n.split(' / ').includes(n)){s.n+=' / '+n;s.g.setAttribute('aria-label',s.n)}return}
+    const g=mk('g',{class:'st',tabindex:'0',role:'button','aria-label':n,'data-l':L.id});
+    g.append(mk('circle',{cx:x,cy:y,r:12,fill:'transparent',stroke:'none',class:'hit'}),mk('circle',{cx:x,cy:y,r:5.5,stroke:L.c}));
+    const side=LBL[n]||'r',o={r:[10,4,'start'],l:[-10,4,'end'],t:[0,-11,'middle'],b:[0,19,'middle'],tl:[-8,-10,'end'],tr:[8,-10,'start'],bl:[-8,18,'end'],br:[8,18,'start']}[side];
+    const t=mk('text',{x:x+o[0],y:y+o[1],'text-anchor':o[2]});t.textContent=n;g.append(t);gS.append(g);
+    seen[key]={g,n,x,y,lines:[L]};
+    g.addEventListener('click',ev=>{ev.stopPropagation();showTip(seen[key])});
+    g.addEventListener('keydown',ev=>{if(ev.key==='Enter'||ev.key===' '){ev.preventDefault();showTip(seen[key])}});
+  })});
+const tip=$('#tmap-tip'),scroller=$('#tmap-scroll');let curOn=null;
+function showTip(s){
+  if(curOn)curOn.classList.remove('on');curOn=s.g;s.g.classList.add('on');
+  const L=s.lines[0],label=`${L.pre} ${s.n.split(' / ')[0]}`;
+  tip.innerHTML=`<button class="x" type="button" aria-label="Close"><i class="ph ph-x"></i></button><h4>${s.lines.map(l=>`<span class="dot" style="background:${l.c}"></span>`).join('')}${s.n}</h4><a href="#">Condo for Rent ${label}</a><a href="#">Apartment ${label}</a><a href="#">${label} rental</a><a href="#">Serviced Apartment near ${label}</a>`;
+  tip.hidden=false;
+  const r=svg.getBoundingClientRect(),sr=scroller.getBoundingClientRect(),sc=r.width/1110,X=s.x+60,Y=s.y+5;
+  let left=X*sc+(r.left-sr.left)+scroller.scrollLeft+12,top=Y*sc+(r.top-sr.top)+scroller.scrollTop+12;
+  const tw=tip.offsetWidth,th=tip.offsetHeight;
+  if(left+tw>scroller.scrollLeft+scroller.clientWidth-8)left=X*sc+(r.left-sr.left)+scroller.scrollLeft-tw-12;
+  if(top+th>scroller.scrollHeight-8)top=Y*sc+(r.top-sr.top)+scroller.scrollTop-th-12;
+  top=Math.min(top,scroller.scrollTop+scroller.clientHeight-th-8);left=Math.min(left,scroller.scrollLeft+scroller.clientWidth-tw-8);
+  tip.style.left=Math.max(8,left)+'px';tip.style.top=Math.max(8,top)+'px';
+  tip.querySelector('.x').addEventListener('click',hideTip);
+}
+function hideTip(){tip.hidden=true;if(curOn)curOn.classList.remove('on');curOn=null}
+document.addEventListener('click',e=>{if(!tip.hidden&&!e.target.closest('#tmap-tip'))hideTip()});
+// tabs
+const tabs=$('#line-tabs');
+tabs.insertAdjacentHTML('beforeend',`<button type="button" class="all" aria-pressed="true" data-f=""><span class="dot">ALL</span>All lines</button>`);
+LINES.forEach(L=>tabs.insertAdjacentHTML('beforeend',`<button type="button" aria-pressed="false" data-f="${L.id}"><span class="dot" style="background:${L.c}">${L.short}</span>${L.name}</button>`));
+tabs.addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;const f=b.dataset.f;$$('button',tabs).forEach(x=>x.setAttribute('aria-pressed',String(x===b)));hideTip();
+  $$('.ln',svg).forEach(p=>p.classList.toggle('dim',!!f&&p.dataset.l!==f));
+  $$('.st',svg).forEach(g=>g.classList.toggle('dim',!!f&&!g.dataset.l.split(' ').includes(f)));
+  const sel=$('#st-select');fillSelect(f)});
+// select fallback (mobile)
+function fillSelect(f){const sel=$('#st-select');sel.innerHTML='<option value="">Select station</option>';
+  Object.entries(seen).filter(([,s])=>!f||s.lines.some(l=>l.id===f)).sort((a,b)=>a[1].n.localeCompare(b[1].n)).forEach(([k,s])=>sel.insertAdjacentHTML('beforeend',`<option value="${k}">${s.n}</option>`))}
+fillSelect('');
+$('#st-select').addEventListener('change',e=>{const s=seen[e.target.value];if(!s)return;const sc=svg.getBoundingClientRect().width/1110;scroller.scrollTo({left:Math.max(0,(s.x+60)*sc-scroller.clientWidth/2),behavior:'smooth'});setTimeout(()=>showTip(s),250)});
+
+/* section 4 tabs + rail */
+const tbtn=$$('[role=tab][aria-controls^=tp-]');
+tbtn.forEach(b=>b.addEventListener('click',()=>{tbtn.forEach(x=>{const on=x===b;x.setAttribute('aria-selected',String(on));$('#'+x.getAttribute('aria-controls')).hidden=!on})}));
+$$('#rail-nav button').forEach(b=>b.addEventListener('click',()=>{const t=$('.rail:not([hidden]) .track'),c=t.querySelector('.ucard');t.scrollBy({left:(c.offsetWidth+20)*+b.dataset.dir,behavior:'smooth'})}));
+// position photo-count + open house badges at the bottom of each photo
+function placeBadges(){$$('.ucard').forEach(c=>{const h=c.querySelector('.ucard-media').offsetHeight;c.querySelector('.count').style.top=(h-30)+'px';c.querySelector('.open247').style.top=(h-40)+'px'})}
+placeBadges();addEventListener('resize',placeBadges);tbtn.forEach(b=>b.addEventListener('click',placeBadges));
+
+/* reveal */
+const els=$$('.reveal');
+if('IntersectionObserver' in window){const io=new IntersectionObserver(es=>es.forEach(en=>{if(en.isIntersecting){en.target.classList.add('in');io.unobserve(en.target)}}),{rootMargin:'0px 0px -8% 0px'});els.forEach(el=>io.observe(el))}else els.forEach(el=>el.classList.add('in'));
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>MUVFAST — Thailand Monthly Property Rentals | Draft B</title>
+<meta name="description" content="Find and book monthly condos and serviced apartments in Bangkok online. Verified listings, secure booking and local expert support.">
+<meta name="robots" content="noindex">
+<link rel="icon" href="../../assets/logo.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&display=swap">
+<link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/regular/style.css">
+<link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/fill/style.css">
+<link rel="preload" as="image" href="https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?q=80&w=1200&auto=format&fit=crop" fetchpriority="high">
+<style>
+
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
+body{margin:0;background:var(--page);color:var(--ink);font-family:var(--font-body);font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased}
+img{display:block;max-width:100%;height:auto}
+a{color:inherit;text-decoration:none}
+button,input,select{font:inherit;color:inherit}
+h1,h2,h3{font-family:var(--font-display);margin:0;text-wrap:balance;letter-spacing:-.02em}
+p{margin:0;text-wrap:pretty}
+.container{width:100%;max-width:1264px;margin-inline:auto;padding-inline:16px}
+@media(min-width:768px){.container{padding-inline:32px}}
+.skip{position:absolute;left:16px;top:-64px;background:var(--ink);color:#fff;padding:8px 16px;border-radius:8px;z-index:100}
+.skip:focus{top:16px}
+:focus-visible{outline:2px solid var(--brand);outline-offset:2px}
+.sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.section{padding-block:56px}
+@media(min-width:1024px){.section{padding-block:80px}}
+.eyebrow{font-size:13px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--brand-dark)}
+.muted{color:var(--muted)}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;height:48px;padding:0 24px;border-radius:var(--radius-btn);font-weight:600;font-size:15px;border:1px solid transparent;cursor:pointer;transition:background .2s,color .2s,border-color .2s,transform .2s var(--ease)}
+.btn:active{transform:translateY(1px)}
+.btn-primary{background:var(--brand);color:#fff}
+.btn-primary:hover{background:var(--brand-dark)}
+.btn i{font-size:20px}
+.ph{line-height:1}
+
+/* header */
+.site-header{position:sticky;top:0;z-index:50;background:var(--header-bg);border-bottom:1px solid var(--line)}
+.header-grid{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;height:64px}
+@media(min-width:1024px){.header-grid{height:72px}}
+.nav-left{display:none;gap:32px;font-weight:500;font-size:15px}
+.nav-left a{padding-block:8px;border-bottom:2px solid transparent;transition:border-color .2s}
+.nav-left a:hover{border-color:var(--brand)}
+.logo{grid-column:2;display:block}
+.logo img{height:24px;width:auto}
+@media(min-width:1024px){.logo img{height:28px}}
+.nav-right{grid-column:3;display:flex;justify-content:flex-end;align-items:center;gap:16px}
+.lang{display:none;border:1px solid var(--line);border-radius:999px;padding:4px}
+.lang button{border:0;background:none;padding:4px 12px;border-radius:999px;font-size:13px;font-weight:600;color:var(--muted);cursor:pointer;min-height:32px}
+.lang button[aria-pressed=true]{background:var(--ink);color:#fff}
+.icon-btn{width:48px;height:48px;margin-left:-12px;display:inline-grid;place-items:center;border:0;background:none;border-radius:8px;cursor:pointer;font-size:24px}
+.btn-signin{height:40px;padding:0 16px;font-size:14px}
+@media(min-width:1024px){
+  .nav-left{display:flex}
+  .menu-btn{display:none}
+  .lang{display:inline-flex}
+  .btn-signin{height:44px;padding:0 20px}
+}
+.drawer{border-top:1px solid var(--line);background:var(--header-bg)}
+.drawer nav{display:grid;padding-block:8px 24px}
+.drawer a{display:flex;align-items:center;min-height:48px;font-weight:500;border-bottom:1px solid var(--line)}
+.drawer .lang{display:inline-flex;margin-top:16px;justify-self:start}
+@media(min-width:1024px){.drawer{display:none!important}}
+
+/* search */
+.field{display:block;position:relative}
+.field-label{display:block;font-size:12px;font-weight:600;letter-spacing:.04em;color:var(--muted);margin-bottom:4px}
+.field-input{display:flex;align-items:center;gap:8px}
+.field-input i{font-size:20px;color:var(--muted);flex:none}
+.field input,.field select{width:100%;min-width:0;border:0;background:transparent;padding:0;height:24px;font-size:15px;font-weight:500;outline:none;appearance:none;-webkit-appearance:none;cursor:pointer}
+.field input::placeholder{color:var(--muted);font-weight:400}
+.field:focus-within{z-index:1}
+.search-msg{font-size:14px;color:var(--ink);min-height:0}
+.search-msg:not(:empty){margin-top:8px}
+.search-msg.err{color:#B42318}
+
+/* unit card (client spec) */
+.unit{position:relative;display:flex;flex-direction:column;gap:16px}
+.unit-media{position:relative;display:block;aspect-ratio:4/3;border-radius:var(--radius-img);overflow:hidden;background:var(--surface-alt)}
+.unit-media img{width:100%;height:100%;object-fit:cover;transition:transform .6s var(--ease)}
+.unit:hover .unit-media img{transform:scale(1.03)}
+.photo-count{position:absolute;right:12px;bottom:12px;display:inline-flex;align-items:center;gap:4px;background:rgba(20,23,28,.72);color:#fff;font-size:12px;font-weight:600;padding:4px 8px;border-radius:8px}
+.fav{position:absolute;top:12px;right:12px;z-index:2;width:40px;height:40px;border-radius:999px;border:0;background:rgba(255,255,255,.92);display:grid;place-items:center;font-size:20px;cursor:pointer;color:var(--ink);transition:transform .2s var(--ease)}
+.fav:hover{transform:scale(1.06)}
+.fav[aria-pressed=true]{color:var(--brand)}
+.unit-body{display:grid;gap:4px}
+.unit-l1{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.unit-l1 strong{font-size:20px;font-weight:700;letter-spacing:-.01em}
+.unit-l1 .per{color:var(--muted);font-size:14px}
+.min-pill{display:inline-flex;align-items:center;gap:4px;font-size:12px;font-weight:700;letter-spacing:.02em;color:var(--brand-dark);border:1px solid currentColor;border-radius:999px;padding:0 8px;height:24px;margin-left:auto}
+.unit-l2{font-size:14px;color:var(--ink)}
+.unit-l2 span+span::before{content:"·";margin:0 8px;color:var(--muted)}
+.unit-l3{font-family:var(--font-body);font-size:15px;font-weight:600;letter-spacing:0;line-height:1.4}
+.unit-l3 a::after{content:"";position:absolute;inset:0;z-index:1}
+.unit-l4{font-size:14px;color:var(--muted)}
+.demo-note{font-size:13px;color:var(--muted)}
+
+/* faq */
+.faq details{border-bottom:1px solid var(--line)}
+.faq summary{list-style:none;display:flex;justify-content:space-between;align-items:center;gap:16px;min-height:64px;padding-block:16px;cursor:pointer;font-weight:600;font-size:17px}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary i{font-size:20px;flex:none;transition:transform .3s var(--ease)}
+.faq details[open] summary i{transform:rotate(45deg)}
+.faq .answer{padding-bottom:24px;color:var(--muted);max-width:720px}
+.faq .answer.pending{font-style:normal;font-size:14px}
+.faq .answer.pending::before{content:"Placeholder · ";font-weight:600;color:var(--brand-dark)}
+
+/* footer */
+.site-footer{background:var(--surface-alt);padding-block:56px 32px;font-size:14px}
+.footer-grid{display:grid;gap:40px}
+@media(min-width:768px){.footer-grid{grid-template-columns:repeat(2,1fr)}}
+@media(min-width:1024px){.footer-grid{grid-template-columns:1.4fr 1fr 1fr 1.3fr}}
+.site-footer h2{font-family:var(--font-body);font-size:13px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;margin-bottom:16px;color:var(--ink)}
+.site-footer ul{list-style:none;margin:0;padding:0;display:grid;gap:8px}
+.site-footer a:hover{color:var(--brand-dark)}
+.site-footer .muted a{color:var(--muted)}
+.footer-logo{height:24px;width:auto;margin-bottom:16px}
+.contact li{display:flex;gap:8px}
+.contact i{font-size:18px;margin-top:2px;color:var(--muted)}
+.socials{display:flex;gap:8px;margin-top:24px}
+.socials a{width:40px;height:40px;display:grid;place-items:center;border:1px solid var(--line);border-radius:999px;font-size:18px;background:var(--page)}
+.socials a:hover{border-color:var(--brand);color:var(--brand)}
+.footer-bottom{display:flex;flex-wrap:wrap;justify-content:space-between;gap:16px;border-top:1px solid var(--line);margin-top:48px;padding-top:24px;color:var(--muted)}
+.footer-bottom nav{display:flex;gap:24px}
+
+/* motion */
+.reveal{opacity:0;transform:translateY(16px);transition:opacity .7s var(--ease),transform .7s var(--ease)}
+.reveal.in{opacity:1;transform:none}
+.hero-stagger>*{opacity:0;transform:translateY(16px);animation:rise .8s var(--ease) forwards}
+.hero-stagger>*:nth-child(2){animation-delay:.12s}
+.hero-stagger>*:nth-child(3){animation-delay:.24s}
+.hero-stagger>*:nth-child(4){animation-delay:.36s}
+@keyframes rise{to{opacity:1;transform:none}}
+@media(prefers-reduced-motion:reduce){
+  *{animation:none!important;transition:none!important;scroll-behavior:auto!important}
+  .reveal,.hero-stagger>*{opacity:1;transform:none}
+}
+
+:root{--brand:#FC4A1A;--brand-dark:#C93A12;--ink:#14171C;--muted:#5B6170;--line:#E4E6EA;--surface-alt:#F4F5F7;--page:#FFFFFF;--header-bg:#FFFFFF;
+--font-display:'Manrope','Noto Sans Thai',sans-serif;--font-body:'Manrope','Noto Sans Thai',sans-serif;--radius-btn:8px;--radius-img:8px;--ease:cubic-bezier(.16,1,.3,1)}
+.btn-signin{background:var(--ink);color:#fff}
+.btn-signin:hover{background:#2B3038}
+
+/* hero: split, search stacked left, photo pair right */
+.hero{padding-block:40px 56px}
+.hero-grid{display:grid;gap:40px;align-items:center}
+@media(min-width:1024px){.hero{padding-block:72px 80px}.hero-grid{grid-template-columns:5fr 6fr;gap:64px}}
+.hero-copy{display:grid;gap:24px}
+.hero h1{font-size:clamp(34px,4.6vw,56px);line-height:1.08;font-weight:700;letter-spacing:-.03em}
+.ticks{display:flex;flex-wrap:wrap;gap:8px 24px;list-style:none;margin:0;padding:0;font-weight:600}
+.ticks li{display:inline-flex;align-items:center;gap:8px}
+.ticks i{color:var(--brand);font-size:20px}
+.search{display:grid;grid-template-columns:1fr 1fr;border:1px solid var(--line);border-radius:12px;overflow:hidden;background:#fff}
+.search .field{padding:12px 16px;border-bottom:1px solid var(--line)}
+.search .f-loc{grid-column:1/-1}
+.search .f-date,.search .f-budget{border-right:1px solid var(--line)}
+.search .f-budget{grid-column:1}
+.search .f-dur{grid-row:2;grid-column:2}
+.search .f-date{grid-row:2;grid-column:1}
+.search .f-budget{grid-row:3}
+.search .btn-search{grid-row:3;grid-column:2;height:auto;min-height:64px;border-radius:0}
+.search .search-msg{grid-column:1/-1;padding:0 16px}
+.search .search-msg:not(:empty){padding-block:8px;margin:0}
+@media(max-width:479px){.search{grid-template-columns:1fr}.search .field,.search .f-budget,.search .f-dur,.search .f-date,.search .btn-search{grid-column:1;grid-row:auto;border-right:0}.search .btn-search{min-height:56px}}
+.photo-pair{position:relative;display:grid;grid-template-columns:3fr 2fr;gap:16px;align-items:end}
+.photo-pair .p1{aspect-ratio:4/5;border-radius:8px;overflow:hidden;background:var(--surface-alt)}
+.photo-pair .p2{aspect-ratio:3/4;border-radius:8px;overflow:hidden;background:var(--surface-alt);margin-bottom:48px}
+.photo-pair img{width:100%;height:100%;object-fit:cover}
+.tag-min{position:absolute;left:16px;top:16px;background:var(--brand);color:#fff;font-weight:700;font-size:14px;padding:8px 16px;border-radius:8px;display:inline-flex;gap:8px;align-items:center}
+.photo-pair figcaption{position:absolute;left:16px;bottom:16px;background:#fff;border-radius:8px;padding:12px 16px;font-size:14px;font-weight:600;display:flex;gap:8px;align-items:center;box-shadow:0 8px 24px rgba(20,23,28,.08)}
+.photo-pair figcaption i{color:var(--brand);font-size:20px}
+@media(max-width:767px){.photo-pair .p2{margin-bottom:32px}}
+
+.sec-head{display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:16px;margin-bottom:32px}
+.sec-head h2{font-size:clamp(26px,3vw,36px);line-height:1.15;font-weight:700}
+.sec-head p{margin-top:8px}
+
+/* carousel */
+.carousel-nav{display:flex;gap:8px}
+.carousel-nav button{width:48px;height:48px;border-radius:999px;border:1px solid var(--line);background:#fff;display:grid;place-items:center;font-size:20px;cursor:pointer}
+.carousel-nav button:hover{border-color:var(--ink)}
+.track{display:grid;grid-auto-flow:column;grid-auto-columns:minmax(272px,82%);gap:24px;overflow-x:auto;scroll-snap-type:x mandatory;padding-bottom:16px;scrollbar-width:thin;overscroll-behavior-x:contain}
+@media(min-width:768px){.track{grid-auto-columns:calc((100% - 48px)/3)}}
+@media(min-width:1280px){.track{grid-auto-columns:calc((100% - 72px)/4)}}
+.track .unit{scroll-snap-align:start}
+
+/* benefits: heading left, 2x2 right */
+.alt{background:var(--surface-alt)}
+.split{display:grid;gap:40px}
+@media(min-width:1024px){.split{grid-template-columns:4fr 7fr;gap:80px}}
+.split-head h2{font-size:clamp(26px,3vw,36px);line-height:1.15;font-weight:700;margin-top:8px}
+.split-head p.muted{margin-top:16px;max-width:40ch}
+.benefits{display:grid;gap:32px}
+@media(min-width:768px){.benefits{grid-template-columns:1fr 1fr;gap:40px}}
+.benefit{display:grid;grid-template-columns:auto 1fr;gap:16px;align-items:start}
+.benefit i{font-size:28px;width:48px;height:48px;display:grid;place-items:center;background:#fff;border:1px solid var(--line);border-radius:8px}
+.benefit h3{font-size:18px;font-weight:700;margin-bottom:4px}
+.benefit p{color:var(--muted)}
+
+/* lifestyle tiles */
+.tiles{display:grid;grid-template-columns:1fr;gap:0;border-top:1px solid var(--line)}
+@media(min-width:640px){.tiles{grid-template-columns:repeat(2,1fr);column-gap:32px}}
+@media(min-width:1024px){.tiles{grid-template-columns:repeat(4,1fr)}}
+.tile{display:flex;align-items:center;gap:16px;min-height:64px;border-bottom:1px solid var(--line);font-weight:600}
+.tile i:first-child{font-size:24px}
+.tile .ph-arrow-up-right{margin-left:auto;color:var(--muted);transition:transform .3s var(--ease),color .2s}
+.tile:hover{color:var(--brand-dark)}
+.tile:hover .ph-arrow-up-right{transform:translate(2px,-2px);color:var(--brand-dark)}
+
+/* faq two columns */
+.faq-grid{display:grid;gap:32px}
+@media(min-width:1024px){.faq-grid{grid-template-columns:4fr 7fr;gap:80px}.faq-aside{position:sticky;top:104px;align-self:start}}
+.faq-aside h2{font-size:clamp(26px,3vw,36px);line-height:1.15;font-weight:700}
+.faq-aside p{margin-top:16px}
+.faq-aside a{font-weight:600;text-decoration:underline;text-underline-offset:4px}
+.faq details:first-child{border-top:1px solid var(--line)}
+.site-footer{background:#fff;border-top:1px solid var(--line)}
+.socials a{background:var(--surface-alt)}
+
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-header">
+  <div class="container header-grid">
+    <div class="nav-slot">
+      <button class="icon-btn menu-btn" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="drawer"><i class="ph ph-list"></i></button>
+      <nav class="nav-left" aria-label="Primary"><a href="#">Landlord</a><a href="#">Agent</a></nav>
+    </div>
+    <a class="logo" href="#" aria-label="MUVFAST home"><img src="../../assets/logo.svg" alt="MUVFAST" width="124" height="28"></a>
+    <div class="nav-right">
+      <div class="lang" role="group" aria-label="Language"><button type="button" aria-pressed="true">EN</button><button type="button" aria-pressed="false">TH</button></div>
+      <a class="btn btn-signin" href="#">Sign in</a>
+    </div>
+  </div>
+  <div class="drawer" id="drawer" hidden>
+    <nav class="container" aria-label="Mobile">
+      <a href="#">Landlord</a><a href="#">Agent</a>
+      <div class="lang" role="group" aria-label="Language"><button type="button" aria-pressed="true">EN</button><button type="button" aria-pressed="false">TH</button></div>
+    </nav>
+  </div>
+</header>
+<main id="main">
+  <section class="hero" aria-labelledby="hero-title">
+    <div class="container hero-grid">
+      <div class="hero-copy hero-stagger">
+        <p class="eyebrow">Monthly rentals · Bangkok</p>
+        <h1 id="hero-title">Thailand Monthly Property Rentals</h1>
+        <ul class="ticks"><li><i class="ph ph-check-circle"></i>Easy</li><li><i class="ph ph-check-circle"></i>Secure</li><li><i class="ph ph-check-circle"></i>Expert</li></ul>
+        <form class="search" role="search" novalidate>
+  <label class="field f-loc"><span class="field-label">Location</span><span class="field-input"><i class="ph ph-map-pin"></i><input name="location" placeholder="District, BTS/MRT or project" autocomplete="off"></span></label>
+  <label class="field f-date"><span class="field-label">Move-in</span><span class="field-input"><i class="ph ph-calendar-blank"></i><input type="date" name="movein" aria-label="Move-in date"></span></label>
+  <label class="field f-dur"><span class="field-label">Duration</span><span class="field-input"><i class="ph ph-clock"></i><select name="duration"><option value="1">1 month</option><option value="2">2 months</option><option value="3">3 months</option><option value="4">4 months</option><option value="5">5 months</option><option value="6">6 months</option><option value="7">7 months</option><option value="8">8 months</option><option value="9">9 months</option><option value="10">10 months</option><option value="11">11 months</option><option value="12">12 months</option></select></span></label>
+  <label class="field f-budget"><span class="field-label">Budget / month</span><span class="field-input"><i class="ph ph-wallet"></i><select name="budget"><option>Any budget</option><option>Under ฿20,000</option><option>฿20,000 – 40,000</option><option>฿40,000 – 80,000</option><option>฿80,000+</option></select></span></label>
+  <button class="btn btn-primary btn-search" type="submit"><i class="ph ph-magnifying-glass"></i><span>Search</span></button>
+  <p class="search-msg" role="status" aria-live="polite"></p>
+</form>
+      </div>
+      <figure class="photo-pair reveal" style="margin:0">
+        <div class="p1"><img src="https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?q=80&w=1200&auto=format&fit=crop" alt="Furnished living room in a Bangkok condo" width="1200" height="1500" fetchpriority="high"></div>
+        <div class="p2"><img src="https://images.unsplash.com/photo-1556910103-1c02745aae4d?q=80&w=800&auto=format&fit=crop" alt="Equipped kitchen in a serviced apartment" width="800" height="1067" loading="lazy" decoding="async"></div>
+        <span class="tag-min"><i class="ph ph-calendar-check"></i>Min. stay 1 month</span>
+        <figcaption><i class="ph ph-seal-check"></i>Verified listings</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <section class="section" style="padding-top:0" aria-labelledby="feat-title" data-carousel>
+    <div class="container">
+      <div class="sec-head reveal"><div><h2 id="feat-title">Featured rentals in Bangkok</h2><p class="muted">Browse selected rentals across Bangkok and find the right home.</p><p class="demo-note">Sample listings for layout (demo content).</p></div>
+        <div class="carousel-nav"><button type="button" data-dir="-1" aria-label="Previous listings"><i class="ph ph-caret-left"></i></button><button type="button" data-dir="1" aria-label="Next listings"><i class="ph ph-caret-right"></i></button></div></div>
+      <div class="track" tabindex="0" aria-label="Featured rentals">
+        <article class="unit">
+  <a class="unit-media" href="#" tabindex="-1" aria-hidden="true"><img src="https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?q=80&w=800&auto=format&fit=crop" alt="" width="800" height="600" loading="lazy" decoding="async"><span class="photo-count"><i class="ph ph-camera"></i>43</span></a>
+  <button class="fav" type="button" aria-label="Save Ascott Embassy Sathorn" aria-pressed="false"><i class="ph ph-heart"></i></button>
+  <div class="unit-body">
+    <p class="unit-l1"><strong>฿40,000</strong><span class="per">/ month</span><span class="min-pill">Min. 1 mth</span></p>
+    <p class="unit-l2"><span>1 BR</span><span>1 BA</span><span>32 sqm</span><span>Fl. 15</span></p>
+    <h3 class="unit-l3"><a href="#">Ascott Embassy Sathorn</a></h3>
+    <p class="unit-l4">Sathon, Bangkok</p>
+  </div>
+</article><article class="unit">
+  <a class="unit-media" href="#" tabindex="-1" aria-hidden="true"><img src="https://images.unsplash.com/photo-1554995207-c18c203602cb?q=80&w=800&auto=format&fit=crop" alt="" width="800" height="600" loading="lazy" decoding="async"><span class="photo-count"><i class="ph ph-camera"></i>8</span></a>
+  <button class="fav" type="button" aria-label="Save Chewathai Residence Thonglor" aria-pressed="false"><i class="ph ph-heart"></i></button>
+  <div class="unit-body">
+    <p class="unit-l1"><strong>฿32,000</strong><span class="per">/ month</span><span class="min-pill">Min. 1 mth</span></p>
+    <p class="unit-l2"><span>1 BR</span><span>1 BA</span><span>35 sqm</span><span>Fl. 12</span></p>
+    <h3 class="unit-l3"><a href="#">Chewathai Residence Thonglor</a></h3>
+    <p class="unit-l4">Watthana, Bangkok</p>
+  </div>
+</article><article class="unit">
+  <a class="unit-media" href="#" tabindex="-1" aria-hidden="true"><img src="https://images.unsplash.com/photo-1556910103-1c02745aae4d?q=80&w=800&auto=format&fit=crop" alt="" width="800" height="600" loading="lazy" decoding="async"><span class="photo-count"><i class="ph ph-camera"></i>8</span></a>
+  <button class="fav" type="button" aria-label="Save The Esse at Singha Complex" aria-pressed="false"><i class="ph ph-heart"></i></button>
+  <div class="unit-body">
+    <p class="unit-l1"><strong>฿36,000</strong><span class="per">/ month</span><span class="min-pill">Min. 3 mth</span></p>
+    <p class="unit-l2"><span>2 BR</span><span>2 BA</span><span>50 sqm</span><span>Fl. 8</span></p>
+    <h3 class="unit-l3"><a href="#">The Esse at Singha Complex</a></h3>
+    <p class="unit-l4">Khlong Toei, Bangkok</p>
+  </div>
+</article><article class="unit">
+  <a class="unit-media" href="#" tabindex="-1" aria-hidden="true"><img src="https://images.unsplash.com/photo-1576013551627-0cc20b96c2a7?q=80&w=800&auto=format&fit=crop" alt="" width="800" height="600" loading="lazy" decoding="async"><span class="photo-count"><i class="ph ph-camera"></i>12</span></a>
+  <button class="fav" type="button" aria-label="Save Life Asoke Hype – Penthouse" aria-pressed="false"><i class="ph ph-heart"></i></button>
+  <div class="unit-body">
+    <p class="unit-l1"><strong>฿120,000</strong><span class="per">/ month</span><span class="min-pill">Min. 1 mth</span></p>
+    <p class="unit-l2"><span>3 BR</span><span>3 BA</span><span>115 sqm</span><span>Fl. 38</span></p>
+    <h3 class="unit-l3"><a href="#">Life Asoke Hype – Penthouse</a></h3>
+    <p class="unit-l4">Huai Khwang, Bangkok</p>
+  </div>
+</article><article class="unit">
+  <a class="unit-media" href="#" tabindex="-1" aria-hidden="true"><img src="https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?q=80&w=800&auto=format&fit=crop" alt="" width="800" height="600" loading="lazy" decoding="async"><span class="photo-count"><i class="ph ph-camera"></i>10</span></a>
+  <button class="fav" type="button" aria-label="Save Ideo Rama 9 – Asoke" aria-pressed="false"><i class="ph ph-heart"></i></button>
+  <div class="unit-body">
+    <p class="unit-l1"><strong>฿28,000</strong><span class="per">/ month</span><span class="min-pill">Min. 6 mth</span></p>
+    <p class="unit-l2"><span>1 BR</span><span>1 BA</span><span>30 sqm</span><span>Fl. 9</span></p>
+    <h3 class="unit-l3"><a href="#">Ideo Rama 9 – Asoke</a></h3>
+    <p class="unit-l4">Huai Khwang, Bangkok</p>
+  </div>
+</article><article class="unit">
+  <a class="unit-media" href="#" tabindex="-1" aria-hidden="true"><img src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?q=80&w=800&auto=format&fit=crop" alt="" width="800" height="600" loading="lazy" decoding="async"><span class="photo-count"><i class="ph ph-camera"></i>15</span></a>
+  <button class="fav" type="button" aria-label="Save Noble Ploenchit" aria-pressed="false"><i class="ph ph-heart"></i></button>
+  <div class="unit-body">
+    <p class="unit-l1"><strong>฿55,000</strong><span class="per">/ month</span><span class="min-pill">Min. 12 mth</span></p>
+    <p class="unit-l2"><span>2 BR</span><span>2 BA</span><span>72 sqm</span><span>Fl. 21</span></p>
+    <h3 class="unit-l3"><a href="#">Noble Ploenchit</a></h3>
+    <p class="unit-l4">Pathum Wan, Bangkok</p>
+  </div>
+</article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section alt" aria-labelledby="why-title">
+    <div class="container split">
+      <div class="split-head reveal"><p class="eyebrow">Why MUVFAST</p><h2 id="why-title">Renting from abroad, without the guesswork</h2><p class="muted">Free for tenants. Book online and move in with support from a local team.</p></div>
+      <div class="benefits">
+        <div class="benefit reveal"><i class="ph ph-globe-hemisphere-east" aria-hidden="true"></i><div><h3>Book from anywhere</h3><p>Search, choose and book online, wherever you are, with no unnecessary visits.</p></div></div><div class="benefit reveal"><i class="ph ph-shield-check" aria-hidden="true"></i><div><h3>Secure booking</h3><p>Verified listings. Trusted contacts. Secure payment.</p></div></div><div class="benefit reveal"><i class="ph ph-key" aria-hidden="true"></i><div><h3>Move-in protection</h3><p>Support if the room is not as promised or cannot be moved into.</p></div></div><div class="benefit reveal"><i class="ph ph-headset" aria-hidden="true"></i><div><h3>Local expert support</h3><p>Local experts who understand international tenants and help with questions and paperwork.</p></div></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" aria-labelledby="life-title">
+    <div class="container">
+      <div class="sec-head reveal"><div><h2 id="life-title">Discover your lifestyle home in Bangkok</h2></div></div>
+      <div class="tiles reveal">
+        <a class="tile" href="#"><i class="ph ph-crown-simple" aria-hidden="true"></i><span>Penthouse Suites</span><i class="ph ph-arrow-up-right" aria-hidden="true"></i></a><a class="tile" href="#"><i class="ph ph-call-bell" aria-hidden="true"></i><span>Full Service</span><i class="ph ph-arrow-up-right" aria-hidden="true"></i></a><a class="tile" href="#"><i class="ph ph-paw-print" aria-hidden="true"></i><span>Pet Friendly</span><i class="ph ph-arrow-up-right" aria-hidden="true"></i></a><a class="tile" href="#"><i class="ph ph-sun-horizon" aria-hidden="true"></i><span>Comfort Balcony</span><i class="ph ph-arrow-up-right" aria-hidden="true"></i></a><a class="tile" href="#"><i class="ph ph-moon-stars" aria-hidden="true"></i><span>Quiet Area</span><i class="ph ph-arrow-up-right" aria-hidden="true"></i></a><a class="tile" href="#"><i class="ph ph-train" aria-hidden="true"></i><span>Near BTS</span><i class="ph ph-arrow-up-right" aria-hidden="true"></i></a><a class="tile" href="#"><i class="ph ph-waves" aria-hidden="true"></i><span>Beach Front</span><i class="ph ph-arrow-up-right" aria-hidden="true"></i></a><a class="tile" href="#"><i class="ph ph-swimming-pool" aria-hidden="true"></i><span>Rooftop Pool</span><i class="ph ph-arrow-up-right" aria-hidden="true"></i></a><a class="tile" href="#"><i class="ph ph-laptop" aria-hidden="true"></i><span>Work from Home</span><i class="ph ph-arrow-up-right" aria-hidden="true"></i></a><a class="tile" href="#"><i class="ph ph-wifi-high" aria-hidden="true"></i><span>Smart Home</span><i class="ph ph-arrow-up-right" aria-hidden="true"></i></a><a class="tile" href="#"><i class="ph ph-island" aria-hidden="true"></i><span>Resort Style</span><i class="ph ph-arrow-up-right" aria-hidden="true"></i></a><a class="tile" href="#"><i class="ph ph-users-three" aria-hidden="true"></i><span>Family Friendly</span><i class="ph ph-arrow-up-right" aria-hidden="true"></i></a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section alt" aria-labelledby="faq-title">
+    <div class="container faq-grid">
+      <div class="faq-aside reveal"><h2 id="faq-title">Frequently asked questions</h2><p class="muted">Still have a question? Email <a href="mailto:support@muvfast.com">support@muvfast.com</a> or add LINE @muvfast.</p></div>
+      <div class="faq"><details open><summary>How much is the MUVFAST fee?<i class="ph ph-plus" aria-hidden="true"></i></summary><p class="answer">For tenants, our service is free of charge. For landlords, you save around 28% compared to a typical agent fee: you pay only 6% of total rent + 7% VAT, and only when the deal is successful.</p></details>
+<details><summary>Can I visit a property before booking?<i class="ph ph-plus" aria-hidden="true"></i></summary><p class="answer pending">Answer to be supplied by MUVFAST.</p></details>
+<details><summary>My booking has been accepted. What's next?<i class="ph ph-plus" aria-hidden="true"></i></summary><p class="answer pending">Answer to be supplied by MUVFAST.</p></details>
+<details><summary>What if the property is not as shown?<i class="ph ph-plus" aria-hidden="true"></i></summary><p class="answer pending">Answer to be supplied by MUVFAST.</p></details>
+<details><summary>Are water, electricity and internet included in the rent?<i class="ph ph-plus" aria-hidden="true"></i></summary><p class="answer pending">Answer to be supplied by MUVFAST.</p></details>
+<details><summary>How much is the security deposit?<i class="ph ph-plus" aria-hidden="true"></i></summary><p class="answer pending">Answer to be supplied by MUVFAST.</p></details>
+<details><summary>Do I need to sign a rental agreement?<i class="ph ph-plus" aria-hidden="true"></i></summary><p class="answer pending">Answer to be supplied by MUVFAST.</p></details>
+<details><summary>Is there a payment gateway fee?<i class="ph ph-plus" aria-hidden="true"></i></summary><p class="answer pending">Answer to be supplied by MUVFAST.</p></details></div>
+    </div>
+  </section>
+</main>
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <img class="footer-logo" src="../../assets/logo.svg" alt="MUVFAST" width="106" height="24" loading="lazy">
+        <p class="muted">Thailand's marketplace for flexible monthly rentals, serviced apartments and corporate leases.</p>
+        <div class="socials">
+          <a href="#" aria-label="YouTube"><i class="ph ph-youtube-logo"></i></a>
+          <a href="#" aria-label="LINE"><i class="ph ph-chat-circle-text"></i></a>
+          <a href="#" aria-label="Facebook"><i class="ph ph-facebook-logo"></i></a>
+          <a href="#" aria-label="TikTok"><i class="ph ph-tiktok-logo"></i></a>
+          <a href="#" aria-label="Instagram"><i class="ph ph-instagram-logo"></i></a>
+        </div>
+      </div>
+      <div><h2>Solutions</h2><ul class="muted"><li><a href="#">Monthly Serviced Apartments</a></li><li><a href="#">Instant Booking Condos</a></li><li><a href="#">Bills Included Units</a></li><li><a href="#">Corporate Expat Leases</a></li></ul></div>
+      <div><h2>Company</h2><ul class="muted"><li><a href="#">Projects</a></li><li><a href="#">Landlord portal</a></li><li><a href="#">Agent</a></li><li><a href="#">Sign in</a></li></ul></div>
+      <div><h2>Contact</h2><ul class="contact muted">
+        <li><i class="ph ph-map-pin"></i><span>3388/93 Sirinrat Building, Floor 25, Rama 4 Road, Bangkok</span></li>
+        <li><i class="ph ph-phone"></i><a href="tel:+6621099888">+66 (0) 2 109 9888</a></li>
+        <li><i class="ph ph-envelope-simple"></i><a href="mailto:support@muvfast.com">support@muvfast.com</a></li>
+        <li><i class="ph ph-chat-circle-text"></i><span>LINE Official: @muvfast</span></li>
+      </ul></div>
+    </div>
+    <div class="footer-bottom"><p>© 2026 MUVFAST Co., Ltd. All rights reserved.</p><nav aria-label="Legal"><a href="#">Privacy Policy</a><a href="#">Terms of Service</a></nav></div>
+  </div>
+</footer>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Organization","name":"MUVFAST","url":"https://www.muvfast.com/en","email":"support@muvfast.com","telephone":"+66 2 109 9888","address":{"@type":"PostalAddress","streetAddress":"3388/93 Sirinrat Building, Floor 25, Rama 4 Road","addressLocality":"Bangkok","addressCountry":"TH"}}</script>
+<script>
+(()=>{
+  const menu=document.querySelector('.menu-btn'),drawer=document.getElementById('drawer');
+  menu&&menu.addEventListener('click',()=>{const o=menu.getAttribute('aria-expanded')==='true';menu.setAttribute('aria-expanded',String(!o));drawer.hidden=o;menu.querySelector('i').className='ph '+(o?'ph-list':'ph-x');menu.setAttribute('aria-label',o?'Open menu':'Close menu')});
+  document.querySelectorAll('.lang').forEach(g=>g.addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;document.querySelectorAll('.lang button').forEach(x=>x.setAttribute('aria-pressed',String(x.textContent===b.textContent)))}));
+  document.querySelectorAll('.fav').forEach(b=>b.addEventListener('click',()=>{const on=b.getAttribute('aria-pressed')!=='true';b.setAttribute('aria-pressed',String(on));b.querySelector('i').className='ph'+(on?'-fill':'')+' ph-heart'}));
+  document.querySelectorAll('form[role=search]').forEach(f=>f.addEventListener('submit',e=>{e.preventDefault();const m=f.querySelector('.search-msg'),loc=f.location.value.trim();
+    if(!loc){m.className='search-msg err';m.textContent='Enter a location, BTS/MRT station or project name.';f.location.focus();return}
+    m.className='search-msg';m.textContent='Draft only: search for "'+loc+'" will connect to MUVFAST listings.'}));
+  const els=document.querySelectorAll('.reveal');
+  if('IntersectionObserver' in window){const io=new IntersectionObserver(es=>es.forEach(en=>{if(en.isIntersecting){en.target.classList.add('in');io.unobserve(en.target)}}),{rootMargin:'0px 0px -10% 0px'});els.forEach(el=>io.observe(el))}else els.forEach(el=>el.classList.add('in'));
+  document.querySelectorAll('[data-carousel]').forEach(c=>{const track=c.querySelector('.track');c.querySelectorAll('[data-dir]').forEach(b=>b.addEventListener('click',()=>{const card=track.querySelector('.unit');track.scrollBy({left:(card.offsetWidth+24)*Number(b.dataset.dir),behavior:'smooth'})}))});
+  document.querySelectorAll('[data-pills] button').forEach(b=>b.addEventListener('click',()=>b.setAttribute('aria-pressed',String(b.getAttribute('aria-pressed')!=='true'))));
+})();
+</script>
+</body>
+</html>
