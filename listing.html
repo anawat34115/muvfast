@@ -1,0 +1,543 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Monthly rentals in Bangkok | MUVFAST</title>
+<meta name="description" content="Browse monthly condos, serviced apartments, houses and villas for rent in Bangkok. Filter by budget, bedrooms and amenities and see every home on the map.">
+<meta name="robots" content="noindex">
+<link rel="icon" href="logo.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700;800&family=Noto+Sans+Thai:wght@400;500;600;700&display=swap">
+<link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/regular/style.css">
+<link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/fill/style.css">
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+<style>
+:root{--brand:#FC4A1A;--brand-dark:#C93A12;--brand-soft:#FFF1EC;--ink:#1B1D21;--muted:#5E636B;--line:#E6E4E1;--surface-alt:#F6F5F3;--footer:#212024;
+--font:'Figtree','Noto Sans Thai',system-ui,sans-serif;--ease:cubic-bezier(.16,1,.3,1);--shadow:0 8px 24px rgba(20,23,28,.10);--hh:64px;--sh:72px}
+@media(min-width:1024px){:root{--hh:72px}}
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:#fff;color:var(--ink);font-family:var(--font);font-size:16px;line-height:1.55;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+img{display:block;max-width:100%;height:auto}
+a{color:inherit;text-decoration:none}
+button,input,select{font:inherit;color:inherit}
+button{cursor:pointer}
+h1,h2,h3{margin:0;letter-spacing:-.02em;text-wrap:balance}
+p{margin:0}
+:focus-visible{outline:2px solid var(--brand);outline-offset:2px}
+.skip{position:absolute;left:16px;top:-64px;background:var(--ink);color:#fff;padding:8px 16px;border-radius:8px;z-index:200}
+.skip:focus{top:16px}
+.wrap{padding-inline:16px}
+@media(min-width:768px){.wrap{padding-inline:32px}}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;height:48px;padding:0 22px;border-radius:8px;font-weight:600;font-size:15px;border:1px solid transparent;transition:background .2s,color .2s,border-color .2s}
+.btn-ink{background:var(--ink);color:#fff}.btn-ink:hover{background:#000}
+.btn-line{background:#fff;border-color:var(--ink)}.btn-line:hover{background:var(--surface-alt)}
+.btn-ghost{background:none;text-decoration:underline;text-underline-offset:3px;padding:0 12px}
+
+/* header (same as Home) */
+.site-header{position:sticky;top:0;z-index:60;background:#fff;border-bottom:1px solid var(--line)}
+.header-grid{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;height:var(--hh)}
+.nav-left{display:none;gap:8px}
+.nav-left a{display:inline-flex;align-items:center;height:40px;padding:0 16px;border:1px solid var(--line);border-radius:999px;font-weight:500;font-size:14px}
+.nav-left a:hover{border-color:var(--ink)}
+.logo{grid-column:2}.logo img{height:24px;width:auto}
+@media(min-width:1024px){.logo img{height:28px}}
+.nav-right{grid-column:3;display:flex;justify-content:flex-end;align-items:center;gap:12px}
+.lang{display:none;border:1px solid var(--line);border-radius:999px;padding:3px}
+.lang button{border:0;background:none;padding:4px 12px;border-radius:999px;font-size:13px;font-weight:600;color:var(--muted);min-height:32px}
+.lang button[aria-pressed=true]{background:var(--ink);color:#fff}
+.icon-btn{width:44px;height:44px;margin-left:-10px;display:inline-grid;place-items:center;border:0;background:none;border-radius:8px;font-size:24px}
+.btn-signin{height:40px;padding:0 18px;font-size:14px;border-color:var(--ink);border-radius:999px}
+.btn-signin:hover{background:var(--ink);color:#fff}
+@media(min-width:1024px){.nav-left{display:flex}.menu-btn{display:none}.lang{display:inline-flex}}
+.drawer{border-top:1px solid var(--line);background:#fff}
+.drawer nav{display:grid;padding-block:8px 24px}
+.drawer a{display:flex;align-items:center;min-height:48px;font-weight:500;border-bottom:1px solid var(--line)}
+.drawer .lang{display:inline-flex;margin-top:16px;justify-self:start}
+@media(min-width:1024px){.drawer{display:none!important}}
+
+/* search bar (ส่วนที่ 1) */
+.searchbar{position:sticky;top:var(--hh);z-index:50;background:#fff;border-bottom:1px solid var(--line)}
+.sb-row{display:flex;align-items:center;gap:8px;height:var(--sh);overflow-x:auto;scrollbar-width:none}
+.sb-row::-webkit-scrollbar{display:none}
+.sb-search{flex:1 1 220px;min-width:180px;max-width:340px;display:flex;align-items:center;gap:8px;height:44px;border:1px solid var(--line);border-radius:999px;padding:0 6px 0 16px;background:#fff}
+.sb-search:focus-within{border-color:var(--ink)}
+.sb-search i{font-size:18px;color:var(--muted)}
+.sb-search input{border:0;outline:0;width:100%;min-width:0;font-size:15px;background:none}
+.sb-search .clr{border:0;background:var(--surface-alt);width:28px;height:28px;border-radius:999px;display:none;place-items:center;font-size:13px;flex:none}
+.sb-search.has .clr{display:grid}
+.pillbtn{flex:none;display:inline-flex;align-items:center;gap:8px;height:44px;padding:0 16px;border:1px solid var(--line);border-radius:999px;background:#fff;font-size:14px;font-weight:600;white-space:nowrap}
+.pillbtn:hover{border-color:var(--ink)}
+.pillbtn i{font-size:16px}
+.pillbtn[aria-expanded=true],.pillbtn.on{border-color:var(--ink);box-shadow:inset 0 0 0 1px var(--ink)}
+.pillbtn .badge{display:inline-grid;place-items:center;min-width:20px;height:20px;padding:0 6px;border-radius:999px;background:var(--ink);color:#fff;font-size:11px}
+.pillbtn .badge:empty{display:none}
+.sb-reset{flex:none;border:0;background:none;font-size:14px;font-weight:600;text-decoration:underline;text-underline-offset:3px;padding:0 8px;height:44px;color:var(--muted)}
+.sb-reset[hidden]{display:none}
+
+/* popovers / dropdowns */
+.pop{position:fixed;z-index:70;background:#fff;border:1px solid var(--line);border-radius:16px;box-shadow:0 16px 40px rgba(20,23,28,.18);padding:16px}
+.pop[hidden]{display:none}
+.opt{display:flex;align-items:center;gap:12px;width:100%;min-height:44px;padding:0 10px;border:0;background:none;border-radius:10px;font-size:15px;font-weight:500;text-align:left}
+.opt:hover{background:var(--surface-alt)}
+.opt i{font-size:20px;color:var(--muted)}
+.opt .ck{margin-left:auto;font-size:18px;color:var(--ink);visibility:hidden}
+.opt[aria-checked=true] .ck{visibility:visible}
+.opt[aria-checked=true]{font-weight:700}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chipbtn{border:1px solid var(--line);background:#fff;border-radius:999px;padding:6px 12px;font-size:13px;font-weight:600;min-height:36px}
+.chipbtn:hover{border-color:var(--ink)}
+.chipbtn[aria-pressed=true]{border-color:var(--ink);background:var(--ink);color:#fff}
+.mm{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:16px}
+.mm label{font-size:13px;font-weight:600}
+.mm input{display:block;width:100%;margin-top:4px;height:44px;border:1px solid var(--line);border-radius:10px;padding:0 12px;font-size:15px}
+.pop h3,.fsec h3{font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);margin:0 0 10px}
+.pop-foot{display:flex;align-items:center;justify-content:flex-end;gap:8px;margin-top:16px;padding-top:14px;border-top:1px solid var(--line)}
+
+/* filters panel (spotahome-like) */
+.scrim{position:fixed;inset:0;z-index:90;background:rgba(20,23,28,.45)}
+.scrim[hidden]{display:none}
+.fpanel{position:fixed;z-index:91;inset:auto 0 0 0;max-height:90vh;display:flex;flex-direction:column;background:#fff;border-radius:20px 20px 0 0;box-shadow:0 -12px 40px rgba(0,0,0,.2)}
+@media(min-width:768px){.fpanel{inset:50% auto auto 50%;transform:translate(-50%,-50%);width:560px;max-height:86vh;border-radius:20px}}
+.fpanel[hidden]{display:none}
+.fp-head{display:flex;align-items:center;justify-content:space-between;padding:16px 20px;border-bottom:1px solid var(--line)}
+.fp-head h2{font-size:18px}
+.fp-head button{width:40px;height:40px;border:0;background:none;border-radius:999px;font-size:20px;display:grid;place-items:center}
+.fp-head button:hover{background:var(--surface-alt)}
+.fp-body{overflow:auto;padding:4px 20px 8px}
+.fsec{padding:18px 0;border-bottom:1px solid var(--line)}
+.fsec:last-child{border-bottom:0}
+.amen{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.amen button{display:flex;flex-direction:column;align-items:center;gap:8px;border:1px solid transparent;background:none;border-radius:12px;padding:10px 4px;font-size:13px;font-weight:600;text-align:center}
+.amen button span{width:48px;height:48px;border-radius:999px;background:var(--brand-soft);display:grid;place-items:center;font-size:22px;color:var(--ink);transition:background .2s}
+.amen button[aria-pressed=true]{border-color:var(--ink)}
+.amen button[aria-pressed=true] span{background:var(--ink);color:#fff}
+.checks{display:grid;gap:4px}
+.checks label{display:flex;align-items:center;gap:12px;min-height:40px;font-size:15px;cursor:pointer}
+.checks input{width:20px;height:20px;accent-color:var(--ink);margin:0}
+.seg2{display:grid;grid-template-columns:1fr 2fr;border:1px solid var(--line);border-radius:10px;overflow:hidden}
+.seg2 button{border:0;background:#fff;height:46px;font-size:14px;font-weight:600;color:var(--muted)}
+.seg2 button+button{border-left:1px solid var(--line)}
+.seg2 button[aria-pressed=true]{background:var(--ink);color:#fff}
+.fp-foot{display:flex;gap:10px;justify-content:space-between;align-items:center;padding:14px 20px;border-top:1px solid var(--line)}
+.fp-foot .btn{flex:1;white-space:nowrap;padding:0 12px;font-size:14px}
+@media(max-width:479px){.fp-foot #fp-save i{display:none}}
+@media(min-width:768px){.fp-foot .btn{flex:none}}
+.fp-foot .reset{border:0;background:none;font-weight:600;text-decoration:underline;text-underline-offset:3px;padding:0 4px;height:48px;flex:none}
+
+/* layout list + map */
+.results{display:grid}
+@media(min-width:1024px){.results{grid-template-columns:minmax(0,1fr) 42%}}
+@media(min-width:1440px){.results{grid-template-columns:minmax(0,1fr) 44%}}
+.list{padding-block:24px 48px}
+.list-head{display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:8px 16px;margin-bottom:20px}
+.list-head h1{font-size:clamp(22px,2.4vw,28px);font-weight:700;line-height:1.2}
+.list-head p{color:var(--muted);font-size:14px;margin-top:4px}
+.list-head select{height:40px;border:1px solid var(--line);border-radius:999px;padding:0 12px;font-size:14px;font-weight:600;background:#fff}
+.demo-note{font-size:12px;color:var(--muted)}
+.cards{display:grid;gap:24px 20px}
+@media(min-width:640px){.cards{grid-template-columns:repeat(2,1fr)}}
+@media(min-width:1600px){.cards{grid-template-columns:repeat(3,1fr)}}
+.empty{border:1px dashed var(--line);border-radius:16px;padding:40px 24px;text-align:center;color:var(--muted)}
+.empty[hidden]{display:none}
+.empty b{display:block;color:var(--ink);font-size:18px;margin-bottom:6px}
+.pager{display:flex;align-items:center;justify-content:center;gap:6px;margin-top:36px}
+.pager a,.pager span{display:grid;place-items:center;min-width:40px;height:40px;border-radius:999px;font-size:14px;font-weight:600}
+.pager a:hover{background:var(--surface-alt)}
+.pager .cur{background:var(--ink);color:#fff}
+.pager-note{text-align:center;color:var(--muted);font-size:13px;margin-top:8px}
+
+/* unit card (= Unit details "Other units in the same project" + 24/7) */
+.ucard{position:relative;display:flex;flex-direction:column;background:#fff;border:1px solid #E3E5E8;border-radius:16px;overflow:hidden;transition:box-shadow .25s,border-color .25s}
+.ucard:hover,.ucard.hl{box-shadow:var(--shadow);border-color:#CBCED3}
+.ucard-media{position:relative;display:block;aspect-ratio:4/3;overflow:hidden;background:var(--surface-alt)}
+.ucard-media img{width:100%;height:100%;object-fit:cover;transition:transform .6s var(--ease)}
+.ucard:hover .ucard-media img{transform:scale(1.04)}
+.avail{position:absolute;top:12px;left:12px;display:inline-flex;align-items:center;gap:6px;background:rgba(255,255,255,.94);border-radius:6px;padding:3px 8px;font-size:11px;font-weight:700;max-width:calc(100% - 64px);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;z-index:2}
+.avail i{width:6px;height:6px;border-radius:50%;background:#12B76A;flex:none}
+.fav{position:absolute;top:10px;right:10px;z-index:3;width:34px;height:34px;border-radius:999px;border:0;background:rgba(255,255,255,.95);display:grid;place-items:center;font-size:18px;box-shadow:0 1px 3px rgba(0,0,0,.12)}
+.fav[aria-pressed=true]{color:var(--brand)}
+.count{position:absolute;right:10px;bottom:10px;background:rgba(0,0,0,.6);color:#fff;font-size:11px;font-weight:600;padding:2px 8px;border-radius:4px}
+.open247{position:absolute;left:10px;bottom:10px;display:inline-flex;align-items:center;gap:4px;background:#fff;color:var(--ink);border-radius:999px;padding:3px 10px 3px 4px;font-size:11px;font-weight:700;box-shadow:0 1px 4px rgba(0,0,0,.18)}
+.open247 svg{width:22px;height:22px;color:var(--brand)}
+.open247 b{color:var(--brand);font-weight:800;font-size:12px}
+.ucard-body{padding:14px 16px 16px;display:flex;flex-direction:column;gap:4px}
+.ucard-top{display:flex;align-items:center;justify-content:space-between;padding-bottom:10px;margin-bottom:6px;border-bottom:1px solid #F0F1F3}
+.lease{display:flex;flex-direction:column;font-size:11px;color:var(--muted);line-height:1.35}
+.lease b{color:var(--ink)}
+.price strong{font-size:18px;font-weight:800}
+.price span{font-size:11px;color:#9AA0A6;margin-left:2px}
+.specs{font-size:13px;color:#4B5058;font-weight:500}
+.specs span+span::before{content:"•";margin:0 6px;color:#C9CCD1}
+.uname{font-size:16px;font-weight:800;letter-spacing:-.01em;line-height:1.35;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.uname a::after{content:"";position:absolute;inset:0;z-index:1}
+.dist{font-size:12px;color:var(--muted)}
+.ptype{display:inline-block;font-size:11px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.05em}
+.transit{display:flex;align-items:center;gap:5px;font-size:12px;font-weight:600;color:#0F7A4F}
+.transit.mrt{color:#1E4F9C}
+.transit i{font-size:15px}
+
+/* map (ส่วนที่ 3) */
+.mapcol{display:none}
+@media(min-width:1024px){.mapcol{display:block;position:sticky;top:calc(var(--hh) + var(--sh));height:calc(100vh - var(--hh) - var(--sh));padding:16px 32px 16px 0}}
+.mapbox{position:relative;height:100%;border-radius:16px;overflow:hidden;border:1px solid var(--line);background:#EEF0EC}
+#map{position:absolute;inset:0}
+#map .leaflet-tile-pane{filter:saturate(.3) brightness(1.06) contrast(.97)}
+.map-chip{position:absolute;z-index:500;top:12px;left:50%;transform:translateX(-50%);display:flex;align-items:center;gap:8px;background:#fff;border-radius:999px;padding:8px 14px;font-size:13px;font-weight:600;box-shadow:0 2px 10px rgba(0,0,0,.15);white-space:nowrap}
+.map-chip input{width:16px;height:16px;accent-color:var(--ink);margin:0}
+.legend{position:absolute;z-index:500;left:12px;bottom:12px;display:flex;gap:10px;background:rgba(255,255,255,.95);border-radius:10px;padding:6px 10px;font-size:11px;font-weight:600;box-shadow:0 1px 6px rgba(0,0,0,.12)}
+.legend span{display:inline-flex;align-items:center;gap:5px}
+.legend i{width:10px;height:10px;border-radius:50%;display:inline-block}
+.pin{display:inline-block;transform:translate(-50%,-50%);background:#fff;color:var(--ink);font:800 12.5px/1 var(--font);padding:7px 10px;border-radius:999px;box-shadow:0 2px 6px rgba(0,0,0,.25),0 0 0 1px rgba(0,0,0,.06);white-space:nowrap;transition:transform .15s,background .15s,color .15s;cursor:pointer}
+.pin:hover,.pin.hl{transform:translate(-50%,-50%) scale(1.08)}
+.pin.on,.pin.hl{background:var(--ink);color:#fff}
+.leaflet-marker-icon.pin-wrap{background:none;border:0;width:0!important;height:0!important}
+.leaflet-marker-icon.pin-wrap:focus-visible .pin{outline:2px solid var(--brand);outline-offset:2px}
+.st-pin{display:flex;align-items:center;gap:5px;transform:translate(-11px,-11px);white-space:nowrap;pointer-events:none}
+.st-pin b{width:22px;height:22px;border-radius:6px;display:grid;place-items:center;color:#fff;font:800 8px/1 var(--font);border:2px solid #fff;box-shadow:0 1px 4px rgba(0,0,0,.3)}
+.st-pin span{font:700 11px/1 var(--font);color:#1B1D21;background:rgba(255,255,255,.88);padding:3px 6px;border-radius:4px}
+.leaflet-container{font-family:var(--font)}
+.leaflet-popup.mpop .leaflet-popup-content-wrapper{padding:0;border-radius:14px;overflow:hidden;box-shadow:0 10px 30px rgba(0,0,0,.25)}
+.leaflet-popup.mpop .leaflet-popup-content{margin:0;width:260px!important}
+.leaflet-popup.mpop .leaflet-popup-tip-container{display:none}
+.leaflet-popup.mpop a.leaflet-popup-close-button{top:8px;right:8px;width:28px;height:28px;border-radius:999px;background:#fff;color:var(--ink);font:400 18px/28px var(--font);text-align:center;box-shadow:0 1px 4px rgba(0,0,0,.2);z-index:3}
+.mp img{width:100%;aspect-ratio:16/10;object-fit:cover}
+.mp-b{padding:10px 14px 12px;display:grid;gap:2px}
+.mp-b .t{display:flex;justify-content:space-between;align-items:baseline;gap:8px}
+.mp-b b{font-size:14px;line-height:1.3}
+.mp-b small{font-size:12px;color:var(--muted)}
+.mp-b strong{font-size:14px}
+.mp-b strong span{font-size:11px;color:#9AA0A6;font-weight:500}
+
+/* mobile list/map toggle */
+.toggle{position:fixed;z-index:80;left:50%;bottom:20px;transform:translateX(-50%);display:inline-flex;align-items:center;gap:8px;height:48px;padding:0 20px;border:0;border-radius:999px;background:var(--ink);color:#fff;font-weight:700;font-size:14px;box-shadow:0 6px 18px rgba(0,0,0,.25)}
+@media(min-width:1024px){.toggle{display:none}}
+@media(max-width:1023px){
+  body.show-map .mapcol{display:block;position:fixed;z-index:40;inset:calc(var(--hh) + var(--sh)) 0 0 0;padding:0}
+  body.show-map .mapbox{border-radius:0;border:0}
+  body.show-map .list,body.show-map .site-footer{display:none}
+}
+
+/* toast */
+.toast{position:fixed;z-index:120;left:50%;bottom:84px;transform:translateX(-50%);background:var(--ink);color:#fff;font-size:14px;font-weight:600;padding:10px 16px;border-radius:10px;box-shadow:var(--shadow);display:flex;align-items:center;gap:8px}
+.toast[hidden]{display:none}
+
+/* footer (same as Home) */
+.site-footer{background:var(--footer);color:#C9C9CE;font-size:13px;line-height:1.4}
+.site-footer a:hover{color:#fff}
+.f-top{display:grid;gap:28px 24px;padding-block:48px 36px;grid-template-columns:repeat(2,1fr)}
+@media(min-width:1024px){.f-top{grid-template-columns:repeat(4,1fr);padding-block:56px 40px}}
+.site-footer h2{font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--brand);margin:0 0 10px}
+.site-footer ul{list-style:none;margin:0;padding:0;display:grid;gap:6px}
+.more{display:inline-block;margin-top:6px;font-size:11px;font-weight:700;color:var(--brand)}
+.f-mid{display:grid;gap:28px 24px;padding-block:32px;border-top:1px solid #3A393E;grid-template-columns:repeat(2,1fr)}
+@media(min-width:1024px){.f-mid{grid-template-columns:1.5fr 1fr 1fr 1fr}}
+.f-brand{grid-column:1/-1}
+@media(min-width:1024px){.f-brand{grid-column:auto}}
+.f-brand img{height:22px;width:auto;margin-bottom:12px}
+.f-brand p{line-height:1.5}
+.socials{display:flex;gap:8px;margin-top:14px}
+.socials a{width:34px;height:34px;border-radius:999px;background:#323136;display:grid;place-items:center;font-size:16px;color:#fff}
+.socials a:hover{background:var(--brand)}
+.guide{display:inline-flex;align-items:center;gap:6px;border:1px solid #6B6A70;border-radius:999px;padding:4px 12px;margin-top:4px}
+.f-bot{display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px 16px;padding-block:16px 24px;border-top:1px solid #3A393E;font-size:12px;color:#9C9BA1}
+.f-bot nav{display:flex;gap:6px}
+.f-inner{max-width:1264px;margin-inline:auto}
+@media(prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+</style>
+</head>
+<body>
+<a class="skip" href="#list">Skip to results</a>
+<header class="site-header">
+  <div class="wrap header-grid">
+    <div>
+      <button class="icon-btn menu-btn" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="drawer"><i class="ph ph-list"></i></button>
+      <nav class="nav-left" aria-label="Primary"><a href="#">Landlord</a><a href="#">Agent</a></nav>
+    </div>
+    <a class="logo" href="home.html" aria-label="MUVFAST home"><img src="logo.svg" alt="MUVFAST" width="124" height="28"></a>
+    <div class="nav-right">
+      <div class="lang" role="group" aria-label="Language"><button type="button" aria-pressed="true">EN</button><button type="button" aria-pressed="false">TH</button></div>
+      <a class="btn btn-signin" href="#">Sign in</a>
+    </div>
+  </div>
+  <div class="drawer" id="drawer" hidden>
+    <nav class="wrap" aria-label="Mobile"><a href="#">Landlord</a><a href="#">Agent</a>
+      <div class="lang" role="group" aria-label="Language"><button type="button" aria-pressed="true">EN</button><button type="button" aria-pressed="false">TH</button></div></nav>
+  </div>
+</header>
+
+<!-- ส่วนที่ 1: การค้นหา -->
+<div class="searchbar">
+  <div class="wrap sb-row" role="search">
+    <label class="sb-search" id="sb-search"><i class="ph ph-magnifying-glass"></i><span class="sr-only" style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)">Search</span><input id="q" type="search" placeholder="Search e.g. Noble Thonglor" autocomplete="off"><button type="button" class="clr" id="q-clr" aria-label="Clear search"><i class="ph ph-x" style="font-size:13px;color:var(--ink)"></i></button></label>
+    <button type="button" class="pillbtn" id="btn-type" aria-haspopup="true" aria-expanded="false"><span id="lbl-type">Property type</span><i class="ph ph-caret-down"></i></button>
+    <button type="button" class="pillbtn" id="btn-budget" aria-haspopup="dialog" aria-expanded="false"><span id="lbl-budget">Budget</span><i class="ph ph-caret-down"></i></button>
+    <button type="button" class="pillbtn" id="btn-filters" aria-haspopup="dialog" aria-expanded="false"><i class="ph ph-sliders-horizontal"></i>Filters<span class="badge" id="f-badge"></span></button>
+    <button type="button" class="sb-reset" id="sb-reset" hidden>Clear all</button>
+  </div>
+</div>
+
+<!-- property type dropdown -->
+<div class="pop" id="pop-type" role="menu" aria-label="Property type" hidden style="width:280px;padding:8px">
+  <button type="button" class="opt" role="menuitemradio" aria-checked="true" data-v=""><i class="ph ph-squares-four"></i>All property types<i class="ph ph-check ck"></i></button>
+  <button type="button" class="opt" role="menuitemradio" aria-checked="false" data-v="Condo"><i class="ph ph-buildings"></i>Condo<i class="ph ph-check ck"></i></button>
+  <button type="button" class="opt" role="menuitemradio" aria-checked="false" data-v="Service Apartment"><i class="ph ph-bell-simple"></i>Service Apartments<i class="ph ph-check ck"></i></button>
+  <button type="button" class="opt" role="menuitemradio" aria-checked="false" data-v="House"><i class="ph ph-house-line"></i>House<i class="ph ph-check ck"></i></button>
+  <button type="button" class="opt" role="menuitemradio" aria-checked="false" data-v="Villa"><i class="ph ph-swimming-pool"></i>Villa<i class="ph ph-check ck"></i></button>
+</div>
+
+<!-- budget popover (same as Home) -->
+<div class="pop" id="pop-budget" role="dialog" aria-label="Budget per month" hidden style="width:min(420px,calc(100vw - 32px))">
+  <div class="mm"><label>Min price<input id="b-min" inputmode="numeric" placeholder="Any"></label><label>Max price<input id="b-max" inputmode="numeric" placeholder="Any"></label></div>
+  <h3>Recommended ranges</h3>
+  <div class="chips" id="b-ranges">
+    <button type="button" class="chipbtn" aria-pressed="false" data-min="15000" data-max="20000">฿15K – 20K</button><button type="button" class="chipbtn" aria-pressed="false" data-min="20000" data-max="50000">฿20K – 50K</button><button type="button" class="chipbtn" aria-pressed="false" data-min="50000" data-max="100000">฿50K – 100K</button><button type="button" class="chipbtn" aria-pressed="false" data-min="150000" data-max="200000">฿150K – 200K</button><button type="button" class="chipbtn" aria-pressed="false" data-min="200000" data-max="">Over ฿200K</button>
+  </div>
+  <div class="pop-foot"><button type="button" class="btn btn-ghost" id="b-clear">Clear</button><button type="button" class="btn btn-ink" id="b-save">Save</button></div>
+</div>
+
+<!-- filters panel -->
+<div class="scrim" id="scrim" hidden></div>
+<div class="fpanel" id="fpanel" role="dialog" aria-modal="true" aria-labelledby="fp-title" hidden>
+  <div class="fp-head"><h2 id="fp-title">Filters</h2><button type="button" id="fp-close" aria-label="Close filters"><i class="ph ph-x"></i></button></div>
+  <div class="fp-body">
+    <div class="fsec"><h3>Recommended for you</h3>
+      <div class="amen" id="f-amen">
+        <button type="button" aria-pressed="false" data-k="wifi"><span><i class="ph ph-wifi-high"></i></span>Wi-Fi</button>
+        <button type="button" aria-pressed="false" data-k="nodep"><span><i class="ph ph-lock-simple-open"></i></span>No deposit</button>
+        <button type="button" aria-pressed="false" data-k="checked"><span><i class="ph ph-seal-check"></i></span>Checked by MUVFAST</button>
+      </div>
+    </div>
+    <div class="fsec"><h3>Bedrooms</h3>
+      <div class="checks" id="f-br">
+        <label><input type="checkbox" value="1">1 bedroom</label>
+        <label><input type="checkbox" value="2">2 bedrooms</label>
+        <label><input type="checkbox" value="3">3 bedrooms</label>
+        <label><input type="checkbox" value="4">4+ bedrooms</label>
+      </div>
+    </div>
+    <div class="fsec"><h3>Number of bathrooms</h3>
+      <div class="seg2" id="f-ba" role="group" aria-label="Number of bathrooms"><button type="button" aria-pressed="false" data-v="1">1</button><button type="button" aria-pressed="false" data-v="2">2 or more</button></div>
+    </div>
+  </div>
+  <div class="fp-foot"><button type="button" class="reset" id="fp-reset">Clear all</button><button type="button" class="btn btn-line" id="fp-save"><i class="ph ph-bookmark-simple"></i>Save my search</button><button type="button" class="btn btn-ink" id="fp-view">View results</button></div>
+</div>
+
+<main class="results" id="list">
+  <!-- ส่วนที่ 2: listing ซ้ายมือ -->
+  <section class="list wrap" aria-labelledby="list-title">
+    <div class="list-head">
+      <div><h1 id="list-title">Over 1,000 homes in Bangkok</h1><p><span id="res-count">16</span> homes in this map area · <span class="demo-note">Sample listings (demo content)</span></p></div>
+      <label><span style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)">Sort by</span><select id="sort"><option value="rec">Recommended</option><option value="new">Newest</option><option value="lo">Price: low to high</option><option value="hi">Price: high to low</option></select></label>
+    </div>
+    <div class="cards" id="cards"></div>
+    <div class="empty" id="empty" hidden><b>No homes match these filters</b>Try removing a filter or widening your budget.<div style="margin-top:16px"><button type="button" class="btn btn-line" id="empty-reset">Clear all filters</button></div></div>
+    <nav class="pager" aria-label="Pages"><a href="#" aria-label="Previous page"><i class="ph ph-caret-left"></i></a><span class="cur" aria-current="page">1</span><a href="#">2</a><a href="#">3</a><span>…</span><a href="#">64</a><a href="#" aria-label="Next page"><i class="ph ph-caret-right"></i></a></nav>
+    <p class="pager-note">1 – 16 of 1,024 homes</p>
+  </section>
+
+  <!-- ส่วนที่ 3: map ขวามือ -->
+  <aside class="mapcol" aria-label="Map of results">
+    <div class="mapbox">
+      <div id="map" role="application" aria-label="Map with rental prices"></div>
+      <label class="map-chip"><input type="checkbox" id="move-search" checked>Search as I move the map</label>
+      <div class="legend"><span><i style="background:#7CB342"></i>BTS</span><span><i style="background:#1E4F9C"></i>MRT</span><span><i style="border:2px dashed #C93A12;width:12px;height:12px"></i>500 m</span></div>
+    </div>
+  </aside>
+</main>
+
+<button type="button" class="toggle" id="toggle"><i class="ph ph-map-trifold"></i><span>Map</span></button>
+<div class="toast" id="toast" role="status" hidden><i class="ph-fill ph-check-circle"></i><span></span></div>
+
+<footer class="site-footer">
+  <div class="wrap"><div class="f-inner">
+    <div class="f-top">
+      <div><h2>Explore Monthly Rentals</h2><ul><li><a href="#">Bangkok Monthly Rentals</a></li><li><a href="#">Hua Hin Monthly Rentals</a></li></ul></div>
+      <div><h2>Serviced Apartments</h2><ul><li><a href="#">Serviced Apartments in Bangkok</a></li><li><a href="#">Serviced Apartments in Sukhumvit</a></li><li><a href="#">Serviced Apartments in Asoke</a></li><li><a href="#">Serviced Apartments in Ploenchit</a></li><li><a href="#">Serviced Apartments in Sathorn</a></li></ul><a class="more" href="#">More (1)</a></div>
+      <div><h2>Condos for Rent</h2><ul><li><a href="#">Condos in Bangkok</a></li><li><a href="#">Condos in Hua Hin</a></li><li><a href="#">Condos in Sukhumvit</a></li></ul></div>
+      <div><h2>Near Landmarks &amp; BTS</h2><ul><li><a href="#">Near BTS Asok</a></li><li><a href="#">Near Benjakitti Park</a></li><li><a href="#">Near Lumpini Park</a></li><li><a href="#">Near EM District</a></li></ul></div>
+      <div><h2>Find Your Lifestyle</h2><ul><li><a href="#">With Parking</a></li><li><a href="#">With a Gym</a></li><li><a href="#">With a Swimming Pool</a></li><li><a href="#">Pet-Friendly</a></li><li><a href="#">Walk to BTS</a></li></ul><a class="more" href="#">More (4)</a></div>
+      <div><h2>Rental Budget</h2><ul><li><a href="#">฿30,000–฿50,000/month</a></li><li><a href="#">฿50,000–฿80,000/month</a></li><li><a href="#">Over ฿80,000/month</a></li></ul></div>
+      <div><h2>For International Tenants</h2><ul><li><a href="#">Apartments for Expats</a></li></ul></div>
+    </div>
+    <div class="f-mid">
+      <div class="f-brand"><img src="logo.svg" alt="MUVFAST" width="98" height="22" loading="lazy"><p>3388/93 Sirinrat Building, floor 25<br>Rama 4 Road, Klongton,<br>Klongtoey, Bangkok 10110</p>
+        <div class="socials"><a href="#" aria-label="YouTube"><i class="ph-fill ph-youtube-logo"></i></a><a href="#" aria-label="LINE"><i class="ph-fill ph-chat-circle-dots"></i></a><a href="#" aria-label="Facebook"><i class="ph-fill ph-facebook-logo"></i></a><a href="#" aria-label="TikTok"><i class="ph-fill ph-tiktok-logo"></i></a><a href="#" aria-label="Instagram"><i class="ph ph-instagram-logo"></i></a></div></div>
+      <div><h2>Menu</h2><ul><li><a href="home.html">Home</a></li><li><a href="#">Projects</a></li></ul></div>
+      <div><h2>For Customers</h2><ul><li><a href="#">Search Home</a></li><li><a href="#">Login</a></li></ul></div>
+      <div><h2>Company</h2><ul><li><a href="#">About MuvFast</a></li><li><a href="#">Privacy Policy</a></li><li><a href="#">Terms of Service</a></li><li><a class="guide" href="#"><i class="ph ph-info"></i>Rental Property Guide</a></li></ul></div>
+    </div>
+    <div class="f-bot"><p>© 2026 MuvFast Co., Ltd. All rights reserved.</p><nav aria-label="Legal"><a href="#">Privacy Policy</a><span>·</span><a href="#">Terms of Service</a></nav></div>
+  </div></div>
+</footer>
+<!-- Draft: map = Esri World Street Map tiles via Leaflet (swap to Google Maps JS API with MUVFAST key for production). Listings + photos are demo content. -->
+
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script>
+(()=>{
+const $=(s,r=document)=>r.querySelector(s),$$=(s,r=document)=>[...r.querySelectorAll(s)];
+const IMG=id=>`https://images.unsplash.com/photo-${id}?q=75&w=640&h=480&auto=format&fit=crop`;
+// demo data: [name, type, price, lease, br, ba, sqm, fl, district, transit, lat, lng, photos, updatedDays, wifi, noDeposit, checked, img]
+const RAW=[
+ ["Ashton Asoke","Condo",42000,3,1,1,45,16,"Watthana, Bangkok","BTS Asok 50 m",13.7383,100.5622,12,4,1,0,1,"1567767292278-a4f21aa2d36e"],
+ ["Chewathai Residence Thonglor","Condo",32000,1,1,1,35,12,"Watthana, Bangkok","BTS Phrom Phong 700 m",13.7326,100.5672,8,5,1,1,1,"1522708323590-d24dbb6b0267"],
+ ["The Esse Asoke","Condo",58000,1,2,2,68,30,"Watthana, Bangkok","BTS Asok 150 m",13.7392,100.5604,15,1,1,0,1,"1600607687939-ce8a6c25118c"],
+ ["Noble Refine","Condo",36000,6,1,1,48,9,"Khlong Toei, Bangkok","BTS Phrom Phong 250 m",13.7316,100.5683,9,3,0,0,0,"1505691938895-1758d7feb511"],
+ ["Somerset Sukhumvit Thonglor","Service Apartment",75000,1,2,2,90,7,"Watthana, Bangkok","BTS Phrom Phong 450 m",13.7341,100.5701,20,2,1,1,1,"1590490360182-c33d57733427"],
+ ["Grand Mercure Residence Asoke","Service Apartment",65000,1,1,1,55,18,"Watthana, Bangkok","MRT Sukhumvit 300 m",13.7409,100.5631,18,1,1,1,1,"1582719478250-c89cae4dc85b"],
+ ["Siamese Exclusive 31","Condo",28000,3,1,1,30,11,"Watthana, Bangkok","BTS Phrom Phong 600 m",13.7362,100.5679,7,6,1,0,0,"1502672260266-1c1ef2d93688"],
+ ["Edge Sukhumvit 23","Condo",34000,1,1,1,34,22,"Watthana, Bangkok","MRT Sukhumvit 350 m",13.7411,100.5652,10,2,1,1,0,"1560448204-e02f11c3d0e2"],
+ ["Townhouse Sukhumvit 22","House",95000,6,3,3,220,3,"Khlong Toei, Bangkok","BTS Phrom Phong 650 m",13.7298,100.5634,14,8,0,0,1,"1600210492486-724fe5c67fb0"],
+ ["The Lofts Asoke","Condo",48000,1,2,1,60,25,"Huai Khwang, Bangkok","MRT Phetchaburi 200 m",13.7462,100.5627,11,2,1,0,1,"1598928506311-c55ded91a20c"],
+ ["Celes Asoke","Condo",39000,3,1,1,40,14,"Watthana, Bangkok","BTS Asok 400 m",13.7419,100.5599,9,5,1,1,0,"1484154218962-a197022b5858"],
+ ["Pool Villa Sukhumvit 26","Villa",210000,6,4,4,420,2,"Khlong Toei, Bangkok","BTS Phrom Phong 550 m",13.7289,100.5668,24,3,1,0,1,"1576013551627-0cc20b96c2a7"],
+ ["Fraser Suites Sukhumvit","Service Apartment",120000,1,3,3,150,12,"Khlong Toei, Bangkok","BTS Nana 400 m",13.7378,100.5546,22,4,1,1,1,"1611892440504-42a792e24d32"],
+ ["Hyde Sukhumvit 13","Condo",26000,1,1,1,29,8,"Watthana, Bangkok","BTS Nana 250 m",13.7426,100.5568,6,7,1,0,0,"1493809842364-78817add7ffb"],
+ ["Millennium Residence","Condo",85000,6,3,2,135,40,"Khlong Toei, Bangkok","MRT Queen Sirikit 300 m",13.7317,100.5594,16,1,1,0,1,"1586023492125-27b2c045efd7"],
+ ["Sukhumvit 16 Family House","House",160000,6,4,3,300,3,"Khlong Toei, Bangkok","MRT Queen Sirikit 500 m",13.7334,100.5565,13,9,0,1,0,"1631049307264-da0ec9d70304"],
+];
+const L=RAW.map((r,i)=>({id:i,name:r[0],type:r[1],price:r[2],lease:r[3],br:r[4],ba:r[5],sqm:r[6],fl:r[7],dist:r[8],transit:r[9],lat:r[10],lng:r[11],photos:r[12],upd:r[13],wifi:!!r[14],nodep:!!r[15],checked:!!r[16],img:IMG(r[17])}));
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const fmtP=n=>'฿'+n.toLocaleString();
+const shortP=fmtP;
+const OPEN247='<span class="open247" title="Open house 24/7"><svg viewBox="0 0 40 40" aria-hidden="true"><circle cx="20" cy="20" r="16" fill="none" stroke="currentColor" stroke-width="3" stroke-dasharray="76 25" stroke-linecap="round" transform="rotate(-60 20 20)"/><path d="M20 10v10l6 4" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"/></svg><b>24/7</b><span>Open house</span></span>';
+const card=u=>`<article class="ucard" data-id="${u.id}">
+  <a class="ucard-media" href="index.html" tabindex="-1" aria-hidden="true"><img src="${u.img}" alt="" width="640" height="480" loading="lazy" decoding="async">${OPEN247}<span class="count">1/${u.photos}</span></a>
+  <span class="avail"><i></i>Available: Now | Updated ${u.upd} day${u.upd>1?'s':''} ago</span>
+  <button class="fav" type="button" aria-label="Save ${esc(u.name)}" aria-pressed="false"><i class="ph ph-heart"></i></button>
+  <div class="ucard-body">
+    <div class="ucard-top"><p class="lease"><b>Min. lease</b><span>${u.lease} month${u.lease>1?'s':''}</span></p><p class="price"><strong>${fmtP(u.price)}</strong><span>/month</span></p></div>
+    <p class="specs"><span>${u.br} br</span><span>${u.ba} ba</span><span>${u.sqm} sqm</span><span>Fl. ${u.fl}</span></p>
+    <h2 class="uname"><a href="index.html">${esc(u.name)}</a></h2>
+    <p class="dist">${esc(u.dist)} · <span class="ptype">${esc(u.type)}</span></p>
+    <p class="transit ${u.transit.startsWith('BTS')?'bts':'mrt'}"><i class="ph ph-train-simple" aria-hidden="true"></i>${esc(u.transit)}</p>
+  </div></article>`;
+
+/* ---------- state ---------- */
+const S={q:'',type:'',min:0,max:0,amen:new Set(),br:new Set(),ba:'',sort:'rec',bounds:null,moveSearch:true};
+let draft=null; // filters panel working copy
+function match(u,st=S,useBounds=true){
+  if(st.q){const q=st.q.toLowerCase();if(!(u.name+' '+u.dist+' '+u.transit).toLowerCase().includes(q))return false}
+  if(st.type&&u.type!==st.type)return false;
+  if(st.min&&u.price<st.min)return false;if(st.max&&u.price>st.max)return false;
+  for(const a of st.amen)if(!u[a])return false;
+  if(st.br.size&&!st.br.has(String(Math.min(u.br,4))))return false;
+  if(st.ba==='1'&&u.ba!==1)return false;if(st.ba==='2'&&u.ba<2)return false;
+  if(useBounds&&st.moveSearch&&st.bounds&&!st.bounds.contains([u.lat,u.lng]))return false;
+  return true}
+function sorted(a){const s=[...a];if(S.sort==='lo')s.sort((x,y)=>x.price-y.price);if(S.sort==='hi')s.sort((x,y)=>y.price-x.price);if(S.sort==='new')s.sort((x,y)=>x.upd-y.upd);return s}
+
+/* ---------- list ---------- */
+const cardsEl=$('#cards');
+function render(){
+  const res=sorted(L.filter(u=>match(u)));
+  cardsEl.innerHTML=res.map(card).join('');
+  $('#res-count').textContent=res.length;
+  $('#empty').hidden=res.length>0;
+  $$('.fav',cardsEl).forEach(b=>b.addEventListener('click',()=>{const on=b.getAttribute('aria-pressed')!=='true';b.setAttribute('aria-pressed',String(on));b.querySelector('i').className=(on?'ph-fill':'ph')+' ph-heart'}));
+  $$('.ucard',cardsEl).forEach(c=>{const id=+c.dataset.id;c.addEventListener('mouseenter',()=>hlPin(id,true));c.addEventListener('mouseleave',()=>hlPin(id,false))});
+  updatePins();updateChrome();
+}
+function updateChrome(){
+  const nF=S.amen.size+S.br.size+(S.ba?1:0);$('#f-badge').textContent=nF||'';
+  $('#btn-filters').classList.toggle('on',nF>0);
+  $('#lbl-type').textContent=S.type?(S.type==='Service Apartment'?'Service Apartments':S.type):'Property type';$('#btn-type').classList.toggle('on',!!S.type);
+  const k=n=>n>=1000?(n/1000)+'K':n;
+  $('#lbl-budget').textContent=S.min&&S.max?`฿${k(S.min)} – ${k(S.max)}`:S.min?`From ฿${k(S.min)}`:S.max?`Up to ฿${k(S.max)}`:'Budget';$('#btn-budget').classList.toggle('on',!!(S.min||S.max));
+  $('#sb-reset').hidden=!(S.q||S.type||S.min||S.max||nF);
+  $('#sb-search').classList.toggle('has',!!S.q);
+}
+
+/* ---------- map ---------- */
+let map=null;const pins={};
+const CENTER=[13.7370,100.5605]; // BTS Asok / MRT Sukhumvit
+const STATIONS=[["BTS","Asok",13.73706,100.56036,"#7CB342"],["MRT","Sukhumvit",13.73860,100.56150,"#1E4F9C"],["BTS","Nana",13.74050,100.55490,"#7CB342"],["BTS","Phrom Phong",13.73050,100.56970,"#7CB342"],["MRT","Queen Sirikit",13.72310,100.56010,"#1E4F9C"],["MRT","Phetchaburi",13.74870,100.56370,"#1E4F9C"]];
+function initMap(){
+  if(!window.L||map)return;
+  map=window.L.map('map',{zoomControl:false,scrollWheelZoom:true}).setView(CENTER,16);
+  window.L.control.zoom({position:'topright'}).addTo(map);
+  window.L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer/tile/{z}/{y}/{x}',{maxZoom:19,attribution:'Tiles &copy; Esri'}).addTo(map);
+  window.L.circle(CENTER,{radius:500,color:'#C93A12',weight:1.5,dashArray:'6 6',fill:true,fillColor:'#FC4A1A',fillOpacity:.03,interactive:false}).addTo(map);
+  STATIONS.forEach(([sys,n,lat,lng,c])=>window.L.marker([lat,lng],{interactive:false,keyboard:false,icon:window.L.divIcon({className:'',html:`<div class="st-pin"><b style="background:${c}">${sys}</b><span>${sys} ${n}</span></div>`,iconSize:[0,0]})}).addTo(map));
+  L.forEach(u=>{
+    const m=window.L.marker([u.lat,u.lng],{riseOnHover:true,keyboard:true,title:`${u.name}, ${fmtP(u.price)} per month`,icon:window.L.divIcon({className:'pin-wrap',html:`<span class="pin">${shortP(u.price)}</span>`,iconSize:[0,0]})});
+    m.bindPopup(`<div class="mp"><a href="index.html"><img src="${u.img}" alt="" width="260" height="163"></a><div class="mp-b"><div class="t"><b>${esc(u.name)}</b></div><small>${u.br} br · ${u.ba} ba · ${u.sqm} sqm · Min. ${u.lease} mth</small><small>${esc(u.transit)}</small><strong>${fmtP(u.price)} <span>/month</span></strong></div></div>`,{className:'mpop',maxWidth:260,minWidth:260,autoPanPaddingTopLeft:[24,72],autoPanPaddingBottomRight:[24,56],offset:[0,-12]});
+    m.on('popupopen',()=>{pinEl(u.id)?.classList.add('on');const c=cardsEl.querySelector(`[data-id="${u.id}"]`);if(c&&innerWidth>=1024)c.scrollIntoView({block:'nearest',behavior:'smooth'})});
+    m.on('popupclose',()=>pinEl(u.id)?.classList.remove('on'));
+    pins[u.id]=m});
+  map.on('moveend',()=>{S.bounds=map.getBounds();if(S.moveSearch)render()});
+  S.bounds=map.getBounds();
+}
+const pinEl=id=>pins[id]?.getElement()?.querySelector('.pin');
+function hlPin(id,on){const el=pinEl(id);if(el)el.classList.toggle('hl',on);if(on&&pins[id])pins[id].setZIndexOffset(1000);else if(pins[id])pins[id].setZIndexOffset(0)}
+function updatePins(){if(!map)return;L.forEach(u=>{const m=pins[u.id],ok=match(u,S,false);if(ok&&!map.hasLayer(m))m.addTo(map);if(!ok&&map.hasLayer(m))map.removeLayer(m)})}
+$('#move-search').addEventListener('change',e=>{S.moveSearch=e.target.checked;render()});
+
+/* ---------- popovers ---------- */
+let open=null;
+function place(pop,btn){const r=btn.getBoundingClientRect();pop.hidden=false;const w=pop.offsetWidth;let left=Math.min(r.left,innerWidth-w-16);pop.style.left=Math.max(16,left)+'px';pop.style.top=(r.bottom+8)+'px'}
+function toggle(name){const pop=$('#pop-'+name),btn=$('#btn-'+name);if(open===name){close();return}close();open=name;place(pop,btn);btn.setAttribute('aria-expanded','true')}
+function close(){if(!open)return;$('#pop-'+open).hidden=true;$('#btn-'+open).setAttribute('aria-expanded','false');open=null}
+$('#btn-type').addEventListener('click',()=>toggle('type'));
+$('#btn-budget').addEventListener('click',()=>{toggle('budget');syncBudget()});
+document.addEventListener('click',e=>{if(open&&!e.composedPath().some(n=>n.id==='pop-'+open||n.id==='btn-'+open))close()});
+document.addEventListener('keydown',e=>{if(e.key==='Escape'){if(!$('#fpanel').hidden)closeFilters();else if(open){const b=$('#btn-'+open);close();b.focus()}}});
+$('.sb-row').addEventListener('scroll',close);addEventListener('resize',close);
+$$('#pop-type .opt').forEach(o=>o.addEventListener('click',()=>{S.type=o.dataset.v;$$('#pop-type .opt').forEach(x=>x.setAttribute('aria-checked',String(x===o)));close();render()}));
+// budget
+const bmin=$('#b-min'),bmax=$('#b-max'),num=v=>+String(v).replace(/[^\d]/g,'')||0;
+function syncBudget(){bmin.value=S.min?S.min.toLocaleString():'';bmax.value=S.max?S.max.toLocaleString():'';$$('#b-ranges button').forEach(x=>x.setAttribute('aria-pressed',String(+x.dataset.min===S.min&&(+x.dataset.max||0)===S.max&&(S.min||S.max)?true:false)))}
+$$('#b-ranges button').forEach(b=>b.addEventListener('click',()=>{$$('#b-ranges button').forEach(x=>x.setAttribute('aria-pressed',String(x===b)));bmin.value=(+b.dataset.min).toLocaleString();bmax.value=b.dataset.max?(+b.dataset.max).toLocaleString():''}));
+[bmin,bmax].forEach(i=>i.addEventListener('input',()=>$$('#b-ranges button').forEach(x=>x.setAttribute('aria-pressed','false'))));
+$('#b-clear').addEventListener('click',()=>{S.min=S.max=0;syncBudget();close();render()});
+$('#b-save').addEventListener('click',()=>{let a=num(bmin.value),b=num(bmax.value);if(a&&b&&a>b)[a,b]=[b,a];S.min=a;S.max=b;close();render()});
+
+/* ---------- search ---------- */
+let t;$('#q').addEventListener('input',e=>{clearTimeout(t);t=setTimeout(()=>{S.q=e.target.value.trim();render();fitToResults()},180)});
+$('#q-clr').addEventListener('click',e=>{e.preventDefault();$('#q').value='';S.q='';render();$('#q').focus()});
+function fitToResults(){if(!map||!S.q)return;const r=L.filter(u=>match(u,S,false));if(r.length)map.fitBounds(r.map(u=>[u.lat,u.lng]),{padding:[60,60],maxZoom:17})}
+$('#sort').addEventListener('change',e=>{S.sort=e.target.value;render()});
+
+/* ---------- filters panel ---------- */
+const fp=$('#fpanel'),scrim=$('#scrim');let lastFocus=null;
+function draftCount(){return L.filter(u=>match(u,{...S,amen:draft.amen,br:draft.br,ba:draft.ba})).length}
+function paintDraft(){
+  $$('#f-amen button').forEach(b=>b.setAttribute('aria-pressed',String(draft.amen.has(b.dataset.k))));
+  $$('#f-br input').forEach(c=>c.checked=draft.br.has(c.value));
+  $$('#f-ba button').forEach(b=>b.setAttribute('aria-pressed',String(draft.ba===b.dataset.v)));
+  const n=draftCount();$('#fp-view').textContent=`View ${n} result${n===1?'':'s'}`;
+}
+function openFilters(){close();lastFocus=document.activeElement;draft={amen:new Set(S.amen),br:new Set(S.br),ba:S.ba};paintDraft();scrim.hidden=fp.hidden=false;$('#btn-filters').setAttribute('aria-expanded','true');document.body.style.overflow='hidden';$('#fp-close').focus()}
+function closeFilters(){scrim.hidden=fp.hidden=true;$('#btn-filters').setAttribute('aria-expanded','false');document.body.style.overflow='';lastFocus&&lastFocus.focus()}
+$('#btn-filters').addEventListener('click',openFilters);$('#fp-close').addEventListener('click',closeFilters);scrim.addEventListener('click',closeFilters);
+$$('#f-amen button').forEach(b=>b.addEventListener('click',()=>{const k=b.dataset.k;draft.amen.has(k)?draft.amen.delete(k):draft.amen.add(k);paintDraft()}));
+$$('#f-br input').forEach(c=>c.addEventListener('change',()=>{c.checked?draft.br.add(c.value):draft.br.delete(c.value);paintDraft()}));
+$$('#f-ba button').forEach(b=>b.addEventListener('click',()=>{draft.ba=draft.ba===b.dataset.v?'':b.dataset.v;paintDraft()}));
+$('#fp-reset').addEventListener('click',()=>{draft={amen:new Set(),br:new Set(),ba:''};paintDraft()});
+$('#fp-view').addEventListener('click',()=>{S.amen=draft.amen;S.br=draft.br;S.ba=draft.ba;closeFilters();render()});
+fp.addEventListener('keydown',e=>{if(e.key!=='Tab')return;const f=$$('button,input,select,a[href]',fp).filter(x=>!x.disabled&&x.offsetParent);const a=f[0],z=f[f.length-1];if(e.shiftKey&&document.activeElement===a){e.preventDefault();z.focus()}else if(!e.shiftKey&&document.activeElement===z){e.preventDefault();a.focus()}});
+const toast=$('#toast');let tt;function say(m){toast.querySelector('span').textContent=m;toast.hidden=false;clearTimeout(tt);tt=setTimeout(()=>toast.hidden=true,2600)}
+$('#fp-save').addEventListener('click',()=>say('Search saved. We’ll let you know about new homes that match.'));
+
+/* ---------- clear all ---------- */
+function clearAll(){S.q='';$('#q').value='';S.type='';$$('#pop-type .opt').forEach((x,i)=>x.setAttribute('aria-checked',String(i===0)));S.min=S.max=0;S.amen=new Set();S.br=new Set();S.ba='';render()}
+$('#sb-reset').addEventListener('click',clearAll);$('#empty-reset').addEventListener('click',clearAll);
+
+/* ---------- mobile list/map toggle ---------- */
+$('#toggle').addEventListener('click',()=>{const on=document.body.classList.toggle('show-map');$('#toggle').innerHTML=on?'<i class="ph ph-list-bullets"></i><span>List</span>':'<i class="ph ph-map-trifold"></i><span>Map</span>';if(on){initMap();setTimeout(()=>{map&&map.invalidateSize();S.bounds=map&&map.getBounds();render()},60)}else{scrollTo(0,0)}});
+
+/* ---------- header ---------- */
+const menu=$('.menu-btn'),drawer=$('#drawer');
+menu.addEventListener('click',()=>{const o=menu.getAttribute('aria-expanded')==='true';menu.setAttribute('aria-expanded',String(!o));drawer.hidden=o;menu.querySelector('i').className='ph '+(o?'ph-list':'ph-x')});
+$$('.lang').forEach(g=>g.addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;$$('.lang button').forEach(x=>x.setAttribute('aria-pressed',String(x.textContent===b.textContent)))}));
+
+/* init: map only when visible (desktop) */
+if(matchMedia('(min-width:1024px)').matches)initMap();
+matchMedia('(min-width:1024px)').addEventListener('change',e=>{if(e.matches){initMap();setTimeout(()=>map&&map.invalidateSize(),60)}});
+render();
+})();
+</script>
+</body>
+</html>
