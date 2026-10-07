@@ -196,9 +196,16 @@ p{margin:0}
 .pin.on,.pin.hl{background:var(--ink);color:#fff}
 .leaflet-marker-icon.pin-wrap{background:none;border:0;width:0!important;height:0!important}
 .leaflet-marker-icon.pin-wrap:focus-visible .pin{outline:2px solid var(--brand);outline-offset:2px}
-.st-pin{display:flex;align-items:center;gap:5px;transform:translate(-11px,-11px);white-space:nowrap;pointer-events:none}
-.st-pin b{width:22px;height:22px;border-radius:6px;display:grid;place-items:center;color:#fff;font:800 8px/1 var(--font);border:2px solid #fff;box-shadow:0 1px 4px rgba(0,0,0,.3)}
-.st-pin span{font:700 11px/1 var(--font);color:#1B1D21;background:rgba(255,255,255,.88);padding:3px 6px;border-radius:4px}
+.st-pin{position:relative;display:flex;align-items:center;gap:4px;transform:translate(-10px,-10px);white-space:nowrap;pointer-events:none}
+.st-ico{display:inline-grid;place-items:center;width:20px;height:20px;border-radius:5px;background:#fff;border:2px solid currentColor;box-shadow:0 1px 3px rgba(0,0,0,.35)}
+.st-ico svg{width:12px;height:12px;fill:currentColor}
+.st-ico.mrt{border-radius:50%;background:currentColor;border-color:#fff}
+.st-ico.mrt b{color:#fff;font:900 11px/1 Arial,sans-serif}
+.st-pin .ico2{margin-left:-8px}
+.st-name{font:700 12px/1.1 Roboto,Arial,var(--font);color:#3C4043;text-shadow:0 0 2px #fff,0 0 2px #fff,0 0 3px #fff,0 0 4px #fff}
+.st-name small{font-weight:500;color:#5F6368;margin-left:3px}
+.zoom-lo .st-name{display:none}
+.zoom-lo .st-ico{transform:scale(.8)}
 .leaflet-container{font-family:var(--font)}
 .leaflet-popup.mpop .leaflet-popup-content-wrapper{padding:0;border-radius:14px;overflow:hidden;box-shadow:0 10px 30px rgba(0,0,0,.25)}
 .leaflet-popup.mpop .leaflet-popup-content{margin:0;width:260px!important}
@@ -344,7 +351,7 @@ p{margin:0}
     <div class="mapbox">
       <div id="map" role="application" aria-label="Map with rental prices"></div>
       <label class="map-chip"><input type="checkbox" id="move-search" checked>Search as I move the map</label>
-      <div class="legend"><span><i style="background:#7CB342"></i>BTS</span><span><i style="background:#1E4F9C"></i>MRT</span><span><i style="border:2px dashed #C93A12;width:12px;height:12px"></i>500 m</span></div>
+      <div class="legend"><span><i style="background:#65B724"></i>BTS</span><span><i style="background:#1E398D"></i>MRT</span><span><i style="background:#59191f"></i>Airport Link</span><span><i style="border:2px dashed #C93A12;width:12px;height:12px"></i>500 m</span></div>
     </div>
   </aside>
 </main>
@@ -456,14 +463,28 @@ function updateChrome(){
 /* ---------- map ---------- */
 let map=null;const pins={};
 const CENTER=[13.7370,100.5605]; // BTS Asok / MRT Sukhumvit
-const STATIONS=[["BTS","Asok",13.73706,100.56036,"#7CB342"],["MRT","Sukhumvit",13.73860,100.56150,"#1E4F9C"],["BTS","Nana",13.74050,100.55490,"#7CB342"],["BTS","Phrom Phong",13.73050,100.56970,"#7CB342"],["MRT","Queen Sirikit",13.72310,100.56010,"#1E4F9C"],["MRT","Phetchaburi",13.74870,100.56370,"#1E4F9C"]];
+// BTS/MRT/ARL lines + stations from OpenStreetMap (official line colours), simplified for the draft
+const TRANSIT={"lines":[{"n":"BTS Sukhumvit Line","c":"#65B724","s":[[[13.74778,100.53088],[13.75015,100.53122],[13.751,100.53145],[13.75293,100.53172],[13.75341,100.53187],[13.76363,100.53757],[13.76378,100.53769],[13.76397,100.53799],[13.76419,100.5387],[13.76456,100.53905],[13.76505,100.53914],[13.76575,100.53896],[13.7662,100.53901],[13.77036,100.54127],[13.79788,100.55119],[13.7989,100.55165],[13.80782,100.55686]],[[13.74553,100.53519],[13.74607,100.53187],[13.74628,100.53119],[13.74645,100.53098],[13.74675,100.53082],[13.74693,100.53079],[13.74778,100.53088]],[[13.74434,100.54183],[13.74476,100.53968],[13.74485,100.53865],[13.74531,100.53607],[13.74553,100.53519]],[[13.71075,100.59748],[13.72347,100.57965],[13.74172,100.55378],[13.74212,100.55304],[13.74257,100.55173],[13.74434,100.54183]],[[13.71019,100.59827],[13.71075,100.59748]],[[13.71019,100.59827],[13.7097,100.59885],[13.70906,100.59934],[13.70239,100.60261]],[[13.70239,100.60261],[13.68729,100.60995],[13.68578,100.61037],[13.68487,100.61048],[13.68354,100.61049],[13.68255,100.61037],[13.68098,100.60994],[13.67482,100.60744],[13.67339,100.60714],[13.6729,100.60692],[13.67187,100.60626],[13.67122,100.60595],[13.64931,100.59695],[13.6473,100.5962],[13.64427,100.5949],[13.63534,100.59125]]]},{"n":"MRT Blue Line","c":"#1E398D","s":[[[13.72653,100.54347],[13.72247,100.55322],[13.72132,100.55625],[13.72059,100.55798],[13.72062,100.55868],[13.72073,100.55898],[13.72089,100.55933],[13.7213,100.55964],[13.72374,100.56039],[13.72487,100.56057],[13.72611,100.56048],[13.72984,100.55997],[13.73096,100.55993],[13.73296,100.55997],[13.73348,100.56018],[13.73488,100.56102],[13.73546,100.56126],[13.73747,100.56161],[13.73954,100.56188],[13.74342,100.5622],[13.75354,100.56446],[13.75741,100.56525],[13.75958,100.56579],[13.76022,100.56599],[13.76147,100.56663],[13.7626,100.56744],[13.76908,100.57248],[13.76969,100.57283],[13.77037,100.5731],[13.77111,100.57327],[13.8044,100.57486],[13.80472,100.57479],[13.8053,100.57451],[13.80569,100.57419],[13.80607,100.57372],[13.80646,100.57309],[13.80964,100.56735],[13.8139,100.55986],[13.81394,100.55931],[13.81376,100.5587],[13.81353,100.55831],[13.81297,100.55788],[13.8123,100.55761],[13.81034,100.55715],[13.80835,100.55631],[13.79928,100.55104],[13.79857,100.55037],[13.79811,100.54922],[13.79798,100.54677],[13.79818,100.54611],[13.79834,100.54592],[13.80012,100.54497],[13.80063,100.54466],[13.8008,100.54448],[13.80205,100.54194],[13.80379,100.53804]],[[13.73741,100.51705],[13.73391,100.5257],[13.73205,100.53011],[13.73127,100.5322],[13.72917,100.53707],[13.72653,100.54347]],[[13.73326,100.4787],[13.73708,100.48114],[13.7376,100.48169],[13.7379,100.48219],[13.73812,100.48279],[13.73825,100.4835],[13.73847,100.49026],[13.73874,100.49135],[13.73917,100.49232],[13.73946,100.49277],[13.74017,100.49356],[13.74082,100.49408],[13.74204,100.49465],[13.74247,100.49477],[13.74304,100.49483],[13.7456,100.49452],[13.74637,100.49451],[13.74672,100.49461],[13.74703,100.49485],[13.74724,100.49535],[13.74726,100.49645],[13.74697,100.50277],[13.74672,100.50418],[13.74584,100.50538],[13.7422,100.5099],[13.73854,100.51465],[13.73817,100.51529],[13.73741,100.51705]]]},{"n":"BTS Silom Line","c":"#02817D","s":[[[13.74653,100.52909],[13.74632,100.53028]],[[13.74632,100.53028],[13.74588,100.53266],[13.74571,100.53329],[13.74466,100.53985],[13.74433,100.54019],[13.74388,100.54028],[13.74317,100.54008],[13.74134,100.53976]],[[13.71838,100.5159],[13.71808,100.51691],[13.71814,100.5176],[13.72117,100.52796],[13.7214,100.52924],[13.72158,100.52969],[13.72199,100.52999],[13.72224,100.53005],[13.72254,100.53001],[13.7246,100.52892],[13.72549,100.52823],[13.72591,100.52818],[13.72614,100.52825],[13.72645,100.52849],[13.72659,100.52872],[13.72675,100.5293],[13.72905,100.53575],[13.72937,100.53624],[13.73024,100.53686],[13.73083,100.53716],[13.73496,100.53875],[13.73533,100.53885],[13.74134,100.53976]],[[13.71917,100.51282],[13.71838,100.5159]],[[13.72096,100.50272],[13.7209,100.50465],[13.72067,100.50648],[13.71917,100.51282]]]},{"n":"Airport Rail Link","c":"#59191f","s":[[[13.75707,100.53342],[13.75622,100.53715]],[[13.75622,100.53715],[13.75208,100.55564],[13.75183,100.55688],[13.75156,100.55887],[13.75047,100.56333],[13.75007,100.56443]],[[13.75007,100.56443],[13.74416,100.59066],[13.74384,100.59261],[13.73825,100.64335]]]},{"n":"Gold Line","c":"#A58704","s":[[[13.72113,100.50446],[13.72114,100.50566],[13.72131,100.50586],[13.72177,100.50613],[13.7219,100.50638],[13.72189,100.50666],[13.72149,100.50857],[13.72152,100.50873],[13.72167,100.50889],[13.72485,100.50914],[13.72561,100.50912],[13.72967,100.50873],[13.72991,100.50861],[13.73008,100.50831],[13.73033,100.50773]]]},{"n":"Yellow Line","c":"#FFD400","s":[[[13.80699,100.57481],[13.8057,100.57477],[13.80539,100.57494],[13.80514,100.5753],[13.78375,100.6136],[13.76607,100.6451],[13.76569,100.64536],[13.76373,100.6456],[13.76068,100.64551],[13.75565,100.64596],[13.75386,100.64578],[13.75266,100.64546]]]}],"st":[["Surasak",13.71927,100.52146,"BTS Silom Line"],["Chong Nonsi",13.7238,100.52933,"BTS Silom Line"],["Ratchadamri",13.73947,100.53945,"BTS Silom Line"],["Saphan Taksin",13.71881,100.51422,"BTS Silom Line"],["Hua Lamphong",13.73757,100.51714,"MRT Blue Line"],["Phra Ram 9",13.75782,100.56528,"MRT Blue Line"],["Queen Sirikit National Convention Centre",13.72267,100.55991,"MRT Blue Line"],["Lumphini",13.72561,100.54572,"MRT Blue Line"],["Huai Khwang",13.77869,100.57357,"MRT Blue Line"],["Thailand Cultural Centre",13.76616,100.57012,"MRT Blue Line"],["Khlong Toei",13.72213,100.55437,"MRT Blue Line"],["Sala Daeng",13.72857,100.53434,"BTS Silom Line"],["Makkasan",13.75386,100.54737,"Airport Rail Link"],["Siam",13.74562,100.53422,"BTS Sukhumvit Line|BTS Silom Line"],["Ari",13.77971,100.54462,"BTS Sukhumvit Line"],["Phaya Thai",13.75696,100.53382,"BTS Sukhumvit Line|Airport Rail Link"],["Ratchathewi",13.75186,100.53155,"BTS Sukhumvit Line"],["Sanam Pao",13.77262,100.54207,"BTS Sukhumvit Line"],["Phra Khanong",13.71517,100.59124,"BTS Sukhumvit Line"],["Victory Monument",13.76276,100.53705,"BTS Sukhumvit Line"],["Bang Chak",13.69676,100.60534,"BTS Sukhumvit Line"],["On Nut",13.70562,100.601,"BTS Sukhumvit Line"],["Asok",13.73704,100.56036,"BTS Sukhumvit Line"],["Thong Lo",13.72423,100.57851,"BTS Sukhumvit Line"],["Phrom Phong",13.73043,100.56971,"BTS Sukhumvit Line"],["Nana",13.74054,100.55543,"BTS Sukhumvit Line"],["Phloen Chit",13.74307,100.54898,"BTS Sukhumvit Line"],["Chit Lom",13.7441,100.54307,"BTS Sukhumvit Line"],["Sukhumvit",13.73747,100.5615,"MRT Blue Line"],["Ekkamai",13.71954,100.58511,"BTS Sukhumvit Line"],["Charoen Nakhon",13.72646,100.50907,"Gold Line"],["Khlong San",13.73031,100.50772,"Gold Line"],["Ramkhamhaeng",13.74299,100.60015,"Airport Rail Link"],["Ratchaprarop",13.75511,100.54212,"Airport Rail Link"],["Saint Louis",13.72082,100.52669,"BTS Silom Line"],["Lat Phrao 101",13.77463,100.62984,"Yellow Line"],["Mahatthai",13.77837,100.62316,"Yellow Line"],["Lat Phrao 83",13.7837,100.61366,"Yellow Line"],["National Stadium",13.74651,100.52909,"BTS Silom Line"],["Si Lom",13.7292,100.53707,"MRT Blue Line"],["Wat Mangkon",13.74221,100.50991,"MRT Blue Line"],["Sam Yan",13.73206,100.53012,"MRT Blue Line"],["Phetchaburi",13.74919,100.56342,"MRT Blue Line"]]};
+const TRAIN_SVG='<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2C8 2 5 2.5 5 6v9.5A2.5 2.5 0 0 0 7.5 18L6 19.5v.5h2.2l2-2h3.6l2 2H18v-.5L16.5 18a2.5 2.5 0 0 0 2.5-2.5V6c0-3.5-3-4-7-4zM7.5 16a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm3.5-6H7V6h4v4zm2 0V6h4v4h-4zm3.5 6a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3z"/></svg>';
+function drawTransit(){
+  map.createPane('transit').style.zIndex=350;map.createPane('stations').style.zIndex=450;
+  const col=Object.fromEntries(TRANSIT.lines.map(l=>[l.n,l.c]));
+  TRANSIT.lines.forEach(l=>l.s.forEach(seg=>{
+    window.L.polyline(seg,{pane:'transit',color:'#fff',weight:7,opacity:.9,interactive:false}).addTo(map);
+    window.L.polyline(seg,{pane:'transit',color:l.c,weight:3.5,opacity:1,interactive:false}).addTo(map)}));
+  TRANSIT.st.forEach(([n,lat,lng,ls])=>{const lines=ls.split('|');
+    const ico=lines.map((ln,i)=>{const c=col[ln],cls=(i?'ico2 ':'')+(ln.startsWith('MRT')?'mrt':'');return ln.startsWith('MRT')?`<span class="st-ico ${cls}" style="color:${c}"><b>M</b></span>`:`<span class="st-ico ${cls}" style="color:${c}">${TRAIN_SVG}</span>`}).join('');
+    const sys=lines.map(x=>x.startsWith('BTS')?'BTS':x.startsWith('MRT')?'MRT':x.startsWith('Airport')?'ARL':x.split(' ')[0]).filter((v,i,a)=>a.indexOf(v)===i).join(' · ');
+    window.L.marker([lat,lng],{pane:'stations',interactive:false,keyboard:false,icon:window.L.divIcon({className:'',html:`<div class="st-pin">${ico}<span class="st-name">${n}<small>${sys}</small></span></div>`,iconSize:[0,0]})}).addTo(map)});
+  const z=()=>map.getContainer().classList.toggle('zoom-lo',map.getZoom()<15);map.on('zoomend',z);z();
+}
 function initMap(){
   if(!window.L||map)return;
   map=window.L.map('map',{zoomControl:false,scrollWheelZoom:true}).setView(CENTER,16);
   window.L.control.zoom({position:'topright'}).addTo(map);
   addBasemap();
   window.L.circle(CENTER,{radius:500,color:'#C93A12',weight:1.5,dashArray:'6 6',fill:true,fillColor:'#FC4A1A',fillOpacity:.03,interactive:false}).addTo(map);
-  STATIONS.forEach(([sys,n,lat,lng,c])=>window.L.marker([lat,lng],{interactive:false,keyboard:false,icon:window.L.divIcon({className:'',html:`<div class="st-pin"><b style="background:${c}">${sys}</b><span>${sys} ${n}</span></div>`,iconSize:[0,0]})}).addTo(map));
+  drawTransit();
   L.forEach(u=>{
     const m=window.L.marker([u.lat,u.lng],{riseOnHover:true,keyboard:true,title:`${u.name}, ${fmtP(u.price)} per month`,icon:window.L.divIcon({className:'pin-wrap',html:`<span class="pin">${shortP(u.price)}</span>`,iconSize:[0,0]})});
     m.bindPopup(`<div class="mp"><a href="index.html"><img src="${u.img}" alt="" width="260" height="163"></a><div class="mp-b"><div class="t"><b>${esc(u.name)}</b></div><small>${u.br} br · ${u.ba} ba · ${u.sqm} sqm · Min. ${u.lease} mth</small><small>${esc(u.transit)}</small><strong>${fmtP(u.price)} <span>/month</span></strong></div></div>`,{className:'mpop',maxWidth:260,minWidth:260,autoPanPaddingTopLeft:[24,72],autoPanPaddingBottomRight:[24,56],offset:[0,-12]});
@@ -474,13 +495,15 @@ function initMap(){
   S.bounds=map.getBounds();
 }
 /* Google-Maps-like colours on free OpenStreetMap vector tiles (OpenFreeMap). Falls back to Esri raster tiles. */
-const GM={bg:'#F5F4F2',park:'#C8EBC4',water:'#9CC5F4',bldg:'#E8E9ED',bldgL:'#DADCE0',minor:'#FFFFFF',minorC:'#E1E3E6',major:'#FFFFFF',majorC:'#CDD1D6',mw:'#FDE293',mwC:'#E8BF55',rail:'#B5B9BF',text:'#5F6368',hosp:'#FCE8E6',school:'#EFEBE3'};
+const GM={bg:'#F1F3F4',res:'#F4EEDC',park:'#C5E8C5',water:'#9FCDF3',bldg:'#E9E5D8',bldgL:'#DCD6C4',minor:'#FFFFFF',minorC:'#DADCE0',major:'#D9DEE5',majorC:'#C2C9D2',mw:'#C7CED8',mwC:'#AEB7C3',rail:'#BDC1C6',text:'#5F6368',hosp:'#F8D9D9',school:'#EFE8D6'};
 function googleLike(st){const set=(l,k,v)=>{l.paint=l.paint||{};l.paint[k]=v};
   st.layers=st.layers.filter(l=>!['building-3d','natural_earth','road_area_pattern'].includes(l.id));
   for(const l of st.layers){const id=l.id,t=l.type,cas=/casing/.test(id);
     if(l.layout&&l.layout['text-field'])l.layout['text-field']=['coalesce',['get','name:en'],['get','name_en'],['get','name']];
     if(id==='background')set(l,'background-color',GM.bg);
-    else if(id==='landuse_residential')set(l,'fill-color',GM.bg);
+    else if(id==='landuse_residential'){set(l,'fill-color',GM.res);set(l,'fill-opacity',1)}
+    else if(id==='poi_transit'){l.layout=l.layout||{};l.layout.visibility='none'}
+    else if(/^poi_r/.test(id)&&Array.isArray(l.filter)&&l.filter[0]==='all')l.filter=[...l.filter,['!',['match',['get','class'],['railway','bus'],true,false]]];
     else if(t==='fill'&&/park$|landcover_wood|landcover_grass|landuse_pitch|landuse_cemetery|wetland/.test(id)){set(l,'fill-color',GM.park);set(l,'fill-opacity',1)}
     else if(id==='park_outline')set(l,'line-opacity',0);
     else if(id==='water')set(l,'fill-color',GM.water);
