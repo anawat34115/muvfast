@@ -227,27 +227,28 @@ p{margin:0;text-wrap:pretty}
 .ucard:hover .ucard-media img{transform:scale(1.04)}
 .glass{background:rgba(24,22,20,.28);-webkit-backdrop-filter:blur(12px) saturate(140%);backdrop-filter:blur(12px) saturate(140%);border:1px solid rgba(255,255,255,.28);color:#fff}
 .ucard-badges{position:absolute;top:10px;left:8px;right:44px;z-index:2;display:flex;flex-direction:column;align-items:flex-start;gap:5px;pointer-events:none}
-.b247{display:inline-flex;align-items:center;gap:5px;background:var(--brand);color:#fff;border-radius:999px;padding:3px 10px 3px 5px;font-size:11px;font-weight:600;line-height:1.3;white-space:nowrap;box-shadow:0 2px 8px rgba(0,0,0,.22)}
-.b247 svg{width:17px;height:17px;flex:none}
-.b247 b{font-weight:800;font-size:12px}
+.b247{display:inline-flex;align-items:center;gap:4px;background:#fff;color:var(--ink);border-radius:999px;padding:2px 9px 2px 4px;font-size:10px;font-weight:600;line-height:1.3;white-space:nowrap;box-shadow:0 1px 6px rgba(0,0,0,.18)}
+.b247 svg{width:15px;height:15px;flex:none;color:var(--brand)}
+.b247 b{font-weight:800;font-size:11px;color:var(--brand)}
 .avail{display:inline-flex;align-items:center;gap:5px;max-width:100%;border-radius:999px;padding:2px 9px;font-size:10px;font-weight:600;line-height:1.4;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .avail .dot{width:6px;height:6px;border-radius:50%;background:#3EE08F;flex:none}
 .fav{position:absolute;top:8px;right:8px;z-index:2;width:32px;height:32px;border-radius:999px;display:grid;place-items:center;font-size:16px}
 .fav[aria-pressed=true]{color:#FF8A66}
 .ubottom{position:absolute;left:8px;right:8px;bottom:8px;z-index:2;display:flex;flex-direction:column;align-items:flex-end;gap:6px;pointer-events:none}
 .count{border-radius:999px;font-size:10px;font-weight:600;padding:1px 8px;line-height:1.5}
-.uglass{align-self:stretch;border-radius:12px;padding:12px 12px 13px;display:grid;gap:4px}
+.uglass{align-self:stretch;border-radius:10px;padding:8px 10px 9px;display:grid;gap:2px}
 .ug-top{display:flex;align-items:center;justify-content:space-between;gap:6px}
-.lease{display:inline-flex;align-items:center;background:var(--brand);color:#fff;border-radius:999px;padding:1px 8px;font-size:10px;font-weight:700;line-height:1.6;white-space:nowrap}
+.lease{font-size:10.5px;font-weight:600;color:rgba(255,255,255,.85);white-space:nowrap}
 .price{white-space:nowrap;line-height:1.25}
-.price strong{font-size:16px;font-weight:800}
+.price strong{font-size:14px;font-weight:800}
 .price span{font-size:10px;color:rgba(255,255,255,.8);margin-left:2px}
-.specs{font-size:11px;line-height:1.35;color:rgba(255,255,255,.92);font-weight:500}
+.specs{font-size:10.5px;line-height:1.35;color:rgba(255,255,255,.92);font-weight:500}
 .specs span+span::before{content:"•";margin:0 5px;color:rgba(255,255,255,.55)}
-.uname{font-size:14px;font-weight:700;letter-spacing:-.01em;line-height:1.3;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;color:#fff}
+.uname{font-size:13px;font-weight:700;letter-spacing:-.01em;line-height:1.3;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;color:#fff}
 .uname a{pointer-events:auto}
 .uname a::after{content:"";position:absolute;inset:0;z-index:1}
 .ucard-body{padding:12px 16px 14px;display:grid;gap:4px}
+.upd{display:flex;align-items:center;gap:5px;font-size:11px;font-weight:500;color:#0F7A4F}.upd i{width:6px;height:6px;border-radius:50%;background:#12B76A;flex:none}
 .dist{font-size:12.5px;color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .transit{display:flex;align-items:center;gap:6px;font-size:12.5px;font-weight:600;color:#0F7A4F;white-space:nowrap}
 .transit.mrt{color:#1E4F9C}
@@ -514,169 +515,181 @@ p{margin:0;text-wrap:pretty}
     </div>
     <div class="rail" role="tabpanel" id="tp-1" aria-labelledby="tab-1"><div class="track"><article class="ucard" data-lease="1">
   <div class="ucard-photo"><a class="ucard-media" href="#" tabindex="-1" aria-hidden="true"><img src="https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?q=75&w=640&h=800&auto=format&fit=crop" alt="" width="640" height="800" loading="lazy" decoding="async"></a>
-  <div class="ucard-badges"><span class="b247" title="Open house 24/7"><svg viewBox="0 0 40 40" aria-hidden="true"><circle cx="20" cy="20" r="16" fill="none" stroke="currentColor" stroke-width="3.5" stroke-dasharray="76 25" stroke-linecap="round" transform="rotate(-60 20 20)"/><path d="M20 10v10l6 4" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round"/></svg><b>24/7</b> Open house</span><span class="avail glass"><i class="dot"></i>Available now | Updated 5d ago</span></div>
+  <div class="ucard-badges"><span class="b247" title="Open house 24/7"><svg viewBox="0 0 40 40" aria-hidden="true"><circle cx="20" cy="20" r="16" fill="none" stroke="currentColor" stroke-width="3.5" stroke-dasharray="76 25" stroke-linecap="round" transform="rotate(-60 20 20)"/><path d="M20 10v10l6 4" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round"/></svg><b>24/7</b> Open house</span></div>
   <button class="fav glass" type="button" aria-label="Save Chewathai Residence Thonglor" aria-pressed="false"><i class="ph ph-heart"></i></button>
-  <div class="ubottom"><span class="count glass">1/8</span>
+  <div class="ubottom">
   <div class="uglass glass">
     <div class="ug-top"><span class="lease">Min. 1 month</span><p class="price"><strong>฿32,000</strong><span>/month</span></p></div>
     <p class="specs"><span>1 br</span><span>1 ba</span><span>35 sqm</span><span>Fl. 12</span></p>
     <h3 class="uname"><a href="unit.html">Chewathai Residence Thonglor</a></h3>
   </div></div></div>
   <div class="ucard-body">
+    <p class="upd"><i></i>Available now · Updated 5d ago</p>
     <p class="dist">Watthana, Bangkok</p>
     <p class="transit bts"><i class="ph ph-train-simple" aria-hidden="true"></i>BTS Phrom Phong<em>700 m</em></p><p class="transit bts"><i class="ph ph-train-simple" aria-hidden="true"></i>BTS Thong Lo<em>900 m</em></p>
   </div>
 </article><article class="ucard" data-lease="1">
   <div class="ucard-photo"><a class="ucard-media" href="#" tabindex="-1" aria-hidden="true"><img src="https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?q=75&w=640&h=800&auto=format&fit=crop" alt="" width="640" height="800" loading="lazy" decoding="async"></a>
-  <div class="ucard-badges"><span class="b247" title="Open house 24/7"><svg viewBox="0 0 40 40" aria-hidden="true"><circle cx="20" cy="20" r="16" fill="none" stroke="currentColor" stroke-width="3.5" stroke-dasharray="76 25" stroke-linecap="round" transform="rotate(-60 20 20)"/><path d="M20 10v10l6 4" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round"/></svg><b>24/7</b> Open house</span><span class="avail glass"><i class="dot"></i>Available now | Updated 2d ago</span></div>
+  <div class="ucard-badges"><span class="b247" title="Open house 24/7"><svg viewBox="0 0 40 40" aria-hidden="true"><circle cx="20" cy="20" r="16" fill="none" stroke="currentColor" stroke-width="3.5" stroke-dasharray="76 25" stroke-linecap="round" transform="rotate(-60 20 20)"/><path d="M20 10v10l6 4" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round"/></svg><b>24/7</b> Open house</span></div>
   <button class="fav glass" type="button" aria-label="Save Ideo Rama 9 – Asoke" aria-pressed="false"><i class="ph ph-heart"></i></button>
-  <div class="ubottom"><span class="count glass">1/10</span>
+  <div class="ubottom">
   <div class="uglass glass">
     <div class="ug-top"><span class="lease">Min. 1 month</span><p class="price"><strong>฿28,000</strong><span>/month</span></p></div>
     <p class="specs"><span>1 br</span><span>1 ba</span><span>30 sqm</span><span>Fl. 9</span></p>
     <h3 class="uname"><a href="unit.html">Ideo Rama 9 – Asoke</a></h3>
   </div></div></div>
   <div class="ucard-body">
+    <p class="upd"><i></i>Available now · Updated 2d ago</p>
     <p class="dist">Huai Khwang, Bangkok</p>
     <p class="transit mrt"><i class="ph ph-train-simple" aria-hidden="true"></i>MRT Phra Ram 9<em>300 m</em></p><p class="transit mrt"><i class="ph ph-train-simple" aria-hidden="true"></i>MRT Phetchaburi<em>900 m</em></p>
   </div>
 </article><article class="ucard" data-lease="1">
   <div class="ucard-photo"><a class="ucard-media" href="#" tabindex="-1" aria-hidden="true"><img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?q=75&w=640&h=800&auto=format&fit=crop" alt="" width="640" height="800" loading="lazy" decoding="async"></a>
-  <div class="ucard-badges"><span class="b247" title="Open house 24/7"><svg viewBox="0 0 40 40" aria-hidden="true"><circle cx="20" cy="20" r="16" fill="none" stroke="currentColor" stroke-width="3.5" stroke-dasharray="76 25" stroke-linecap="round" transform="rotate(-60 20 20)"/><path d="M20 10v10l6 4" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round"/></svg><b>24/7</b> Open house</span><span class="avail glass"><i class="dot"></i>Available now | Updated 1d ago</span></div>
+  <div class="ucard-badges"><span class="b247" title="Open house 24/7"><svg viewBox="0 0 40 40" aria-hidden="true"><circle cx="20" cy="20" r="16" fill="none" stroke="currentColor" stroke-width="3.5" stroke-dasharray="76 25" stroke-linecap="round" transform="rotate(-60 20 20)"/><path d="M20 10v10l6 4" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round"/></svg><b>24/7</b> Open house</span></div>
   <button class="fav glass" type="button" aria-label="Save Noble Ploenchit" aria-pressed="false"><i class="ph ph-heart"></i></button>
-  <div class="ubottom"><span class="count glass">1/15</span>
+  <div class="ubottom">
   <div class="uglass glass">
     <div class="ug-top"><span class="lease">Min. 1 month</span><p class="price"><strong>฿55,000</strong><span>/month</span></p></div>
     <p class="specs"><span>2 br</span><span>2 ba</span><span>72 sqm</span><span>Fl. 21</span></p>
     <h3 class="uname"><a href="unit.html">Noble Ploenchit</a></h3>
   </div></div></div>
   <div class="ucard-body">
+    <p class="upd"><i></i>Available now · Updated 1d ago</p>
     <p class="dist">Pathum Wan, Bangkok</p>
     <p class="transit bts"><i class="ph ph-train-simple" aria-hidden="true"></i>BTS Phloen Chit<em>100 m</em></p><p class="transit bts"><i class="ph ph-train-simple" aria-hidden="true"></i>BTS Chit Lom<em>600 m</em></p>
   </div>
 </article><article class="ucard" data-lease="1">
   <div class="ucard-photo"><a class="ucard-media" href="#" tabindex="-1" aria-hidden="true"><img src="https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?q=75&w=640&h=800&auto=format&fit=crop" alt="" width="640" height="800" loading="lazy" decoding="async"></a>
-  <div class="ucard-badges"><span class="b247" title="Open house 24/7"><svg viewBox="0 0 40 40" aria-hidden="true"><circle cx="20" cy="20" r="16" fill="none" stroke="currentColor" stroke-width="3.5" stroke-dasharray="76 25" stroke-linecap="round" transform="rotate(-60 20 20)"/><path d="M20 10v10l6 4" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round"/></svg><b>24/7</b> Open house</span><span class="avail glass"><i class="dot"></i>Available now | Updated 3d ago</span></div>
+  <div class="ucard-badges"><span class="b247" title="Open house 24/7"><svg viewBox="0 0 40 40" aria-hidden="true"><circle cx="20" cy="20" r="16" fill="none" stroke="currentColor" stroke-width="3.5" stroke-dasharray="76 25" stroke-linecap="round" transform="rotate(-60 20 20)"/><path d="M20 10v10l6 4" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round"/></svg><b>24/7</b> Open house</span></div>
   <button class="fav glass" type="button" aria-label="Save Life Sukhumvit 48" aria-pressed="false"><i class="ph ph-heart"></i></button>
-  <div class="ubottom"><span class="count glass">1/9</span>
+  <div class="ubottom">
   <div class="uglass glass">
     <div class="ug-top"><span class="lease">Min. 1 month</span><p class="price"><strong>฿24,000</strong><span>/month</span></p></div>
     <p class="specs"><span>1 br</span><span>1 ba</span><span>28 sqm</span><span>Fl. 7</span></p>
     <h3 class="uname"><a href="unit.html">Life Sukhumvit 48</a></h3>
   </div></div></div>
   <div class="ucard-body">
+    <p class="upd"><i></i>Available now · Updated 3d ago</p>
     <p class="dist">Phra Khanong, Bangkok</p>
     <p class="transit bts"><i class="ph ph-train-simple" aria-hidden="true"></i>BTS Phra Khanong<em>250 m</em></p><p class="transit bts"><i class="ph ph-train-simple" aria-hidden="true"></i>BTS On Nut<em>1.1 km</em></p>
   </div>
 </article></div></div><div class="rail" role="tabpanel" id="tp-6" aria-labelledby="tab-6" hidden><div class="track"><article class="ucard" data-lease="6">
   <div class="ucard-photo"><a class="ucard-media" href="#" tabindex="-1" aria-hidden="true"><img src="https://images.unsplash.com/photo-1576013551627-0cc20b96c2a7?q=75&w=640&h=800&auto=format&fit=crop" alt="" width="640" height="800" loading="lazy" decoding="async"></a>
-  <div class="ucard-badges"><span class="b247" title="Open house 24/7"><svg viewBox="0 0 40 40" aria-hidden="true"><circle cx="20" cy="20" r="16" fill="none" stroke="currentColor" stroke-width="3.5" stroke-dasharray="76 25" stroke-linecap="round" transform="rotate(-60 20 20)"/><path d="M20 10v10l6 4" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round"/></svg><b>24/7</b> Open house</span><span class="avail glass"><i class="dot"></i>Available now | Updated 5d ago</span></div>
+  <div class="ucard-badges"><span class="b247" title="Open house 24/7"><svg viewBox="0 0 40 40" aria-hidden="true"><circle cx="20" cy="20" r="16" fill="none" stroke="currentColor" stroke-width="3.5" stroke-dasharray="76 25" stroke-linecap="round" transform="rotate(-60 20 20)"/><path d="M20 10v10l6 4" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round"/></svg><b>24/7</b> Open house</span></div>
   <button class="fav glass" type="button" aria-label="Save Life Asoke Hype – Penthouse" aria-pressed="false"><i class="ph ph-heart"></i></button>
-  <div class="ubottom"><span class="count glass">1/12</span>
+  <div class="ubottom">
   <div class="uglass glass">
     <div class="ug-top"><span class="lease">Min. 6 months</span><p class="price"><strong>฿120,000</strong><span>/month</span></p></div>
     <p class="specs"><span>3 br</span><span>3 ba</span><span>115 sqm</span><span>Fl. 38</span></p>
     <h3 class="uname"><a href="unit.html">Life Asoke Hype – Penthouse</a></h3>
   </div></div></div>
   <div class="ucard-body">
+    <p class="upd"><i></i>Available now · Updated 5d ago</p>
     <p class="dist">Ratchathewi, Bangkok</p>
     <p class="transit mrt"><i class="ph ph-train-simple" aria-hidden="true"></i>MRT Rama 9<em>300 m</em></p><p class="transit mrt"><i class="ph ph-train-simple" aria-hidden="true"></i>MRT Phetchaburi<em>800 m</em></p>
   </div>
 </article><article class="ucard" data-lease="6">
   <div class="ucard-photo"><a class="ucard-media" href="#" tabindex="-1" aria-hidden="true"><img src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?q=75&w=640&h=800&auto=format&fit=crop" alt="" width="640" height="800" loading="lazy" decoding="async"></a>
-  <div class="ucard-badges"><span class="b247" title="Open house 24/7"><svg viewBox="0 0 40 40" aria-hidden="true"><circle cx="20" cy="20" r="16" fill="none" stroke="currentColor" stroke-width="3.5" stroke-dasharray="76 25" stroke-linecap="round" transform="rotate(-60 20 20)"/><path d="M20 10v10l6 4" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round"/></svg><b>24/7</b> Open house</span><span class="avail glass"><i class="dot"></i>Available now | Updated 3d ago</span></div>
+  <div class="ucard-badges"><span class="b247" title="Open house 24/7"><svg viewBox="0 0 40 40" aria-hidden="true"><circle cx="20" cy="20" r="16" fill="none" stroke="currentColor" stroke-width="3.5" stroke-dasharray="76 25" stroke-linecap="round" transform="rotate(-60 20 20)"/><path d="M20 10v10l6 4" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round"/></svg><b>24/7</b> Open house</span></div>
   <button class="fav glass" type="button" aria-label="Save Aspire Sathorn – Thapra" aria-pressed="false"><i class="ph ph-heart"></i></button>
-  <div class="ubottom"><span class="count glass">1/7</span>
+  <div class="ubottom">
   <div class="uglass glass">
     <div class="ug-top"><span class="lease">Min. 6 months</span><p class="price"><strong>฿30,000</strong><span>/month</span></p></div>
     <p class="specs"><span>1 br</span><span>1 ba</span><span>34 sqm</span><span>Fl. 11</span></p>
     <h3 class="uname"><a href="unit.html">Aspire Sathorn – Thapra</a></h3>
   </div></div></div>
   <div class="ucard-body">
+    <p class="upd"><i></i>Available now · Updated 3d ago</p>
     <p class="dist">Thon Buri, Bangkok</p>
     <p class="transit bts"><i class="ph ph-train-simple" aria-hidden="true"></i>BTS Talat Phlu<em>350 m</em></p><p class="transit mrt"><i class="ph ph-train-simple" aria-hidden="true"></i>MRT Tha Phra<em>900 m</em></p>
   </div>
 </article><article class="ucard" data-lease="6">
   <div class="ucard-photo"><a class="ucard-media" href="#" tabindex="-1" aria-hidden="true"><img src="https://images.unsplash.com/photo-1598928506311-c55ded91a20c?q=75&w=640&h=800&auto=format&fit=crop" alt="" width="640" height="800" loading="lazy" decoding="async"></a>
-  <div class="ucard-badges"><span class="b247" title="Open house 24/7"><svg viewBox="0 0 40 40" aria-hidden="true"><circle cx="20" cy="20" r="16" fill="none" stroke="currentColor" stroke-width="3.5" stroke-dasharray="76 25" stroke-linecap="round" transform="rotate(-60 20 20)"/><path d="M20 10v10l6 4" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round"/></svg><b>24/7</b> Open house</span><span class="avail glass"><i class="dot"></i>Available now | Updated 1d ago</span></div>
+  <div class="ucard-badges"><span class="b247" title="Open house 24/7"><svg viewBox="0 0 40 40" aria-hidden="true"><circle cx="20" cy="20" r="16" fill="none" stroke="currentColor" stroke-width="3.5" stroke-dasharray="76 25" stroke-linecap="round" transform="rotate(-60 20 20)"/><path d="M20 10v10l6 4" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round"/></svg><b>24/7</b> Open house</span></div>
   <button class="fav glass" type="button" aria-label="Save Life One Wireless" aria-pressed="false"><i class="ph ph-heart"></i></button>
-  <div class="ubottom"><span class="count glass">1/11</span>
+  <div class="ubottom">
   <div class="uglass glass">
     <div class="ug-top"><span class="lease">Min. 6 months</span><p class="price"><strong>฿48,000</strong><span>/month</span></p></div>
     <p class="specs"><span>2 br</span><span>1 ba</span><span>60 sqm</span><span>Fl. 14</span></p>
     <h3 class="uname"><a href="unit.html">Life One Wireless</a></h3>
   </div></div></div>
   <div class="ucard-body">
+    <p class="upd"><i></i>Available now · Updated 1d ago</p>
     <p class="dist">Pathum Wan, Bangkok</p>
     <p class="transit bts"><i class="ph ph-train-simple" aria-hidden="true"></i>BTS Phloen Chit<em>600 m</em></p><p class="transit bts"><i class="ph ph-train-simple" aria-hidden="true"></i>BTS Chit Lom<em>900 m</em></p>
   </div>
 </article><article class="ucard" data-lease="6">
   <div class="ucard-photo"><a class="ucard-media" href="#" tabindex="-1" aria-hidden="true"><img src="https://images.unsplash.com/photo-1484154218962-a197022b5858?q=75&w=640&h=800&auto=format&fit=crop" alt="" width="640" height="800" loading="lazy" decoding="async"></a>
-  <div class="ucard-badges"><span class="b247" title="Open house 24/7"><svg viewBox="0 0 40 40" aria-hidden="true"><circle cx="20" cy="20" r="16" fill="none" stroke="currentColor" stroke-width="3.5" stroke-dasharray="76 25" stroke-linecap="round" transform="rotate(-60 20 20)"/><path d="M20 10v10l6 4" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round"/></svg><b>24/7</b> Open house</span><span class="avail glass"><i class="dot"></i>Available now | Updated 7d ago</span></div>
+  <div class="ucard-badges"><span class="b247" title="Open house 24/7"><svg viewBox="0 0 40 40" aria-hidden="true"><circle cx="20" cy="20" r="16" fill="none" stroke="currentColor" stroke-width="3.5" stroke-dasharray="76 25" stroke-linecap="round" transform="rotate(-60 20 20)"/><path d="M20 10v10l6 4" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round"/></svg><b>24/7</b> Open house</span></div>
   <button class="fav glass" type="button" aria-label="Save Rhythm Ekkamai" aria-pressed="false"><i class="ph ph-heart"></i></button>
-  <div class="ubottom"><span class="count glass">1/9</span>
+  <div class="ubottom">
   <div class="uglass glass">
     <div class="ug-top"><span class="lease">Min. 6 months</span><p class="price"><strong>฿26,000</strong><span>/month</span></p></div>
     <p class="specs"><span>1 br</span><span>1 ba</span><span>32 sqm</span><span>Fl. 6</span></p>
     <h3 class="uname"><a href="unit.html">Rhythm Ekkamai</a></h3>
   </div></div></div>
   <div class="ucard-body">
+    <p class="upd"><i></i>Available now · Updated 7d ago</p>
     <p class="dist">Watthana, Bangkok</p>
     <p class="transit bts"><i class="ph ph-train-simple" aria-hidden="true"></i>BTS Ekkamai<em>200 m</em></p><p class="transit bts"><i class="ph ph-train-simple" aria-hidden="true"></i>BTS Thong Lo<em>1.1 km</em></p>
   </div>
 </article></div></div><div class="rail" role="tabpanel" id="tp-3" aria-labelledby="tab-3" hidden><div class="track"><article class="ucard" data-lease="3">
   <div class="ucard-photo"><a class="ucard-media" href="#" tabindex="-1" aria-hidden="true"><img src="https://images.unsplash.com/photo-1505691938895-1758d7feb511?q=75&w=640&h=800&auto=format&fit=crop" alt="" width="640" height="800" loading="lazy" decoding="async"></a>
-  <div class="ucard-badges"><span class="b247" title="Open house 24/7"><svg viewBox="0 0 40 40" aria-hidden="true"><circle cx="20" cy="20" r="16" fill="none" stroke="currentColor" stroke-width="3.5" stroke-dasharray="76 25" stroke-linecap="round" transform="rotate(-60 20 20)"/><path d="M20 10v10l6 4" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round"/></svg><b>24/7</b> Open house</span><span class="avail glass"><i class="dot"></i>Available now | Updated 5d ago</span></div>
+  <div class="ucard-badges"><span class="b247" title="Open house 24/7"><svg viewBox="0 0 40 40" aria-hidden="true"><circle cx="20" cy="20" r="16" fill="none" stroke="currentColor" stroke-width="3.5" stroke-dasharray="76 25" stroke-linecap="round" transform="rotate(-60 20 20)"/><path d="M20 10v10l6 4" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round"/></svg><b>24/7</b> Open house</span></div>
   <button class="fav glass" type="button" aria-label="Save The Esse at Singha Complex" aria-pressed="false"><i class="ph ph-heart"></i></button>
-  <div class="ubottom"><span class="count glass">1/8</span>
+  <div class="ubottom">
   <div class="uglass glass">
     <div class="ug-top"><span class="lease">Min. 3 months</span><p class="price"><strong>฿36,000</strong><span>/month</span></p></div>
     <p class="specs"><span>2 br</span><span>2 ba</span><span>50 sqm</span><span>Fl. 8</span></p>
     <h3 class="uname"><a href="unit.html">The Esse at Singha Complex</a></h3>
   </div></div></div>
   <div class="ucard-body">
+    <p class="upd"><i></i>Available now · Updated 5d ago</p>
     <p class="dist">Huai Khwang, Bangkok</p>
     <p class="transit mrt"><i class="ph ph-train-simple" aria-hidden="true"></i>MRT Phetchaburi<em>200 m</em></p><p class="transit mrt"><i class="ph ph-train-simple" aria-hidden="true"></i>ARL Makkasan<em>600 m</em></p>
   </div>
 </article><article class="ucard" data-lease="3">
   <div class="ucard-photo"><a class="ucard-media" href="#" tabindex="-1" aria-hidden="true"><img src="https://images.unsplash.com/photo-1567767292278-a4f21aa2d36e?q=75&w=640&h=800&auto=format&fit=crop" alt="" width="640" height="800" loading="lazy" decoding="async"></a>
-  <div class="ucard-badges"><span class="b247" title="Open house 24/7"><svg viewBox="0 0 40 40" aria-hidden="true"><circle cx="20" cy="20" r="16" fill="none" stroke="currentColor" stroke-width="3.5" stroke-dasharray="76 25" stroke-linecap="round" transform="rotate(-60 20 20)"/><path d="M20 10v10l6 4" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round"/></svg><b>24/7</b> Open house</span><span class="avail glass"><i class="dot"></i>Available now | Updated 4d ago</span></div>
+  <div class="ucard-badges"><span class="b247" title="Open house 24/7"><svg viewBox="0 0 40 40" aria-hidden="true"><circle cx="20" cy="20" r="16" fill="none" stroke="currentColor" stroke-width="3.5" stroke-dasharray="76 25" stroke-linecap="round" transform="rotate(-60 20 20)"/><path d="M20 10v10l6 4" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round"/></svg><b>24/7</b> Open house</span></div>
   <button class="fav glass" type="button" aria-label="Save Ashton Asoke" aria-pressed="false"><i class="ph ph-heart"></i></button>
-  <div class="ubottom"><span class="count glass">1/12</span>
+  <div class="ubottom">
   <div class="uglass glass">
     <div class="ug-top"><span class="lease">Min. 3 months</span><p class="price"><strong>฿42,000</strong><span>/month</span></p></div>
     <p class="specs"><span>1 br</span><span>1 ba</span><span>45 sqm</span><span>Fl. 16</span></p>
     <h3 class="uname"><a href="unit.html">Ashton Asoke</a></h3>
   </div></div></div>
   <div class="ucard-body">
+    <p class="upd"><i></i>Available now · Updated 4d ago</p>
     <p class="dist">Watthana, Bangkok</p>
     <p class="transit bts"><i class="ph ph-train-simple" aria-hidden="true"></i>BTS Asok<em>50 m</em></p><p class="transit mrt"><i class="ph ph-train-simple" aria-hidden="true"></i>MRT Sukhumvit<em>100 m</em></p>
   </div>
 </article><article class="ucard" data-lease="3">
   <div class="ucard-photo"><a class="ucard-media" href="#" tabindex="-1" aria-hidden="true"><img src="https://images.unsplash.com/photo-1493809842364-78817add7ffb?q=75&w=640&h=800&auto=format&fit=crop" alt="" width="640" height="800" loading="lazy" decoding="async"></a>
-  <div class="ucard-badges"><span class="b247" title="Open house 24/7"><svg viewBox="0 0 40 40" aria-hidden="true"><circle cx="20" cy="20" r="16" fill="none" stroke="currentColor" stroke-width="3.5" stroke-dasharray="76 25" stroke-linecap="round" transform="rotate(-60 20 20)"/><path d="M20 10v10l6 4" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round"/></svg><b>24/7</b> Open house</span><span class="avail glass"><i class="dot"></i>Available now | Updated 6d ago</span></div>
+  <div class="ucard-badges"><span class="b247" title="Open house 24/7"><svg viewBox="0 0 40 40" aria-hidden="true"><circle cx="20" cy="20" r="16" fill="none" stroke="currentColor" stroke-width="3.5" stroke-dasharray="76 25" stroke-linecap="round" transform="rotate(-60 20 20)"/><path d="M20 10v10l6 4" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round"/></svg><b>24/7</b> Open house</span></div>
   <button class="fav glass" type="button" aria-label="Save Ideo O2" aria-pressed="false"><i class="ph ph-heart"></i></button>
-  <div class="ubottom"><span class="count glass">1/6</span>
+  <div class="ubottom">
   <div class="uglass glass">
     <div class="ug-top"><span class="lease">Min. 3 months</span><p class="price"><strong>฿19,000</strong><span>/month</span></p></div>
     <p class="specs"><span>1 br</span><span>1 ba</span><span>26 sqm</span><span>Fl. 5</span></p>
     <h3 class="uname"><a href="unit.html">Ideo O2</a></h3>
   </div></div></div>
   <div class="ucard-body">
+    <p class="upd"><i></i>Available now · Updated 6d ago</p>
     <p class="dist">Bang Na, Bangkok</p>
     <p class="transit bts"><i class="ph ph-train-simple" aria-hidden="true"></i>BTS Bang Na<em>450 m</em></p><p class="transit bts"><i class="ph ph-train-simple" aria-hidden="true"></i>BTS Udom Suk<em>1.2 km</em></p>
   </div>
 </article><article class="ucard" data-lease="3">
   <div class="ucard-photo"><a class="ucard-media" href="#" tabindex="-1" aria-hidden="true"><img src="https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?q=75&w=640&h=800&auto=format&fit=crop" alt="" width="640" height="800" loading="lazy" decoding="async"></a>
-  <div class="ucard-badges"><span class="b247" title="Open house 24/7"><svg viewBox="0 0 40 40" aria-hidden="true"><circle cx="20" cy="20" r="16" fill="none" stroke="currentColor" stroke-width="3.5" stroke-dasharray="76 25" stroke-linecap="round" transform="rotate(-60 20 20)"/><path d="M20 10v10l6 4" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round"/></svg><b>24/7</b> Open house</span><span class="avail glass"><i class="dot"></i>Available now | Updated 2d ago</span></div>
+  <div class="ucard-badges"><span class="b247" title="Open house 24/7"><svg viewBox="0 0 40 40" aria-hidden="true"><circle cx="20" cy="20" r="16" fill="none" stroke="currentColor" stroke-width="3.5" stroke-dasharray="76 25" stroke-linecap="round" transform="rotate(-60 20 20)"/><path d="M20 10v10l6 4" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round"/></svg><b>24/7</b> Open house</span></div>
   <button class="fav glass" type="button" aria-label="Save The Lumpini 24" aria-pressed="false"><i class="ph ph-heart"></i></button>
-  <div class="ubottom"><span class="count glass">1/14</span>
+  <div class="ubottom">
   <div class="uglass glass">
     <div class="ug-top"><span class="lease">Min. 3 months</span><p class="price"><strong>฿65,000</strong><span>/month</span></p></div>
     <p class="specs"><span>2 br</span><span>2 ba</span><span>80 sqm</span><span>Fl. 25</span></p>
     <h3 class="uname"><a href="unit.html">The Lumpini 24</a></h3>
   </div></div></div>
   <div class="ucard-body">
+    <p class="upd"><i></i>Available now · Updated 2d ago</p>
     <p class="dist">Khlong Toei, Bangkok</p>
     <p class="transit bts"><i class="ph ph-train-simple" aria-hidden="true"></i>BTS Phrom Phong<em>400 m</em></p><p class="transit mrt"><i class="ph ph-train-simple" aria-hidden="true"></i>MRT Queen Sirikit<em>900 m</em></p>
   </div>

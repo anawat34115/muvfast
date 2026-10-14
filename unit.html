@@ -311,8 +311,8 @@
 .ou:hover .ou-photo>img{transform:scale(1.04)}
 .ou-glass{background:rgba(24,22,20,.30);-webkit-backdrop-filter:blur(12px) saturate(140%);backdrop-filter:blur(12px) saturate(140%);border:1px solid rgba(255,255,255,.28);color:#fff}
 .ou-badges{position:absolute;z-index:4;top:10px;left:8px;right:44px;display:flex;flex-direction:column;align-items:flex-start;gap:5px;pointer-events:none}
-.ou-247{display:inline-flex;align-items:center;gap:5px;background:#fc4a1a;color:#fff;border-radius:999px;padding:3px 10px 3px 5px;font-size:11px;font-weight:600;line-height:1.3;white-space:nowrap;box-shadow:0 2px 8px rgba(0,0,0,.22)}
-.ou-247 svg{width:17px;height:17px}.ou-247 b{font-weight:800;font-size:12px}
+.ou-247{display:inline-flex;align-items:center;gap:4px;background:#fff;color:#1B1D21;border-radius:999px;padding:2px 9px 2px 4px;font-size:10px;font-weight:600;line-height:1.3;white-space:nowrap;box-shadow:0 1px 6px rgba(0,0,0,.18)}
+.ou-247 svg{width:15px;height:15px;color:#fc4a1a}.ou-247 b{font-weight:800;font-size:11px;color:#fc4a1a}
 .ou-avail{display:inline-flex;align-items:center;gap:5px;max-width:100%;border-radius:999px;padding:2px 9px;font-size:10px;font-weight:600;line-height:1.4;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .ou-avail i{width:6px;height:6px;border-radius:50%;background:#3EE08F;flex:none}
 .ou-vchip{display:inline-flex;align-items:center;gap:3px;background:#111827;color:#fff;font-size:10px;font-weight:800;letter-spacing:.06em;padding:2px 8px;border-radius:6px}
@@ -321,15 +321,16 @@
 .ou-fav .material-symbols-outlined{font-size:18px}
 .ou-bottom{position:absolute;z-index:4;left:8px;right:8px;bottom:8px;display:flex;flex-direction:column;align-items:flex-end;gap:6px;pointer-events:none}
 .ou-count{border-radius:999px;font-size:10px;font-weight:600;padding:1px 8px;line-height:1.5}
-.ou-panel{align-self:stretch;border-radius:12px;padding:12px 12px 13px;display:grid;gap:4px}
+.ou-panel{align-self:stretch;border-radius:10px;padding:8px 10px 9px;display:grid;gap:2px}
 .ou-top{display:flex;align-items:center;justify-content:space-between;gap:6px}
-.ou-lease{display:inline-flex;align-items:center;background:#fc4a1a;color:#fff;border-radius:999px;padding:1px 8px;font-size:10px;font-weight:700;line-height:1.6;white-space:nowrap}
-.ou-price{white-space:nowrap;line-height:1.25;margin:0}.ou-price strong{font-size:16px;font-weight:800}.ou-price span{font-size:10px;color:rgba(255,255,255,.8);margin-left:2px}
-.ou-specs{font-size:11px;line-height:1.35;color:rgba(255,255,255,.92);font-weight:500;margin:0}
+.ou-lease{font-size:10.5px;font-weight:600;color:rgba(255,255,255,.85);white-space:nowrap}
+.ou-price{white-space:nowrap;line-height:1.25;margin:0}.ou-price strong{font-size:14px;font-weight:800}.ou-price span{font-size:10px;color:rgba(255,255,255,.8);margin-left:2px}
+.ou-specs{font-size:10.5px;line-height:1.35;color:rgba(255,255,255,.92);font-weight:500;margin:0}
 .ou-specs span+span::before{content:"•";margin:0 5px;color:rgba(255,255,255,.55)}
-.ou-name{font-size:14px;font-weight:700;line-height:1.3;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;color:#fff;margin:0}
+.ou-name{font-size:13px;font-weight:700;line-height:1.3;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;color:#fff;margin:0}
 .ou-name a{pointer-events:auto}.ou-name a::after{content:"";position:absolute;inset:0;z-index:1}
 .ou-body{padding:12px 16px 14px;display:grid;gap:4px}
+.ou-upd{display:flex;align-items:center;gap:5px;font-size:11px;font-weight:500;color:#0F7A4F;margin:0}.ou-upd i{width:6px;height:6px;border-radius:50%;background:#12B76A;flex:none}
 .ou-dist{font-size:12.5px;color:#5E636B;margin:0}
 .ou-tr{display:flex;align-items:center;gap:6px;font-size:12.5px;font-weight:600;color:#0F7A4F;white-space:nowrap;margin:0}
 .ou-tr.mrt{color:#1E4F9C}.ou-tr .material-symbols-outlined{font-size:16px}.ou-tr em{font-style:normal;font-weight:500;color:#5E636B;margin-left:auto}
@@ -1444,33 +1445,33 @@ document.querySelectorAll('.mf-head .lang').forEach(function(g){g.addEventListen
                             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
 <article class="ou group">
                                     <div class="ou-photo"><div class="mv-spin-wrap" role="img" aria-label="Chewathai Residence Thonglor, 360° preview"><div class="mv-spin" style="background-image:url('https://cdn.polyhaven.com/asset_img/primary/cayley_interior.png?width=2560&quality=80')"></div></div><div class="mv-360b"><span class="material-symbols-outlined">360</span>360° tour</div>
-                                        <div class="ou-badges"><span class="ou-247"><svg viewBox="0 0 40 40" aria-hidden="true"><circle cx="20" cy="20" r="16" fill="none" stroke="currentColor" stroke-width="3.5" stroke-dasharray="76 25" stroke-linecap="round" transform="rotate(-60 20 20)"/><path d="M20 10v10l6 4" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round"/></svg><b>24/7</b> Open house</span><span class="ou-avail ou-glass"><i></i>Available now | Updated 5d ago</span></div>
+                                        <div class="ou-badges"><span class="ou-247"><svg viewBox="0 0 40 40" aria-hidden="true"><circle cx="20" cy="20" r="16" fill="none" stroke="currentColor" stroke-width="3.5" stroke-dasharray="76 25" stroke-linecap="round" transform="rotate(-60 20 20)"/><path d="M20 10v10l6 4" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round"/></svg><b>24/7</b> Open house</span></div>
                                         <button type="button" class="ou-fav ou-glass" aria-label="Save Chewathai Residence Thonglor"><span class="material-symbols-outlined">favorite_border</span></button>
-                                        <div class="ou-bottom"><span class="ou-count ou-glass">1/8</span>
+                                        <div class="ou-bottom">
                                             <div class="ou-panel ou-glass"><div class="ou-top"><span class="ou-lease">Min. 1 month</span><p class="ou-price"><strong>฿32,000</strong><span>/month</span></p></div><p class="ou-specs"><span>1 br</span><span>1 ba</span><span>35 sqm</span><span>Fl. 12</span></p><h4 class="ou-name"><a href="#">Chewathai Residence Thonglor</a></h4></div>
                                         </div>
                                     </div>
-                                    <div class="ou-body"><p class="ou-dist">Watthana, Bangkok</p><p class="ou-tr bts"><span class="material-symbols-outlined">train</span>BTS Phrom Phong<em>700 m</em></p><p class="ou-tr bts"><span class="material-symbols-outlined">train</span>BTS Thong Lo<em>900 m</em></p></div>
+                                    <div class="ou-body"><p class="ou-upd"><i></i>Available now · Updated 5d ago</p><p class="ou-dist">Watthana, Bangkok</p><p class="ou-tr bts"><span class="material-symbols-outlined">train</span>BTS Phrom Phong<em>700 m</em></p><p class="ou-tr bts"><span class="material-symbols-outlined">train</span>BTS Thong Lo<em>900 m</em></p></div>
                                 </article>
 <article class="ou group">
                                     <div class="ou-photo"><img src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?q=80&w=700&auto=format&fit=crop" alt="The Esse at Singha Complex" loading="lazy"><video class="mv-prev" muted loop playsinline preload="none" data-src="https://videos.pexels.com/video-files/7239172/7239172-sd_640_360_25fps.mp4" aria-hidden="true"></video><div class="mv-play"><span class="material-symbols-outlined">play_arrow</span></div>
-                                        <div class="ou-badges"><span class="ou-247"><svg viewBox="0 0 40 40" aria-hidden="true"><circle cx="20" cy="20" r="16" fill="none" stroke="currentColor" stroke-width="3.5" stroke-dasharray="76 25" stroke-linecap="round" transform="rotate(-60 20 20)"/><path d="M20 10v10l6 4" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round"/></svg><b>24/7</b> Open house</span><span class="ou-avail ou-glass"><i></i>Available now | Updated 5d ago</span><span class="ou-vchip"><span class="material-symbols-outlined">videocam</span>VIDEO</span></div>
+                                        <div class="ou-badges"><span class="ou-247"><svg viewBox="0 0 40 40" aria-hidden="true"><circle cx="20" cy="20" r="16" fill="none" stroke="currentColor" stroke-width="3.5" stroke-dasharray="76 25" stroke-linecap="round" transform="rotate(-60 20 20)"/><path d="M20 10v10l6 4" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round"/></svg><b>24/7</b> Open house</span><span class="ou-vchip"><span class="material-symbols-outlined">videocam</span>VIDEO</span></div>
                                         <button type="button" class="ou-fav ou-glass" aria-label="Save The Esse at Singha Complex"><span class="material-symbols-outlined">favorite_border</span></button>
-                                        <div class="ou-bottom"><span class="ou-count ou-glass">1/8</span>
+                                        <div class="ou-bottom">
                                             <div class="ou-panel ou-glass"><div class="ou-top"><span class="ou-lease">Min. 3 months</span><p class="ou-price"><strong>฿36,000</strong><span>/month</span></p></div><p class="ou-specs"><span>2 br</span><span>2 ba</span><span>50 sqm</span><span>Fl. 8</span></p><h4 class="ou-name"><a href="#">The Esse at Singha Complex</a></h4></div>
                                         </div>
                                     </div>
-                                    <div class="ou-body"><p class="ou-dist">Huai Khwang, Bangkok</p><p class="ou-tr mrt"><span class="material-symbols-outlined">train</span>MRT Phetchaburi<em>200 m</em></p><p class="ou-tr mrt"><span class="material-symbols-outlined">train</span>ARL Makkasan<em>600 m</em></p></div>
+                                    <div class="ou-body"><p class="ou-upd"><i></i>Available now · Updated 5d ago</p><p class="ou-dist">Huai Khwang, Bangkok</p><p class="ou-tr mrt"><span class="material-symbols-outlined">train</span>MRT Phetchaburi<em>200 m</em></p><p class="ou-tr mrt"><span class="material-symbols-outlined">train</span>ARL Makkasan<em>600 m</em></p></div>
                                 </article>
 <article class="ou group">
                                     <div class="ou-photo"><img src="https://images.unsplash.com/photo-1576013551627-0cc20b96c2a7?q=80&w=700&auto=format&fit=crop" alt="Life Asoke Hype – Penthouse" loading="lazy">
-                                        <div class="ou-badges"><span class="ou-247"><svg viewBox="0 0 40 40" aria-hidden="true"><circle cx="20" cy="20" r="16" fill="none" stroke="currentColor" stroke-width="3.5" stroke-dasharray="76 25" stroke-linecap="round" transform="rotate(-60 20 20)"/><path d="M20 10v10l6 4" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round"/></svg><b>24/7</b> Open house</span><span class="ou-avail ou-glass"><i></i>Available now | Updated 5d ago</span></div>
+                                        <div class="ou-badges"><span class="ou-247"><svg viewBox="0 0 40 40" aria-hidden="true"><circle cx="20" cy="20" r="16" fill="none" stroke="currentColor" stroke-width="3.5" stroke-dasharray="76 25" stroke-linecap="round" transform="rotate(-60 20 20)"/><path d="M20 10v10l6 4" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round"/></svg><b>24/7</b> Open house</span></div>
                                         <button type="button" class="ou-fav ou-glass" aria-label="Save Life Asoke Hype – Penthouse"><span class="material-symbols-outlined">favorite_border</span></button>
-                                        <div class="ou-bottom"><span class="ou-count ou-glass">1/3</span>
+                                        <div class="ou-bottom">
                                             <div class="ou-panel ou-glass"><div class="ou-top"><span class="ou-lease">Min. 1 month</span><p class="ou-price"><strong>฿120,000</strong><span>/month</span></p></div><p class="ou-specs"><span>3 br</span><span>3 ba</span><span>115 sqm</span><span>Fl. 38</span></p><h4 class="ou-name"><a href="#">Life Asoke Hype – Penthouse</a></h4></div>
                                         </div>
                                     </div>
-                                    <div class="ou-body"><p class="ou-dist">Ratchathewi, Bangkok</p><p class="ou-tr mrt"><span class="material-symbols-outlined">train</span>MRT Phra Ram 9<em>300 m</em></p><p class="ou-tr mrt"><span class="material-symbols-outlined">train</span>MRT Phetchaburi<em>800 m</em></p></div>
+                                    <div class="ou-body"><p class="ou-upd"><i></i>Available now · Updated 5d ago</p><p class="ou-dist">Ratchathewi, Bangkok</p><p class="ou-tr mrt"><span class="material-symbols-outlined">train</span>MRT Phra Ram 9<em>300 m</em></p><p class="ou-tr mrt"><span class="material-symbols-outlined">train</span>MRT Phetchaburi<em>800 m</em></p></div>
                                 </article>
                             </div>
                         </div>
