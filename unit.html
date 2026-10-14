@@ -226,9 +226,9 @@
 .mv-amen img{width:100%;height:100%;object-fit:cover}
 .mv-amen figcaption{position:absolute;left:10px;bottom:10px;background:rgba(255,255,255,.95);font-size:12px;font-weight:800;padding:4px 10px;border-radius:8px}
 /* other-units mockups */
-.mv-247{position:absolute;z-index:3;left:10px;bottom:10px;display:inline-flex;align-items:center;gap:4px;background:#fff;color:#111827;border-radius:999px;padding:3px 10px 3px 4px;font-size:11px;font-weight:700;box-shadow:0 1px 4px rgba(0,0,0,.2)}
-.mv-247 svg{width:22px;height:22px;color:#fc4a1a}
-.mv-247 b{color:#fc4a1a;font-weight:800;font-size:12px}
+.mv-247{position:absolute;z-index:3;left:10px;bottom:10px;display:inline-flex;align-items:center;gap:5px;background:#fc4a1a;color:#fff;border-radius:999px;padding:3px 10px 3px 5px;font-size:11px;font-weight:600;box-shadow:0 2px 8px rgba(0,0,0,.22)}
+.mv-247 svg{width:18px;height:18px;color:#fff}
+.mv-247 b{color:#fff;font-weight:800;font-size:12px}
 .mv-spin{position:absolute;inset:0;background-size:auto 165%;background-position-y:50%;background-repeat:repeat-x;animation:mvspin 40s linear infinite}
 @keyframes mvspin{from{background-position-x:0}to{background-position-x:calc(-1 * var(--pw,640px))}}
 .mv-spin-wrap{position:absolute;inset:0;overflow:hidden}
@@ -241,6 +241,43 @@
 .group:hover .mv-play{opacity:0}
 .mv-vchip{position:absolute;z-index:3;top:44px;left:12px;display:inline-flex;align-items:center;gap:4px;background:#111827;color:#fff;font-size:10px;font-weight:800;letter-spacing:.06em;padding:3px 8px;border-radius:6px}
 .mv-vchip .material-symbols-outlined{font-size:14px}
+/* ===== Unit details_2 feedback (2026-10-14) ===== */
+.mv-badge247{position:absolute;z-index:5;top:50%;left:50%;width:132px;height:132px;transform:translate(-50%,-50%);pointer-events:none;transition:opacity .4s}
+.mv-badge247 .dm{position:absolute;inset:16%;transform:rotate(45deg);border-radius:6px;background:linear-gradient(135deg,rgba(255,255,255,.26),rgba(255,255,255,.08));-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);border:2px solid rgba(255,170,110,.95);box-shadow:0 0 0 1px rgba(252,74,26,.55),0 0 18px rgba(252,120,40,.55),inset 0 0 14px rgba(255,255,255,.25)}
+.mv-badge247 .tx{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;color:#fff;text-shadow:0 1px 4px rgba(0,0,0,.45)}
+.mv-badge247 img{width:62px;height:auto;filter:drop-shadow(0 1px 2px rgba(0,0,0,.35))}
+.mv-badge247 i{display:block;width:44px;height:1px;background:rgba(255,255,255,.75);margin:3px 0 2px}
+.mv-badge247 small{font-size:7.5px;letter-spacing:.22em;font-weight:500}
+.mv-badge247 b{font-size:22px;line-height:1;font-weight:500;letter-spacing:.02em}
+@media(min-width:640px){.mv-badge247{width:150px;height:150px}.mv-badge247 img{width:70px}.mv-badge247 b{font-size:25px}.mv-badge247 small{font-size:8.5px}}
+.mv-rooms{position:absolute;z-index:7;top:14px;right:14px;width:236px;max-width:calc(100% - 28px)}
+.mv-rooms>button{width:100%;display:flex;align-items:center;gap:8px;height:42px;padding:0 12px;border:0;border-radius:12px;background:#111827;color:#fff;font-weight:800;font-size:13px;letter-spacing:.02em;cursor:pointer;box-shadow:0 4px 14px rgba(0,0,0,.25)}
+.mv-rooms>button .material-symbols-outlined{font-size:20px}
+.mv-rooms>button .ar{margin-left:auto;transition:transform .2s}
+.mv-rooms[data-open] >button .ar{transform:rotate(180deg)}
+.mv-rooms ul{list-style:none;margin:6px 0 0;padding:6px;background:#fff;border-radius:12px;box-shadow:0 10px 28px rgba(0,0,0,.22);display:none}
+.mv-rooms[data-open] ul{display:block}
+.mv-rooms li button{width:100%;display:flex;align-items:center;gap:10px;padding:9px 10px;border:0;background:none;border-radius:8px;font-size:14px;font-weight:600;color:#1f2937;cursor:pointer;text-align:left}
+.mv-rooms li button .material-symbols-outlined{font-size:20px;color:#6b7280}
+.mv-rooms li button:hover{background:#f3f4f6}
+.mv-rooms li button[aria-current=true]{background:#fff1ec;color:#c93a12}
+.mv-rooms li button[aria-current=true] .material-symbols-outlined{color:#fc4a1a}
+@media(max-width:639px){.mv-rooms{width:200px}.mv-rooms>button{height:36px;font-size:12px}}
+.mv-pgrid{position:absolute;inset:0;display:grid;gap:6px;background:#fff;grid-template-columns:1fr 1fr;grid-template-rows:2fr 1fr}
+.mv-pgrid button{position:relative;padding:0;border:0;overflow:hidden;cursor:pointer;background:#e5e7eb}
+.mv-pgrid button:first-child{grid-column:1/-1}
+.mv-pgrid button:nth-child(n+4){display:none}
+.mv-pgrid img{width:100%;height:100%;object-fit:cover;transition:transform .6s}
+.mv-pgrid button:hover img{transform:scale(1.04)}
+@media(min-width:640px){.mv-pgrid{grid-template-columns:2fr 1fr 1fr;grid-template-rows:1fr 1fr}.mv-pgrid button:first-child{grid-column:auto;grid-row:span 2}.mv-pgrid button:nth-child(n+4){display:block}}
+.mv-pgrid .lbl{position:absolute;left:10px;bottom:10px;background:rgba(255,255,255,.95);font-size:12px;font-weight:700;padding:3px 9px;border-radius:8px;color:#111827}
+#mvp-photos .mv-slider{position:absolute;inset:0;display:none}
+#mvp-photos.slide .mv-slider{display:block}
+#mvp-photos.slide .mv-pgrid,#mvp-photos.slide .mv-seeall{display:none}
+.mv-back{position:absolute;z-index:6;left:14px;bottom:14px}
+.mv-fp{position:absolute;inset:0;background:#fafaf9;display:flex;align-items:center;justify-content:center;padding:58px 18px 18px}
+.mv-fp svg{max-width:100%;max-height:100%;height:auto}
+.mv-fp .note{position:absolute;right:14px;bottom:12px;font-size:11px;color:#6b7280;background:#fff;border:1px solid #e5e7eb;border-radius:8px;padding:3px 8px}
 @media(prefers-reduced-motion:reduce){.mv-spin{animation:none}.mv-panel{transition:none}}
 </style>
 <style>
@@ -266,6 +303,38 @@
 .mf-head .dr .lang{display:inline-flex;margin-top:16px;justify-self:start}
 @media(min-width:1024px){.mf-head .nl{display:flex}.mf-head .mb{display:none}.mf-head .lang{display:inline-flex}.mf-head .dr{display:none!important}}
 </style>
+<style>
+.ou{position:relative;display:flex;flex-direction:column;background:#fff;border:1px solid #E3E5E8;border-radius:16px;overflow:hidden;transition:box-shadow .25s;cursor:pointer}
+.ou:hover{box-shadow:0 8px 24px rgba(20,23,28,.10)}
+.ou-photo{position:relative;aspect-ratio:4/4.4;overflow:hidden;background:#f3f4f6}
+.ou-photo>img{width:100%;height:100%;object-fit:cover;transition:transform .6s}
+.ou:hover .ou-photo>img{transform:scale(1.04)}
+.ou-glass{background:rgba(24,22,20,.30);-webkit-backdrop-filter:blur(12px) saturate(140%);backdrop-filter:blur(12px) saturate(140%);border:1px solid rgba(255,255,255,.28);color:#fff}
+.ou-badges{position:absolute;z-index:4;top:10px;left:8px;right:44px;display:flex;flex-direction:column;align-items:flex-start;gap:5px;pointer-events:none}
+.ou-247{display:inline-flex;align-items:center;gap:5px;background:#fc4a1a;color:#fff;border-radius:999px;padding:3px 10px 3px 5px;font-size:11px;font-weight:600;line-height:1.3;white-space:nowrap;box-shadow:0 2px 8px rgba(0,0,0,.22)}
+.ou-247 svg{width:17px;height:17px}.ou-247 b{font-weight:800;font-size:12px}
+.ou-avail{display:inline-flex;align-items:center;gap:5px;max-width:100%;border-radius:999px;padding:2px 9px;font-size:10px;font-weight:600;line-height:1.4;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.ou-avail i{width:6px;height:6px;border-radius:50%;background:#3EE08F;flex:none}
+.ou-vchip{display:inline-flex;align-items:center;gap:3px;background:#111827;color:#fff;font-size:10px;font-weight:800;letter-spacing:.06em;padding:2px 8px;border-radius:6px}
+.ou-vchip .material-symbols-outlined{font-size:14px}
+.ou-fav{position:absolute;z-index:5;top:8px;right:8px;width:32px;height:32px;border-radius:999px;display:grid;place-items:center;cursor:pointer}
+.ou-fav .material-symbols-outlined{font-size:18px}
+.ou-bottom{position:absolute;z-index:4;left:8px;right:8px;bottom:8px;display:flex;flex-direction:column;align-items:flex-end;gap:6px;pointer-events:none}
+.ou-count{border-radius:999px;font-size:10px;font-weight:600;padding:1px 8px;line-height:1.5}
+.ou-panel{align-self:stretch;border-radius:12px;padding:12px 12px 13px;display:grid;gap:4px}
+.ou-top{display:flex;align-items:center;justify-content:space-between;gap:6px}
+.ou-lease{display:inline-flex;align-items:center;background:#fc4a1a;color:#fff;border-radius:999px;padding:1px 8px;font-size:10px;font-weight:700;line-height:1.6;white-space:nowrap}
+.ou-price{white-space:nowrap;line-height:1.25;margin:0}.ou-price strong{font-size:16px;font-weight:800}.ou-price span{font-size:10px;color:rgba(255,255,255,.8);margin-left:2px}
+.ou-specs{font-size:11px;line-height:1.35;color:rgba(255,255,255,.92);font-weight:500;margin:0}
+.ou-specs span+span::before{content:"•";margin:0 5px;color:rgba(255,255,255,.55)}
+.ou-name{font-size:14px;font-weight:700;line-height:1.3;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;color:#fff;margin:0}
+.ou-name a{pointer-events:auto}.ou-name a::after{content:"";position:absolute;inset:0;z-index:1}
+.ou-body{padding:12px 16px 14px;display:grid;gap:4px}
+.ou-dist{font-size:12.5px;color:#5E636B;margin:0}
+.ou-tr{display:flex;align-items:center;gap:6px;font-size:12.5px;font-weight:600;color:#0F7A4F;white-space:nowrap;margin:0}
+.ou-tr.mrt{color:#1E4F9C}.ou-tr .material-symbols-outlined{font-size:16px}.ou-tr em{font-style:normal;font-weight:500;color:#5E636B;margin-left:auto}
+.ou .mv-360b,.ou .mv-play{top:42%}
+</style>
 </head>
 
 <body class="bg-white font-body-medium text-[15px] text-on-surface antialiased">
@@ -287,48 +356,96 @@ document.querySelectorAll('.mf-head .lang').forEach(function(g){g.addEventListen
         <main class="w-full pt-16 md:pt-[68px] bg-white flex-grow">
             <div class="max-w-[1280px] mx-auto px-4 md:px-gutter-desktop py-3 sm:py-4">
 
-                <!-- Media viewer: 360° first, other media in the side rail (client feedback "Unit details_1.pdf", 2026-10-09) -->
+                <!-- Media viewer (Unit details_1.pdf 2026-10-09, Unit details_2.pdf 2026-10-14) -->
                 <section class="mv" aria-label="Unit photos and media">
                     <div class="mv-stage" id="mv-stage">
                         <div class="mv-badges"><span class="mv-chip"><span class="material-symbols-outlined">event</span>Min. 1 month stay</span><span class="mv-chip"><span class="material-symbols-outlined">verified</span>Verified by MUVFAST</span></div>
 
-                        <div class="mv-panel on" id="mvp-360" role="tabpanel" aria-label="360° view">
+                        <div class="mv-panel on" id="mvp-360" role="tabpanel" aria-label="360° virtual tour">
                             <div id="mv-pano"></div>
+                            <div class="mv-badge247" id="mv-badge247" aria-hidden="true"><span class="dm"></span><span class="tx"><img src="logo.svg" alt=""><i></i><small>OPEN HOUSE</small><b>24/7</b></span></div>
+                            <div class="mv-rooms" id="mv-rooms"><button type="button" aria-expanded="false" aria-controls="mv-rooms-list"><span class="material-symbols-outlined">360</span>360° VIRTUAL TOUR<span class="material-symbols-outlined ar">expand_more</span></button><ul id="mv-rooms-list"><li><button type="button" data-pano="https://cdn.polyhaven.com/asset_img/primary/lebombo.png?width=2560&quality=85" aria-current="true"><span class="material-symbols-outlined">weekend</span>Living – Dining – Kitchen</button></li><li><button type="button" data-pano="https://cdn.polyhaven.com/asset_img/primary/hotel_room.png?width=2560&quality=85" aria-current="false"><span class="material-symbols-outlined">bed</span>Bedroom 1</button></li><li><button type="button" data-pano="https://cdn.polyhaven.com/asset_img/primary/cayley_interior.png?width=2560&quality=85" aria-current="false"><span class="material-symbols-outlined">bed</span>Bedroom 2</button></li></ul></div>
                             <p class="mv-hint" id="mv-hint"><span class="material-symbols-outlined">360</span>Drag to look around</p>
                             <div class="mv-tools"><button type="button" class="mv-btn icon" id="mv-spin" aria-label="Pause rotation"><span class="material-symbols-outlined">pause</span></button><button type="button" class="mv-btn icon" id="mv-full" aria-label="Full screen"><span class="material-symbols-outlined">fullscreen</span></button></div>
                         </div>
 
                         <div class="mv-panel" id="mvp-photos" role="tabpanel" aria-label="Photos">
-                            <div class="mv-photos" id="mv-photos"><img src="https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?q=80&w=1600&auto=format&fit=crop" alt="Unit photo 1" class="on"><img src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?q=80&w=1600&auto=format&fit=crop" alt="Unit photo 2" loading="lazy"><img src="https://images.unsplash.com/photo-1556910103-1c02745aae4d?q=80&w=1600&auto=format&fit=crop" alt="Unit photo 3" loading="lazy"><img src="https://images.unsplash.com/photo-1554995207-c18c203602cb?q=80&w=1600&auto=format&fit=crop" alt="Unit photo 4" loading="lazy"><img src="https://images.unsplash.com/photo-1584622650111-993a426fbf0a?q=80&w=1600&auto=format&fit=crop" alt="Unit photo 5" loading="lazy"><img src="https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?q=80&w=1600&auto=format&fit=crop" alt="Unit photo 6" loading="lazy"><img src="https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?q=80&w=1600&auto=format&fit=crop" alt="Unit photo 7" loading="lazy"></div>
-                            <span class="mv-count" id="mv-count">1 / 43</span>
-                            <button type="button" class="mv-nav prev" data-d="-1" aria-label="Previous photo"><span class="material-symbols-outlined">chevron_left</span></button>
-                            <button type="button" class="mv-nav next" data-d="1" aria-label="Next photo"><span class="material-symbols-outlined">chevron_right</span></button>
-                            <div class="mv-thumbs" id="mv-thumbs"><button type="button" data-i="0" class="on" aria-label="Photo 1"><img src="https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?q=80&w=160&auto=format&fit=crop" alt="" loading="lazy"></button><button type="button" data-i="1" class="" aria-label="Photo 2"><img src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?q=80&w=160&auto=format&fit=crop" alt="" loading="lazy"></button><button type="button" data-i="2" class="" aria-label="Photo 3"><img src="https://images.unsplash.com/photo-1556910103-1c02745aae4d?q=80&w=160&auto=format&fit=crop" alt="" loading="lazy"></button><button type="button" data-i="3" class="" aria-label="Photo 4"><img src="https://images.unsplash.com/photo-1554995207-c18c203602cb?q=80&w=160&auto=format&fit=crop" alt="" loading="lazy"></button><button type="button" data-i="4" class="" aria-label="Photo 5"><img src="https://images.unsplash.com/photo-1584622650111-993a426fbf0a?q=80&w=160&auto=format&fit=crop" alt="" loading="lazy"></button><button type="button" data-i="5" class="" aria-label="Photo 6"><img src="https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?q=80&w=160&auto=format&fit=crop" alt="" loading="lazy"></button><button type="button" data-i="6" class="" aria-label="Photo 7"><img src="https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?q=80&w=160&auto=format&fit=crop" alt="" loading="lazy"></button></div>
-                            <div class="mv-tools"><button type="button" class="mv-btn"><span class="material-symbols-outlined">grid_view</span>See all 43 photos</button></div>
+                            <div class="mv-pgrid" id="mv-pgrid"><button type="button" data-i="0" aria-label="Open photo: Living room"><img src="https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?q=80&w=1200&auto=format&fit=crop" alt="Living room" ><span class="lbl">Living room</span></button><button type="button" data-i="1" aria-label="Open photo: Bedroom"><img src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?q=80&w=700&auto=format&fit=crop" alt="Bedroom" loading="lazy"><span class="lbl">Bedroom</span></button><button type="button" data-i="2" aria-label="Open photo: Kitchen"><img src="https://images.unsplash.com/photo-1556910103-1c02745aae4d?q=80&w=700&auto=format&fit=crop" alt="Kitchen" loading="lazy"><span class="lbl">Kitchen</span></button><button type="button" data-i="3" aria-label="Open photo: Living space"><img src="https://images.unsplash.com/photo-1554995207-c18c203602cb?q=80&w=700&auto=format&fit=crop" alt="Living space" loading="lazy"><span class="lbl">Living space</span></button><button type="button" data-i="4" aria-label="Open photo: Bathroom"><img src="https://images.unsplash.com/photo-1584622650111-993a426fbf0a?q=80&w=700&auto=format&fit=crop" alt="Bathroom" loading="lazy"><span class="lbl">Bathroom</span></button></div>
+                            <div class="mv-tools mv-seeall"><button type="button" class="mv-btn" id="mv-seeall"><span class="material-symbols-outlined">grid_view</span>See all 43 photos</button></div>
+                            <div class="mv-slider">
+                                <div class="mv-photos" id="mv-photos"><img src="https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?q=80&w=1600&auto=format&fit=crop" alt="Unit photo 1" class="on"><img src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?q=80&w=1600&auto=format&fit=crop" alt="Unit photo 2" loading="lazy"><img src="https://images.unsplash.com/photo-1556910103-1c02745aae4d?q=80&w=1600&auto=format&fit=crop" alt="Unit photo 3" loading="lazy"><img src="https://images.unsplash.com/photo-1554995207-c18c203602cb?q=80&w=1600&auto=format&fit=crop" alt="Unit photo 4" loading="lazy"><img src="https://images.unsplash.com/photo-1584622650111-993a426fbf0a?q=80&w=1600&auto=format&fit=crop" alt="Unit photo 5" loading="lazy"><img src="https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?q=80&w=1600&auto=format&fit=crop" alt="Unit photo 6" loading="lazy"><img src="https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?q=80&w=1600&auto=format&fit=crop" alt="Unit photo 7" loading="lazy"></div>
+                                <span class="mv-count" id="mv-count">1 / 43</span>
+                                <button type="button" class="mv-nav prev" data-d="-1" aria-label="Previous photo"><span class="material-symbols-outlined">chevron_left</span></button>
+                                <button type="button" class="mv-nav next" data-d="1" aria-label="Next photo"><span class="material-symbols-outlined">chevron_right</span></button>
+                                <button type="button" class="mv-btn mv-back" id="mv-back"><span class="material-symbols-outlined">grid_view</span>Back to grid</button>
+                            </div>
+                        </div>
+
+                        <div class="mv-panel" id="mvp-amen" role="tabpanel" aria-label="Project amenities">
+                            <div class="mv-amen"><figure><img src="https://images.unsplash.com/photo-1576013551627-0cc20b96c2a7?q=80&w=900&auto=format&fit=crop" alt="Rooftop pool" loading="lazy"><figcaption>Rooftop pool</figcaption></figure><figure><img src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?q=80&w=900&auto=format&fit=crop" alt="Fitness centre" loading="lazy"><figcaption>Fitness centre</figcaption></figure><figure><img src="https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=900&auto=format&fit=crop" alt="Co-working lounge" loading="lazy"><figcaption>Co-working lounge</figcaption></figure><figure><img src="https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?q=80&w=900&auto=format&fit=crop" alt="Lobby & reception" loading="lazy"><figcaption>Lobby & reception</figcaption></figure></div>
                         </div>
 
                         <div class="mv-panel" id="mvp-video" role="tabpanel" aria-label="Video tour">
                             <video class="mv-video" id="mv-video" controls playsinline muted preload="none" poster="https://images.unsplash.com/photo-1554995207-c18c203602cb?q=80&w=1600&auto=format&fit=crop"><source src="https://videos.pexels.com/video-files/7578540/7578540-hd_1280_720_30fps.mp4" type="video/mp4"></video>
                         </div>
 
-                        <div class="mv-panel" id="mvp-map" role="tabpanel" aria-label="Map">
-                            <iframe class="mv-map" id="mv-map" title="Map of the unit location" data-src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3875.8078971485605!2d100.52844877583688!3d13.72221689779373!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x30e29f33b1e9bb1b%3A0x6b7726d36e2f16b7!2sAscott%20Sathorn%20Bangkok!5e0!3m2!1sen!2sth!4v1700000000000!5m2!1sen!2sth" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>
+                        <div class="mv-panel" id="mvp-floor" role="tabpanel" aria-label="Floor plan">
+                            <div class="mv-fp"><svg viewBox="0 0 640 380" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Sample floor plan, 1 bedroom, 32 sqm" font-family="Montserrat,'Noto Sans Thai',sans-serif">
+  <rect x="40" y="40" width="560" height="270" fill="#fff"/>
+  <!-- balcony -->
+  <rect x="380" y="310" width="220" height="44" fill="#f3f4f6" stroke="#9ca3af" stroke-width="2" stroke-dasharray="6 4"/>
+  <text x="490" y="337" text-anchor="middle" font-size="12" fill="#6b7280">Balcony</text>
+  <!-- room fills -->
+  <rect x="40" y="40" width="130" height="120" fill="#eef6ff"/>
+  <rect x="380" y="40" width="220" height="270" fill="#fff7f2"/>
+  <!-- inner walls -->
+  <g stroke="#1f2937" stroke-width="6" fill="none" stroke-linecap="square">
+    <rect x="40" y="40" width="560" height="270"/>
+    <path d="M170 40V118M170 152V160H40"/>
+    <path d="M380 40V150M380 196V310"/>
+  </g>
+  <!-- windows -->
+  <g stroke="#60a5fa" stroke-width="6"><path d="M200 310H350M420 310H560M600 90V250"/></g>
+  <!-- entrance door (left wall) -->
+  <g stroke="#1f2937" stroke-width="2" fill="none"><path d="M40 210V260"/><path d="M40 210A50 50 0 0 1 90 260" stroke-dasharray="4 3"/></g>
+  <rect x="34" y="210" width="12" height="50" fill="#fff"/>
+  <path d="M40 210L90 210" stroke="#1f2937" stroke-width="2"/>
+  <!-- bath door -->
+  <rect x="164" y="118" width="12" height="34" fill="#fff"/><path d="M170 118L200 118" stroke="#1f2937" stroke-width="2"/><path d="M200 118A30 30 0 0 1 170 148" stroke="#1f2937" stroke-width="1.5" fill="none" stroke-dasharray="4 3"/>
+  <!-- bedroom door -->
+  <rect x="374" y="150" width="12" height="46" fill="#fff"/><path d="M380 150L420 150" stroke="#1f2937" stroke-width="2"/><path d="M420 150A40 40 0 0 1 380 190" stroke="#1f2937" stroke-width="1.5" fill="none" stroke-dasharray="4 3"/>
+  <!-- furniture -->
+  <g fill="none" stroke="#9ca3af" stroke-width="2">
+    <rect x="455" y="70" width="120" height="140" rx="6"/><rect x="465" y="78" width="45" height="26" rx="5"/><rect x="520" y="78" width="45" height="26" rx="5"/>
+    <rect x="395" y="56" width="40" height="34" rx="3"/>
+    <rect x="182" y="52" width="180" height="34" rx="3"/><circle cx="215" cy="69" r="10"/><rect x="300" y="58" width="44" height="22" rx="3"/>
+    <rect x="200" y="240" width="140" height="44" rx="10"/><rect x="235" y="190" width="70" height="34" rx="4"/>
+    <rect x="60" y="56" width="50" height="34" rx="8"/><ellipse cx="140" cy="128" rx="16" ry="20"/><rect x="58" y="110" width="36" height="36" rx="4"/>
+  </g>
+  <!-- labels -->
+  <g text-anchor="middle" fill="#111827" font-weight="700" font-size="14">
+    <text x="105" y="102">Bath</text>
+    <text x="275" y="140">Living &amp; Dining</text>
+    <text x="272" y="108" font-size="11" font-weight="600" fill="#6b7280">Kitchen</text>
+    <text x="515" y="240">Bedroom</text>
+    <text x="105" y="196" font-size="11" font-weight="600" fill="#6b7280">Entrance</text>
+  </g>
+  <g text-anchor="middle" font-size="11" fill="#6b7280"><text x="275" y="158">4.2 × 4.5 m</text><text x="515" y="258">3.6 × 4.5 m</text></g>
+  <!-- dimension -->
+  <g stroke="#9ca3af" stroke-width="1.5"><path d="M40 22H600M40 16V28M600 16V28"/></g>
+  <text x="320" y="18" text-anchor="middle" font-size="12" fill="#374151" font-weight="600">8.0 m · 32 sqm · 1 bedroom</text>
+  <text x="600" y="372" text-anchor="end" font-size="11" fill="#9ca3af">N ↑</text>
+</svg>
+<span class="note">Sample floor plan</span></div>
                         </div>
-
-                        <div class="mv-panel" id="mvp-amen" role="tabpanel" aria-label="Project amenities">
-                            <div class="mv-amen"><figure><img src="https://images.unsplash.com/photo-1576013551627-0cc20b96c2a7?q=80&w=900&auto=format&fit=crop" alt="Rooftop pool" loading="lazy"><figcaption>Rooftop pool</figcaption></figure><figure><img src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?q=80&w=900&auto=format&fit=crop" alt="Fitness centre" loading="lazy"><figcaption>Fitness centre</figcaption></figure><figure><img src="https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=900&auto=format&fit=crop" alt="Co-working lounge" loading="lazy"><figcaption>Co-working lounge</figcaption></figure><figure><img src="https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?q=80&w=900&auto=format&fit=crop" alt="Lobby & reception" loading="lazy"><figcaption>Lobby & reception</figcaption></figure></div>
-                            <div class="mv-tools"><button type="button" class="mv-btn" onclick="openAmenitiesModal('property')"><span class="material-symbols-outlined">pool</span>All amenities</button></div>
-                        </div>
-
-                        <button type="button" class="mv-btn mv-viewmap" data-go="map" id="mv-viewmap"><span class="material-symbols-outlined">location_on</span>View on map</button>
                     </div>
 
                     <div class="mv-rail" role="tablist" aria-label="Media">
                         <button type="button" class="mv-tab" role="tab" aria-selected="true" aria-controls="mvp-360" data-t="360"><span class="material-symbols-outlined">360</span>360°</button>
                         <button type="button" class="mv-tab" role="tab" aria-selected="false" aria-controls="mvp-photos" data-t="photos"><span class="material-symbols-outlined">photo_library</span>Photos<small>43</small></button>
-                        <button type="button" class="mv-tab" role="tab" aria-selected="false" aria-controls="mvp-video" data-t="video"><span class="material-symbols-outlined">smart_display</span>Video</button>
-                        <button type="button" class="mv-tab" role="tab" aria-selected="false" aria-controls="mvp-map" data-t="map"><span class="material-symbols-outlined">map</span>Map</button>
                         <button type="button" class="mv-tab" role="tab" aria-selected="false" aria-controls="mvp-amen" data-t="amen"><span class="material-symbols-outlined">pool</span>Amenities</button>
+                        <button type="button" class="mv-tab" role="tab" aria-selected="false" aria-controls="mvp-video" data-t="video"><span class="material-symbols-outlined">smart_display</span>Video</button>
+                        <button type="button" class="mv-tab" role="tab" aria-selected="false" aria-controls="mvp-floor" data-t="floor"><span class="material-symbols-outlined">floor</span>Floor plan</button>
                     </div>
                 </section>
 
@@ -419,24 +536,24 @@ document.querySelectorAll('.mf-head .lang').forEach(function(g){g.addEventListen
 
                             <!-- Project Name (H1) and Property Code -->
                             <!-- Room Type Headline (Line 1) -->
-                            <h2 class="text-[14px] sm:text-[15px] font-bold text-black leading-snug">
+                            <h1 class="text-[20px] sm:text-[26px] font-extrabold text-gray-900 tracking-tight leading-tight">
                                 Service Apartment with 1 Bedroom Premier for rent in Bangkok
-                            </h2>
+                            </h1>
 
                             <!-- Project Name (H1) and Property Code (Line 2) -->
-                            <h1
-                                class="text-[22px] sm:text-[24px] font-extrabold text-gray-900 tracking-tight leading-snug break-words flex items-center gap-2 flex-wrap">
+                            <h2
+                                class="text-[16px] sm:text-[18px] font-bold text-gray-800 leading-snug break-words flex items-center gap-2 flex-wrap">
                                 Ascott Embassy Sathorn Bangkok
                                 <span
                                     class="inline-flex items-center px-2 py-0.5 bg-gray-100 rounded text-[12px] font-bold text-gray-600 border border-gray-200">MUV11410</span>
-                            </h1>
+                            </h2>
 
                             <!-- Address -->
                             <p
-                                class="text-gray-500 text-[10px] sm:text-[11px] flex items-start gap-1 max-w-[340px] leading-snug">
+                                class="text-gray-500 text-[11px] sm:text-[12px] flex items-center gap-1 leading-snug min-w-0">
                                 <span
-                                    class="material-symbols-outlined text-[14px] text-gray-400 shrink-0 mt-0.5">location_on</span>
-                                <span>59 South Sathorn Road, Thung Maha Mek, Sathon, Bangkok 10120, Thailand</span>
+                                    class="material-symbols-outlined text-[14px] text-gray-400 shrink-0">location_on</span>
+                                <span class="truncate">59 South Sathorn Road, Thung Maha Mek, Sathon, Bangkok 10120, Thailand</span>
                             </p>
 
                             <!-- Quick Specs Pills (Clean & Balanced) -->
@@ -560,14 +677,19 @@ document.querySelectorAll('.mf-head .lang').forEach(function(g){g.addEventListen
                                 </div>
 
                                 <!-- Row 7: Security Deposit -->
-                                <div class="flex flex-col gap-1 col-span-2 pt-1 border-t border-gray-100">
+                                <div class="flex flex-col gap-1">
                                     <span
                                         class="text-[12px] text-gray-500 font-medium border-b border-gray-100 pb-1">Security
                                         deposit</span>
-                                    <div class="text-[14px] text-gray-900 flex flex-col gap-1 mt-1">
+                                    <div class="text-[14px] text-gray-900 flex flex-col gap-1">
                                         <span>- 1 mth for lease 3 month</span>
                                         <span>- 2 mth for lease 6 month up</span>
                                     </div>
+                                </div>
+                                <div class="flex flex-col gap-1">
+                                    <span
+                                        class="text-[12px] text-gray-500 font-medium border-b border-gray-100 pb-1">Guests</span>
+                                    <span class="text-[14px] text-gray-900 flex items-center gap-1"><span class="material-symbols-outlined text-[18px] text-gray-500">group</span>2 Adults</span>
                                 </div>
                             </div>
                         </div>
@@ -935,8 +1057,9 @@ document.querySelectorAll('.mf-head .lang').forEach(function(g){g.addEventListen
                             <!-- Google Maps Iframe -->
                             <div
                                 class="w-full h-[250px] sm:h-80 rounded-2xl sm:rounded-3xl overflow-hidden relative shadow-inner bg-gray-100 border border-gray-200">
+                                <div class="absolute z-10 top-3 left-3 flex items-center gap-2 bg-white/95 rounded-xl shadow-md px-3 py-2 pointer-events-none"><span class="w-7 h-7 rounded-full bg-primary text-white grid place-items-center"><span class="material-symbols-outlined text-[18px]" style="font-variation-settings:'FILL' 1">location_on</span></span><span class="flex flex-col leading-tight"><b class="text-[13px] text-gray-900">Ascott Embassy Sathorn</b><span class="text-[11px] text-gray-500">59 South Sathorn Rd, Bangkok</span></span></div>
                                 <iframe class="w-full h-full border-0"
-                                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3875.8078971485605!2d100.52844877583688!3d13.72221689779373!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x30e29f33b1e9bb1b%3A0x6b7726d36e2f16b7!2sAscott%20Sathorn%20Bangkok!5e0!3m2!1sen!2sth!4v1700000000000!5m2!1sen!2sth"
+                                    src="https://maps.google.com/maps?q=Ascott+Embassy+Sathorn+Bangkok,+59+South+Sathorn+Rd&amp;hl=en&amp;z=16&amp;output=embed"
                                     allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
                                 </iframe>
                             </div>
@@ -1319,179 +1442,36 @@ document.querySelectorAll('.mf-head .lang').forEach(function(g){g.addEventListen
                             </div>
 
                             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
-                                <!-- Property Card 1 -->
-                                <div
-                                    class="bg-white rounded-2xl border border-gray-200/90 overflow-hidden shadow-xs hover:shadow-md transition-all flex flex-col cursor-pointer group">
-                                    <!-- Image Area -->
-                                    <div class="relative h-48 sm:h-52 bg-gray-100 overflow-hidden">
-                                        <div class="mv-spin-wrap" role="img" aria-label="Chewathai Residence Thonglor, 360° preview"><div class="mv-spin" style="background-image:url('https://cdn.polyhaven.com/asset_img/primary/cayley_interior.png?width=2560&quality=80')"></div></div><div class="mv-360b"><span class="material-symbols-outlined">360</span>360° tour</div>
-                                        <div class="absolute top-3 left-3">
-                                            <span
-                                                class="px-2 py-1 bg-white/90 backdrop-blur-sm text-gray-800 font-bold text-[10px] sm:text-[11px] rounded-md shadow-sm border border-gray-100/50 flex items-center gap-1.5">
-                                                <span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>
-                                                Available: Now | Updated 5 days ago
-                                            </span>
-                                        </div>
-                                        <button
-                                            class="absolute top-3 right-3 w-8 h-8 rounded-full bg-white/95 text-gray-700 flex items-center justify-center hover:bg-white hover:text-rose-600 transition-colors shadow-sm">
-                                            <span class="material-symbols-outlined text-[18px]">favorite_border</span>
-                                        </button>
-                                        <span class="mv-247" title="Open house 24/7"><svg viewBox="0 0 40 40" aria-hidden="true"><circle cx="20" cy="20" r="16" fill="none" stroke="currentColor" stroke-width="3" stroke-dasharray="76 25" stroke-linecap="round" transform="rotate(-60 20 20)"/><path d="M20 10v10l6 4" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"/></svg><b>24/7</b><span>Open house</span></span><div
-                                            class="absolute bottom-2.5 right-2.5 px-2 py-0.5 bg-black/60 backdrop-blur-md text-white text-[11px] font-semibold rounded">
-                                            1/8
+<article class="ou group">
+                                    <div class="ou-photo"><div class="mv-spin-wrap" role="img" aria-label="Chewathai Residence Thonglor, 360° preview"><div class="mv-spin" style="background-image:url('https://cdn.polyhaven.com/asset_img/primary/cayley_interior.png?width=2560&quality=80')"></div></div><div class="mv-360b"><span class="material-symbols-outlined">360</span>360° tour</div>
+                                        <div class="ou-badges"><span class="ou-247"><svg viewBox="0 0 40 40" aria-hidden="true"><circle cx="20" cy="20" r="16" fill="none" stroke="currentColor" stroke-width="3.5" stroke-dasharray="76 25" stroke-linecap="round" transform="rotate(-60 20 20)"/><path d="M20 10v10l6 4" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round"/></svg><b>24/7</b> Open house</span><span class="ou-avail ou-glass"><i></i>Available now | Updated 5d ago</span></div>
+                                        <button type="button" class="ou-fav ou-glass" aria-label="Save Chewathai Residence Thonglor"><span class="material-symbols-outlined">favorite_border</span></button>
+                                        <div class="ou-bottom"><span class="ou-count ou-glass">1/8</span>
+                                            <div class="ou-panel ou-glass"><div class="ou-top"><span class="ou-lease">Min. 1 month</span><p class="ou-price"><strong>฿32,000</strong><span>/month</span></p></div><p class="ou-specs"><span>1 br</span><span>1 ba</span><span>35 sqm</span><span>Fl. 12</span></p><h4 class="ou-name"><a href="#">Chewathai Residence Thonglor</a></h4></div>
                                         </div>
                                     </div>
-                                    <!-- Content Area (Project Name Prominent per PDF Page 7) -->
-                                    <div class="p-3.5 sm:p-4 flex flex-col flex-grow justify-between gap-3">
-                                        <!-- Price & Min Lease moved to Top -->
-                                        <div class="pb-2.5 border-b border-gray-100 flex items-center justify-between">
-                                            <div class="flex flex-col text-[11px] text-gray-500"><span
-                                                    class="font-bold text-gray-800">Min. lease</span><span>1
-                                                    month</span></div>
-                                            <div class="text-right">
-                                                <span
-                                                    class="font-extrabold text-gray-900 text-[17px] sm:text-[18px]">฿32,000</span>
-                                                <span class="text-[11px] text-gray-400 font-normal">/month</span>
-                                            </div>
-                                        </div>
-
-                                        <div class="flex flex-col gap-1">
-                                            <!-- Room Specs -->
-                                            <div class="text-[13px] text-gray-600 font-medium">
-                                                1 br <span class="text-gray-300 px-1">•</span> 1 ba <span
-                                                    class="text-gray-300 px-1">•</span> 35 sqm <span
-                                                    class="text-gray-300 px-1">•</span> Fl. 12
-                                            </div>
-                                            <!-- Project Name -->
-                                            <h4
-                                                class="font-extrabold text-gray-900 text-[16px] leading-snug group-hover:text-primary transition-colors line-clamp-1">
-                                                Chewathai Residence Thonglor
-                                            </h4>
-
-                                            <!-- Location & Transit Distance -->
-                                            <div
-                                                class="flex items-center gap-1.5 text-[12px] text-gray-500 mt-0.5 flex-wrap">
-                                                <span>Watthana, Bangkok</span>
-                                                <span class="text-gray-300">•</span>
-                                                <span class="text-emerald-700 font-medium">🚊 BTS Phrom Phong 700
-                                                    m</span>
-                                            </div>
+                                    <div class="ou-body"><p class="ou-dist">Watthana, Bangkok</p><p class="ou-tr bts"><span class="material-symbols-outlined">train</span>BTS Phrom Phong<em>700 m</em></p><p class="ou-tr bts"><span class="material-symbols-outlined">train</span>BTS Thong Lo<em>900 m</em></p></div>
+                                </article>
+<article class="ou group">
+                                    <div class="ou-photo"><img src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?q=80&w=700&auto=format&fit=crop" alt="The Esse at Singha Complex" loading="lazy"><video class="mv-prev" muted loop playsinline preload="none" data-src="https://videos.pexels.com/video-files/7239172/7239172-sd_640_360_25fps.mp4" aria-hidden="true"></video><div class="mv-play"><span class="material-symbols-outlined">play_arrow</span></div>
+                                        <div class="ou-badges"><span class="ou-247"><svg viewBox="0 0 40 40" aria-hidden="true"><circle cx="20" cy="20" r="16" fill="none" stroke="currentColor" stroke-width="3.5" stroke-dasharray="76 25" stroke-linecap="round" transform="rotate(-60 20 20)"/><path d="M20 10v10l6 4" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round"/></svg><b>24/7</b> Open house</span><span class="ou-avail ou-glass"><i></i>Available now | Updated 5d ago</span><span class="ou-vchip"><span class="material-symbols-outlined">videocam</span>VIDEO</span></div>
+                                        <button type="button" class="ou-fav ou-glass" aria-label="Save The Esse at Singha Complex"><span class="material-symbols-outlined">favorite_border</span></button>
+                                        <div class="ou-bottom"><span class="ou-count ou-glass">1/8</span>
+                                            <div class="ou-panel ou-glass"><div class="ou-top"><span class="ou-lease">Min. 3 months</span><p class="ou-price"><strong>฿36,000</strong><span>/month</span></p></div><p class="ou-specs"><span>2 br</span><span>2 ba</span><span>50 sqm</span><span>Fl. 8</span></p><h4 class="ou-name"><a href="#">The Esse at Singha Complex</a></h4></div>
                                         </div>
                                     </div>
-                                </div>
-
-                                <!-- Property Card 2 -->
-                                <div
-                                    class="bg-white rounded-2xl border border-gray-200/90 overflow-hidden shadow-xs hover:shadow-md transition-all flex flex-col cursor-pointer group">
-                                    <div class="relative h-48 sm:h-52 bg-gray-100 overflow-hidden">
-                                        <img src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?q=80&w=600&auto=format&fit=crop"
-                                            alt="The Esse at Singha Complex"
-                                            class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" /><video class="mv-prev" muted loop playsinline preload="none" data-src="https://videos.pexels.com/video-files/7239172/7239172-sd_640_360_25fps.mp4" aria-hidden="true"></video><div class="mv-play"><span class="material-symbols-outlined">play_arrow</span></div><span class="mv-vchip"><span class="material-symbols-outlined">videocam</span>VIDEO</span>
-                                        <div class="absolute top-3 left-3">
-                                            <span
-                                                class="px-2 py-1 bg-white/90 backdrop-blur-sm text-gray-800 font-bold text-[10px] sm:text-[11px] rounded-md shadow-sm border border-gray-100/50 flex items-center gap-1.5">
-                                                <span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>
-                                                Available: Now | Updated 5 days ago
-                                            </span>
-                                        </div>
-                                        <button
-                                            class="absolute top-3 right-3 w-8 h-8 rounded-full bg-white/95 text-gray-700 flex items-center justify-center hover:bg-white hover:text-rose-600 transition-colors shadow-sm">
-                                            <span class="material-symbols-outlined text-[18px]">favorite_border</span>
-                                        </button>
-                                        <span class="mv-247" title="Open house 24/7"><svg viewBox="0 0 40 40" aria-hidden="true"><circle cx="20" cy="20" r="16" fill="none" stroke="currentColor" stroke-width="3" stroke-dasharray="76 25" stroke-linecap="round" transform="rotate(-60 20 20)"/><path d="M20 10v10l6 4" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"/></svg><b>24/7</b><span>Open house</span></span><div
-                                            class="absolute bottom-2.5 right-2.5 px-2 py-0.5 bg-black/60 backdrop-blur-md text-white text-[11px] font-semibold rounded">
-                                            1/8
+                                    <div class="ou-body"><p class="ou-dist">Huai Khwang, Bangkok</p><p class="ou-tr mrt"><span class="material-symbols-outlined">train</span>MRT Phetchaburi<em>200 m</em></p><p class="ou-tr mrt"><span class="material-symbols-outlined">train</span>ARL Makkasan<em>600 m</em></p></div>
+                                </article>
+<article class="ou group">
+                                    <div class="ou-photo"><img src="https://images.unsplash.com/photo-1576013551627-0cc20b96c2a7?q=80&w=700&auto=format&fit=crop" alt="Life Asoke Hype – Penthouse" loading="lazy">
+                                        <div class="ou-badges"><span class="ou-247"><svg viewBox="0 0 40 40" aria-hidden="true"><circle cx="20" cy="20" r="16" fill="none" stroke="currentColor" stroke-width="3.5" stroke-dasharray="76 25" stroke-linecap="round" transform="rotate(-60 20 20)"/><path d="M20 10v10l6 4" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round"/></svg><b>24/7</b> Open house</span><span class="ou-avail ou-glass"><i></i>Available now | Updated 5d ago</span></div>
+                                        <button type="button" class="ou-fav ou-glass" aria-label="Save Life Asoke Hype – Penthouse"><span class="material-symbols-outlined">favorite_border</span></button>
+                                        <div class="ou-bottom"><span class="ou-count ou-glass">1/3</span>
+                                            <div class="ou-panel ou-glass"><div class="ou-top"><span class="ou-lease">Min. 1 month</span><p class="ou-price"><strong>฿120,000</strong><span>/month</span></p></div><p class="ou-specs"><span>3 br</span><span>3 ba</span><span>115 sqm</span><span>Fl. 38</span></p><h4 class="ou-name"><a href="#">Life Asoke Hype – Penthouse</a></h4></div>
                                         </div>
                                     </div>
-                                    <div class="p-3.5 sm:p-4 flex flex-col flex-grow justify-between gap-3">
-                                        <!-- Price & Min Lease moved to Top -->
-                                        <div class="pb-2.5 border-b border-gray-100 flex items-center justify-between">
-                                            <div class="flex flex-col text-[11px] text-gray-500"><span
-                                                    class="font-bold text-gray-800">Min. lease</span><span>3
-                                                    months</span></div>
-                                            <div class="text-right">
-                                                <span
-                                                    class="font-extrabold text-gray-900 text-[17px] sm:text-[18px]">฿36,000</span>
-                                                <span class="text-[11px] text-gray-400 font-normal">/month</span>
-                                            </div>
-                                        </div>
-
-                                        <div class="flex flex-col gap-1">
-                                            <div class="text-[13px] text-gray-600 font-medium">
-                                                2 br <span class="text-gray-300 px-1">•</span> 2 ba <span
-                                                    class="text-gray-300 px-1">•</span> 50 sqm <span
-                                                    class="text-gray-300 px-1">•</span> Fl. 8
-                                            </div>
-                                            <h4
-                                                class="font-extrabold text-gray-900 text-[16px] leading-snug group-hover:text-primary transition-colors line-clamp-1">
-                                                The Esse at Singha Complex
-                                            </h4>
-                                            <div
-                                                class="flex items-center gap-1.5 text-[12px] text-gray-500 mt-0.5 flex-wrap">
-                                                <span>Huai Khwang, Bangkok</span>
-                                                <span class="text-gray-300">•</span>
-                                                <span class="text-emerald-700 font-medium">🚇 MRT Phetchaburi 200
-                                                    m</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <!-- Property Card 3 (Supports 6-figure price ฿120,000 with balanced proportions per PDF Page 7) -->
-                                <div
-                                    class="bg-white rounded-2xl border border-gray-200/90 overflow-hidden shadow-xs hover:shadow-md transition-all flex flex-col sm:hidden lg:flex cursor-pointer group">
-                                    <div class="relative h-48 sm:h-52 bg-gray-100 overflow-hidden">
-                                        <img src="https://images.unsplash.com/photo-1584622650111-993a426fbf0a?q=80&w=600&auto=format&fit=crop"
-                                            alt="Life Asoke Hype Penthouse Suite"
-                                            class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
-                                        <div class="absolute top-3 left-3">
-                                            <span
-                                                class="px-2 py-1 bg-white/90 backdrop-blur-sm text-gray-800 font-bold text-[10px] sm:text-[11px] rounded-md shadow-sm border border-gray-100/50 flex items-center gap-1.5">
-                                                <span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>
-                                                Available: Now | Updated 5 days ago
-                                            </span>
-                                        </div>
-                                        <button
-                                            class="absolute top-3 right-3 w-8 h-8 rounded-full bg-white/95 text-gray-700 flex items-center justify-center hover:bg-white hover:text-rose-600 transition-colors shadow-sm">
-                                            <span class="material-symbols-outlined text-[18px]">favorite_border</span>
-                                        </button>
-                                        <span class="mv-247" title="Open house 24/7"><svg viewBox="0 0 40 40" aria-hidden="true"><circle cx="20" cy="20" r="16" fill="none" stroke="currentColor" stroke-width="3" stroke-dasharray="76 25" stroke-linecap="round" transform="rotate(-60 20 20)"/><path d="M20 10v10l6 4" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"/></svg><b>24/7</b><span>Open house</span></span><div
-                                            class="absolute bottom-2.5 right-2.5 px-2 py-0.5 bg-black/60 backdrop-blur-md text-white text-[11px] font-semibold rounded">
-                                            1/3
-                                        </div>
-                                    </div>
-                                    <div class="p-3.5 sm:p-4 flex flex-col flex-grow justify-between gap-3">
-                                        <!-- Price & Min Lease moved to Top -->
-                                        <div class="pb-2.5 border-b border-gray-100 flex items-center justify-between">
-                                            <div class="flex flex-col text-[11px] text-gray-500"><span
-                                                    class="font-bold text-gray-800">Min. lease</span><span>1
-                                                    month</span></div>
-                                            <div class="text-right">
-                                                <span
-                                                    class="font-extrabold text-gray-900 text-[17px] sm:text-[18px] tracking-tight">฿120,000</span>
-                                                <span class="text-[11px] text-gray-400 font-normal">/month</span>
-                                            </div>
-                                        </div>
-
-                                        <div class="flex flex-col gap-1">
-                                            <div class="text-[13px] text-gray-600 font-medium">
-                                                3 br <span class="text-gray-300 px-1">•</span> 3 ba <span
-                                                    class="text-gray-300 px-1">•</span> 115 sqm <span
-                                                    class="text-gray-300 px-1">•</span> Fl. 38
-                                            </div>
-                                            <h4
-                                                class="font-extrabold text-gray-900 text-[16px] leading-snug group-hover:text-primary transition-colors line-clamp-1">
-                                                Life Asoke Hype - Penthouse
-                                            </h4>
-                                            <div
-                                                class="flex items-center gap-1.5 text-[12px] text-gray-500 mt-0.5 flex-wrap">
-                                                <span>Ratchathewi, Bangkok</span>
-                                                <span class="text-gray-300">•</span>
-                                                <span class="text-emerald-700 font-medium">🚇 MRT Rama 9 300 m</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
+                                    <div class="ou-body"><p class="ou-dist">Ratchathewi, Bangkok</p><p class="ou-tr mrt"><span class="material-symbols-outlined">train</span>MRT Phra Ram 9<em>300 m</em></p><p class="ou-tr mrt"><span class="material-symbols-outlined">train</span>MRT Phetchaburi<em>800 m</em></p></div>
+                                </article>
                             </div>
                         </div>
 
@@ -1591,7 +1571,7 @@ document.querySelectorAll('.mf-head .lang').forEach(function(g){g.addEventListen
                                 <!-- Current Rate Display with Spaced Price ("Move price out a bit") -->
                                 <div class="relative w-full">
                                     <button type="button" id="duration-btn" onclick="toggleDurationDropdown()"
-                                        class="w-full py-3 px-3.5 sm:px-4 rounded-xl border border-gray-200 bg-white flex items-center justify-between text-left hover:border-primary transition-colors focus:ring-2 focus:ring-primary/20 cursor-pointer">
+                                        class="w-full py-3 px-3.5 sm:px-4 rounded-xl border border-gray-200 bg-white flex items-end justify-between text-left hover:border-primary transition-colors focus:ring-2 focus:ring-primary/20 cursor-pointer">
                                         <div class="flex flex-col">
                                             <span class="text-[11px] text-gray-400 font-medium">Selected Lease</span>
                                             <span id="selected-duration-label"
@@ -1600,7 +1580,7 @@ document.querySelectorAll('.mf-head .lang').forEach(function(g){g.addEventListen
                                             </span>
                                         </div>
                                         <div class="flex items-center gap-2">
-                                            <div class="text-right">
+                                            <div class="text-right leading-none whitespace-nowrap">
                                                 <span id="selected-duration-price"
                                                     class="font-extrabold text-primary text-[17px] sm:text-[18px]">฿40,000</span>
                                                 <span
@@ -1745,8 +1725,30 @@ document.querySelectorAll('.mf-head .lang').forEach(function(g){g.addEventListen
                             <div class="flex flex-col gap-1.5 w-full">
                                 <label class="text-[12px] sm:text-[13px] font-bold text-gray-800"
                                     for="move-in-date">Move-in date</label>
-                                <input type="date" id="move-in-date" value="2026-10-01"
-                                    class="w-full py-2.5 sm:py-3 px-3 sm:px-4 rounded-xl border border-gray-200 bg-white font-medium text-gray-800 text-[13px] sm:text-[14px] focus:outline-none focus:ring-2 focus:ring-primary/20" />
+                                <div class="relative" id="dp">
+                                    <button type="button" id="move-in-date" aria-haspopup="dialog" aria-expanded="false" data-value="2026-11-01"
+                                        class="w-full py-2.5 sm:py-3 px-3 sm:px-4 rounded-xl border border-gray-200 bg-white font-medium text-gray-800 text-[13px] sm:text-[14px] flex items-center justify-between hover:border-primary focus:outline-none focus:ring-2 focus:ring-primary/20"><span id="dp-label">Sun, Nov 1, 2026</span><span class="material-symbols-outlined text-[18px] text-gray-500">calendar_month</span></button>
+                                    <div id="dp-pop" role="dialog" aria-label="Choose move-in date" hidden class="absolute z-30 left-0 right-0 mt-2 bg-white border border-gray-200 rounded-2xl shadow-xl p-3">
+                                        <div class="flex items-center justify-between mb-2"><button type="button" id="dp-prev" class="w-8 h-8 rounded-full hover:bg-gray-100 grid place-items-center" aria-label="Previous month"><span class="material-symbols-outlined text-[18px]">chevron_left</span></button><b id="dp-title" class="text-[14px]"></b><button type="button" id="dp-next" class="w-8 h-8 rounded-full hover:bg-gray-100 grid place-items-center" aria-label="Next month"><span class="material-symbols-outlined text-[18px]">chevron_right</span></button></div>
+                                        <div class="grid grid-cols-7 text-center text-[11px] font-semibold text-gray-400 mb-1"><span>Su</span><span>Mo</span><span>Tu</span><span>We</span><span>Th</span><span>Fr</span><span>Sa</span></div>
+                                        <div id="dp-grid" class="grid grid-cols-7 gap-y-1 text-center"></div>
+                                    </div>
+                                </div>
+                                <script>(function(){var M=["January","February","March","April","May","June","July","August","September","October","November","December"],D=["Sun","Mon","Tue","Wed","Thu","Fri","Sat"],Ms=["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
+var b=document.getElementById('move-in-date'),pop=document.getElementById('dp-pop'),g=document.getElementById('dp-grid'),t=document.getElementById('dp-title'),lab=document.getElementById('dp-label');
+var sel=new Date(2026,10,1),view=new Date(2026,10,1),today=new Date();today.setHours(0,0,0,0);
+function fmt(d){return D[d.getDay()]+', '+Ms[d.getMonth()]+' '+d.getDate()+', '+d.getFullYear()}
+function draw(){t.textContent=M[view.getMonth()]+' '+view.getFullYear();g.innerHTML='';var f=new Date(view.getFullYear(),view.getMonth(),1),n=new Date(view.getFullYear(),view.getMonth()+1,0).getDate();
+for(var i=0;i<f.getDay();i++)g.appendChild(document.createElement('span'));
+for(var d=1;d<=n;d++){var x=new Date(view.getFullYear(),view.getMonth(),d),e=document.createElement('button');e.type='button';e.textContent=d;var on=x.getTime()===sel.getTime(),past=x<today;
+e.className='h-8 w-8 mx-auto rounded-full text-[13px] font-medium '+(on?'bg-primary text-white font-bold':past?'text-gray-300 cursor-default':'hover:bg-gray-100 text-gray-800');e.disabled=past;
+(function(x){e.onclick=function(){sel=x;lab.textContent=fmt(x);b.dataset.value=x.getFullYear()+'-'+String(x.getMonth()+1).padStart(2,'0')+'-'+String(x.getDate()).padStart(2,'0');close()}})(x);g.appendChild(e)}}
+function open(){view=new Date(sel.getFullYear(),sel.getMonth(),1);draw();pop.hidden=false;b.setAttribute('aria-expanded','true')}
+function close(){pop.hidden=true;b.setAttribute('aria-expanded','false')}
+b.onclick=function(e){e.stopPropagation();pop.hidden?open():close()};
+document.getElementById('dp-prev').onclick=function(e){e.stopPropagation();view.setMonth(view.getMonth()-1);draw()};
+document.getElementById('dp-next').onclick=function(e){e.stopPropagation();view.setMonth(view.getMonth()+1);draw()};
+pop.addEventListener('click',function(e){e.stopPropagation()});document.addEventListener('click',close);document.addEventListener('keydown',function(e){if(e.key==='Escape')close()});lab.textContent=fmt(sel)})();</script>
                             </div>
 
                             <!-- Request Booking Button -->
@@ -2454,12 +2456,12 @@ document.querySelectorAll('.mf-head .lang').forEach(function(g){g.addEventListen
 (()=>{
   const $=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)];
   const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
-  let viewer=null,spinning=!reduce;
+  let viewer=null,spinning=!reduce,currentPano='https://cdn.polyhaven.com/asset_img/primary/lebombo.png?width=2560&quality=85';
   function initPano(){
     if(viewer||!window.pannellum)return;
-    viewer=pannellum.viewer('mv-pano',{type:'equirectangular',panorama:'https://cdn.polyhaven.com/asset_img/primary/hotel_room.png?width=2560&quality=85',autoLoad:true,showControls:false,compass:false,
+    viewer=pannellum.viewer('mv-pano',{type:'equirectangular',panorama:currentPano,autoLoad:true,showControls:false,compass:false,
       hfov:100,minHfov:50,maxHfov:120,pitch:-4,yaw:150,autoRotate:spinning?-3:0,autoRotateInactivityDelay:spinning?4000:undefined,mouseZoom:false,crossOrigin:'anonymous'});
-    const hide=()=>{$('#mv-hint').style.opacity=0};['mousedown','touchstart','pointerdown'].forEach(e=>$('#mv-pano').addEventListener(e,hide,{once:true}));
+    const hide=()=>{$('#mv-hint').style.opacity=0;$('#mv-badge247').style.opacity=.55};['mousedown','touchstart','pointerdown'].forEach(e=>$('#mv-pano').addEventListener(e,hide,{once:true}));
   }
   $('#mv-spin').addEventListener('click',()=>{spinning=!spinning;if(!viewer)return;if(spinning){viewer.startAutoRotate(-3)}else{viewer.stopAutoRotate()};$('#mv-spin').innerHTML='<span class="material-symbols-outlined">'+(spinning?'pause':'play_arrow')+'</span>';$('#mv-spin').setAttribute('aria-label',spinning?'Pause rotation':'Start rotation')});
   if(reduce)$('#mv-spin').innerHTML='<span class="material-symbols-outlined">play_arrow</span>';
@@ -2469,24 +2471,34 @@ document.querySelectorAll('.mf-head .lang').forEach(function(g){g.addEventListen
   function show(t){
     tabs.forEach(b=>b.setAttribute('aria-selected',String(b.dataset.t===t)));
     $$('.mv-panel').forEach(p=>p.classList.toggle('on',p.id==='mvp-'+t));
-    $('#mv-viewmap').hidden=(t==='map');
     const v=$('#mv-video');if(t==='video'){v.play().catch(()=>{})}else{v.pause()}
-    if(t==='map'){const f=$('#mv-map');if(!f.src)f.src=f.dataset.src}
+    if(t!=='photos')$('#mvp-photos').classList.remove('slide');
     if(t==='360'&&viewer)viewer.resize();
   }
   tabs.forEach(b=>b.addEventListener('click',()=>show(b.dataset.t)));
-  $('#mv-viewmap').addEventListener('click',()=>show('map'));
   $('.mv-rail').addEventListener('keydown',e=>{if(!/Arrow(Up|Down|Left|Right)/.test(e.key))return;e.preventDefault();const i=tabs.indexOf(document.activeElement),n=tabs[(i+(/Down|Right/.test(e.key)?1:-1)+tabs.length)%tabs.length];n.focus();show(n.dataset.t)});
   // photos
-  const imgs=$$('#mv-photos img'),th=$$('#mv-thumbs button');let pi=0;
-  function go(i){pi=(i+imgs.length)%imgs.length;imgs.forEach((im,k)=>im.classList.toggle('on',k===pi));th.forEach((b,k)=>b.classList.toggle('on',k===pi));$('#mv-count').textContent=(pi+1)+' / 43'}
+  const imgs=$$('#mv-photos img');let pi=0;
+  function go(i){pi=(i+imgs.length)%imgs.length;imgs.forEach((im,k)=>im.classList.toggle('on',k===pi));$('#mv-count').textContent=(pi+1)+' / 43'}
   $$('#mvp-photos .mv-nav').forEach(b=>b.addEventListener('click',()=>go(pi+ +b.dataset.d)));
-  th.forEach(b=>b.addEventListener('click',()=>go(+b.dataset.i)));
+  const slide=i=>{$('#mvp-photos').classList.add('slide');go(i)};
+  $$('#mv-pgrid button').forEach(b=>b.addEventListener('click',()=>slide(+b.dataset.i)));
+  $('#mv-seeall').addEventListener('click',()=>slide(0));
+  $('#mv-back').addEventListener('click',()=>$('#mvp-photos').classList.remove('slide'));
+  // 360 room menu
+  const rm=$('#mv-rooms'),rb=rm.querySelector('button');
+  const setOpen=o=>{o?rm.setAttribute('data-open',''):rm.removeAttribute('data-open');rb.setAttribute('aria-expanded',String(o))};
+  rb.addEventListener('click',e=>{e.stopPropagation();setOpen(!rm.hasAttribute('data-open'))});
+  document.addEventListener('click',e=>{if(!rm.contains(e.target))setOpen(false)});
+  $$('#mv-rooms li button').forEach(b=>b.addEventListener('click',()=>{
+    $$('#mv-rooms li button').forEach(x=>x.setAttribute('aria-current',String(x===b)));setOpen(false);
+    if(viewer){try{viewer.destroy()}catch(_){}viewer=null}currentPano=b.dataset.pano;initPano();
+  }));
   let sx=null;$('#mv-photos').addEventListener('touchstart',e=>sx=e.touches[0].clientX,{passive:true});$('#mv-photos').addEventListener('touchend',e=>{if(sx===null)return;const d=e.changedTouches[0].clientX-sx;if(Math.abs(d)>40)go(pi+(d<0?1:-1));sx=null});
   // card 1: seamless loop = one full panorama width
   const sp=()=>$$('.mv-spin').forEach(el=>el.style.setProperty('--pw',(el.offsetHeight*1.65*2)+'px'));sp();addEventListener('resize',sp);
   // card 2 video preview on hover
-  $$('.mv-prev').forEach(v=>{const card=v.closest('.group');card.addEventListener('mouseenter',()=>{if(!v.src){v.src=v.dataset.src;v.addEventListener('canplay',()=>v.classList.add('ready'),{once:true})}v.play().catch(()=>{})});card.addEventListener('mouseleave',()=>v.pause())});
+  $$('.mv-prev').forEach(v=>{const card=v.closest('.group');if(!card)return;card.addEventListener('mouseenter',()=>{if(!v.src){v.src=v.dataset.src;v.addEventListener('canplay',()=>v.classList.add('ready'),{once:true})}v.play().catch(()=>{})});card.addEventListener('mouseleave',()=>v.pause())});
   // start
   if('IntersectionObserver' in window){new IntersectionObserver((es,o)=>{if(es[0].isIntersecting){initPano();o.disconnect()}}).observe($('#mv-stage'))}else initPano();
 })();
