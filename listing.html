@@ -77,6 +77,24 @@ p{margin:0}
 .pillbtn .badge:empty{display:none}
 .sb-reset{flex:none;border:0;background:none;font-size:14px;font-weight:600;text-decoration:underline;text-underline-offset:3px;padding:0 8px;height:44px;color:var(--muted)}
 .sb-reset[hidden]{display:none}
+.sb-sort{margin-left:auto}
+#lbl-where{max-width:170px;overflow:hidden;text-overflow:ellipsis}
+.pillbtn .dot{width:10px;height:10px;border-radius:999px;flex:none}
+.lines{display:grid;gap:2px}
+.lines .opt .dot{width:12px;height:12px;border-radius:999px;flex:none}
+.stns{display:flex;flex-wrap:wrap;gap:6px;margin-top:12px;padding-top:12px;border-top:1px solid var(--line);max-height:180px;overflow:auto}
+.stns[hidden]{display:none}
+.seg3{display:grid;grid-template-columns:repeat(3,1fr);border:1px solid var(--line);border-radius:10px;overflow:hidden}
+.seg3 button{border:0;background:#fff;height:46px;font-size:14px;font-weight:600;color:var(--muted);display:inline-flex;align-items:center;justify-content:center;gap:6px}
+.seg3 button+button{border-left:1px solid var(--line)}
+.seg3 button[aria-pressed=true]{background:var(--ink);color:#fff}
+.stepper{display:flex;align-items:center;justify-content:space-between;gap:12px}
+.stepper p{font-size:15px;font-weight:600}.stepper p small{display:block;font-size:13px;font-weight:400;color:var(--muted)}
+.stepper div{display:flex;align-items:center;gap:14px}
+.stepper button{width:36px;height:36px;border-radius:999px;border:1px solid var(--line);background:#fff;font-size:16px;display:grid;place-items:center}
+.stepper button:hover:not(:disabled){border-color:var(--ink)}
+.stepper button:disabled{opacity:.35}
+.stepper output{min-width:20px;text-align:center;font-weight:700;font-size:15px}
 
 /* popovers / dropdowns */
 .pop{position:fixed;z-index:70;background:#fff;border:1px solid var(--line);border-radius:16px;box-shadow:0 16px 40px rgba(20,23,28,.18);padding:16px}
@@ -168,6 +186,7 @@ p{margin:0}
 .ucard-top{display:flex;align-items:center;justify-content:space-between;padding-bottom:10px;margin-bottom:6px;border-bottom:1px solid #F0F1F3}
 .lease{display:flex;flex-direction:column;font-size:11px;color:var(--muted);line-height:1.35}
 .lease b{color:var(--ink)}
+.lease span{color:var(--brand);font-weight:700;font-size:12px}
 .price strong{font-size:18px;font-weight:800}
 .price span{font-size:11px;color:#9AA0A6;margin-left:2px}
 .specs{font-size:13px;color:#4B5058;font-weight:500}
@@ -179,6 +198,8 @@ p{margin:0}
 .transit{display:flex;align-items:center;gap:5px;font-size:12px;font-weight:600;color:#0F7A4F}
 .transit.mrt{color:#1E4F9C}
 .transit i{font-size:15px}
+.transit{white-space:nowrap}.transit em{font-style:normal;font-weight:500;color:var(--muted);margin-left:auto}
+.transit+.transit{margin-top:-2px}
 
 /* map (ส่วนที่ 3) */
 .mapcol{display:none}
@@ -280,11 +301,27 @@ p{margin:0}
 <div class="searchbar">
   <div class="wrap sb-row" role="search">
     <label class="sb-search" id="sb-search"><i class="ph ph-magnifying-glass"></i><span class="sr-only" style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)">Search</span><input id="q" type="search" placeholder="Search e.g. Noble Thonglor" autocomplete="off"><button type="button" class="clr" id="q-clr" aria-label="Clear search"><i class="ph ph-x" style="font-size:13px;color:var(--ink)"></i></button></label>
+    <button type="button" class="pillbtn" id="btn-where" aria-haspopup="dialog" aria-expanded="false"><i class="ph ph-train-simple"></i><span id="lbl-where">Where</span><i class="ph ph-caret-down"></i></button>
     <button type="button" class="pillbtn" id="btn-type" aria-haspopup="true" aria-expanded="false"><span id="lbl-type">Property type</span><i class="ph ph-caret-down"></i></button>
     <button type="button" class="pillbtn" id="btn-budget" aria-haspopup="dialog" aria-expanded="false"><span id="lbl-budget">Budget</span><i class="ph ph-caret-down"></i></button>
     <button type="button" class="pillbtn" id="btn-filters" aria-haspopup="dialog" aria-expanded="false"><i class="ph ph-sliders-horizontal"></i>Filters<span class="badge" id="f-badge"></span></button>
     <button type="button" class="sb-reset" id="sb-reset" hidden>Clear all</button>
+    <button type="button" class="pillbtn sb-sort" id="btn-sort" aria-haspopup="true" aria-expanded="false"><i class="ph ph-arrows-down-up"></i><span id="lbl-sort">Recommended</span><i class="ph ph-caret-down"></i></button>
   </div>
+</div>
+
+<!-- where: BTS/MRT line -->
+<div class="pop" id="pop-where" role="dialog" aria-label="Search by BTS/MRT line" hidden style="width:min(340px,calc(100vw - 32px));padding:12px">
+  <h3 style="margin:4px 6px 8px">BTS / MRT line</h3>
+  <div class="lines" id="w-lines"></div>
+  <div class="stns" id="w-stns" hidden></div>
+</div>
+<!-- sort -->
+<div class="pop" id="pop-sort" role="menu" aria-label="Sort by" hidden style="width:250px;padding:8px">
+  <button type="button" class="opt" role="menuitemradio" aria-checked="true" data-v="rec">Recommended<i class="ph ph-check ck"></i></button>
+  <button type="button" class="opt" role="menuitemradio" aria-checked="false" data-v="new">Newest<i class="ph ph-check ck"></i></button>
+  <button type="button" class="opt" role="menuitemradio" aria-checked="false" data-v="lo">Price: Low to High<i class="ph ph-check ck"></i></button>
+  <button type="button" class="opt" role="menuitemradio" aria-checked="false" data-v="hi">Price: High to Low<i class="ph ph-check ck"></i></button>
 </div>
 
 <!-- property type dropdown -->
@@ -311,6 +348,12 @@ p{margin:0}
 <div class="fpanel" id="fpanel" role="dialog" aria-modal="true" aria-labelledby="fp-title" hidden>
   <div class="fp-head"><h2 id="fp-title">Filters</h2><button type="button" id="fp-close" aria-label="Close filters"><i class="ph ph-x"></i></button></div>
   <div class="fp-body">
+    <div class="fsec"><h3>Guests</h3>
+      <div class="stepper"><p>Adults<small>Age 13+</small></p><div><button type="button" id="g-minus" aria-label="Fewer guests"><i class="ph ph-minus"></i></button><output id="g-n" aria-live="polite">Any</output><button type="button" id="g-plus" aria-label="More guests"><i class="ph ph-plus"></i></button></div></div>
+    </div>
+    <div class="fsec"><h3>Pets</h3>
+      <div class="seg3" id="f-pets" role="group" aria-label="Pets"><button type="button" aria-pressed="true" data-v="">Any</button><button type="button" aria-pressed="false" data-v="yes"><i class="ph ph-paw-print"></i>Pets allowed</button><button type="button" aria-pressed="false" data-v="no">No pets</button></div>
+    </div>
     <div class="fsec"><h3>Recommended for you</h3>
       <div class="amen" id="f-amen">
         <button type="button" aria-pressed="false" data-k="wifi"><span><i class="ph ph-wifi-high"></i></span>Wi-Fi</button>
@@ -338,7 +381,6 @@ p{margin:0}
   <section class="list wrap" aria-labelledby="list-title">
     <div class="list-head">
       <div><h1 id="list-title">Over 1,000 homes in Bangkok</h1><p><span id="res-count">16</span> homes in this map area</p></div>
-      <label><span style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)">Sort by</span><select id="sort"><option value="rec">Recommended</option><option value="new">Newest</option><option value="lo">Price: low to high</option><option value="hi">Price: high to low</option></select></label>
     </div>
     <div class="cards" id="cards"></div>
     <div class="empty" id="empty" hidden><b>No homes match these filters</b>Try removing a filter or widening your budget.<div style="margin-top:16px"><button type="button" class="btn btn-line" id="empty-reset">Clear all filters</button></div></div>
@@ -408,11 +450,14 @@ const RAW=[
  ["Millennium Residence","Condo",85000,6,3,2,135,40,"Khlong Toei, Bangkok","MRT Queen Sirikit 300 m",13.7317,100.5594,16,1,1,0,1,"1586023492125-27b2c045efd7"],
  ["Sukhumvit 16 Family House","House",160000,6,4,3,300,3,"Khlong Toei, Bangkok","MRT Queen Sirikit 500 m",13.7334,100.5565,13,9,0,1,0,"1631049307264-da0ec9d70304"],
 ];
-const L=RAW.map((r,i)=>({id:i,name:r[0],type:r[1],price:r[2],lease:r[3],br:r[4],ba:r[5],sqm:r[6],fl:r[7],dist:r[8],transit:r[9],lat:r[10],lng:r[11],photos:r[12],upd:r[13],wifi:!!r[14],nodep:!!r[15],checked:!!r[16],img:IMG(r[17])}));
+const T2={"Ashton Asoke": "MRT Sukhumvit 300 m", "Chewathai Residence Thonglor": "MRT Queen Sirikit 1.6 km", "The Esse Asoke": "MRT Sukhumvit 250 m", "Noble Refine": "MRT Queen Sirikit 1.2 km", "Somerset Sukhumvit Thonglor": "MRT Sukhumvit 1.5 km", "Grand Mercure Residence Asoke": "BTS Asok 350 m", "Siamese Exclusive 31": "MRT Sukhumvit 1.1 km", "Edge Sukhumvit 23": "BTS Asok 400 m", "Townhouse Sukhumvit 22": "MRT Queen Sirikit 700 m", "The Lofts Asoke": "BTS Asok 900 m", "Celes Asoke": "MRT Sukhumvit 450 m", "Pool Villa Sukhumvit 26": "MRT Queen Sirikit 1.1 km", "Fraser Suites Sukhumvit": "MRT Sukhumvit 800 m", "Hyde Sukhumvit 13": "MRT Sukhumvit 650 m", "Millennium Residence": "BTS Asok 600 m", "Sukhumvit 16 Family House": "BTS Asok 750 m"};
+const PETS_NO=["Ashton Asoke", "Celes Asoke", "Edge Sukhumvit 23", "Fraser Suites Sukhumvit", "Grand Mercure Residence Asoke", "Hyde Sukhumvit 13", "The Esse Asoke"];
+const L=RAW.map((r,i)=>({id:i,name:r[0],type:r[1],price:r[2],lease:r[3],br:r[4],ba:r[5],sqm:r[6],fl:r[7],dist:r[8],transit:r[9],lat:r[10],lng:r[11],photos:r[12],upd:r[13],wifi:!!r[14],nodep:!!r[15],checked:!!r[16],img:IMG(r[17]),transit2:T2[r[0]]||'',pets:!PETS_NO.includes(r[0]),guests:Math.min(r[4]*2,8)}));
 const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
 const fmtP=n=>'฿'+n.toLocaleString();
 const shortP=fmtP;
 const OPEN247='<span class="open247" title="Open house 24/7"><svg viewBox="0 0 40 40" aria-hidden="true"><circle cx="20" cy="20" r="16" fill="none" stroke="currentColor" stroke-width="3" stroke-dasharray="76 25" stroke-linecap="round" transform="rotate(-60 20 20)"/><path d="M20 10v10l6 4" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"/></svg><b>24/7</b><span>Open house</span></span>';
+const tline=t=>{const m=t.match(/^(.*?)\s+([\d.]+\s*k?m)$/)||[t,t,''];return `<p class="transit ${t.startsWith('BTS')?'bts':'mrt'}"><i class="ph ph-train-simple" aria-hidden="true"></i>${esc(m[1])}<em>${esc(m[2])}</em></p>`};
 const card=u=>`<article class="ucard" data-id="${u.id}">
   <a class="ucard-media" href="unit.html" tabindex="-1" aria-hidden="true"><img src="${u.img}" alt="" width="640" height="480" loading="lazy" decoding="async">${OPEN247}<span class="count">1/${u.photos}</span></a>
   <span class="avail"><i></i>Available: Now | Updated ${u.upd} day${u.upd>1?'s':''} ago</span>
@@ -422,21 +467,26 @@ const card=u=>`<article class="ucard" data-id="${u.id}">
     <p class="specs"><span>${u.br} br</span><span>${u.ba} ba</span><span>${u.sqm} sqm</span><span>Fl. ${u.fl}</span></p>
     <h2 class="uname"><a href="unit.html">${esc(u.name)}</a></h2>
     <p class="dist">${esc(u.dist)} · <span class="ptype">${esc(u.type)}</span></p>
-    <p class="transit ${u.transit.startsWith('BTS')?'bts':'mrt'}"><i class="ph ph-train-simple" aria-hidden="true"></i>${esc(u.transit)}</p>
+    ${tline(u.transit)}${u.transit2?tline(u.transit2):''}
   </div></article>`;
 
 /* ---------- state ---------- */
-const S={q:'',type:'',min:0,max:0,amen:new Set(),br:new Set(),ba:'',sort:'rec',bounds:null,moveSearch:true};
+const S={q:'',where:'',whereSt:'',pets:'',guests:0,type:'',min:0,max:0,amen:new Set(),br:new Set(),ba:'',sort:'rec',bounds:null,moveSearch:true};
 let draft=null; // filters panel working copy
 function match(u,st=S,useBounds=true){
-  if(st.q){const q=st.q.toLowerCase();if(!(u.name+' '+u.dist+' '+u.transit).toLowerCase().includes(q))return false}
+  if(st.q){const q=st.q.toLowerCase();if(!(u.name+' '+u.dist+' '+u.transit+' '+u.transit2).toLowerCase().includes(q))return false}
   if(st.type&&u.type!==st.type)return false;
+  if(st.where||st.whereSt){const ss=[u.transit,u.transit2].filter(Boolean).map(stName);if(st.whereSt?!ss.includes(st.whereSt):!ss.some(n=>(ST_LINES[n]||[]).includes(st.where)))return false}
+  if(st.pets==='yes'&&!u.pets)return false;if(st.pets==='no'&&u.pets)return false;
+  if(st.guests&&u.guests<st.guests)return false;
   if(st.min&&u.price<st.min)return false;if(st.max&&u.price>st.max)return false;
   for(const a of st.amen)if(!u[a])return false;
   if(st.br.size&&!st.br.has(String(Math.min(u.br,4))))return false;
   if(st.ba==='1'&&u.ba!==1)return false;if(st.ba==='2'&&u.ba<2)return false;
   if(useBounds&&st.moveSearch&&st.bounds&&!st.bounds.contains([u.lat,u.lng]))return false;
   return true}
+function stName(t){const m=t.replace(/^(BTS|MRT|ARL)\s+/,'').replace(/\s+[\d.]+\s*k?m$/,'');const hit=TRANSIT.st.find(x=>x[0]===m||x[0].startsWith(m+' '));return hit?hit[0]:m}
+let ST_LINES={};
 function sorted(a){const s=[...a];if(S.sort==='lo')s.sort((x,y)=>x.price-y.price);if(S.sort==='hi')s.sort((x,y)=>y.price-x.price);if(S.sort==='new')s.sort((x,y)=>x.upd-y.upd);return s}
 
 /* ---------- list ---------- */
@@ -451,12 +501,14 @@ function render(){
   updatePins();updateChrome();
 }
 function updateChrome(){
-  const nF=S.amen.size+S.br.size+(S.ba?1:0);$('#f-badge').textContent=nF||'';
+  const nF=S.amen.size+S.br.size+(S.ba?1:0)+(S.pets?1:0)+(S.guests?1:0);$('#f-badge').textContent=nF||'';
   $('#btn-filters').classList.toggle('on',nF>0);
   $('#lbl-type').textContent=S.type?(S.type==='Service Apartment'?'Service Apartments':S.type):'Property type';$('#btn-type').classList.toggle('on',!!S.type);
   const k=n=>n>=1000?(n/1000)+'K':n;
   $('#lbl-budget').textContent=S.min&&S.max?`฿${k(S.min)} – ${k(S.max)}`:S.min?`From ฿${k(S.min)}`:S.max?`Up to ฿${k(S.max)}`:'Budget';$('#btn-budget').classList.toggle('on',!!(S.min||S.max));
-  $('#sb-reset').hidden=!(S.q||S.type||S.min||S.max||nF);
+  $('#lbl-where').textContent=S.whereSt||(S.where?S.where.replace(' Line',''):'Where');$('#btn-where').classList.toggle('on',!!(S.where||S.whereSt));
+  $('#lbl-sort').textContent={rec:'Recommended',new:'Newest',lo:'Price: Low to High',hi:'Price: High to Low'}[S.sort];
+  $('#sb-reset').hidden=!(S.q||S.where||S.whereSt||S.type||S.min||S.max||nF);
   $('#sb-search').classList.toggle('has',!!S.q);
 }
 
@@ -464,8 +516,9 @@ function updateChrome(){
 let map=null;const pins={};
 const CENTER=[13.7370,100.5605]; // BTS Asok / MRT Sukhumvit
 // BTS/MRT/ARL lines + stations from OpenStreetMap (official line colours), simplified for the draft
-const TRANSIT={"lines":[{"n":"BTS Sukhumvit Line","c":"#65B724","s":[[[13.74778,100.53088],[13.75015,100.53122],[13.751,100.53145],[13.75293,100.53172],[13.75341,100.53187],[13.76363,100.53757],[13.76378,100.53769],[13.76397,100.53799],[13.76419,100.5387],[13.76456,100.53905],[13.76505,100.53914],[13.76575,100.53896],[13.7662,100.53901],[13.77036,100.54127],[13.79788,100.55119],[13.7989,100.55165],[13.80782,100.55686]],[[13.74553,100.53519],[13.74607,100.53187],[13.74628,100.53119],[13.74645,100.53098],[13.74675,100.53082],[13.74693,100.53079],[13.74778,100.53088]],[[13.74434,100.54183],[13.74476,100.53968],[13.74485,100.53865],[13.74531,100.53607],[13.74553,100.53519]],[[13.71075,100.59748],[13.72347,100.57965],[13.74172,100.55378],[13.74212,100.55304],[13.74257,100.55173],[13.74434,100.54183]],[[13.71019,100.59827],[13.71075,100.59748]],[[13.71019,100.59827],[13.7097,100.59885],[13.70906,100.59934],[13.70239,100.60261]],[[13.70239,100.60261],[13.68729,100.60995],[13.68578,100.61037],[13.68487,100.61048],[13.68354,100.61049],[13.68255,100.61037],[13.68098,100.60994],[13.67482,100.60744],[13.67339,100.60714],[13.6729,100.60692],[13.67187,100.60626],[13.67122,100.60595],[13.64931,100.59695],[13.6473,100.5962],[13.64427,100.5949],[13.63534,100.59125]]]},{"n":"MRT Blue Line","c":"#1E398D","s":[[[13.72653,100.54347],[13.72247,100.55322],[13.72132,100.55625],[13.72059,100.55798],[13.72062,100.55868],[13.72073,100.55898],[13.72089,100.55933],[13.7213,100.55964],[13.72374,100.56039],[13.72487,100.56057],[13.72611,100.56048],[13.72984,100.55997],[13.73096,100.55993],[13.73296,100.55997],[13.73348,100.56018],[13.73488,100.56102],[13.73546,100.56126],[13.73747,100.56161],[13.73954,100.56188],[13.74342,100.5622],[13.75354,100.56446],[13.75741,100.56525],[13.75958,100.56579],[13.76022,100.56599],[13.76147,100.56663],[13.7626,100.56744],[13.76908,100.57248],[13.76969,100.57283],[13.77037,100.5731],[13.77111,100.57327],[13.8044,100.57486],[13.80472,100.57479],[13.8053,100.57451],[13.80569,100.57419],[13.80607,100.57372],[13.80646,100.57309],[13.80964,100.56735],[13.8139,100.55986],[13.81394,100.55931],[13.81376,100.5587],[13.81353,100.55831],[13.81297,100.55788],[13.8123,100.55761],[13.81034,100.55715],[13.80835,100.55631],[13.79928,100.55104],[13.79857,100.55037],[13.79811,100.54922],[13.79798,100.54677],[13.79818,100.54611],[13.79834,100.54592],[13.80012,100.54497],[13.80063,100.54466],[13.8008,100.54448],[13.80205,100.54194],[13.80379,100.53804]],[[13.73741,100.51705],[13.73391,100.5257],[13.73205,100.53011],[13.73127,100.5322],[13.72917,100.53707],[13.72653,100.54347]],[[13.73326,100.4787],[13.73708,100.48114],[13.7376,100.48169],[13.7379,100.48219],[13.73812,100.48279],[13.73825,100.4835],[13.73847,100.49026],[13.73874,100.49135],[13.73917,100.49232],[13.73946,100.49277],[13.74017,100.49356],[13.74082,100.49408],[13.74204,100.49465],[13.74247,100.49477],[13.74304,100.49483],[13.7456,100.49452],[13.74637,100.49451],[13.74672,100.49461],[13.74703,100.49485],[13.74724,100.49535],[13.74726,100.49645],[13.74697,100.50277],[13.74672,100.50418],[13.74584,100.50538],[13.7422,100.5099],[13.73854,100.51465],[13.73817,100.51529],[13.73741,100.51705]]]},{"n":"BTS Silom Line","c":"#02817D","s":[[[13.74653,100.52909],[13.74632,100.53028]],[[13.74632,100.53028],[13.74588,100.53266],[13.74571,100.53329],[13.74466,100.53985],[13.74433,100.54019],[13.74388,100.54028],[13.74317,100.54008],[13.74134,100.53976]],[[13.71838,100.5159],[13.71808,100.51691],[13.71814,100.5176],[13.72117,100.52796],[13.7214,100.52924],[13.72158,100.52969],[13.72199,100.52999],[13.72224,100.53005],[13.72254,100.53001],[13.7246,100.52892],[13.72549,100.52823],[13.72591,100.52818],[13.72614,100.52825],[13.72645,100.52849],[13.72659,100.52872],[13.72675,100.5293],[13.72905,100.53575],[13.72937,100.53624],[13.73024,100.53686],[13.73083,100.53716],[13.73496,100.53875],[13.73533,100.53885],[13.74134,100.53976]],[[13.71917,100.51282],[13.71838,100.5159]],[[13.72096,100.50272],[13.7209,100.50465],[13.72067,100.50648],[13.71917,100.51282]]]},{"n":"Airport Rail Link","c":"#59191f","s":[[[13.75707,100.53342],[13.75622,100.53715]],[[13.75622,100.53715],[13.75208,100.55564],[13.75183,100.55688],[13.75156,100.55887],[13.75047,100.56333],[13.75007,100.56443]],[[13.75007,100.56443],[13.74416,100.59066],[13.74384,100.59261],[13.73825,100.64335]]]},{"n":"Gold Line","c":"#A58704","s":[[[13.72113,100.50446],[13.72114,100.50566],[13.72131,100.50586],[13.72177,100.50613],[13.7219,100.50638],[13.72189,100.50666],[13.72149,100.50857],[13.72152,100.50873],[13.72167,100.50889],[13.72485,100.50914],[13.72561,100.50912],[13.72967,100.50873],[13.72991,100.50861],[13.73008,100.50831],[13.73033,100.50773]]]},{"n":"Yellow Line","c":"#FFD400","s":[[[13.80699,100.57481],[13.8057,100.57477],[13.80539,100.57494],[13.80514,100.5753],[13.78375,100.6136],[13.76607,100.6451],[13.76569,100.64536],[13.76373,100.6456],[13.76068,100.64551],[13.75565,100.64596],[13.75386,100.64578],[13.75266,100.64546]]]}],"st":[["Surasak",13.71927,100.52146,"BTS Silom Line"],["Chong Nonsi",13.7238,100.52933,"BTS Silom Line"],["Ratchadamri",13.73947,100.53945,"BTS Silom Line"],["Saphan Taksin",13.71881,100.51422,"BTS Silom Line"],["Hua Lamphong",13.73757,100.51714,"MRT Blue Line"],["Phra Ram 9",13.75782,100.56528,"MRT Blue Line"],["Queen Sirikit National Convention Centre",13.72267,100.55991,"MRT Blue Line"],["Lumphini",13.72561,100.54572,"MRT Blue Line"],["Huai Khwang",13.77869,100.57357,"MRT Blue Line"],["Thailand Cultural Centre",13.76616,100.57012,"MRT Blue Line"],["Khlong Toei",13.72213,100.55437,"MRT Blue Line"],["Sala Daeng",13.72857,100.53434,"BTS Silom Line"],["Makkasan",13.75386,100.54737,"Airport Rail Link"],["Siam",13.74562,100.53422,"BTS Sukhumvit Line|BTS Silom Line"],["Ari",13.77971,100.54462,"BTS Sukhumvit Line"],["Phaya Thai",13.75696,100.53382,"BTS Sukhumvit Line|Airport Rail Link"],["Ratchathewi",13.75186,100.53155,"BTS Sukhumvit Line"],["Sanam Pao",13.77262,100.54207,"BTS Sukhumvit Line"],["Phra Khanong",13.71517,100.59124,"BTS Sukhumvit Line"],["Victory Monument",13.76276,100.53705,"BTS Sukhumvit Line"],["Bang Chak",13.69676,100.60534,"BTS Sukhumvit Line"],["On Nut",13.70562,100.601,"BTS Sukhumvit Line"],["Asok",13.73704,100.56036,"BTS Sukhumvit Line"],["Thong Lo",13.72423,100.57851,"BTS Sukhumvit Line"],["Phrom Phong",13.73043,100.56971,"BTS Sukhumvit Line"],["Nana",13.74054,100.55543,"BTS Sukhumvit Line"],["Phloen Chit",13.74307,100.54898,"BTS Sukhumvit Line"],["Chit Lom",13.7441,100.54307,"BTS Sukhumvit Line"],["Sukhumvit",13.73747,100.5615,"MRT Blue Line"],["Ekkamai",13.71954,100.58511,"BTS Sukhumvit Line"],["Charoen Nakhon",13.72646,100.50907,"Gold Line"],["Khlong San",13.73031,100.50772,"Gold Line"],["Ramkhamhaeng",13.74299,100.60015,"Airport Rail Link"],["Ratchaprarop",13.75511,100.54212,"Airport Rail Link"],["Saint Louis",13.72082,100.52669,"BTS Silom Line"],["Lat Phrao 101",13.77463,100.62984,"Yellow Line"],["Mahatthai",13.77837,100.62316,"Yellow Line"],["Lat Phrao 83",13.7837,100.61366,"Yellow Line"],["National Stadium",13.74651,100.52909,"BTS Silom Line"],["Si Lom",13.7292,100.53707,"MRT Blue Line"],["Wat Mangkon",13.74221,100.50991,"MRT Blue Line"],["Sam Yan",13.73206,100.53012,"MRT Blue Line"],["Phetchaburi",13.74919,100.56342,"MRT Blue Line"]]};
+const TRANSIT=window.TRANSIT_DATA={"lines":[{"n":"BTS Sukhumvit Line","c":"#65B724","s":[[[13.74778,100.53088],[13.75015,100.53122],[13.751,100.53145],[13.75293,100.53172],[13.75341,100.53187],[13.76363,100.53757],[13.76378,100.53769],[13.76397,100.53799],[13.76419,100.5387],[13.76456,100.53905],[13.76505,100.53914],[13.76575,100.53896],[13.7662,100.53901],[13.77036,100.54127],[13.79788,100.55119],[13.7989,100.55165],[13.80782,100.55686]],[[13.74553,100.53519],[13.74607,100.53187],[13.74628,100.53119],[13.74645,100.53098],[13.74675,100.53082],[13.74693,100.53079],[13.74778,100.53088]],[[13.74434,100.54183],[13.74476,100.53968],[13.74485,100.53865],[13.74531,100.53607],[13.74553,100.53519]],[[13.71075,100.59748],[13.72347,100.57965],[13.74172,100.55378],[13.74212,100.55304],[13.74257,100.55173],[13.74434,100.54183]],[[13.71019,100.59827],[13.71075,100.59748]],[[13.71019,100.59827],[13.7097,100.59885],[13.70906,100.59934],[13.70239,100.60261]],[[13.70239,100.60261],[13.68729,100.60995],[13.68578,100.61037],[13.68487,100.61048],[13.68354,100.61049],[13.68255,100.61037],[13.68098,100.60994],[13.67482,100.60744],[13.67339,100.60714],[13.6729,100.60692],[13.67187,100.60626],[13.67122,100.60595],[13.64931,100.59695],[13.6473,100.5962],[13.64427,100.5949],[13.63534,100.59125]]]},{"n":"MRT Blue Line","c":"#1E398D","s":[[[13.72653,100.54347],[13.72247,100.55322],[13.72132,100.55625],[13.72059,100.55798],[13.72062,100.55868],[13.72073,100.55898],[13.72089,100.55933],[13.7213,100.55964],[13.72374,100.56039],[13.72487,100.56057],[13.72611,100.56048],[13.72984,100.55997],[13.73096,100.55993],[13.73296,100.55997],[13.73348,100.56018],[13.73488,100.56102],[13.73546,100.56126],[13.73747,100.56161],[13.73954,100.56188],[13.74342,100.5622],[13.75354,100.56446],[13.75741,100.56525],[13.75958,100.56579],[13.76022,100.56599],[13.76147,100.56663],[13.7626,100.56744],[13.76908,100.57248],[13.76969,100.57283],[13.77037,100.5731],[13.77111,100.57327],[13.8044,100.57486],[13.80472,100.57479],[13.8053,100.57451],[13.80569,100.57419],[13.80607,100.57372],[13.80646,100.57309],[13.80964,100.56735],[13.8139,100.55986],[13.81394,100.55931],[13.81376,100.5587],[13.81353,100.55831],[13.81297,100.55788],[13.8123,100.55761],[13.81034,100.55715],[13.80835,100.55631],[13.79928,100.55104],[13.79857,100.55037],[13.79811,100.54922],[13.79798,100.54677],[13.79818,100.54611],[13.79834,100.54592],[13.80012,100.54497],[13.80063,100.54466],[13.8008,100.54448],[13.80205,100.54194],[13.80379,100.53804]],[[13.73741,100.51705],[13.73391,100.5257],[13.73205,100.53011],[13.73127,100.5322],[13.72917,100.53707],[13.72653,100.54347]],[[13.73326,100.4787],[13.73708,100.48114],[13.7376,100.48169],[13.7379,100.48219],[13.73812,100.48279],[13.73825,100.4835],[13.73847,100.49026],[13.73874,100.49135],[13.73917,100.49232],[13.73946,100.49277],[13.74017,100.49356],[13.74082,100.49408],[13.74204,100.49465],[13.74247,100.49477],[13.74304,100.49483],[13.7456,100.49452],[13.74637,100.49451],[13.74672,100.49461],[13.74703,100.49485],[13.74724,100.49535],[13.74726,100.49645],[13.74697,100.50277],[13.74672,100.50418],[13.74584,100.50538],[13.7422,100.5099],[13.73854,100.51465],[13.73817,100.51529],[13.73741,100.51705]]]},{"n":"BTS Silom Line","c":"#02817D","s":[[[13.74653,100.52909],[13.74632,100.53028]],[[13.74632,100.53028],[13.74588,100.53266],[13.74571,100.53329],[13.74466,100.53985],[13.74433,100.54019],[13.74388,100.54028],[13.74317,100.54008],[13.74134,100.53976]],[[13.71838,100.5159],[13.71808,100.51691],[13.71814,100.5176],[13.72117,100.52796],[13.7214,100.52924],[13.72158,100.52969],[13.72199,100.52999],[13.72224,100.53005],[13.72254,100.53001],[13.7246,100.52892],[13.72549,100.52823],[13.72591,100.52818],[13.72614,100.52825],[13.72645,100.52849],[13.72659,100.52872],[13.72675,100.5293],[13.72905,100.53575],[13.72937,100.53624],[13.73024,100.53686],[13.73083,100.53716],[13.73496,100.53875],[13.73533,100.53885],[13.74134,100.53976]],[[13.71917,100.51282],[13.71838,100.5159]],[[13.72096,100.50272],[13.7209,100.50465],[13.72067,100.50648],[13.71917,100.51282]]]},{"n":"Airport Rail Link","c":"#59191f","s":[[[13.75707,100.53342],[13.75622,100.53715]],[[13.75622,100.53715],[13.75208,100.55564],[13.75183,100.55688],[13.75156,100.55887],[13.75047,100.56333],[13.75007,100.56443]],[[13.75007,100.56443],[13.74416,100.59066],[13.74384,100.59261],[13.73825,100.64335]]]},{"n":"Gold Line","c":"#A58704","s":[[[13.72113,100.50446],[13.72114,100.50566],[13.72131,100.50586],[13.72177,100.50613],[13.7219,100.50638],[13.72189,100.50666],[13.72149,100.50857],[13.72152,100.50873],[13.72167,100.50889],[13.72485,100.50914],[13.72561,100.50912],[13.72967,100.50873],[13.72991,100.50861],[13.73008,100.50831],[13.73033,100.50773]]]},{"n":"Yellow Line","c":"#FFD400","s":[[[13.80699,100.57481],[13.8057,100.57477],[13.80539,100.57494],[13.80514,100.5753],[13.78375,100.6136],[13.76607,100.6451],[13.76569,100.64536],[13.76373,100.6456],[13.76068,100.64551],[13.75565,100.64596],[13.75386,100.64578],[13.75266,100.64546]]]}],"st":[["Surasak",13.71927,100.52146,"BTS Silom Line"],["Chong Nonsi",13.7238,100.52933,"BTS Silom Line"],["Ratchadamri",13.73947,100.53945,"BTS Silom Line"],["Saphan Taksin",13.71881,100.51422,"BTS Silom Line"],["Hua Lamphong",13.73757,100.51714,"MRT Blue Line"],["Phra Ram 9",13.75782,100.56528,"MRT Blue Line"],["Queen Sirikit National Convention Centre",13.72267,100.55991,"MRT Blue Line"],["Lumphini",13.72561,100.54572,"MRT Blue Line"],["Huai Khwang",13.77869,100.57357,"MRT Blue Line"],["Thailand Cultural Centre",13.76616,100.57012,"MRT Blue Line"],["Khlong Toei",13.72213,100.55437,"MRT Blue Line"],["Sala Daeng",13.72857,100.53434,"BTS Silom Line"],["Makkasan",13.75386,100.54737,"Airport Rail Link"],["Siam",13.74562,100.53422,"BTS Sukhumvit Line|BTS Silom Line"],["Ari",13.77971,100.54462,"BTS Sukhumvit Line"],["Phaya Thai",13.75696,100.53382,"BTS Sukhumvit Line|Airport Rail Link"],["Ratchathewi",13.75186,100.53155,"BTS Sukhumvit Line"],["Sanam Pao",13.77262,100.54207,"BTS Sukhumvit Line"],["Phra Khanong",13.71517,100.59124,"BTS Sukhumvit Line"],["Victory Monument",13.76276,100.53705,"BTS Sukhumvit Line"],["Bang Chak",13.69676,100.60534,"BTS Sukhumvit Line"],["On Nut",13.70562,100.601,"BTS Sukhumvit Line"],["Asok",13.73704,100.56036,"BTS Sukhumvit Line"],["Thong Lo",13.72423,100.57851,"BTS Sukhumvit Line"],["Phrom Phong",13.73043,100.56971,"BTS Sukhumvit Line"],["Nana",13.74054,100.55543,"BTS Sukhumvit Line"],["Phloen Chit",13.74307,100.54898,"BTS Sukhumvit Line"],["Chit Lom",13.7441,100.54307,"BTS Sukhumvit Line"],["Sukhumvit",13.73747,100.5615,"MRT Blue Line"],["Ekkamai",13.71954,100.58511,"BTS Sukhumvit Line"],["Charoen Nakhon",13.72646,100.50907,"Gold Line"],["Khlong San",13.73031,100.50772,"Gold Line"],["Ramkhamhaeng",13.74299,100.60015,"Airport Rail Link"],["Ratchaprarop",13.75511,100.54212,"Airport Rail Link"],["Saint Louis",13.72082,100.52669,"BTS Silom Line"],["Lat Phrao 101",13.77463,100.62984,"Yellow Line"],["Mahatthai",13.77837,100.62316,"Yellow Line"],["Lat Phrao 83",13.7837,100.61366,"Yellow Line"],["National Stadium",13.74651,100.52909,"BTS Silom Line"],["Si Lom",13.7292,100.53707,"MRT Blue Line"],["Wat Mangkon",13.74221,100.50991,"MRT Blue Line"],["Sam Yan",13.73206,100.53012,"MRT Blue Line"],["Phetchaburi",13.74919,100.56342,"MRT Blue Line"]]};
 const TRAIN_SVG='<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2C8 2 5 2.5 5 6v9.5A2.5 2.5 0 0 0 7.5 18L6 19.5v.5h2.2l2-2h3.6l2 2H18v-.5L16.5 18a2.5 2.5 0 0 0 2.5-2.5V6c0-3.5-3-4-7-4zM7.5 16a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm3.5-6H7V6h4v4zm2 0V6h4v4h-4zm3.5 6a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3z"/></svg>';
+TRANSIT.st.forEach(x=>ST_LINES[x[0]]=x[3].split('|'));
 function drawTransit(){
   map.createPane('transit').style.zIndex=350;map.createPane('stations').style.zIndex=450;
   const col=Object.fromEntries(TRANSIT.lines.map(l=>[l.n,l.c]));
@@ -487,7 +540,7 @@ function initMap(){
   drawTransit();
   L.forEach(u=>{
     const m=window.L.marker([u.lat,u.lng],{riseOnHover:true,keyboard:true,title:`${u.name}, ${fmtP(u.price)} per month`,icon:window.L.divIcon({className:'pin-wrap',html:`<span class="pin">${shortP(u.price)}</span>`,iconSize:[0,0]})});
-    m.bindPopup(`<div class="mp"><a href="unit.html"><img src="${u.img}" alt="" width="260" height="163"></a><div class="mp-b"><div class="t"><b>${esc(u.name)}</b></div><small>${u.br} br · ${u.ba} ba · ${u.sqm} sqm · Min. ${u.lease} mth</small><small>${esc(u.transit)}</small><strong>${fmtP(u.price)} <span>/month</span></strong></div></div>`,{className:'mpop',maxWidth:260,minWidth:260,autoPanPaddingTopLeft:[24,72],autoPanPaddingBottomRight:[24,56],offset:[0,-12]});
+    m.bindPopup(`<div class="mp"><a href="unit.html"><img src="${u.img}" alt="" width="260" height="163"></a><div class="mp-b"><div class="t"><b>${esc(u.name)}</b></div><small>${u.br} br · ${u.ba} ba · ${u.sqm} sqm · Min. ${u.lease} mth</small><small>${esc(u.transit)}${u.transit2?' · '+esc(u.transit2):''}</small><strong>${fmtP(u.price)} <span>/month</span></strong></div></div>`,{className:'mpop',maxWidth:260,minWidth:260,autoPanPaddingTopLeft:[24,72],autoPanPaddingBottomRight:[24,56],offset:[0,-12]});
     m.on('popupopen',()=>{pinEl(u.id)?.classList.add('on');const c=cardsEl.querySelector(`[data-id="${u.id}"]`);if(c&&innerWidth>=1024)c.scrollIntoView({block:'nearest',behavior:'smooth'})});
     m.on('popupclose',()=>pinEl(u.id)?.classList.remove('on'));
     pins[u.id]=m});
@@ -551,31 +604,49 @@ $('#b-save').addEventListener('click',()=>{let a=num(bmin.value),b=num(bmax.valu
 let t;$('#q').addEventListener('input',e=>{clearTimeout(t);t=setTimeout(()=>{S.q=e.target.value.trim();render();fitToResults()},180)});
 $('#q-clr').addEventListener('click',e=>{e.preventDefault();$('#q').value='';S.q='';render();$('#q').focus()});
 function fitToResults(){if(!map||!S.q)return;const r=L.filter(u=>match(u,S,false));if(r.length)map.fitBounds(r.map(u=>[u.lat,u.lng]),{padding:[60,60],maxZoom:17})}
-$('#sort').addEventListener('change',e=>{S.sort=e.target.value;render()});
+$('#btn-sort').addEventListener('click',()=>toggle('sort'));
+$$('#pop-sort .opt').forEach(o=>o.addEventListener('click',()=>{S.sort=o.dataset.v;$$('#pop-sort .opt').forEach(x=>x.setAttribute('aria-checked',String(x===o)));close();render()}));
+/* ---------- where: BTS/MRT line ---------- */
+const WL=[['BTS Sukhumvit Line','#65B724'],['BTS Silom Line','#02817D'],['MRT Blue Line','#1E398D'],['Airport Rail Link','#59191f'],['Gold Line','#A58704'],['Yellow Line','#FFD400']];
+function paintWhere(){
+  $('#w-lines').innerHTML=`<button type="button" class="opt" role="menuitemradio" aria-checked="${!S.where}" data-v=""><i class="ph ph-train-simple"></i>All lines<i class="ph ph-check ck"></i></button>`+WL.map(([n,c])=>`<button type="button" class="opt" role="menuitemradio" aria-checked="${S.where===n}" data-v="${n}"><span class="dot" style="background:${c}"></span>${n}<i class="ph ph-check ck"></i></button>`).join('');
+  const st=S.where?TRANSIT.st.filter(x=>x[3].split('|').includes(S.where)).map(x=>x[0]).sort():[];
+  $('#w-stns').hidden=!st.length;
+  $('#w-stns').innerHTML=st.length?`<button type="button" class="chipbtn" aria-pressed="${!S.whereSt}" data-s="">Any station</button>`+st.map(n=>`<button type="button" class="chipbtn" aria-pressed="${S.whereSt===n}" data-s="${esc(n)}">${esc(n)}</button>`).join(''):'';
+  $$('#w-lines .opt').forEach(o=>o.addEventListener('click',e=>{e.stopPropagation();S.where=o.dataset.v;S.whereSt='';paintWhere();render();if(!S.where)close()}));
+  $$('#w-stns button').forEach(b=>b.addEventListener('click',e=>{e.stopPropagation();S.whereSt=b.dataset.s;close();render();fitWhere()}));
+}
+function fitWhere(){if(!map)return;const r=L.filter(u=>match(u,S,false));if(r.length)map.fitBounds(r.map(u=>[u.lat,u.lng]),{padding:[60,60],maxZoom:16})}
+$('#btn-where').addEventListener('click',()=>{paintWhere();toggle('where')});
 
 /* ---------- filters panel ---------- */
 const fp=$('#fpanel'),scrim=$('#scrim');let lastFocus=null;
-function draftCount(){return L.filter(u=>match(u,{...S,amen:draft.amen,br:draft.br,ba:draft.ba})).length}
+function draftCount(){return L.filter(u=>match(u,{...S,amen:draft.amen,br:draft.br,ba:draft.ba,pets:draft.pets,guests:draft.guests})).length}
 function paintDraft(){
   $$('#f-amen button').forEach(b=>b.setAttribute('aria-pressed',String(draft.amen.has(b.dataset.k))));
   $$('#f-br input').forEach(c=>c.checked=draft.br.has(c.value));
   $$('#f-ba button').forEach(b=>b.setAttribute('aria-pressed',String(draft.ba===b.dataset.v)));
+  $$('#f-pets button').forEach(b=>b.setAttribute('aria-pressed',String(draft.pets===b.dataset.v)));
+  $('#g-n').textContent=draft.guests||'Any';$('#g-minus').disabled=!draft.guests;$('#g-plus').disabled=draft.guests>=8;
   const n=draftCount();$('#fp-view').textContent=`View ${n} result${n===1?'':'s'}`;
 }
-function openFilters(){close();lastFocus=document.activeElement;draft={amen:new Set(S.amen),br:new Set(S.br),ba:S.ba};paintDraft();scrim.hidden=fp.hidden=false;$('#btn-filters').setAttribute('aria-expanded','true');document.body.style.overflow='hidden';$('#fp-close').focus()}
+function openFilters(){close();lastFocus=document.activeElement;draft={amen:new Set(S.amen),br:new Set(S.br),ba:S.ba,pets:S.pets,guests:S.guests};paintDraft();scrim.hidden=fp.hidden=false;$('#btn-filters').setAttribute('aria-expanded','true');document.body.style.overflow='hidden';$('#fp-close').focus()}
 function closeFilters(){scrim.hidden=fp.hidden=true;$('#btn-filters').setAttribute('aria-expanded','false');document.body.style.overflow='';lastFocus&&lastFocus.focus()}
 $('#btn-filters').addEventListener('click',openFilters);$('#fp-close').addEventListener('click',closeFilters);scrim.addEventListener('click',closeFilters);
 $$('#f-amen button').forEach(b=>b.addEventListener('click',()=>{const k=b.dataset.k;draft.amen.has(k)?draft.amen.delete(k):draft.amen.add(k);paintDraft()}));
 $$('#f-br input').forEach(c=>c.addEventListener('change',()=>{c.checked?draft.br.add(c.value):draft.br.delete(c.value);paintDraft()}));
 $$('#f-ba button').forEach(b=>b.addEventListener('click',()=>{draft.ba=draft.ba===b.dataset.v?'':b.dataset.v;paintDraft()}));
-$('#fp-reset').addEventListener('click',()=>{draft={amen:new Set(),br:new Set(),ba:''};paintDraft()});
-$('#fp-view').addEventListener('click',()=>{S.amen=draft.amen;S.br=draft.br;S.ba=draft.ba;closeFilters();render()});
+$$('#f-pets button').forEach(b=>b.addEventListener('click',()=>{draft.pets=b.dataset.v;paintDraft()}));
+$('#g-minus').addEventListener('click',()=>{draft.guests=Math.max(0,draft.guests-1);paintDraft()});
+$('#g-plus').addEventListener('click',()=>{draft.guests=Math.min(8,draft.guests+1);paintDraft()});
+$('#fp-reset').addEventListener('click',()=>{draft={amen:new Set(),br:new Set(),ba:'',pets:'',guests:0};paintDraft()});
+$('#fp-view').addEventListener('click',()=>{S.amen=draft.amen;S.br=draft.br;S.ba=draft.ba;S.pets=draft.pets;S.guests=draft.guests;closeFilters();render()});
 fp.addEventListener('keydown',e=>{if(e.key!=='Tab')return;const f=$$('button,input,select,a[href]',fp).filter(x=>!x.disabled&&x.offsetParent);const a=f[0],z=f[f.length-1];if(e.shiftKey&&document.activeElement===a){e.preventDefault();z.focus()}else if(!e.shiftKey&&document.activeElement===z){e.preventDefault();a.focus()}});
 const toast=$('#toast');let tt;function say(m){toast.querySelector('span').textContent=m;toast.hidden=false;clearTimeout(tt);tt=setTimeout(()=>toast.hidden=true,2600)}
 $('#fp-save').addEventListener('click',()=>say('Search saved. We’ll let you know about new homes that match.'));
 
 /* ---------- clear all ---------- */
-function clearAll(){S.q='';$('#q').value='';S.type='';$$('#pop-type .opt').forEach((x,i)=>x.setAttribute('aria-checked',String(i===0)));S.min=S.max=0;S.amen=new Set();S.br=new Set();S.ba='';render()}
+function clearAll(){S.q='';$('#q').value='';S.type='';$$('#pop-type .opt').forEach((x,i)=>x.setAttribute('aria-checked',String(i===0)));S.min=S.max=0;S.amen=new Set();S.br=new Set();S.ba='';S.pets='';S.guests=0;S.where='';S.whereSt='';render()}
 $('#sb-reset').addEventListener('click',clearAll);$('#empty-reset').addEventListener('click',clearAll);
 
 /* ---------- mobile list/map toggle ---------- */

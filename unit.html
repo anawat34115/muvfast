@@ -172,7 +172,7 @@
 <style>
 /* ===== media viewer (Unit details feedback 2026-10-09) ===== */
 .mv{display:grid;gap:10px;padding-bottom:16px}
-@media(min-width:1024px){.mv{grid-template-columns:minmax(0,1fr) 96px}}
+
 .mv-stage{position:relative;height:260px;border-radius:20px;overflow:hidden;background:#111}
 @media(min-width:640px){.mv-stage{height:420px}}
 @media(min-width:1024px){.mv-stage{height:500px}}
@@ -250,6 +250,50 @@
 .mv-badge247 small{font-size:7.5px;letter-spacing:.22em;font-weight:500}
 .mv-badge247 b{font-size:22px;line-height:1;font-weight:500;letter-spacing:.02em}
 @media(min-width:640px){.mv-badge247{width:150px;height:150px}.mv-badge247 img{width:70px}.mv-badge247 b{font-size:25px}.mv-badge247 small{font-size:8.5px}}
+.mv{grid-template-columns:minmax(0,1fr)}
+@media(min-width:1024px){.mv{grid-template-columns:minmax(0,1fr) 96px}.mv-stage{grid-column:1;grid-row:1}.mv-rail{grid-column:2;grid-row:1}.mv-under{grid-column:1;grid-row:2}}
+.mv-stage .mv-rooms{position:absolute;z-index:7;top:auto;right:auto;left:14px;bottom:14px;width:250px;max-width:calc(100% - 120px)}
+.mv-stage .mv-rooms>button{background:rgba(255,255,255,.97);color:#111827;border:1px solid #e5e7eb;box-shadow:0 4px 14px rgba(0,0,0,.18)}
+.mv-stage .mv-rooms>button .material-symbols-outlined{color:#fc4a1a}
+.mv-stage .mv-rooms>button .ar{color:#6b7280;transform:rotate(180deg)}
+.mv-stage .mv-rooms[data-open]>button .ar{transform:none}
+.mv-stage .mv-rooms ul{position:absolute;left:0;right:0;bottom:100%;margin:0 0 6px;border:1px solid #e5e7eb}
+@media(max-width:639px){.mv-stage .mv-rooms{left:10px;bottom:10px;width:210px}}
+.mv-under{display:flex;align-items:center;justify-content:flex-start;gap:10px;flex-wrap:wrap;min-width:0}
+.mv-under>*{min-width:0}
+.mv-bar{display:flex;gap:2px;padding:4px;background:#fff;border:1px solid #e5e7eb;border-radius:999px;max-width:100%;overflow-x:auto;scrollbar-width:none}
+.mv-bar::-webkit-scrollbar{display:none}
+.mv-bar button{flex:none;display:inline-flex;align-items:center;gap:5px;height:36px;padding:0 13px;border:0;border-radius:999px;background:none;color:#374151;font-size:13px;font-weight:600;cursor:pointer;white-space:nowrap}
+.mv-bar button .material-symbols-outlined{font-size:18px}
+.mv-bar button small{font-size:11px;color:#9ca3af;font-weight:600}
+.mv-bar button:hover{background:#f3f4f6}
+.mv-bar button[aria-selected=true]{background:#fff;color:#c93a12;box-shadow:inset 0 0 0 1.5px #fc4a1a}
+.mv-bar button[aria-selected=true] small{color:#f08a6a}
+.mv-under .mv-rooms{position:relative;top:auto;right:auto;width:250px;max-width:100%;z-index:20}
+.mv-under .mv-rooms>button{background:#fff;color:#111827;border:1px solid #e5e7eb;box-shadow:none}
+.mv-under .mv-rooms>button .material-symbols-outlined{color:#fc4a1a}
+.mv-under .mv-rooms>button .ar{color:#6b7280}
+.mv-under .mv-rooms ul{border:1px solid #e5e7eb}
+.mv-under .mv-rooms ul{position:absolute;left:0;right:0;top:100%}
+.mv-under .mv-rooms[hidden]{display:none}
+@media(max-width:639px){.mv-under{flex-direction:column;align-items:stretch}.mv-bar button{height:34px;padding:0 10px;font-size:12px}.mv-under .mv-rooms{width:100%}}
+.mv-menu{background:#fff;border:1px solid #e5e7eb;border-radius:16px;padding:8px;display:grid;gap:4px;box-shadow:0 1px 2px rgba(0,0,0,.04)}
+.mv-h{width:100%;display:flex;align-items:center;gap:10px;min-height:46px;padding:0 12px;border:0;border-radius:10px;background:none;color:#1f2937;font-size:14px;font-weight:700;letter-spacing:.01em;text-align:left;cursor:pointer;transition:background .2s,color .2s}
+.mv-h .material-symbols-outlined{font-size:21px;color:#6b7280}
+.mv-h .ar{margin-left:auto;font-size:20px;transition:transform .2s}
+.mv-h small{margin-left:auto;font-size:12px;font-weight:600;color:#9ca3af}
+.mv-h:hover{background:#f3f4f6}
+.mv-g.on>.mv-h{background:#111827;color:#fff;text-transform:uppercase}
+.mv-g.on>.mv-h .material-symbols-outlined,.mv-g.on>.mv-h small{color:#fff}
+.mv-g.on>.mv-h .ar{transform:rotate(180deg)}
+.mv-sub{list-style:none;margin:4px 0 2px;padding:0 4px;display:none}
+.mv-g.on .mv-sub{display:grid;gap:2px}
+.mv-sub button{width:100%;display:flex;align-items:center;gap:10px;padding:9px 10px;border:0;background:none;border-radius:8px;font-size:14px;font-weight:500;color:#1f2937;cursor:pointer;text-align:left}
+.mv-sub button .material-symbols-outlined{font-size:20px;color:#6b7280}
+.mv-sub button:hover{background:#f3f4f6}
+.mv-sub button[aria-current=true]{background:#fff1ec;color:#c93a12;font-weight:600}
+.mv-sub button[aria-current=true] .material-symbols-outlined{color:#fc4a1a}
+@media(max-width:1023px){.mv-menu{grid-template-columns:1fr 1fr}.mv-g:first-child{grid-column:1/-1}.mv-h{min-height:42px;font-size:13px}}
 .mv-rooms{position:absolute;z-index:7;top:14px;right:14px;width:236px;max-width:calc(100% - 28px)}
 .mv-rooms>button{width:100%;display:flex;align-items:center;gap:8px;height:42px;padding:0 12px;border:0;border-radius:12px;background:#111827;color:#fff;font-weight:800;font-size:13px;letter-spacing:.02em;cursor:pointer;box-shadow:0 4px 14px rgba(0,0,0,.25)}
 .mv-rooms>button .material-symbols-outlined{font-size:20px}
@@ -440,7 +484,6 @@ document.querySelectorAll('.mf-head .lang').forEach(function(g){g.addEventListen
 <span class="note">Sample floor plan</span></div>
                         </div>
                     </div>
-
                     <div class="mv-rail" role="tablist" aria-label="Media">
                         <button type="button" class="mv-tab" role="tab" aria-selected="true" aria-controls="mvp-360" data-t="360"><span class="material-symbols-outlined">360</span>360°</button>
                         <button type="button" class="mv-tab" role="tab" aria-selected="false" aria-controls="mvp-photos" data-t="photos"><span class="material-symbols-outlined">photo_library</span>Photos<small>43</small></button>
@@ -448,6 +491,7 @@ document.querySelectorAll('.mf-head .lang').forEach(function(g){g.addEventListen
                         <button type="button" class="mv-tab" role="tab" aria-selected="false" aria-controls="mvp-video" data-t="video"><span class="material-symbols-outlined">smart_display</span>Video</button>
                         <button type="button" class="mv-tab" role="tab" aria-selected="false" aria-controls="mvp-floor" data-t="floor"><span class="material-symbols-outlined">floor</span>Floor plan</button>
                     </div>
+
                 </section>
 
                 <!-- Action Bar above Photo Showcase: Breadcrumbs, Property Code, Share & Favorite -->
