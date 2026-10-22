@@ -136,6 +136,22 @@
 .ll-facts li{display:flex;align-items:center;gap:12px;font-size:14px;color:#111827}
 .ll-facts .material-symbols-outlined{font-size:22px;color:#374151}
 .ll-card{flex-wrap:wrap}.ll-extra{order:3;flex:1 1 100%;width:100%}
+
+@media(min-width:1024px){
+ .mv{grid-template-columns:minmax(0,1fr) 340px!important;gap:24px}
+ .mv-stage{width:auto!important;height:504px!important}
+}
+/* photos: show only 1 photo, See all for more */
+.mv-pgrid{grid-template-columns:1fr!important;grid-template-rows:1fr!important}
+.mv-pgrid button:first-child{grid-column:auto!important;grid-row:auto!important}
+.mv-pgrid button:nth-child(n+2){display:none!important}
+/* smaller rooms dropdown */
+.mv-stage .mv-rooms{width:auto!important;min-width:0}
+.mv-stage .mv-rooms>button{height:32px!important;padding:0 10px!important;gap:6px!important;font-size:11px!important;border-radius:999px!important;width:auto!important}
+.mv-stage .mv-rooms>button .material-symbols-outlined{font-size:17px!important}
+.mv-stage .mv-rooms ul{min-width:220px}
+/* remove drag hint */
+.mv-hint{display:none!important}
 </style>
     <script src="https://cdn.tailwindcss.com"></script>
     <script id="tailwind-config">
