@@ -93,7 +93,50 @@
         ::-webkit-scrollbar {
             display: none;
         }
-    </style>
+    
+/* ===== V.3 (2026-10-22): Matterport-size stage + row menu ===== */
+@media(min-width:1024px){
+ .mv{grid-template-columns:568px minmax(0,1fr)!important;gap:28px;align-items:start}
+ .mv-stage{height:504px!important;width:568px}
+}
+.mv-rail{flex-direction:column!important;gap:0!important;overflow:visible!important;border-top:1px solid #e5e7eb}
+.mv-tab{flex:none!important;min-width:0!important;display:grid!important;grid-template-columns:22px minmax(0,1fr) 20px;align-items:center!important;justify-items:start;column-gap:12px;text-align:left;padding:15px 4px!important;border:0!important;border-bottom:1px solid #e5e7eb!important;border-radius:0!important;background:none!important;color:#111827!important;font-size:15px!important;font-weight:700!important;letter-spacing:0!important;text-transform:none!important;cursor:pointer}
+.mv-tab>.material-symbols-outlined:first-child{font-size:22px!important;color:#6b7280}
+.mv-tab .t{display:flex;align-items:baseline;gap:8px}
+.mv-tab .t small{font-size:12px!important;font-weight:600;color:#6b7280;opacity:1!important}
+.mv-tab .ch{font-size:20px!important;color:#6b7280;transition:transform .25s;justify-self:end}
+.mv-tab .d{grid-column:2/3;display:none;font-size:13px;font-weight:400;line-height:1.5;color:#4b5563;margin-top:6px}
+.mv-tab:hover .t{color:#fc4a1a}
+.mv-tab[aria-selected=true] .ch{transform:rotate(180deg)}
+.mv-tab[aria-selected=true]>.material-symbols-outlined:first-child{color:#fc4a1a}
+.mv-tab[aria-selected=true] .d{display:block}
+.mv-tab[aria-selected=true]{padding-bottom:18px!important}
+.mv-tab .go{display:inline-flex;align-items:center;gap:4px;margin-top:8px;font-size:12.5px;font-weight:700;color:#111827;text-decoration:underline;text-underline-offset:3px}
+@media(max-width:1023px){.mv-tab{padding:12px 2px!important;font-size:14px!important}.mv-tab .d{font-size:12.5px}}
+/* photos / amenities: See all on the left, no captions */
+.mv-pgrid .lbl,.mv-amen figcaption{display:none!important}
+.mv-seeall{right:auto!important;left:14px}
+#mvp-photos .mv-seeall,#mvp-amen .mv-seeall{bottom:14px}
+.mv-stage .mv-badges{z-index:8}
+/* video: MUVFAST 24/7 logo in the middle like 360 */
+#mvp-video .mv-badge247{opacity:.9}
+#mvp-video.playing .mv-badge247{opacity:.55}
+/* other units: Min. lease orange text */
+.ou-lease{color:#FF7A4D!important;font-weight:700!important;font-size:11px!important}
+.ou-upd.occ{color:#DC2626}.ou-upd.occ i{background:#EF4444}
+/* occupied */
+.occ-dot{display:inline-block;width:8px;height:8px;border-radius:50%;background:#EF4444;margin-right:6px;vertical-align:1px}
+.occ-txt{color:#DC2626;font-weight:600}
+/* landlord bio */
+.ll-bio{font-size:14px;line-height:1.6;color:#374151;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;margin:0}
+.ll-bio.open{-webkit-line-clamp:unset;display:block}
+.ll-more{align-self:flex-start;border:0;background:none;padding:0;font-size:13px;font-weight:700;color:#111827;text-decoration:underline;text-underline-offset:3px;cursor:pointer}
+.ll-more[hidden]{display:none}
+.ll-facts{display:grid;gap:10px;margin:0;padding:0;list-style:none}
+.ll-facts li{display:flex;align-items:center;gap:12px;font-size:14px;color:#111827}
+.ll-facts .material-symbols-outlined{font-size:22px;color:#374151}
+.ll-card{flex-wrap:wrap}.ll-extra{order:3;flex:1 1 100%;width:100%}
+</style>
     <script src="https://cdn.tailwindcss.com"></script>
     <script id="tailwind-config">
         tailwind.config = {
@@ -415,7 +458,7 @@ document.querySelectorAll('.mf-head .lang').forEach(function(g){g.addEventListen
                         </div>
 
                         <div class="mv-panel" id="mvp-photos" role="tabpanel" aria-label="Photos">
-                            <div class="mv-pgrid" id="mv-pgrid"><button type="button" data-i="0" aria-label="Open photo: Living room"><img src="https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?q=80&w=1200&auto=format&fit=crop" alt="Living room" ><span class="lbl">Living room</span></button><button type="button" data-i="1" aria-label="Open photo: Bedroom"><img src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?q=80&w=700&auto=format&fit=crop" alt="Bedroom" loading="lazy"><span class="lbl">Bedroom</span></button><button type="button" data-i="2" aria-label="Open photo: Kitchen"><img src="https://images.unsplash.com/photo-1556910103-1c02745aae4d?q=80&w=700&auto=format&fit=crop" alt="Kitchen" loading="lazy"><span class="lbl">Kitchen</span></button><button type="button" data-i="3" aria-label="Open photo: Living space"><img src="https://images.unsplash.com/photo-1554995207-c18c203602cb?q=80&w=700&auto=format&fit=crop" alt="Living space" loading="lazy"><span class="lbl">Living space</span></button><button type="button" data-i="4" aria-label="Open photo: Bathroom"><img src="https://images.unsplash.com/photo-1584622650111-993a426fbf0a?q=80&w=700&auto=format&fit=crop" alt="Bathroom" loading="lazy"><span class="lbl">Bathroom</span></button></div>
+                            <div class="mv-pgrid" id="mv-pgrid"><button type="button" data-i="0" aria-label="Open photo: Living room"><img src="https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?q=80&w=1200&auto=format&fit=crop" alt="Living room" ></button><button type="button" data-i="1" aria-label="Open photo: Bedroom"><img src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?q=80&w=700&auto=format&fit=crop" alt="Bedroom" loading="lazy"></button><button type="button" data-i="2" aria-label="Open photo: Kitchen"><img src="https://images.unsplash.com/photo-1556910103-1c02745aae4d?q=80&w=700&auto=format&fit=crop" alt="Kitchen" loading="lazy"></button><button type="button" data-i="3" aria-label="Open photo: Living space"><img src="https://images.unsplash.com/photo-1554995207-c18c203602cb?q=80&w=700&auto=format&fit=crop" alt="Living space" loading="lazy"></button><button type="button" data-i="4" aria-label="Open photo: Bathroom"><img src="https://images.unsplash.com/photo-1584622650111-993a426fbf0a?q=80&w=700&auto=format&fit=crop" alt="Bathroom" loading="lazy"></button></div>
                             <div class="mv-tools mv-seeall"><button type="button" class="mv-btn" id="mv-seeall"><span class="material-symbols-outlined">grid_view</span>See all 43 photos</button></div>
                             <div class="mv-slider">
                                 <div class="mv-photos" id="mv-photos"><img src="https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?q=80&w=1600&auto=format&fit=crop" alt="Unit photo 1" class="on"><img src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?q=80&w=1600&auto=format&fit=crop" alt="Unit photo 2" loading="lazy"><img src="https://images.unsplash.com/photo-1556910103-1c02745aae4d?q=80&w=1600&auto=format&fit=crop" alt="Unit photo 3" loading="lazy"><img src="https://images.unsplash.com/photo-1554995207-c18c203602cb?q=80&w=1600&auto=format&fit=crop" alt="Unit photo 4" loading="lazy"><img src="https://images.unsplash.com/photo-1584622650111-993a426fbf0a?q=80&w=1600&auto=format&fit=crop" alt="Unit photo 5" loading="lazy"><img src="https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?q=80&w=1600&auto=format&fit=crop" alt="Unit photo 6" loading="lazy"><img src="https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?q=80&w=1600&auto=format&fit=crop" alt="Unit photo 7" loading="lazy"></div>
@@ -427,10 +470,12 @@ document.querySelectorAll('.mf-head .lang').forEach(function(g){g.addEventListen
                         </div>
 
                         <div class="mv-panel" id="mvp-amen" role="tabpanel" aria-label="Project amenities">
-                            <div class="mv-amen"><figure><img src="https://images.unsplash.com/photo-1576013551627-0cc20b96c2a7?q=80&w=900&auto=format&fit=crop" alt="Rooftop pool" loading="lazy"><figcaption>Rooftop pool</figcaption></figure><figure><img src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?q=80&w=900&auto=format&fit=crop" alt="Fitness centre" loading="lazy"><figcaption>Fitness centre</figcaption></figure><figure><img src="https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=900&auto=format&fit=crop" alt="Co-working lounge" loading="lazy"><figcaption>Co-working lounge</figcaption></figure><figure><img src="https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?q=80&w=900&auto=format&fit=crop" alt="Lobby & reception" loading="lazy"><figcaption>Lobby & reception</figcaption></figure></div>
+                            <div class="mv-tools mv-seeall"><button type="button" class="mv-btn" id="mv-amen-all"><span class="material-symbols-outlined">grid_view</span>See all amenities</button></div>
+                            <div class="mv-amen"><figure><img src="https://images.unsplash.com/photo-1576013551627-0cc20b96c2a7?q=80&w=900&auto=format&fit=crop" alt="Rooftop pool" loading="lazy"></figure><figure><img src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?q=80&w=900&auto=format&fit=crop" alt="Fitness centre" loading="lazy"></figure><figure><img src="https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=900&auto=format&fit=crop" alt="Co-working lounge" loading="lazy"></figure><figure><img src="https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?q=80&w=900&auto=format&fit=crop" alt="Lobby & reception" loading="lazy"></figure></div>
                         </div>
 
                         <div class="mv-panel" id="mvp-video" role="tabpanel" aria-label="Video tour">
+                            <div class="mv-badge247" aria-hidden="true"><span class="dm"></span><span class="tx"><img src="logo.svg" alt=""><i></i><small>OPEN HOUSE</small><b>24/7</b></span></div>
                             <video class="mv-video" id="mv-video" controls playsinline muted preload="none" poster="https://images.unsplash.com/photo-1554995207-c18c203602cb?q=80&w=1600&auto=format&fit=crop"><source src="https://videos.pexels.com/video-files/7578540/7578540-hd_1280_720_30fps.mp4" type="video/mp4"></video>
                         </div>
 
@@ -485,11 +530,11 @@ document.querySelectorAll('.mf-head .lang').forEach(function(g){g.addEventListen
                         </div>
                     </div>
                     <div class="mv-rail" role="tablist" aria-label="Media">
-                        <button type="button" class="mv-tab" role="tab" aria-selected="true" aria-controls="mvp-360" data-t="360"><span class="material-symbols-outlined">360</span>360°</button>
-                        <button type="button" class="mv-tab" role="tab" aria-selected="false" aria-controls="mvp-photos" data-t="photos"><span class="material-symbols-outlined">photo_library</span>Photos<small>43</small></button>
-                        <button type="button" class="mv-tab" role="tab" aria-selected="false" aria-controls="mvp-amen" data-t="amen"><span class="material-symbols-outlined">pool</span>Amenities</button>
-                        <button type="button" class="mv-tab" role="tab" aria-selected="false" aria-controls="mvp-video" data-t="video"><span class="material-symbols-outlined">smart_display</span>Video</button>
-                        <button type="button" class="mv-tab" role="tab" aria-selected="false" aria-controls="mvp-floor" data-t="floor"><span class="material-symbols-outlined">floor</span>Floor plan</button>
+                        <button type="button" class="mv-tab" role="tab" aria-selected="true" aria-controls="mvp-360" data-t="360"><span class="material-symbols-outlined">360</span><span class="t">360° virtual tour</span><span class="material-symbols-outlined ch" aria-hidden="true">expand_more</span><span class="d">Walk through every room, any time. Drag to look around and switch rooms from the menu in the tour.</span></button>
+                        <button type="button" class="mv-tab" role="tab" aria-selected="false" aria-controls="mvp-photos" data-t="photos"><span class="material-symbols-outlined">photo_library</span><span class="t">Photos<small>43</small></span><span class="material-symbols-outlined ch" aria-hidden="true">expand_more</span><span class="d">See every corner of the unit in high resolution.</span></button>
+                        <button type="button" class="mv-tab" role="tab" aria-selected="false" aria-controls="mvp-amen" data-t="amen"><span class="material-symbols-outlined">pool</span><span class="t">Amenities</span><span class="material-symbols-outlined ch" aria-hidden="true">expand_more</span><span class="d">Rooftop pool, fitness centre, co-working lounge and lobby.</span></button>
+                        <button type="button" class="mv-tab" role="tab" aria-selected="false" aria-controls="mvp-video" data-t="video"><span class="material-symbols-outlined">smart_display</span><span class="t">Video</span><span class="material-symbols-outlined ch" aria-hidden="true">expand_more</span><span class="d">A guided walkthrough of the unit and the building.</span></button>
+                        <button type="button" class="mv-tab" role="tab" aria-selected="false" aria-controls="mvp-floor" data-t="floor"><span class="material-symbols-outlined">floor</span><span class="t">Floor plan</span><span class="material-symbols-outlined ch" aria-hidden="true">expand_more</span><span class="d">1 bedroom · 1 bathroom · 32 sqm. Sample layout.</span></button>
                     </div>
 
                 </section>
@@ -633,7 +678,7 @@ document.querySelectorAll('.mf-head .lang').forEach(function(g){g.addEventListen
                                     <span class="w-2 h-2 rounded-full bg-emerald-500"></span>
                                     Latest update : Today
                                 </span>
-                                <span>Available : Now</span>
+                                <span><span class="occ-dot"></span><span class="occ-txt">Occupied</span></span>
                             </div>
                         </div>
 
@@ -652,7 +697,7 @@ document.querySelectorAll('.mf-head .lang').forEach(function(g){g.addEventListen
                                     <span
                                         class="text-[12px] text-gray-500 font-medium border-b border-gray-100 pb-1">Available
                                         From</span>
-                                    <span class="text-[14px] text-gray-900">Now</span>
+                                    <span class="text-[14px] text-gray-900"><span class="occ-dot"></span><span class="occ-txt">Occupied</span> | Available from November 1st, 2026</span>
                                 </div>
 
                                 <!-- Row 2: Min. stay | Property Type -->
@@ -1019,7 +1064,7 @@ document.querySelectorAll('.mf-head .lang').forEach(function(g){g.addEventListen
 
                         <!-- Section 8: Meet your Landlord -->
                         <div
-                            class="bg-white border border-gray-200/90 rounded-2xl p-4 sm:p-5 md:p-6 flex flex-col md:flex-row items-start md:items-center justify-between gap-5 md:gap-6 shadow-sm w-full">
+                            class="bg-white border border-gray-200/90 rounded-2xl p-4 sm:p-5 md:p-6 flex flex-col md:flex-row items-start ll-card md:items-center justify-between gap-5 md:gap-6 shadow-sm w-full">
                             <div class="flex items-center gap-4">
                                 <div class="relative">
                                     <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=200&auto=format&fit=crop"
@@ -1044,6 +1089,14 @@ document.querySelectorAll('.mf-head .lang').forEach(function(g){g.addEventListen
                                             Years hosting</div>
                                     </div>
                                 </div>
+                            </div>
+                            <div class="ll-extra w-full md:order-last flex flex-col gap-3 pt-4 border-t border-gray-100">
+                                <p class="ll-bio" id="ll-bio">I have been working and living in Bangkok for 10 years, welcome to Bangkok, welcome to our cozy condo. I look after every guest personally, from check-in to move-out, and I'm always happy to share tips on the best food, markets and co-working spots nearby.</p>
+                                <button type="button" class="ll-more self-start" id="ll-more" aria-expanded="false" aria-controls="ll-bio">Read more</button>
+                                <ul class="ll-facts">
+                                    <li><span class="material-symbols-outlined" aria-hidden="true">translate</span>Speaks English, Chinese, and Thai</li>
+                                    <li><span class="material-symbols-outlined" aria-hidden="true">home_pin</span>Lives in Bangkok, Thailand</li>
+                                </ul>
                             </div>
                             <div class="flex flex-col sm:items-end gap-2 w-full sm:w-auto mt-2 md:mt-0">
                                 <div
@@ -1515,7 +1568,7 @@ document.querySelectorAll('.mf-head .lang').forEach(function(g){g.addEventListen
                                             <div class="ou-panel ou-glass"><div class="ou-top"><span class="ou-lease">Min. 1 month</span><p class="ou-price"><strong>฿120,000</strong><span>/month</span></p></div><p class="ou-specs"><span>3 br</span><span>3 ba</span><span>115 sqm</span><span>Fl. 38</span></p><h4 class="ou-name"><a href="#">Life Asoke Hype – Penthouse</a></h4></div>
                                         </div>
                                     </div>
-                                    <div class="ou-body"><p class="ou-upd"><i></i>Available now · Updated 5d ago</p><p class="ou-dist">Ratchathewi, Bangkok</p><p class="ou-tr mrt"><span class="material-symbols-outlined">train</span>MRT Phra Ram 9<em>300 m</em></p><p class="ou-tr mrt"><span class="material-symbols-outlined">train</span>MRT Phetchaburi<em>800 m</em></p></div>
+                                    <div class="ou-body"><p class="ou-upd occ"><i></i>Occupied · Available from Nov 1, 2026</p><p class="ou-dist">Ratchathewi, Bangkok</p><p class="ou-tr mrt"><span class="material-symbols-outlined">train</span>MRT Phra Ram 9<em>300 m</em></p><p class="ou-tr mrt"><span class="material-symbols-outlined">train</span>MRT Phetchaburi<em>800 m</em></p></div>
                                 </article>
                             </div>
                         </div>
@@ -1602,9 +1655,9 @@ document.querySelectorAll('.mf-head .lang').forEach(function(g){g.addEventListen
 
                             <div class="flex items-center justify-end">
                                 <span
-                                    class="inline-flex items-center gap-1.5 px-3 py-1 bg-emerald-50 text-emerald-700 rounded-full font-bold text-[11px] sm:text-[12px] border border-emerald-200/80">
-                                    <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
-                                    Move-in ready
+                                    class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full font-bold text-[11px] sm:text-[12px]" style="background:#FEF2F2;color:#B91C1C;border:1px solid #FECACA">
+                                    <span class="occ-dot" style="margin:0"></span>
+                                    Occupied · Available Nov 1
                                 </span>
                             </div>
 
@@ -2548,6 +2601,13 @@ pop.addEventListener('click',function(e){e.stopPropagation()});document.addEvent
   if('IntersectionObserver' in window){new IntersectionObserver((es,o)=>{if(es[0].isIntersecting){initPano();o.disconnect()}}).observe($('#mv-stage'))}else initPano();
 })();
 </script>
+<script>(function(){
+var $=function(s){return document.querySelector(s)};
+var a=$('#mv-amen-all');if(a)a.addEventListener('click',function(){if(window.openAmenitiesModal)openAmenitiesModal('property')});
+var v=$('#mv-video'),p=$('#mvp-video');if(v&&p){v.addEventListener('play',function(){p.classList.add('playing')});v.addEventListener('pause',function(){p.classList.remove('playing')})}
+var b=$('#ll-bio'),m=$('#ll-more');if(b&&m){var chk=function(){if(b.classList.contains('open'))return;m.hidden=b.scrollHeight<=b.clientHeight+2};chk();addEventListener('resize',chk);
+m.addEventListener('click',function(){var o=b.classList.toggle('open');m.textContent=o?'Show less':'Read more';m.setAttribute('aria-expanded',String(o));if(!o)chk()})}
+})();</script>
 </body>
 
 </html>
