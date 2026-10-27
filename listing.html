@@ -275,6 +275,29 @@ p{margin:0}
 .f-bot nav{display:flex;gap:6px}
 .f-inner{max-width:1264px;margin-inline:auto}
 @media(prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+
+/* ===== Listing draft 3 (2026-10-27) ===== */
+.lease{flex-direction:row!important;align-items:baseline;gap:5px;white-space:nowrap}
+.lease b{font-size:11px}
+.perks{display:flex;flex-wrap:wrap;align-items:center;gap:6px;margin-top:8px}
+.perk{display:inline-flex;align-items:center;gap:4px;height:24px;padding:0 9px;border-radius:999px;background:#F3F4F6;color:#1B1D21;font-size:10.5px;font-weight:700;letter-spacing:.03em;text-transform:uppercase;white-space:nowrap}
+.perk i{font-size:13px}
+.perk.off{background:#FDE7F1;color:#B4235E}
+.perk-note{font-size:11.5px;color:var(--muted);white-space:nowrap}
+.offrow{display:flex;align-items:center;gap:6px;flex-wrap:wrap}
+.avail.later i{background:#F59E0B}
+.avail.later{color:#92400E}
+/* media types (same as Other units) */
+.mv-spin-wrap{position:absolute;inset:0;overflow:hidden}
+.mv-spin{position:absolute;inset:0;background-size:auto 165%;background-position-y:50%;background-repeat:repeat-x;animation:mvspin 40s linear infinite}
+@keyframes mvspin{from{background-position-x:0}to{background-position-x:calc(-1 * var(--pw,1400px))}}
+.mtype{position:absolute;z-index:2;top:50%;left:50%;transform:translate(-50%,-50%);display:flex;flex-direction:column;align-items:center;gap:5px;color:#fff;font-size:11px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;text-shadow:0 1px 4px rgba(0,0,0,.5);pointer-events:none;transition:opacity .3s}
+.mtype i{width:50px;height:50px;border-radius:999px;background:rgba(0,0,0,.5);border:1px solid rgba(255,255,255,.35);display:grid;place-items:center;font-size:26px}
+.ucard:hover .mtype.vid{opacity:0}
+.mv-prev{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity .3s}
+.ucard:hover .mv-prev.ready{opacity:1}
+.vchip{position:absolute;z-index:2;top:40px;left:12px;display:inline-flex;align-items:center;gap:3px;background:#111827;color:#fff;font-size:10px;font-weight:800;letter-spacing:.06em;padding:2px 8px;border-radius:6px}
+@media(prefers-reduced-motion:reduce){.mv-spin{animation:none}}
 </style>
 </head>
 <body>
@@ -458,9 +481,23 @@ const fmtP=n=>'฿'+n.toLocaleString();
 const shortP=fmtP;
 const OPEN247='<span class="open247" title="Open house 24/7"><svg viewBox="0 0 40 40" aria-hidden="true"><circle cx="20" cy="20" r="16" fill="none" stroke="currentColor" stroke-width="3" stroke-dasharray="76 25" stroke-linecap="round" transform="rotate(-60 20 20)"/><path d="M20 10v10l6 4" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"/></svg><b>24/7</b><span>Open house</span></span>';
 const tline=t=>{const m=t.match(/^(.*?)\s+([\d.]+\s*k?m)$/)||[t,t,''];return `<p class="transit ${t.startsWith('BTS')?'bts':'mrt'}"><i class="ph ph-train-simple" aria-hidden="true"></i>${esc(m[1])}<em>${esc(m[2])}</em></p>`};
+const PANOS=['https://cdn.polyhaven.com/asset_img/primary/cayley_interior.png?width=2560&quality=80','https://cdn.polyhaven.com/asset_img/primary/lebombo.png?width=2560&quality=80','https://cdn.polyhaven.com/asset_img/primary/hotel_room.png?width=2560&quality=80'];
+const VID='https://videos.pexels.com/video-files/7239172/7239172-sd_640_360_25fps.mp4';
+const kindOf=u=>['360','video','photo','photo'][u.id%4];
+const media=u=>{const k=kindOf(u);
+  if(k==='360')return `<a class="ucard-media" href="unit.html" tabindex="-1" aria-hidden="true"><span class="mv-spin-wrap"><span class="mv-spin" style="background-image:url('${PANOS[u.id%3]}')"></span></span>${OPEN247}<span class="mtype"><i class="ph ph-cube-focus"></i>360° tour</span></a>`;
+  if(k==='video')return `<a class="ucard-media" href="unit.html" tabindex="-1" aria-hidden="true"><img src="${u.img}" alt="" width="640" height="480" loading="lazy" decoding="async"><video class="mv-prev" muted loop playsinline preload="none" data-src="${VID}"></video>${OPEN247}<span class="mtype vid"><i class="ph-fill ph-play"></i>Video</span></a><span class="vchip"><i class="ph-fill ph-video-camera"></i>VIDEO</span>`;
+  return `<a class="ucard-media" href="unit.html" tabindex="-1" aria-hidden="true"><img src="${u.img}" alt="" width="640" height="480" loading="lazy" decoding="async">${OPEN247}<span class="count">1/${u.photos}</span></a>`};
+const LATER=[3,9];
+const availTxt=u=>LATER.includes(u.id)?`<span class="avail later"><i></i>Available from 15 Nov | Updated ${u.upd} day${u.upd>1?'s':''} ago</span>`:`<span class="avail"><i></i>Available: Now | Updated ${u.upd} day${u.upd>1?'s':''} ago</span>`;
+const perks=u=>{const a=[];
+  const off=u.lease<=6&&u.id%3!==2?`<span class="offrow"><span class="perk off">Up to 10% off</span><span class="perk-note">6+ month stay</span></span>`:'';
+  a.push(u.nodep?'<span class="perk"><i class="ph ph-lock-simple-open"></i>No deposit</span>':'<span class="perk"><i class="ph ph-shield-check"></i>Deposit protected</span>');
+  if(u.id%2===0||u.type==='Service Apartment')a.push('<span class="perk"><i class="ph ph-receipt"></i>Bills included</span>');
+  return `<div class="perks">${off}${a.join('')}</div>`};
 const card=u=>`<article class="ucard" data-id="${u.id}">
-  <a class="ucard-media" href="unit.html" tabindex="-1" aria-hidden="true"><img src="${u.img}" alt="" width="640" height="480" loading="lazy" decoding="async">${OPEN247}<span class="count">1/${u.photos}</span></a>
-  <span class="avail"><i></i>Available: Now | Updated ${u.upd} day${u.upd>1?'s':''} ago</span>
+  ${media(u)}
+  ${availTxt(u)}
   <button class="fav" type="button" aria-label="Save ${esc(u.name)}" aria-pressed="false"><i class="ph ph-heart"></i></button>
   <div class="ucard-body">
     <div class="ucard-top"><p class="lease"><b>Min. lease</b><span>${u.lease} month${u.lease>1?'s':''}</span></p><p class="price"><strong>${fmtP(u.price)}</strong><span>/month</span></p></div>
@@ -468,6 +505,7 @@ const card=u=>`<article class="ucard" data-id="${u.id}">
     <h2 class="uname"><a href="unit.html">${esc(u.name)}</a></h2>
     <p class="dist">${esc(u.dist)} · <span class="ptype">${esc(u.type)}</span></p>
     ${tline(u.transit)}${u.transit2?tline(u.transit2):''}
+    ${perks(u)}
   </div></article>`;
 
 /* ---------- state ---------- */
@@ -494,6 +532,8 @@ const cardsEl=$('#cards');
 function render(){
   const res=sorted(L.filter(u=>match(u)));
   cardsEl.innerHTML=res.map(card).join('');
+  $$('.mv-spin',cardsEl).forEach(el=>el.style.setProperty('--pw',(el.offsetHeight*1.65*2)+'px'));
+  $$('.mv-prev',cardsEl).forEach(v=>{const c=v.closest('.ucard');c.addEventListener('mouseenter',()=>{if(!v.src){v.src=v.dataset.src;v.addEventListener('canplay',()=>v.classList.add('ready'),{once:true})}v.play().catch(()=>{})});c.addEventListener('mouseleave',()=>v.pause())});
   $('#res-count').textContent=res.length;
   $('#empty').hidden=res.length>0;
   $$('.fav',cardsEl).forEach(b=>b.addEventListener('click',()=>{const on=b.getAttribute('aria-pressed')!=='true';b.setAttribute('aria-pressed',String(on));b.querySelector('i').className=(on?'ph-fill':'ph')+' ph-heart'}));
