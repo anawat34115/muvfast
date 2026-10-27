@@ -298,6 +298,15 @@ p{margin:0}
 .ucard:hover .mv-prev.ready{opacity:1}
 .vchip{position:absolute;z-index:2;top:40px;left:12px;display:inline-flex;align-items:center;gap:3px;background:#111827;color:#fff;font-size:10px;font-weight:800;letter-spacing:.06em;padding:2px 8px;border-radius:6px}
 @media(prefers-reduced-motion:reduce){.mv-spin{animation:none}}
+
+/* perks: max 2 lines (2026-10-27b) */
+.perks{display:grid!important;gap:5px!important;margin-top:8px}
+.perks .offrow{flex-wrap:nowrap;min-width:0}
+.pk2{display:flex;gap:5px;flex-wrap:nowrap;min-width:0;overflow:hidden}
+.perk{height:20px!important;padding:0 7px!important;font-size:9.5px!important;letter-spacing:.02em!important;gap:3px!important;flex:none}
+.perk i{font-size:11px!important}
+.perk-note{font-size:10.5px!important}
+@media(min-width:1024px) and (max-width:1279px){.perk i{display:none}.perk{padding:0 6px!important;letter-spacing:0!important;font-size:9px!important}}
 </style>
 </head>
 <body>
@@ -494,7 +503,7 @@ const perks=u=>{const a=[];
   const off=u.lease<=6&&u.id%3!==2?`<span class="offrow"><span class="perk off">Up to 10% off</span><span class="perk-note">6+ month stay</span></span>`:'';
   a.push(u.nodep?'<span class="perk"><i class="ph ph-lock-simple-open"></i>No deposit</span>':'<span class="perk"><i class="ph ph-shield-check"></i>Deposit protected</span>');
   if(u.id%2===0||u.type==='Service Apartment')a.push('<span class="perk"><i class="ph ph-receipt"></i>Bills included</span>');
-  return `<div class="perks">${off}${a.join('')}</div>`};
+  return `<div class="perks">${off}<span class="pk2">${a.join('')}</span></div>`};
 const card=u=>`<article class="ucard" data-id="${u.id}">
   ${media(u)}
   ${availTxt(u)}
